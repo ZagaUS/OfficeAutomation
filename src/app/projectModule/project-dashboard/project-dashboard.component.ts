@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   projectId: string;
@@ -38,10 +39,19 @@ export class ProjectDashboardComponent {
   ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
+  constructor(private router: Router) {}
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     console.log('filterValue', filterValue);
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  viewProject() {
+    this.router.navigate([
+      '/projectDetails',
+      this.dataSource.data[0].projectId,
+    ]);
   }
 
   test() {
