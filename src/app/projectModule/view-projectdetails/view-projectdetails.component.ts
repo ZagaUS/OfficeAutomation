@@ -11,6 +11,14 @@ export class ViewProjectdetailsComponent {
 
   constructor(private route: ActivatedRoute) {}
 
+  events = [];
+
+  fillerNav:String[] =["Project Details", "Timesheet", "Meeting Minutes"]
+
+
+  fillerContent : String[] =["show the details of the project", "show the timesheet", "show the meeting minutes"];
+
+
   ngOnInit(): void {
     this.projectId = this.route.snapshot.paramMap.get('projectId');
     console.log(`projectId: ${this.projectId}`);

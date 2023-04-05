@@ -4,9 +4,11 @@ import { ProjectDashboardComponent } from './projectModule/project-dashboard/pro
 import { ViewProjectdetailsComponent } from './projectModule/view-projectdetails/view-projectdetails.component';
 import { TimesheetComponent } from './projectModule/timesheet/timesheet.component';
 import { MeetingMinutesComponent } from './projectModule/meeting-minutes/meeting-minutes.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', component: ProjectDashboardComponent },
+  { path: '', component: LoginComponent},
+  { path: 'projectdashboard', component: ProjectDashboardComponent },
   { path: 'projectDetails/:projectId', component: ViewProjectdetailsComponent },
   { path: 'timesheet', component: TimesheetComponent },
   { path: 'meetingminutes', component: MeetingMinutesComponent },

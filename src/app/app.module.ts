@@ -15,6 +15,14 @@ import { ViewProjectdetailsComponent } from './projectModule/view-projectdetails
 import { TimesheetComponent } from './projectModule/timesheet/timesheet.component';
 import { MeetingMinutesComponent } from './projectModule/meeting-minutes/meeting-minutes.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
+
 
 @NgModule({
   declarations: [
@@ -34,6 +42,15 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSidenavModule,
+    MatListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent],
