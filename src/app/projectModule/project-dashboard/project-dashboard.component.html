@@ -9,6 +9,19 @@
     />
   </mat-form-field>
 
+  <div class="categoryContainer">
+    <mat-radio-group aria-labelledby="label" class="radioGroup">
+      <mat-radio-button
+        class="radiobtn"
+        *ngFor="let category of categories"
+        (change)="applyFilterForCategory()"
+        [value]="category"
+      >
+        {{ category }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- ProjectId Column -->
     <ng-container matColumnDef="projectId">

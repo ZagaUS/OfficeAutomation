@@ -8,7 +8,7 @@ import { MeetingMinutesComponent } from './projectModule/meeting-minutes/meeting
 const routes: Routes = [
   { path: '', component: ProjectDashboardComponent },
   { path: 'projectDetails/:projectId', component: ViewProjectdetailsComponent },
-  { path: 'timesheet', component: TimesheetComponent },
+  { path: '', component: TimesheetComponent },
   { path: 'meetingminutes', component: MeetingMinutesComponent },
 ];
 

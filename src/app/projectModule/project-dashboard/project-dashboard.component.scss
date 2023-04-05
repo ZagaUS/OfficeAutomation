@@ -16,8 +16,12 @@ table {
    flex-direction: row;
 }
 
-
 .icon:hover {
    cursor: pointer;
    color: red;
 }
+
+.categoryContainer {
+   margin-bottom: 20px;
+}
+
