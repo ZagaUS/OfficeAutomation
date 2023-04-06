@@ -7,10 +7,10 @@ import { MeetingMinutesComponent } from './projectModule/meeting-minutes/meeting
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
+  { path: '', component: LoginComponent },
   { path: 'projectdashboard', component: ProjectDashboardComponent },
   { path: 'projectDetails/:projectId', component: ViewProjectdetailsComponent },
-  { path: '', component: TimesheetComponent },
+  { path: 'timesheet', component: TimesheetComponent },
   { path: 'meetingminutes', component: MeetingMinutesComponent },
 ];
 
