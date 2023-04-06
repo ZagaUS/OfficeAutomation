@@ -23,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ProjectSidenavComponent } from './projectModule/project-sidenav/project-sidenav.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     TimesheetComponent,
     MeetingMinutesComponent,
     LandingPageComponent,
+    ProjectSidenavComponent,
   ],
   imports: [
     BrowserModule,
