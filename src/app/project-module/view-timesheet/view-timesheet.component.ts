@@ -4,52 +4,66 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 export interface PeriodicElement {
-  projectId: string;
+  timesheetId: string;
   projectName: String;
-  employeeName: String;
-  role: String;
-  projectStatus: String;
+  timesheetStatus: String;
+  startDate: String;
+  endDate: String;
+  timesheetType: String;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {
-    projectId: '1',
-    projectName: 'citioverdraft',
-    employeeName: 'employee',
-    role: 'Consultant',
-    projectStatus: 'Active',
+    timesheetId: '1',
+    projectName: 'Citi',
+    timesheetStatus: 'Approved',
+    startDate: 'Feb 1, 2023',
+    endDate: 'Feb 7, 2023',
+    timesheetType: 'Daily',
   },
   {
-    projectId: '2',
-    projectName: 'citi ci',
-    employeeName: 'Employee',
-    role: 'Consultant',
-    projectStatus: 'UnAssigned',
+    timesheetId: '2',
+    projectName: 'Citi',
+    timesheetStatus: '',
+    startDate: 'Feb 1, 2023',
+    endDate: 'Feb 7, 2023',
+    timesheetType: 'Weekly',
   },
   {
-    projectId: '3',
-    projectName: 'citi ci',
-    employeeName: 'Employee',
-    role: 'Consultant',
-    projectStatus: 'Completed',
+    timesheetId: '3',
+    projectName: 'Citi',
+    timesheetStatus: '',
+    startDate: 'Feb 1, 2023',
+    endDate: 'Feb 7, 2023',
+    timesheetType: 'Weekly',
+  },
+  {
+    timesheetId: '4',
+    projectName: 'Citi',
+    timesheetStatus: '',
+    startDate: 'Feb 1, 2023',
+    endDate: 'Feb 7, 2023',
+    timesheetType: 'Weekly',
   },
 ];
 
 @Component({
-  selector: 'app-project-dashboard',
-  templateUrl: './project-dashboard.component.html',
-  styleUrls: ['./project-dashboard.component.scss'],
+  selector: 'app-view-timesheet',
+  templateUrl: './view-timesheet.component.html',
+  styleUrls: ['./view-timesheet.component.scss'],
 })
-export class ProjectDashboardComponent {
+export class ViewTimesheetComponent {
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
 
-  categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
+  categories: string[] = ['Approved', 'All'];
   displayedColumns: string[] = [
-    'projectId',
+    'timesheetId',
     'projectName',
-    'employeeName',
-    'role',
-    'action',
+    'timesheetStatus',
+    'startDate',
+    'endDate',
+    'timesheetType',
+    'actions',
   ];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
@@ -77,10 +91,10 @@ export class ProjectDashboardComponent {
   }
 
   viewProject() {
-    this.router.navigate([
-      '/projectDetails',
-      this.dataSource.data[0].projectId,
-    ]);
+    // this.router.navigate([
+    //   '/projectDetails',
+    //   this.dataSource.data[0].projectId,
+    // ]);
   }
 
   test() {

@@ -2,29 +2,30 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-project-sidenav',
-  templateUrl: './project-sidenav.component.html',
-  styleUrls: ['./project-sidenav.component.scss'],
+  selector: 'app-project-module',
+  templateUrl: './project-module.component.html',
+  styleUrls: ['./project-module.component.scss'],
 })
-export class ProjectSidenavComponent {
+export class ProjectModuleComponent {
   projectId?: any;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(public route: ActivatedRoute, private router: Router) {}
 
   events = [];
 
   navRouting: any = [
     {
       name: 'Project Details',
-      link: '/projectDetails',
+      link: '/projectModule/:id',
     },
     {
       name: 'Timesheet',
-      link: '/timesheet',
+      link: 'timesheet',
     },
     {
       name: 'Meeting minnutes',
-      link: '/meetingMinutes',
+      link: 'meetingMinutes',
+      route: this.route,
     },
   ];
 
