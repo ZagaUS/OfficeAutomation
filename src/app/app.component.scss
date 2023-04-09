@@ -1,0 +1,28 @@
+.toolbar {
+   height: 100;
+   background-color: #1976d2;
+   color: white;
+   width: 100%;
+ }
+
+.container {
+   display: flex;
+   flex-direction: row;
+   // justify-content: center;
+   // align-items: center;
+}
+
+.mat-toolbar-row {
+   display: flex;
+   justify-content: center;
+   flex-grow: 1;
+ }
+ 
+ .toolbar-title {
+   text-align: center;
+ }
+
+.homeIcon {
+   margin: 10 10 10 50;
+}
+

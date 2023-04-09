@@ -1,0 +1,86 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // padding: 2em;
+  padding-left: 50em;
+  padding-top: 22em;
+
+  .mat-dialog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    //   padding: 2em;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    position: absolute;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    mat-form-field {
+      width: 100%;
+      margin-top: 20px;
+
+      input {
+        font-size: 15px;
+      }
+
+      mat-datepicker-toggle {
+        color: #007bff;
+        cursor: pointer;
+
+        &:hover {
+          color: #0062cc;
+        }
+      }
+    }
+
+    .close-button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      background-color: #184c80;
+
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #007bff;
+      color: #fff;
+
+      &:hover {
+        background-color: #0062cc;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  :host {
+    .mat-dialog-container {
+      padding: 3em;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  :host {
+    .mat-dialog-container {
+      padding: 4em;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  :host {
+    .mat-dialog-container {
+      padding: 5em;
+    }
+  }
+}

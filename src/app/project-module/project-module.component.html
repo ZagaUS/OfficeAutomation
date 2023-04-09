@@ -1,0 +1,59 @@
+<div class="example-container">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-toolbar-row class="center-row">
+      <span class="toolbar-title">Office Automation</span>
+    </mat-toolbar-row>
+    <div class="filler"></div>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav
+      class="example-sidenav"
+      color="primary"
+      #sidenav
+      mode="side"
+      #snav
+    >
+      <mat-nav-list>
+        <div *ngFor="let nav of navRouting">
+          <a mat-list-item [routerLink]="nav.link">{{ nav.name }}</a>
+        </div>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<!-- <mat-sidenav-container>
+  <mat-sidenav
+    color="primary"
+    class="example-sidenav"
+    #sidenav
+    mode="side"
+    #snav
+  >
+    <mat-nav-list>
+      <div *ngFor="let nav of navRouting">
+        <a mat-list-item [routerLink]="nav.link" >{{
+          nav.name
+        }}</a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="height: 88vh">
+      <mat-toolbar color="primary">
+        <button mat-icon-button aria-label="Menu" (click)="sidenav.open()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container> -->
