@@ -10,6 +10,7 @@ export class ViewProjectdetailsComponent {
   @Input()
   value?: any;
   projectId?: any;
+  formData: any = {};
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
@@ -53,16 +54,29 @@ export class ViewProjectdetailsComponent {
     },
   ];
 
+  ngOnInit() {
+    // initialize the formData object with the initial data
+    this.formData = {};
+    this.data.forEach((item) => {
+      for (const [key, value] of Object.entries(item)) {
+        console.log(`${key}: ${value}`);
+        this.formData[key] = value; // add the key-value pair to the formData object
+      }
+    });
+  }
+
   edit() {
     console.log('editable');
     this.editable = !this.editable;
     this.readonly = !this.readonly;
     this.editable = true;
   }
-  submitForm() {
+  submitForm(formData: any) {
     // this.editable = false;
-    const changedData = this.data[0];
-    console.log(this.data[0]);
+    // const changedData = this.data;
+    console.log(formData);
+    alert('The project details were updated sucessfully');
+    console.log('The project details were updated sucessfully');
     // this.http.put('http://localhost:8080', changedData)
   }
 }

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'projectdashboard', component: ProjectDashboardComponent },
   {
-    path: 'projectModule/:id',
+    path: 'projectModule',
     loadChildren: () =>
       import(`./project-module/project-module.module`).then(
         (m) => m.ProjectModuleModule

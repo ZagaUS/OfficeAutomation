@@ -1,31 +1,35 @@
 <mat-card class="example-card2">
   <mat-card-title class="card-header1">Project Details</mat-card-title>
-  <mat-card-content>
-    <div class="container">
-      <ng-container *ngFor="let item of data[0] | keyvalue">
-        <mat-form-field style="padding-bottom: 5px" appearance="fill">
-          <mat-label>{{ item.key }}</mat-label>
-          <input
-            matInput
-            placeholder="Input placeholder"
-            [(ngModel)]="item.value"
-            [readonly]="readonly"
-            [class.readonly]="!editable"
-            value="{{ item.value }}"
-          />
-        </mat-form-field>
-      </ng-container>
-      <p>
-        <button
-          mat-raised-button
-          color="primary"
-          class="loginbtn"
-          (click)="editable ? submitForm() : edit()"
-        >
-          {{ editable ? "SUBMIT" : "EDIT" }}
-        </button>
-      </p>
-    </div>
-  </mat-card-content>
+  <div class="container">
+    <ng-container *ngFor="let item of data[0] | keyvalue">
+      <mat-form-field
+        style="padding-bottom: 5px"
+        appearance="fill"
+        [class.readonly]="readonly"
+      >
+        <mat-label>{{ item.key }}</mat-label>
+        <input
+          matInput
+          placeholder="Input placeholder"
+          [(ngModel)]="item.value"
+          [class.editable]="!editable"
+          [class.readonly]="readonly"
+          [ngModelOptions]="{ updateOn: 'blur' }"
+          (ngModelChange)="formData[item.key] = item.value"
+          value="{{ item.value }}"
+        />
+      </mat-form-field>
+    </ng-container>
+    <p>
+      <button
+        mat-raised-button
+        color="primary"
+        class="loginbtn"
+        (click)="editable ? submitForm(formData) : edit()"
+      >
+        {{ editable ? "SUBMIT" : "EDIT" }}
+      </button>
+    </p>
+  </div>
   <mat-card-actions style="text-align: center"> </mat-card-actions>
 </mat-card>

@@ -12,29 +12,29 @@ export interface PeriodicElement {
   projectStatus: String;
 }
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     projectId: '1',
-//     projectName: 'citioverdraft',
-//     employeeName: 'employee',
-//     role: 'Consultant',
-//     projectStatus: 'Active',
-//   },
-//   {
-//     projectId: '2',
-//     projectName: 'citi ci',
-//     employeeName: 'Employee',
-//     role: 'Consultant',
-//     projectStatus: 'UnAssigned',
-//   },
-//   {
-//     projectId: '3',
-//     projectName: 'citi ci',
-//     employeeName: 'Employee',
-//     role: 'Consultant',
-//     projectStatus: 'Completed',
-//   },
-// ];
+const ELEMENT_DATA: PeriodicElement[] = [
+  {
+    projectId: '1',
+    projectName: 'citioverdraft',
+    employeeName: 'employee',
+    role: 'Consultant',
+    projectStatus: 'Active',
+  },
+  {
+    projectId: '2',
+    projectName: 'citi ci',
+    employeeName: 'Employee',
+    role: 'Consultant',
+    projectStatus: 'UnAssigned',
+  },
+  {
+    projectId: '3',
+    projectName: 'citi ci',
+    employeeName: 'Employee',
+    role: 'Consultant',
+    projectStatus: 'Completed',
+  },
+];
 
 @Component({
   selector: 'app-project-dashboard',
@@ -43,8 +43,7 @@ export interface PeriodicElement {
 })
 export class ProjectDashboardComponent {
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
-  ELEMENT_DATA?: any[];
-  dataSource?: any;
+  // dataSource?: any;
   categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
   displayedColumns: string[] = [
     'projectId',
@@ -54,15 +53,17 @@ export class ProjectDashboardComponent {
     'action',
   ];
 
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
   constructor(private router: Router, private api: ApiServicesService) {}
 
   ngOnInit(): void {
     console.log("Im'in");
-    this.api.getListOfProjects().subscribe((data) => {
-      console.log('List of projects ' + JSON.stringify(data));
-      this.dataSource = new MatTableDataSource(data);
-      // this.ELEMENT_DATA = data;
-    });
+    // this.api.getListOfProjects().subscribe((data) => {
+    //   console.log('List of projects ' + JSON.stringify(data));
+    //   this.dataSource = new MatTableDataSource(data);
+    //   // this.ELEMENT_DATA = data;
+    // });
   }
 
   applyFilter(event: Event) {
@@ -82,7 +83,8 @@ export class ProjectDashboardComponent {
   }
 
   viewProject(projectId?: any) {
-    this.router.navigate(['/projectModule', projectId]);
+    localStorage.setItem('projectId', projectId);
+    this.router.navigate(['/projectModule']);
   }
 
   //
