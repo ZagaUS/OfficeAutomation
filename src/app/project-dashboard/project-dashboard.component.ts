@@ -43,8 +43,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ProjectDashboardComponent {
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
-  ELEMENT_DATA?: any[];
-  dataSource?: any;
+  // dataSource?: any;
   categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
   displayedColumns: string[] = [
     'projectId',
@@ -54,14 +53,16 @@ export class ProjectDashboardComponent {
     'action',
   ];
 
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
+
   constructor(private router: Router, private api: ApiServicesService) {}
 
   ngOnInit(): void {
     console.log("Im'in");
     // this.api.getListOfProjects().subscribe((data) => {
-      // console.log('List of projects ' + JSON.stringify(data));
-      this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-      // this.ELEMENT_DATA = data;
+    //   console.log('List of projects ' + JSON.stringify(data));
+    //   this.dataSource = new MatTableDataSource(data);
+    //   // this.ELEMENT_DATA = data;
     // });
   }
 
@@ -82,7 +83,8 @@ export class ProjectDashboardComponent {
   }
 
   viewProject(projectId?: any) {
-    this.router.navigate(['/projectModule', projectId]);
+    localStorage.setItem('projectId', projectId);
+    this.router.navigate(['/projectModule']);
   }
 
   //

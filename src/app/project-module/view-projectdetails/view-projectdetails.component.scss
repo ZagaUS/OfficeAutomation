@@ -1,57 +1,73 @@
-  // Card CSS
+// Card CSS
 
   
-  .container {
-   margin: 100px;
-   display: flex;
-   flex-direction: column;
- }
+.container {
+  margin: 100px;
+  display: flex;
+  flex-direction: column;
+}
 
- .form-field-container {
-   display: flex;
-   flex-direction: column;
- }
- 
- .form-field-row {
-   display: flex;
-   flex-direction: column;
-   margin-bottom: 8px;
- }
- 
+.form-field-container {
+  display: flex;
+  flex-direction: column;
+}
 
- .loginbtn {
-   display: flex;
-   left: 43%;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
- }
- .card-header {
-   text-align: center;
-   padding: 30px;
-   top: 30px;
-   padding-bottom: 10px;
- }
+.form-field-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
 
- .card-header1 {
-   text-align: center;
-   padding: 30px;
-   top: 30px;
-   padding-bottom: 10px;
- }
- 
- .example-card {
-   width: 50%;
-   // padding: 25px;
-   position: absolute;
-   left: 0%;
-   top: 0%;
- }
- 
- .example-card2 {
-   width: 80%;
-   // padding: 50px;
-   position: absolute;
-   left: 10%;
-   top: 0%;
- }
+
+.loginbtn {
+  display: flex;
+  left: 43%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card-header {
+  text-align: center;
+  padding: 30px;
+  top: 30px;
+  padding-bottom: 10px;
+}
+
+.card-header1 {
+  text-align: center;
+  padding: 30px;
+  top: 30px;
+  padding-bottom: 10px;
+}
+
+//  .example-card {
+//    width: 50%;
+//    // padding: 25px;
+//    position: absolute;
+//    left: 0%;
+//    top: 0%;
+//  }
+
+.example-card2 {
+  width: 80%;
+  // padding: 50px;
+  position: absolute;
+  left: 10%;
+  top: 0%;
+}
+/* Editable styles */
+/* Editable styles */
+.mat-form-field-wrapper input.editable,
+.mat-form-field-wrapper textarea.editable {
+ background-color: #ffffff;
+ border: 1px solid #ced4da;
+ color: #495057;
+}
+
+/* Readonly styles */
+.mat-form-field-wrapper input.readonly,
+.mat-form-field-wrapper textarea.readonly {
+ background-color: #e9ecef;
+ border: 1px solid #ced4da;
+ color: #868e96;
+}

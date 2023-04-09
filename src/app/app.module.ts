@@ -13,6 +13,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
+// import { ViewProjectdetailsComponent } from './projectModule/view-projectdetails/view-projectdetails.component';
+// import { TimesheetComponent } from './projectModule/timesheet/timesheet.component';
+// import { MeetingMinutesComponent } from './projectModule/meeting-minutes/meeting-minutes.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -36,7 +39,11 @@ import { MatNativeDateModule } from '@angular/material/core';
     AppComponent,
     LoginComponent,
     ProjectDashboardComponent,
-    LandingPageComponent
+    // ViewProjectdetailsComponent,
+    // TimesheetComponent,
+    // MeetingMinutesComponent,
+    LandingPageComponent,
+    // ProjectSidenavComponent,
   ],
   imports: [
     BrowserModule,

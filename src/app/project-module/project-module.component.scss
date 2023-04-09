@@ -24,19 +24,15 @@ mat-toolbar {
 }
 
 .toolbar-title {
-  flex-grow: 1;
+  // flex-grow: 1;
   text-align: center;
   
 }
 
-.mat-toolbar-row {
+.center-row {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-}
-
-.filler {
-  flex-grow: 1;
 }
 
  .example-sidenav {
