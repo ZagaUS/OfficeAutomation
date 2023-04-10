@@ -10,16 +10,16 @@
   <mat-dialog-content class="modal-dialog-content">
     <div *ngIf="showDaily || showExternal">
       <mat-form-field style="margin-left: 55px" *ngIf="showDaily">
-        <input matInput placeholder="ProjectName" [(ngModel)]="task1">
+        <input matInput placeholder="ProjectName" [(ngModel)]="projectName">
       </mat-form-field>
       <mat-form-field style="margin-left: 55px" *ngIf="showDaily">
-        <input matInput placeholder="hours" [(ngModel)]="task2">
+        <input matInput placeholder="hours" [(ngModel)]="duration">
       </mat-form-field>
       <mat-form-field style="margin-left: 55px" *ngIf="showDaily">
-        <input matInput placeholder="Description" [(ngModel)]="task3">
+        <input matInput placeholder="Description" [(ngModel)]="description">
       </mat-form-field>
       <mat-form-field style="margin-left: 55px" *ngIf="showDaily">
-        <input matInput placeholder="Date" [(ngModel)]="task4">
+        <input matInput placeholder="Date" [(ngModel)]="date">
       </mat-form-field>
       <button mat-raised-button color="primary" style="margin-left: 120px" (click)="onClickDailySave()" *ngIf="showDaily">Save</button>
 

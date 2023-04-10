@@ -19,6 +19,10 @@ constructor(
   // dailyFields = ['task1','task2']
   showDaily = false;
   showExternal = false;
+  projectName ?: string;
+  duration ?: string;
+  description ?: string;
+  date?: string;
   task1?: string;
   task2?: string;
   task3?: string;
@@ -31,6 +35,13 @@ constructor(
 
   onClickDailySave()
   {
+    const data = {
+      projectName: this.projectName,
+      duration: this.duration,
+      description: this.description,
+      date: this.date
+    };
+    console.log(data);
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
   }

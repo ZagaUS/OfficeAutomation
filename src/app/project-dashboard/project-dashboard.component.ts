@@ -44,6 +44,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ProjectDashboardComponent {
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
   // dataSource?: any;
+  ELEMENT_DATA?: any[];
+  dataSource?: any;
   categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
   displayedColumns: string[] = [
     'projectId',
@@ -53,17 +55,18 @@ export class ProjectDashboardComponent {
     'action',
   ];
 
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   constructor(private router: Router, private api: ApiServicesService) {}
 
   ngOnInit(): void {
     console.log("Im'in");
-    // this.api.getListOfProjects().subscribe((data) => {
-    //   console.log('List of projects ' + JSON.stringify(data));
-    //   this.dataSource = new MatTableDataSource(data);
-    //   // this.ELEMENT_DATA = data;
-    // });
+    // console.log("Im'in");
+    this.api.getListOfProjects().subscribe((data) => {
+      console.log('List of projects ' + JSON.stringify(data));
+      this.dataSource = new MatTableDataSource(data);
+      // this.ELEMENT_DATA = data;
+    });
   }
 
   applyFilter(event: Event) {
