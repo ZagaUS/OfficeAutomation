@@ -9,8 +9,8 @@
 //   flex-direction: column;
 // }
 .mat-dialog-container {
-  width: 400px;
-  height: auto;
+  width: 800px;
+  height: 600px;
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -25,19 +25,20 @@
   transform: translate(-50%, -50%);
 }
 
+.showDailyContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 h2 {
   margin-top: 0;
   font-size: 24px;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
+
 
 .modal-dialog-content {
   margin-top: 20px;
@@ -51,10 +52,6 @@ button.modal-buttons {
   width: 100%;
   margin-top: 10px;
   margin-left: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 
@@ -90,3 +87,100 @@ button.mat-raised-button:hover {
   background-color: #007bff;
   color: #fff;
 }
+
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  // padding: 2em;
+  padding-left: 50em;
+  padding-top: 20em;
+
+  .mat-dialog-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    position: absolute;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    mat-form-field {
+      width: 100%;
+      margin-top: 20px;
+
+      input {
+        font-size: 15px;
+      }
+
+      mat-datepicker-toggle {
+        color: #007bff;
+        cursor: pointer;
+
+        &:hover {
+          color: #0062cc;
+        }
+      }
+    }
+
+    // .close-button {
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    //   margin: 10px; 
+    //   background-color: #184c80;
+    // }
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 20px;
+      background-color: #007bff;
+      color: #000;
+
+      // &:hover {
+      //   background-color: #0062cc;
+      // }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  :host {
+    .mat-dialog-container {
+      padding: 3em;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  :host {
+    .mat-dialog-container {
+      padding: 4em;
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  :host {
+    .mat-dialog-container {
+      padding: 5em;
+    }
+  }
+}
+
