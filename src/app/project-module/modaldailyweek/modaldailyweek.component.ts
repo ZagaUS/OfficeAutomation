@@ -50,6 +50,7 @@ export class ModaldailyweekComponent {
       startDate: this.startDate,
       endDate: this.endDate,
     };
+    
     console.log(exdata);
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
