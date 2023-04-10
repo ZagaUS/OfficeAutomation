@@ -16,7 +16,7 @@ export class ProjectModuleComponent {
   navRouting: any = [
     {
       name: 'Project Details',
-      link: '/projectModule/:id',
+      link: '/projectModule',
     },
     {
       name: 'Timesheet',
