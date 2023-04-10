@@ -1,11 +1,41 @@
 <div class="mat-dialog-container">
-    <h2>Create Timesheet</h2>
-    <button class="close-button" color="primary" (click)="close()">
-      <mat-icon>close</mat-icon>
-    </button>
-    <div>
-        <button mat-raised-button color="primary" style="margin-left: 30px"(click)="onClickDaily()">Daily</button>
-        <button mat-raised-button color="primary" style="margin-left: 30px" (click)="onClickWeekly()">Weekly</button>
-      </div>
+  <h2>Create Timesheet</h2>
+  <button class="close-button" color="primary" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div>
+    <button mat-raised-button color="primary" style="margin-left: 10px" (click)="onClickDaily()">Daily</button>
+    <button mat-raised-button color="primary" style="margin-left: 10px" (click)="onClickExternal()">External</button>
   </div>
-  
+  <mat-dialog-content class="modal-dialog-content">
+    <div *ngIf="showDaily || showExternal">
+      <mat-form-field *ngIf="showDaily">
+        <input matInput placeholder="ProjectName" [(ngModel)]="task1">
+      </mat-form-field>
+      <mat-form-field *ngIf="showDaily">
+        <input matInput placeholder="hours" [(ngModel)]="task2">
+      </mat-form-field>
+      <mat-form-field *ngIf="showDaily">
+        <input matInput placeholder="Description" [(ngModel)]="task3">
+      </mat-form-field>
+      <mat-form-field *ngIf="showDaily">
+        <input matInput placeholder="Date" [(ngModel)]="task4">
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="modal-buttons" style="margin-left: 10px" (click)="onClickDailySave()" *ngIf="showDaily">Save</button>
+
+      <mat-form-field *ngIf="showExternal">
+        <input matInput placeholder="Upload" [(ngModel)]="task1">
+      </mat-form-field>
+      <mat-form-field *ngIf="showExternal">
+        <input matInput placeholder="hours" [(ngModel)]="task2">
+      </mat-form-field>
+      <mat-form-field *ngIf="showExternal">
+        <input matInput placeholder="startDate" [(ngModel)]="task3">
+      </mat-form-field>
+      <mat-form-field *ngIf="showExternal">
+        <input matInput placeholder="Enddate" [(ngModel)]="task4">
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="modal-buttons" style="margin-left: 10px" (click)="onClickExternalSave()" *ngIf="showExternal">Save</button>
+    </div>
+  </mat-dialog-content>
+</div>
