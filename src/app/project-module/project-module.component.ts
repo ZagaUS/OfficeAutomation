@@ -36,8 +36,7 @@ export class ProjectModuleComponent {
   ];
 
   ngOnInit(): void {
-    this.projectId = this.route.snapshot.paramMap.get('projectId');
-    console.log(`projectId: ${this.projectId}`);
+    console.log('Project ID ' + localStorage.getItem('projectId'));
   }
 
   pageRoute() {

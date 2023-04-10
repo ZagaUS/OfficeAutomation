@@ -2,52 +2,59 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-modaltimesheet',
   templateUrl: './modaltimesheet.component.html',
-  styleUrls: ['./modaltimesheet.component.scss']
+  styleUrls: ['./modaltimesheet.component.scss'],
 })
 export class ModaltimesheetComponent {
-
   contactForm: FormGroup;
   durationInSeconds = 5;
+  dateFormat = 'yyyy-MM-dd';
+  startDate?: any = new Date();
+  endDate?: any = new Date();
+
   constructor(
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
-    public modalRef: MdbModalRef<ModaltimesheetComponent>) {
+    public modalRef: MdbModalRef<ModaltimesheetComponent>
+  ) {
     this.contactForm = this.fb.group({
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required]
-      // email: ['', Validators.required],
-      // message: ['', Validators.required]
+      startDate: [new Date(), Validators.required],
+      endDate: [new Date(), Validators.required],
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  close(){
+  close() {
     const closeMessage = 'Modal closed';
-    this.modalRef.close(closeMessage)
+    this.modalRef.close(closeMessage);
   }
-
- 
 
   onGenerateClick() {
-    console.log(this.contactForm.value);
+    const startDate = formatDate(
+      this.contactForm.value.startDate,
+      this.dateFormat,
+      'en-US'
+    );
+    const endDate = formatDate(
+      this.contactForm.value.endDate,
+      this.dateFormat,
+      'en-US'
+    );
+    console.log('Start date: ' + startDate, 'end date: ' + endDate);
     const closeMessage = 'Modal closed';
-    this.modalRef.close(closeMessage)
-    // this.apiCall.sendMail(this.contactForm.value).subscribe((data:any) => {
-    //   console.log(data);
-    //   this.snackBar.open("Thank you for contacting us. We will get back to you soon!", "", {
-    //     duration: this.durationInSeconds * 1000});
-    //   this.contactForm.reset();
-    // }, (error) => {
-    //   console.log(error);
-    // });
-    this.snackBar.open("Thank you for contacting us. We will get back to you soon!", "", {
-      duration: this.durationInSeconds * 1000});
+    this.modalRef.close(closeMessage);
+    this.snackBar.open(
+      'Thank you for contacting us. We will get back to you soon!',
+      '',
+      {
+        duration: this.durationInSeconds * 1000,
+      }
+    );
     this.contactForm.reset();
   }
 }

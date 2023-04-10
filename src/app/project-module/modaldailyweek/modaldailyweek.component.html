@@ -105,7 +105,11 @@
     </button>
 
     <mat-form-field *ngIf="showExternal">
-      <input matInput placeholder="Upload" [(ngModel)]="task1" />
+      <!-- <input matInput placeholder="Upload" [(ngModel)]="task1" /> -->
+      <input type="file" (change)="onFileSelected($event)" #fileInput hidden />
+      <button mat-raised-button (click)="fileInput.click()">Choose file</button>
+      <span>{{ fileName }}</span>
+      <mat-icon matSuffix>attach_file</mat-icon>
     </mat-form-field>
     <mat-form-field *ngIf="showExternal">
       <input matInput placeholder="hours" [(ngModel)]="task2" />
