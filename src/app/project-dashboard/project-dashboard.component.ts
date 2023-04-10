@@ -86,6 +86,7 @@ export class ProjectDashboardComponent {
   }
 
   viewProject(projectId?: any) {
+    console.log('viewProject', projectId);
     localStorage.setItem('projectId', projectId);
     this.router.navigate(['/projectModule']);
   }

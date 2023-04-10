@@ -12,7 +12,7 @@ export class ApiServicesService {
 
   getListOfProjects() {
     return this.http.get<any>(
-      this.projectMgtUrl + '/projectManagement/viewProjectDetails'
+      this.projectMgtUrl + '/projectManagement/projectDetails/viewProjectDetails'
     );
   }
 }
