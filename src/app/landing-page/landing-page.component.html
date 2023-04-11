@@ -1,1 +1,12 @@
-<p>landing-page works!</p>
+<div *ngFor="let models of moduleInfo">
+  <div class="displayCard">
+    <a [routerLink]="models.link">
+      <mat-card class="example-card">
+        <mat-card-title class="card-header">{{
+          models.cardName
+        }}</mat-card-title>
+        <mat-card-actions style="text-align: center"> </mat-card-actions>
+      </mat-card>
+    </a>
+  </div>
+</div>

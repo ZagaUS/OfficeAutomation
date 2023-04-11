@@ -13,7 +13,7 @@ import { ApiServicesService } from 'src/app/base-api/api-services.service';
 export class ModaldailyweekComponent {
   contactForm: FormGroup;
   @ViewChild('fileInput') fileInput?: ElementRef;
-  
+
   dailyData: any;
   constructor(
     private router: Router,
@@ -40,17 +40,13 @@ export class ModaldailyweekComponent {
   redhatOwner?: string;
   clientOwners: string[] = [];
 
-  mapClientOwners() {
-    
-  }
+  mapClientOwners() {}
 
-  mapRedhatOwners(){
-    
-  }
-  
+  mapRedhatOwners() {}
+
   redHatOwners: string[] = [];
   projectId?: any = localStorage.getItem('projectId');
-  timesheetType?: string = "Daily"
+  timesheetType?: string = 'Daily';
   fileName: any = 'dummy';
   // hours?: string;
   // upload?: any;
@@ -80,22 +76,22 @@ export class ModaldailyweekComponent {
 
   onClickDailySave() {
     this.clientOwner?.split(',').map((item) => {
-      console.log("client " + item);
+      console.log('client ' + item);
       this.clientOwners.push(item);
-    }) 
+    });
 
     this.redhatOwner?.split(',').map((item) => {
-      console.log("redhat " + item);
+      console.log('redhat ' + item);
       this.redHatOwners.push(item);
-    })
+    });
 
     const dts = {
       projectId: this.projectId,
       projectName: this.projectName,
-      duration: this.duration,
+      hours: this.duration,
       date: this.date,
-      supportTicket: this.supportTicket,      
-      clientOwners:  this.clientOwners,
+      supportTicket: this.supportTicket,
+      clientOwners: this.clientOwners,
       redHatOwners: this.redHatOwners,
       description: this.description,
       timesheetType: this.timesheetType,
@@ -105,7 +101,6 @@ export class ModaldailyweekComponent {
     this.api.createDailyTimesheet(dts).subscribe((data) => {
       console.log('List of projects ' + JSON.stringify(data));
     });
-
 
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
@@ -134,7 +129,8 @@ export class ModaldailyweekComponent {
     // Make a HTTP request to upload the file using the formData
     this.contactForm.get('fileName')?.setValue(this.fileName);
     console.log(this.contactForm.value);
-1  }
+    1;
+  }
   onClickExternal() {
     this.showDaily = false;
     this.showExternal = true;

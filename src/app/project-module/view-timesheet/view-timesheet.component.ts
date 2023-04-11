@@ -203,7 +203,7 @@ export class ViewTimesheetComponent {
     //   console.log(error);
     // });
   }
-  projectId?: any = 101;
+  projectId?: any = localStorage.getItem('projectId');
 
   ngOnInit(): void {
     console.log("Im'in");
@@ -278,12 +278,22 @@ export class ViewTimesheetComponent {
         this.daily = true;
         this.weekly = false;
         this.columnShown = this.dailyDisplayedColumns;
-        this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
-        this.totalHours = this.DAILY_ELEMENT_DATA.filter(
-          (el: { timesheetType: string }) => el.timesheetType === 'Daily'
-        )
-          .map((el: { hours: any }) => el.hours)
-          .reduce((a: any, b: any) => a + b, 0);
+        // this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
+        // this.totalHours = this.DAILY_ELEMENT_DATA.filter(
+        //   (el: { timesheetType: string }) => el.timesheetType === 'Daily'
+        // )
+        //   .map((el: { hours: any }) => el.hours)
+        //   .reduce((a: any, b: any) => a + b, 0);
+        this.apiCall
+          .getDailyTimesheetByProjectId(this.projectId)
+          .subscribe((data: any) => {
+            console.log('daily ' + JSON.stringify(data));
+            this.DAILY_ELEMENT_DATA = data;
+            this.totalHours = this.DAILY_ELEMENT_DATA.map(
+              (el: { hours: any }) => el.hours
+            ).reduce((a: any, b: any) => a + b, 0);
+            this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
+          });
       } else if (this.selectedValue === 'Weekly') {
         this.weekly = true;
         this.daily = false;
