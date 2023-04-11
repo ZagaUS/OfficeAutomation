@@ -54,5 +54,26 @@
     </div>
   </form>
   <button mat-raised-button (click)="onGenerateClick()">Generate</button>
+  <div *ngIf="invoiceGenerated" class ="invoice-details">
+    <h2>Invoice Details</h2>
+    <mat-form-field *ngIf="invoiceGenerated">
+      <input matInput placeholder="ProjectName" [(ngModel)]="projectName" />
+    </mat-form-field>
+    <mat-form-field *ngIf="invoiceGenerated">
+      <input matInput placeholder="hours" [(ngModel)]="duration" />
+    </mat-form-field>
+    <mat-form-field *ngIf="invoiceGenerated">
+      <input matInput placeholder="Description" [(ngModel)]="description" />
+    </mat-form-field>
+    <button
+    mat-raised-button
+    color="primary"
+    (click)="onClickInvoiceSave()"
+    *ngIf="invoiceGenerated"
+  >
+    Generate Invoice pdf
+  </button>
+
+  </div>
 </div>
 

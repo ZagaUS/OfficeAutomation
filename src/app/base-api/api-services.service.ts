@@ -13,7 +13,7 @@ export class ApiServicesService {
 
   getListOfProjects() {
     return this.http.get<any>(
-      this.projectMgtUrl + '/zaga/projectManagement/viewProjectDetails'
+      this.projectMgtUrl + '/projectDetails/viewProjectDetails'
     );
   }
 
@@ -32,15 +32,22 @@ export class ApiServicesService {
         projectId
     );
   }
-  getProjectDetails() {
+  getProjectDetails(projectId: string) {
     return this.http.get<any>(
-      this.projectMgtUrl + '/zaga/projectManagement/viewProjectDetailsById/41'
+      this.projectMgtUrl + '/projectDetails/viewProjectDetailsById/'+projectId
     );
   }
   updateProjectDetails(data: any) {
     return this.http.put(
-      this.projectMgtUrl + '/zaga/projectManagement/updateProjectDetails',
+      this.projectMgtUrl + '/projectDetails/updateProjectDetails',
       data
+    );
+  }
+
+  createDailyTimesheet(dts: any) {
+    return this.http.post(
+      this.projectMgtUrl + '/dailyTimesheet/createDailyTimeSheet',
+      dts
     );
   }
 }

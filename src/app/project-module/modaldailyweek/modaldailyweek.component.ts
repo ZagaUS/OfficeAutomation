@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
+import { ApiServicesService } from 'src/app/base-api/api-services.service';
 
 @Component({
   selector: 'app-modaldailyweek',
@@ -11,9 +13,12 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 export class ModaldailyweekComponent {
   contactForm: FormGroup;
   @ViewChild('fileInput') fileInput?: ElementRef;
+  
+  dailyData: any;
   constructor(
     private router: Router,
     public modalRef: MdbModalRef<ModaldailyweekComponent>,
+    private api: ApiServicesService,
     public fb: FormBuilder
   ) {
     this.contactForm = this.fb.group({
@@ -30,6 +35,22 @@ export class ModaldailyweekComponent {
   duration?: string;
   description?: string;
   date?: string;
+  supportTicket?: string;
+  clientOwner?: string;
+  redhatOwner?: string;
+  clientOwners: string[] = [];
+
+  mapClientOwners() {
+    
+  }
+
+  mapRedhatOwners(){
+    
+  }
+  
+  redHatOwners: string[] = [];
+  projectId?: any = localStorage.getItem('projectId');
+  timesheetType?: string = "Daily"
   fileName: any = 'dummy';
   // hours?: string;
   // upload?: any;
@@ -58,13 +79,34 @@ export class ModaldailyweekComponent {
   }
 
   onClickDailySave() {
-    const data = {
+    this.clientOwner?.split(',').map((item) => {
+      console.log("client " + item);
+      this.clientOwners.push(item);
+    }) 
+
+    this.redhatOwner?.split(',').map((item) => {
+      console.log("redhat " + item);
+      this.redHatOwners.push(item);
+    })
+
+    const dts = {
+      projectId: this.projectId,
       projectName: this.projectName,
       duration: this.duration,
-      description: this.description,
       date: this.date,
+      supportTicket: this.supportTicket,      
+      clientOwners:  this.clientOwners,
+      redHatOwners: this.redHatOwners,
+      description: this.description,
+      timesheetType: this.timesheetType,
     };
-    console.log(data);
+    console.log(dts);
+
+    this.api.createDailyTimesheet(dts).subscribe((data) => {
+      console.log('List of projects ' + JSON.stringify(data));
+    });
+
+
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
   }
