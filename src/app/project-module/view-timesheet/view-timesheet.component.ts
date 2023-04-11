@@ -120,7 +120,7 @@ export class ViewTimesheetComponent {
   selectedValue?: any;
   daily?: any = true;
   weekly?: any = false;
-  categories: string[] = ['Daily', 'Weekly', 'Approved', 'All'];
+  categories: string[] = ['Daily', 'Weekly', 'Approved'];
   weeklyDisplayedColumns: string[] = [
     'weeklyTimesheetId',
     'projectName',
@@ -171,6 +171,7 @@ export class ViewTimesheetComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
+      window.location.reload();
     });
   }
 
@@ -180,6 +181,7 @@ export class ViewTimesheetComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
+      window.location.reload();
     });
   }
 
@@ -189,6 +191,7 @@ export class ViewTimesheetComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
+      window.location.reload();
     });
   }
 

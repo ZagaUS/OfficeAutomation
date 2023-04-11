@@ -47,11 +47,18 @@ export class ModaldailyweekComponent {
     const files = event.target.files[0];
     console.log(files.name);
     this.fileName = files.name;
-    if (files.length > 0) {
-      this.contactForm.patchValue({
-        uploadfile: files,
-      });
-    }
+    const fileInputElement = event.target;
+    fileInputElement.value = '';
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.contactForm.get('uploadfile')?.setValue(reader.result);
+    };
+    reader.readAsDataURL(files);
+    // if (files.length > 0) {
+    //   this.contactForm.patchValue({
+    //     uploadfile: files,
+    //   });
+    // }
   }
 
   openFileSelection() {
@@ -109,21 +116,21 @@ export class ModaldailyweekComponent {
       this.dateFormat,
       'en-US'
     );
+    this.contactForm.get('endDate')?.setValue(endDate);
+    this.contactForm.get('startDate')?.setValue(startDate);
+    const projectName = localStorage.getItem('projectName');
 
-    var weeklyTimesheet = {
-      projectId: this.contactForm?.get('projectId'),
-      endDate: this.contactForm.get('endDate')?.setValue(endDate),
-      startDate: this.contactForm.get('startDate')?.setValue(startDate),
-      projectName: this.contactForm?.get('projectName'),
-      fileName: this.contactForm.get('fileName')?.setValue(this.fileName),
-      uploadfile: this.contactForm.get('uploadfile'),
-    };
-    this.api.getExternalTimesheet(weeklyTimesheet).subscribe((data) => {
-      console.log('External Timesheet of projects ' + JSON.stringify(data));
-    });
+    this.api
+      .createExternalTimesheet(
+        this.contactForm.value,
+        this.projectId,
+        projectName
+      )
+      .subscribe((data) => {
+        console.log('External Timesheet of projects ' + JSON.stringify(data));
+      });
 
     console.log(this.contactForm.value);
-    1;
   }
   onClickExternal() {
     this.showDaily = false;

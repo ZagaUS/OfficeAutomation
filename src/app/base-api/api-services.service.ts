@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -51,18 +50,38 @@ export class ApiServicesService {
       dts
     );
   }
-  getExternalTimesheet(weeklyTimesheet: any) {
+  createExternalTimesheet(
+    weeklyTimesheet: any,
+    projectId: any,
+    projectName: any
+  ) {
+    console.log(
+      'createexternalTimesheet' +
+        ' ' +
+        weeklyTimesheet.uploadfile +
+        ' ' +
+        projectId +
+        ' ' +
+        projectName +
+        ' ' +
+        weeklyTimesheet.endDate +
+        ' ' +
+        weeklyTimesheet.startDate
+    );
     return this.http.post(
       this.projectMgtUrl +
-        `projectDetails/uploadPdfDocument?${weeklyTimesheet.endDate}&${weeklyTimesheet.startDate}&${weeklyTimesheet.projectId}&${weeklyTimesheet.projectName}`,
-      weeklyTimesheet.uploadfile
+        `/projectDetails/uploadPdfDocument?endDate=${weeklyTimesheet.endDate}&startDate=${weeklyTimesheet.startDate}&projectId=${projectId}&projectName=${projectName}`,
+      weeklyTimesheet.uploadfile,
+      {
+        headers: { 'Content-Type': 'application/octet-stream' },
+      }
     );
   }
 
   createWeeklyTimesheetbyDate(weeklyData: any) {
     return this.http.post(
       this.projectMgtUrl +
-        `/weeklyTimesheet/createTimesheet?${weeklyData.endDate}&${weeklyData.projectId}&${weeklyData.projectName}&${weeklyData.startDate}`,
+        `/weeklyTimesheet/createTimesheet?endDate=${weeklyData.endDate}&projectId=${weeklyData.projectId}&projectName=${weeklyData.projectName}&startDate=${weeklyData.startDate}`,
       null
     );
   }

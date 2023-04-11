@@ -132,7 +132,7 @@
         <th mat-header-cell *matHeaderCellDef>Action</th>
         <td mat-cell *matCellDef="let element">
           <div class="actionContainer">
-            <a (click)="viewPDF()" class="icon"
+            <a *ngIf="weekly" (click)="viewPDF()" class="icon"
               ><mat-icon
                 style="font-size: x-large"
                 fontIcon="visibility"
