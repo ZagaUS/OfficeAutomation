@@ -7,6 +7,10 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { InvoiceModuleRoutingModule } from './invoice-module-routing.module';
 import { InvoiceModuleComponent } from './invoice-module.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [InvoiceModuleComponent],
@@ -17,6 +21,11 @@ import { InvoiceModuleComponent } from './invoice-module.component';
     MatInputModule,
     MatTableModule,
     MatIconModule,
+    FormsModule,
+    MatSidenavModule,
+    MatListModule,
+    ReactiveFormsModule,
+    MatButtonModule,
   ],
 })
 export class InvoiceModuleModule {}

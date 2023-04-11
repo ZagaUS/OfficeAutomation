@@ -8,19 +8,19 @@
       #input
     />
   </mat-form-field>
-  <!--   
-   <div class="categoryContainer">
-     <mat-radio-group aria-labelledby="label" class="radioGroup">
-       <mat-radio-button
-         class="radiobtn"
-         *ngFor="let category of categories"
-         (change)="applyFilterForCategory()"
-         [value]="category"
-       >
-         {{ category }}
-       </mat-radio-button>
-     </mat-radio-group>
-   </div> -->
+
+  <div class="categoryContainer">
+    <button
+      mat-raised-button
+      class="btns electric-blue"
+      style="margin-left: 10px"
+      color="primary"
+      data-toggle="modal"
+      (click)="openInvoiceModal()"
+    >
+      Generate Invoice
+    </button>
+  </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- InvoiceId Column -->

@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { InvoiceApiService } from '../base-api/invoice-api.service';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { ModaltimesheetComponent } from '../project-module/modaltimesheet/modaltimesheet.component';
+import { ModalinvoiceComponent } from '../project-module/modalinvoice/modalinvoice.component';
 
 export interface PeriodicElement {
   invoiceId: string;
@@ -49,8 +52,14 @@ export class InvoiceModuleComponent {
     'actions',
   ];
   dataSource?: any;
+  modalRef: MdbModalRef<ModaltimesheetComponent> | null = null;
+  modalRefI: MdbModalRef<ModalinvoiceComponent> | null = null;
 
-  constructor(private router: Router, private invoiceApi: InvoiceApiService) {}
+  constructor(
+    private router: Router,
+    private invoiceApi: InvoiceApiService,
+    private modalService: MdbModalService
+  ) {}
 
   ngOnInit(): void {
     this.invoiceApi.getAllInvoices().subscribe((data) => {
@@ -62,6 +71,16 @@ export class InvoiceModuleComponent {
     const filterValue = (event.target as HTMLInputElement).value;
     console.log('filterValue', filterValue);
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openInvoiceModal() {
+    this.modalRef = this.modalService.open(ModalinvoiceComponent, {
+      modalClass: 'modal-lg',
+    });
+    this.modalRef.onClose.subscribe((message: any) => {
+      console.log(message);
+      // window.location.reload();
+    });
   }
 
   viewInvoice() {}

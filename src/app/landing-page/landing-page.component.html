@@ -1,12 +1,21 @@
-<div *ngFor="let models of moduleInfo">
-  <div class="displayCard">
-    <a [routerLink]="models.link">
-      <mat-card class="example-card">
-        <mat-card-title class="card-header">{{
-          models.cardName
-        }}</mat-card-title>
-        <mat-card-actions style="text-align: center"> </mat-card-actions>
-      </mat-card>
-    </a>
+<div class="container">
+  <div
+    class="row align-items-center justify-content-center"
+    style="height: 100vh"
+  >
+    <div class="col-md-12">
+      <div class="card-group">
+        <div
+          *ngFor="let models of moduleInfo"
+          (click)="openBox(models.link)"
+          style="cursor: pointer"
+        >
+          <mat-card class="square-card centered">
+            <mat-card-title>{{ models.cardName }}</mat-card-title>
+            <mat-card-actions style="text-align: center"> </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

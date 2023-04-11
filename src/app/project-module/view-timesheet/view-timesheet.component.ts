@@ -171,7 +171,7 @@ export class ViewTimesheetComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -181,7 +181,7 @@ export class ViewTimesheetComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
@@ -191,7 +191,7 @@ export class ViewTimesheetComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
-      window.location.reload();
+      // window.location.reload();
     });
   }
 

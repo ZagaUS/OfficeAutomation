@@ -12,4 +12,11 @@ export class InvoiceApiService {
   getAllInvoices() {
     return this.http.get<any>(this.invoiceUrl + '/getAllInvoices');
   }
+
+  createInvoice(invoiceData: any) {
+    return this.http.post<any>(
+      this.invoiceUrl + '/createInvoicee/pdf',
+      invoiceData
+    );
+  }
 }

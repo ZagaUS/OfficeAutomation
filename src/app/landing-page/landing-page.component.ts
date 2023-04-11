@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -21,4 +22,13 @@ export class LandingPageComponent {
       link: '/invoicedashboard',
     },
   ];
+
+  constructor(private router: Router) {}
+
+  openBox(link: string) {
+    // window.open(window.location.pathname + '/projectdashboard');
+    this.router.navigate([]).then((result) => {
+      window.open(`${link}`, '_blank');
+    });
+  }
 }

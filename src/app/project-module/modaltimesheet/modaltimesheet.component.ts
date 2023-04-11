@@ -56,6 +56,7 @@ export class ModaltimesheetComponent {
     console.log('Start date: ' + startDate, 'end date: ' + endDate);
     this.api.createWeeklyTimesheetbyDate(generateWeekly).subscribe((data) => {
       console.log('Data: ' + JSON.stringify(data));
+      window.location.reload();
     });
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);

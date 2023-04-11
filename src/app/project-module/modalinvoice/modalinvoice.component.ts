@@ -5,6 +5,7 @@ import { MatRadioGroup } from '@angular/material/radio';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { InvoiceApiService } from 'src/app/base-api/invoice-api.service';
 
 @Component({
   selector: 'app-modalinvoice',
@@ -21,8 +22,8 @@ export class ModalinvoiceComponent {
   dateFormat = 'yyyy-MM-dd';
   startDate?: any = new Date();
   endDate?: any = new Date();
-  invoiceGenerated = false;  
-  indata:any;
+  invoiceGenerated = false;
+  indata: any;
   clientAddress: any;
   payOrder: any;
   sfdc: any;
@@ -31,11 +32,12 @@ export class ModalinvoiceComponent {
   manDays: any;
   invoiceAmount: any;
   totalInvoiceAmount: any;
-  
+
   constructor(
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
     private api: ApiServicesService,
+    private invoiceApi: InvoiceApiService,
     public modalRef: MdbModalRef<ModalinvoiceComponent>
   ) {
     this.contactForm = this.fb.group({
@@ -44,11 +46,11 @@ export class ModalinvoiceComponent {
       projectName: ['', Validators.required],
       // message: ['', Validators.required]
     });
-    }
-    projectName?: string;
-    duration?: string;
-    description?: string;
-    date?: string;
+  }
+  projectName?: string;
+  duration?: string;
+  description?: string;
+  date?: any = new Date();
 
   ngOnInit(): void {}
 
@@ -57,8 +59,9 @@ export class ModalinvoiceComponent {
     this.modalRef.close(closeMessage);
   }
 
-  onClickInvoiceSave(){
+  onClickInvoiceSave() {
     // console.log(this.invoiceForm.value);
+    const date = formatDate(this.date, this.dateFormat, 'en-US');
     const indata = {
       // date:'23/4/2023',
       // clientAddress:'4567',
@@ -69,23 +72,26 @@ export class ModalinvoiceComponent {
       // manDays:'2',
       // invoiceAmount:'1000',
       // totalInvoiceAmount:'10000'
-       date:this.date,
-       clientAddress:this.clientAddress,
-       payOrder:this.payOrder,
-       sfdc:this.sfdc,
-       pa:this.pa,
-       totalManDays:this.totalManDays,
-       manDays:this.manDays,
-       invoiceAmount:this.invoiceAmount,
-       totalInvoiceAmount:this.totalInvoiceAmount,
-    }
-    console.log("++++++++++++++++",indata);
+      date: date,
+      clientAddress: this.clientAddress,
+      payOrder: this.payOrder,
+      sfdc: this.sfdc,
+      pa: this.pa,
+      totalManDays: this.totalManDays,
+      manDays: this.manDays,
+      invoiceAmount: this.invoiceAmount,
+      totalInvoiceAmount: this.totalInvoiceAmount,
+    };
+    console.log('++++++++++++++++', indata);
+    this.invoiceApi.createInvoice(indata).subscribe((data) => {
+      console.log('invoice response' + JSON.stringify(data));
+      // window.location.reload();
+    });
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
   }
 
-  editInvoice()
-  {
+  editInvoice() {
     this.editMode = true;
     console.log('editable');
   }
@@ -102,21 +108,31 @@ export class ModalinvoiceComponent {
       this.dateFormat,
       'en-US'
     );
-    this.contactForm.get("startDate")?.setValue(startDate);
-    this.contactForm.get("endDate")?.setValue(endDate);
+    this.contactForm.get('startDate')?.setValue(startDate);
+    this.contactForm.get('endDate')?.setValue(endDate);
     console.log('Start date: ' + startDate, 'end date: ' + endDate);
     console.log(this.contactForm.value);
-    this.api.getInvoiceDetails().subscribe((data: any) => {
-      this.clientAddress = data.clientAddress;
-      this.payOrder = data.payOrder;
-      this.sfdc = data.sfdc;
-      this.pa = data.pa;
-      this.totalManDays = data.totalManDays;
-      this.manDays = data.manDays;
-      this.invoiceAmount = data.invoiceAmount;
-      this.totalInvoiceAmount = data.totalInvoiceAmount;
-    });
-  
+    // this.api.getInvoiceDetails().subscribe((data: any) => {
+    //   console.log('Invoice details received ' + JSON.stringify(data));
+    //   this.clientAddress = data.clientAddress;
+    //   // this.payOrder = data.payOrder;
+    //   this.sfdc = data.sfdc;                    NEEDED DONT REMOVE THIS
+    //   this.pa = data.pa;
+    //   this.totalManDays = data.totalManDays;
+    //   this.manDays = data.manDays;
+    //   this.invoiceAmount = data.totalAmount;
+    //   this.totalInvoiceAmount = data.totalInvoiceAmount;
+    // });
+
+    this.clientAddress = 'CLIENT_ADDRESS';
+    this.payOrder = 'String';
+    this.sfdc = '76778y5r6y'; //NEEDED DONT REMOVE THIS
+    this.pa = '544785';
+    this.totalManDays = 10;
+    this.manDays = 6;
+    this.invoiceAmount = 20000;
+    this.totalInvoiceAmount = 50000;
+
     // const closeMessage = 'Modal closed';
     // this.modalRef.close(closeMessage);
     // this.snackBar.open(

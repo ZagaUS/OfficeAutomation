@@ -96,6 +96,7 @@ export class ModaldailyweekComponent {
 
     this.api.createDailyTimesheet(dts).subscribe((data) => {
       console.log('Create Timesheet ' + JSON.stringify(data));
+      window.location.reload();
     });
 
     const closeMessage = 'Modal closed';
@@ -128,9 +129,13 @@ export class ModaldailyweekComponent {
       )
       .subscribe((data) => {
         console.log('External Timesheet of projects ' + JSON.stringify(data));
+        window.location.reload();
       });
 
     console.log(this.contactForm.value);
+
+    const closeMessage = 'Modal closed';
+    this.modalRef.close(closeMessage);
   }
   onClickExternal() {
     this.showDaily = false;

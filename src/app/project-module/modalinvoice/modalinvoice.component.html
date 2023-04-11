@@ -1,4 +1,4 @@
- <div class="mat-dialog-container">
+<div class="mat-dialog-container">
   <button class="close-button" (click)="close()">
     <mat-icon>close</mat-icon>
   </button>
@@ -37,7 +37,7 @@
       ></mat-datepicker-toggle>
       <mat-datepicker #endDatePicker></mat-datepicker>
     </mat-form-field>
-    <div class="categoryContainer">
+    <!-- <div class="categoryContainer">
       <mat-radio-group *ngIf="!invoiceGenerated"
         aria-labelledby="label"
         class="radioGroup"
@@ -51,49 +51,126 @@
           {{ category }}
         </mat-radio-button>
       </mat-radio-group>
-    </div>
+    </div> -->
   </form>
-  
+
   <div>
-    <button mat-raised-button (click)="onGenerateClick()" *ngIf="!invoiceGenerated">Generate</button>
-    <div *ngIf="invoiceGenerated" class="invoice-details" >
+    <button
+      mat-raised-button
+      (click)="onGenerateClick()"
+      *ngIf="!invoiceGenerated"
+    >
+      Generate
+    </button>
+    <div *ngIf="invoiceGenerated" class="invoice-details">
       <!-- <h2>Invoice Details</h2> -->
       <mat-form-field *ngIf="invoiceGenerated">
-        <input matInput placeholder="ClientAddress" [(ngModel)]="clientAddress" [readonly]="!editMode" />
+        <input
+          matInput
+          placeholder="ClientAddress"
+          [(ngModel)]="clientAddress"
+          [readonly]="!editMode"
+          [value]="clientAddress"
+        />
       </mat-form-field>
       <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
-        <input matInput placeholder="PayOrder" [(ngModel)]="payOrder" [readonly]="!editMode" />
+        <input
+          matInput
+          placeholder="PayOrder"
+          [(ngModel)]="payOrder"
+          [readonly]="!editMode"
+          [value]="payOrder"
+        />
       </mat-form-field>
       <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
-        <input matInput placeholder="SFDC" [(ngModel)]="sfdc" [readonly]="!editMode" />
-      </mat-form-field>
-      </div>
-      <div class="invoice-details">
-      <mat-form-field *ngIf="invoiceGenerated">
-        <input matInput placeholder="PA" [(ngModel)]="pa" [readonly]="!editMode" />
-      </mat-form-field>
-      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
-        <input matInput placeholder="TotalManDays" [(ngModel)]="totalManDays" [readonly]="!editMode" />
-      </mat-form-field>
-      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
-        <input matInput placeholder="ManDays" [(ngModel)]="manDays" [readonly]="!editMode" />
+        <input
+          matInput
+          placeholder="SFDC"
+          [(ngModel)]="sfdc"
+          [readonly]="!editMode"
+          [value]="sfdc"
+        />
       </mat-form-field>
     </div>
     <div class="invoice-details">
       <mat-form-field *ngIf="invoiceGenerated">
-        <input matInput placeholder="InvoiceAmount" [(ngModel)]="invoiceAmount" [readonly]="!editMode" />
-      </mat-form-field>   
+        <input
+          matInput
+          placeholder="PA"
+          [(ngModel)]="pa"
+          [readonly]="!editMode"
+          [value]="pa"
+        />
+      </mat-form-field>
       <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
-        <input matInput placeholder="TotalInvoiceAmount" [(ngModel)]="totalInvoiceAmount" [readonly]="!editMode" />
+        <input
+          matInput
+          placeholder="TotalManDays"
+          [(ngModel)]="totalManDays"
+          [readonly]="!editMode"
+          [value]="totalManDays"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
+        <input
+          matInput
+          placeholder="ManDays"
+          [(ngModel)]="manDays"
+          [readonly]="!editMode"
+          [value]="manDays"
+        />
       </mat-form-field>
     </div>
-    <button style="margin-left: 150px"*ngIf="invoiceGenerated" mat-raised-button color="primary" (click)="editInvoice()">Edit</button>
-    <button style="margin-left: 40px" *ngIf="invoiceGenerated"
-       mat-raised-button
-       color="primary"
-       (click)="onClickInvoiceSave()"
-     >
-       Generate Invoice PDF
-     </button>
+    <div class="invoice-details">
+      <mat-form-field *ngIf="invoiceGenerated">
+        <input
+          matInput
+          placeholder="InvoiceAmount"
+          [(ngModel)]="invoiceAmount"
+          readonly="true"
+          [value]="invoiceAmount | currency"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
+        <input
+          matInput
+          placeholder="TotalInvoiceAmount"
+          [(ngModel)]="totalInvoiceAmount"
+          readonly="true"
+          [value]="totalInvoiceAmount | currency"
+        />
+      </mat-form-field>
+      <mat-form-field *ngIf="invoiceGenerated" style="margin-left: 10px">
+        <input
+          matInput
+          [matDatepicker]="endDatePicker"
+          placeholder="Date"
+          [(ngModel)]="date"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button
+      style="margin-left: 150px"
+      *ngIf="invoiceGenerated"
+      mat-raised-button
+      color="primary"
+      (click)="editInvoice()"
+    >
+      Edit
+    </button>
+    <button
+      style="margin-left: 40px"
+      *ngIf="invoiceGenerated"
+      mat-raised-button
+      color="primary"
+      (click)="onClickInvoiceSave()"
+    >
+      Generate Invoice PDF
+    </button>
   </div>
-  </div>
+</div>
