@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,8 +13,7 @@ export class ApiServicesService {
 
   getListOfProjects() {
     return this.http.get<any>(
-      this.projectMgtUrl +
-        '/projectManagement/projectDetails/viewProjectDetails'
+      this.projectMgtUrl + '/zaga/projectManagement/viewProjectDetails'
     );
   }
 
@@ -30,6 +30,17 @@ export class ApiServicesService {
       this.projectMgtUrl +
         '/weeklyTimesheet/getWeeklyTimesheetByProjectId/' +
         projectId
+    );
+  }
+  getProjectDetails() {
+    return this.http.get<any>(
+      this.projectMgtUrl + '/zaga/projectManagement/viewProjectDetailsById/41'
+    );
+  }
+  updateProjectDetails(data: any) {
+    return this.http.put(
+      this.projectMgtUrl + '/zaga/projectManagement/updateProjectDetails',
+      data
     );
   }
 }
