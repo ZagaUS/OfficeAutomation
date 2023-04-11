@@ -1,6 +1,6 @@
 .mat-dialog-container {
   width: 800px;
-  height: 600px;
+  height: 650px;
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -15,9 +15,9 @@
   transform: translate(-50%, -50%);
 }
 
-.showDailyContent {
+.invoice-details {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -87,7 +87,7 @@ button.mat-raised-button:hover {
   padding-left: 50em;
   padding-top: 22em;
 
-  .mat-dialog-container {
+.mat-dialog-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
