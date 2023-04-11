@@ -16,7 +16,8 @@ interface MyData {
 export class ViewProjectdetailsComponent {
   @Input()
   value?: any;
-  projectId?: any;
+  // projectId?: any;
+  projectId?: any = localStorage.getItem('projectId');
 
   constructor(private route: ActivatedRoute, private router: Router,private api: ApiServicesService) {}
 
@@ -65,7 +66,8 @@ export class ViewProjectdetailsComponent {
 	  data: MyData[] = [];
 
   ngOnInit(): void {
-    this.api.getProjectDetails().subscribe((data) => {
+    // this.projectId = "41";
+    this.api.getProjectDetails(this.projectId).subscribe((data) => {
       console.log('List of projects ' + JSON.stringify(data));
       this.data = data;
     });

@@ -14,10 +14,12 @@ export class ModalinvoiceComponent {
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
   categories: string[] = ['Approved'];
   contactForm: FormGroup;
+  // invoiceForm: FormGroup;
   durationInSeconds = 5;
   dateFormat = 'yyyy-MM-dd';
   startDate?: any = new Date();
   endDate?: any = new Date();
+  invoiceGenerated?: boolean;
   
   constructor(
     private snackBar: MatSnackBar,
@@ -30,7 +32,11 @@ export class ModalinvoiceComponent {
       projectName: ['', Validators.required],
       // message: ['', Validators.required]
     });
-  }
+    }
+    projectName?: string;
+    duration?: string;
+    description?: string;
+    date?: string;
 
   ngOnInit(): void {}
 
@@ -39,7 +45,21 @@ export class ModalinvoiceComponent {
     this.modalRef.close(closeMessage);
   }
 
+  onClickInvoiceSave(){
+    // console.log(this.invoiceForm.value);
+    const indata = {
+      projectName: this.projectName,
+      duration: this.duration,
+      description: this.description,
+      date: this.date,
+    }
+    console.log(indata);
+    const closeMessage = 'Modal closed';
+    this.modalRef.close(closeMessage);
+  }
+
   onGenerateClick() {
+    this.invoiceGenerated = true;
     const startDate = formatDate(
       this.contactForm.value.startDate,
       this.dateFormat,

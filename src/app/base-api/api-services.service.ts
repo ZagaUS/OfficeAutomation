@@ -32,10 +32,9 @@ export class ApiServicesService {
         projectId
     );
   }
-
-  getProjectDetails() {
+  getProjectDetails(projectId: string) {
     return this.http.get<any>(
-      this.projectMgtUrl + '/projectDetails/viewProjectDetailsById/41'
+      this.projectMgtUrl + '/projectDetails/viewProjectDetailsById/' + projectId
     );
   }
 
@@ -43,6 +42,13 @@ export class ApiServicesService {
     return this.http.put(
       this.projectMgtUrl + '/projectDetails/updateProjectDetails',
       data
+    );
+  }
+
+  createDailyTimesheet(dts: any) {
+    return this.http.post(
+      this.projectMgtUrl + '/dailyTimesheet/createDailyTimeSheet',
+      dts
     );
   }
 }
