@@ -20,7 +20,7 @@ export class ModaltimesheetComponent {
   constructor(
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
-    private api:ApiServicesService,
+    private api: ApiServicesService,
     public modalRef: MdbModalRef<ModaltimesheetComponent>
   ) {
     this.contactForm = this.fb.group({
@@ -47,8 +47,16 @@ export class ModaltimesheetComponent {
       this.dateFormat,
       'en-US'
     );
+    const generateWeekly = {
+      projectId: localStorage.getItem('projectId'),
+      projectName: localStorage.getItem('projectName'),
+      startDate: startDate,
+      endDate: endDate,
+    };
     console.log('Start date: ' + startDate, 'end date: ' + endDate);
-    // this.api.
+    this.api.createWeeklyTimesheetbyDate(generateWeekly).subscribe((data) => {
+      console.log('Data: ' + JSON.stringify(data));
+    });
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
     this.snackBar.open(

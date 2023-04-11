@@ -53,13 +53,17 @@ export class ApiServicesService {
   }
   getExternalTimesheet(weeklyTimesheet: any) {
     return this.http.post(
-      this.projectMgtUrl + `projectDetails/uploadPdfDocument?${weeklyTimesheet.endDate}&${weeklyTimesheet.startDate}&${weeklyTimesheet.projectId}&${weeklyTimesheet.projectName}`,weeklyTimesheet.uploadfile
+      this.projectMgtUrl +
+        `projectDetails/uploadPdfDocument?${weeklyTimesheet.endDate}&${weeklyTimesheet.startDate}&${weeklyTimesheet.projectId}&${weeklyTimesheet.projectName}`,
+      weeklyTimesheet.uploadfile
     );
-}
+  }
 
-  getWeeklyTimesheetbyDate(){
-    // return this.http.post(
-      // this.projectMgtUrl + 
-    // )
+  createWeeklyTimesheetbyDate(weeklyData: any) {
+    return this.http.post(
+      this.projectMgtUrl +
+        `/weeklyTimesheet/createTimesheet?${weeklyData.endDate}&${weeklyData.projectId}&${weeklyData.projectName}&${weeklyData.startDate}`,
+      null
+    );
   }
 }
