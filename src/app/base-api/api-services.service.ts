@@ -51,4 +51,15 @@ export class ApiServicesService {
       dts
     );
   }
+  getExternalTimesheet(weeklyTimesheet: any) {
+    return this.http.post(
+      this.projectMgtUrl + `projectDetails/uploadPdfDocument?${weeklyTimesheet.endDate}&${weeklyTimesheet.startDate}&${weeklyTimesheet.projectId}&${weeklyTimesheet.projectName}`,weeklyTimesheet.uploadfile
+    );
+}
+
+  getWeeklyTimesheetbyDate(){
+    // return this.http.post(
+      // this.projectMgtUrl + 
+    // )
+  }
 }
