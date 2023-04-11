@@ -12,7 +12,24 @@ export class ApiServicesService {
 
   getListOfProjects() {
     return this.http.get<any>(
-      this.projectMgtUrl + '/projectManagement/projectDetails/viewProjectDetails'
+      this.projectMgtUrl +
+        '/projectManagement/projectDetails/viewProjectDetails'
+    );
+  }
+
+  getDailyTimesheetByProjectId(projectId: string) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        '/dailyTimesheet/viewDailyTimesheetsByProjectId/' +
+        projectId
+    );
+  }
+
+  getWeeklyTimesheetByProjectId(projectId: string) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        '/weeklyTimesheet/getWeeklyTimesheetByProjectId/' +
+        projectId
     );
   }
 }

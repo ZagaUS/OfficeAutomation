@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  projectMgtUrl: 'http://localhost:8083/zaga/projectManagement',
+  projectMgtUrl: 'http://localhost:8081/zaga/projectManagement',
 };
