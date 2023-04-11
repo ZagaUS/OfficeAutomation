@@ -14,7 +14,7 @@ export class ModaldailyweekComponent {
   contactForm: FormGroup;
   @ViewChild('fileInput') fileInput?: ElementRef;
   
-  dailyData: any;
+  dateFormat = 'yyyy-MM-dd';
   constructor(
     private router: Router,
     public modalRef: MdbModalRef<ModaldailyweekComponent>,
@@ -39,25 +39,10 @@ export class ModaldailyweekComponent {
   clientOwner?: string;
   redhatOwner?: string;
   clientOwners: string[] = [];
-
-  mapClientOwners() {
-    
-  }
-
-  mapRedhatOwners(){
-    
-  }
-  
   redHatOwners: string[] = [];
   projectId?: any = localStorage.getItem('projectId');
   timesheetType?: string = "Daily"
   fileName: any = 'dummy';
-  // hours?: string;
-  // upload?: any;
-  // startDate?: string;
-  // endDate?: string;
-  // selectedFile?: any;
-
   onFileSelected(event: any) {
     const files = event.target.files[0];
     console.log(files.name);
@@ -103,7 +88,7 @@ export class ModaldailyweekComponent {
     console.log(dts);
 
     this.api.createDailyTimesheet(dts).subscribe((data) => {
-      console.log('List of projects ' + JSON.stringify(data));
+      console.log('Create Timesheet ' + JSON.stringify(data));
     });
 
 
@@ -114,25 +99,31 @@ export class ModaldailyweekComponent {
     this.showDaily = true;
     this.showExternal = false;
   }
-  // onClickExternalSave() {
-  //   const exdata = {
-  //     upload: this.upload,
-  //     hours: this.hours,
-  //     startDate: this.startDate,
-  //     endDate: this.endDate,
-  //   };
-  //   console.log(exdata);
-  //   const closeMessage = 'Modal closed';
-  //   this.modalRef.close(closeMessage);
-  // }
   onClickExternalSave() {
-    // const formData = new FormData();
-    // formData.append('uploadfile', this.contactForm.get('uploadfile')?.value);
-    // formData.append('hours', this.contactForm.get('hours')?.value);
-    // formData.append('startDate', this.contactForm.get('startDate')?.value);
-    // formData.append('endDate', this.contactForm.get('endDate')?.value);
-    // Make a HTTP request to upload the file using the formData
-    this.contactForm.get('fileName')?.setValue(this.fileName);
+      const startDate = formatDate(
+        this.contactForm.value.startDate,
+        this.dateFormat,
+        'en-US'
+      );
+      const endDate = formatDate(
+        this.contactForm.value.endDate,
+        this.dateFormat,
+        'en-US'
+      );     
+
+      var weeklyTimesheet = {
+        projectId: this.contactForm?.get('projectId'),
+        endDate: this.contactForm.get('endDate')?.setValue(endDate),
+        startDate: this.contactForm.get('startDate')?.setValue(startDate),
+        projectName: this.contactForm?.get('projectName'),
+        fileName:this.contactForm.get('fileName')?.setValue(this.fileName),
+        uploadfile:this.contactForm.get('uploadfile'),
+        
+      }
+      this.api.getExternalTimesheet(weeklyTimesheet).subscribe((data) => {
+        console.log('External Timesheet of projects ' + JSON.stringify(data));
+      });
+   
     console.log(this.contactForm.value);
 1  }
   onClickExternal() {

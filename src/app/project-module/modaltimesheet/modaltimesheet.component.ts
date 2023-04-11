@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { formatDate } from '@angular/common';
+import { ApiServicesService } from 'src/app/base-api/api-services.service';
 
 @Component({
   selector: 'app-modaltimesheet',
@@ -19,6 +20,7 @@ export class ModaltimesheetComponent {
   constructor(
     private snackBar: MatSnackBar,
     private fb: FormBuilder,
+    private api:ApiServicesService,
     public modalRef: MdbModalRef<ModaltimesheetComponent>
   ) {
     this.contactForm = this.fb.group({
@@ -46,6 +48,7 @@ export class ModaltimesheetComponent {
       'en-US'
     );
     console.log('Start date: ' + startDate, 'end date: ' + endDate);
+    // this.api.
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
     this.snackBar.open(
