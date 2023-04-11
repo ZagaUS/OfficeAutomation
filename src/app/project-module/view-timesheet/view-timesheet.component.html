@@ -106,7 +106,15 @@
     </ng-container>
 
     <!-- timesheettype Column -->
-    <ng-container matColumnDef="duration">
+    <ng-container *ngIf="weekly" matColumnDef="duration">
+      <th mat-header-cell *matHeaderCellDef>Hours</th>
+      <td mat-cell *matCellDef="let element">{{ element.duration }}</td>
+      <td class="mat-footer" mat-footer-cell *matFooterCellDef>
+        {{ getTotalHours() }}
+      </td>
+    </ng-container>
+
+    <ng-container *ngIf="daily" matColumnDef="hours">
       <th mat-header-cell *matHeaderCellDef>Hours</th>
       <td mat-cell *matCellDef="let element">{{ element.duration }}</td>
       <td class="mat-footer" mat-footer-cell *matFooterCellDef>

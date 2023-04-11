@@ -134,7 +134,7 @@ export class ViewTimesheetComponent {
     'dailyTimesheetId',
     'projectName',
     'date',
-    'duration',
+    'hours',
     'actions',
   ];
   columnShown?: any = this.dailyDisplayedColumns;
@@ -214,7 +214,7 @@ export class ViewTimesheetComponent {
         console.log('daily ' + JSON.stringify(data));
         this.DAILY_ELEMENT_DATA = data;
         this.totalHours = this.DAILY_ELEMENT_DATA.map(
-          (el: { duration: any }) => el.duration
+          (el: { hours: any }) => el.hours
         ).reduce((a: any, b: any) => a + b, 0);
         this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
       });
@@ -269,7 +269,7 @@ export class ViewTimesheetComponent {
       this.columnShown = this.dailyDisplayedColumns;
       this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
       this.totalHours = this.DAILY_ELEMENT_DATA.map(
-        (el: { duration: any }) => el.duration
+        (el: { hours: any }) => el.hours
       ).reduce((a: any, b: any) => a + b, 0);
     } else {
       console.log('applyFilterForCategory' + this.radioGroup?.value);
@@ -333,7 +333,7 @@ export class ViewTimesheetComponent {
         this.columnShown = this.dailyDisplayedColumns;
         this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
         this.totalHours = this.DAILY_ELEMENT_DATA.map(
-          (el: { duration: any }) => el.duration
+          (el: { hours: any }) => el.hours
         ).reduce((a: any, b: any) => a + b, 0);
       }
     }
