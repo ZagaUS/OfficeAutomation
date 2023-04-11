@@ -85,4 +85,10 @@ export class ApiServicesService {
       null
     );
   }
+
+  getInvoiceDetails(){
+    return this.http.get<any>(
+      this.projectMgtUrl + '/projectDetails/viewProjectDetails'
+    );
+  }
 }
