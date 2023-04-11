@@ -92,7 +92,7 @@ export class ModaldailyweekComponent {
     // Make a HTTP request to upload the file using the formData
     this.contactForm.get('fileName')?.setValue(this.fileName);
     console.log(this.contactForm.value);
-  }
+1  }
   onClickExternal() {
     this.showDaily = false;
     this.showExternal = true;

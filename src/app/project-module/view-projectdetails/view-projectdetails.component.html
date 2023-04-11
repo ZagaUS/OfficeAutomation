@@ -1,19 +1,19 @@
 <mat-card class="example-card2">
   <mat-card-title class="card-header1">Project Details</mat-card-title>
   <div class="container">
-    <ng-container *ngFor="let item of data[0] | keyvalue">
+    <ng-container *ngFor="let item of data | keyvalue">
       <mat-form-field style="padding-bottom: 5px" appearance="fill" [class.readonly]="readonly">
         <mat-label>{{ item.key }}</mat-label>
         <input
-          matInput
-          placeholder="Input placeholder"
-          [(ngModel)]="item.value"
-          [class.editable]="!editable"
-          [readonly]="readonly"
-          [ngModelOptions]="{ updateOn: 'blur' }"
-          (blur)="updateFormData(item.key, item.value)"
-          value="{{ item.value }}"
-        />
+        matInput
+        placeholder="Input placeholder"
+        [(ngModel)]="item.value"
+        [class.editable]="!editable"
+        [readonly]="readonly"
+        [ngModelOptions]="{ updateOn: 'blur' }"
+        (blur)="updateFormData(item.key, item.value.toString())"
+        value="{{ item.value }}"
+      />
       </mat-form-field>
       
     </ng-container>
