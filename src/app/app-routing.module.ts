@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
 import { LoginComponent } from './login/login.component';
-import { ProjectModuleRoutingModule } from './project-module/project-module-routing.module';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
@@ -23,9 +22,13 @@ const routes: Routes = [
         (m) => m.InvoiceModuleModule
       ),
   },
-  // { path: 'projectDetails/:projectId', component: ViewProjectdetailsComponent },
-  // { path: 'timesheet', component: TimesheetComponent },
-  // { path: 'meetingminutes', component: MeetingMinutesComponent },
+  {
+    path: 'employeeOnboarding',
+    loadChildren: () =>
+      import(`./employee-onboarding/employee-onboarding.module`).then(
+        (m) => m.EmployeeOnboardingModule
+      ),
+  },
 ];
 
 @NgModule({

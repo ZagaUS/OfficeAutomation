@@ -51,7 +51,12 @@
       Generate Timesheet
     </button>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table
+      style="margin-top: 20px"
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+    >
       <!-- TimesheetId Column -->
       <ng-container *ngIf="daily" matColumnDef="dailyTimesheetId">
         <th mat-header-cell *matHeaderCellDef>Daily Timesheet Id</th>
@@ -67,6 +72,20 @@
         <td mat-cell *matCellDef="let element">
           {{ element.weeklyTimesheetId }}
         </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <!-- ProjectID Column -->
+      <ng-container *ngIf="external" matColumnDef="projectId">
+        <th mat-header-cell *matHeaderCellDef>Project ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.projectId }}</td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <!-- DocumentID Column -->
+      <ng-container *ngIf="external" matColumnDef="documentId">
+        <th mat-header-cell *matHeaderCellDef>Document ID</th>
+        <td mat-cell *matCellDef="let element">{{ element.documentId }}</td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
 
@@ -87,10 +106,17 @@
       </ng-container>
 
       <!-- startdate Column -->
-      <ng-container *ngIf="weekly" matColumnDef="startDate">
+      <ng-container *ngIf="weekly || external" matColumnDef="startDate">
         <th mat-header-cell *matHeaderCellDef>StartDate</th>
         <td mat-cell *matCellDef="let element">{{ element.startDate }}</td>
         <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
+
+      <!-- endDate Column -->
+      <ng-container *ngIf="external" matColumnDef="endDate">
+        <th mat-header-cell *matHeaderCellDef>EndDate</th>
+        <td mat-cell *matCellDef="let element">{{ element.endDate }}</td>
+        <td class="mat-footer" mat-footer-cell *matFooterCellDef></td>
       </ng-container>
 
       <!-- endDate Column -->
@@ -132,14 +158,19 @@
         <th mat-header-cell *matHeaderCellDef>Action</th>
         <td mat-cell *matCellDef="let element">
           <div class="actionContainer">
-            <a *ngIf="weekly" (click)="viewPDF()" class="icon"
+            <a *ngIf="weekly || external" (click)="viewPDF()" class="icon"
               ><mat-icon
                 style="font-size: x-large"
                 fontIcon="visibility"
               ></mat-icon>
               <!-- <p>View</p> -->
             </a>
-            <a (click)="editTimesheet()" class="icon" style="margin-left: 10px"
+
+            <a
+              *ngIf="weekly || daily"
+              class="icon"
+              style="margin-left: 10px"
+              (click)="editTimesheet()"
               ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon>
               <!-- <p>Edit</p> -->
             </a>

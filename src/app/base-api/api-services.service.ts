@@ -53,7 +53,8 @@ export class ApiServicesService {
   createExternalTimesheet(
     weeklyTimesheet: any,
     projectId: any,
-    projectName: any
+    projectName: any,
+    docType: any
   ) {
     console.log(
       'createexternalTimesheet' +
@@ -70,7 +71,7 @@ export class ApiServicesService {
     );
     return this.http.post(
       this.projectMgtUrl +
-        `/projectDetails/uploadPdfDocument?endDate=${weeklyTimesheet.endDate}&startDate=${weeklyTimesheet.startDate}&projectId=${projectId}&projectName=${projectName}`,
+        `/projectDetails/uploadPdfDocument?documentType=${docType}&endDate=${weeklyTimesheet.endDate}&startDate=${weeklyTimesheet.startDate}&projectId=${projectId}&projectName=${projectName}`,
       weeklyTimesheet.uploadfile,
       {
         headers: { 'Content-Type': 'application/octet-stream' },
@@ -86,7 +87,7 @@ export class ApiServicesService {
     );
   }
 
-  getInvoiceDetails(){
+  getInvoiceDetails() {
     return this.http.get<any>(
       this.projectMgtUrl + '/projectDetails/viewProjectDetails'
     );
@@ -97,4 +98,11 @@ export class ApiServicesService {
     return this.http.get<any>(
       this.projectMgtUrl + `/projectDetails/document/${document.doucmentId}`+`?documentType=${document.documentType}`
   )} 
+  getExternalTimesheetData(projectId: any, docType: any) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        `/projectDetails/document/listByType/${projectId}` +
+        `?documentType=${docType}`
+    );
+  }
 }

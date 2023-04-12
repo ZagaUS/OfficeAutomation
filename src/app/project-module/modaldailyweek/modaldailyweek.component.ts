@@ -117,6 +117,7 @@ export class ModaldailyweekComponent {
       this.dateFormat,
       'en-US'
     );
+    const docType = 'EXTERNAL';
     this.contactForm.get('endDate')?.setValue(endDate);
     this.contactForm.get('startDate')?.setValue(startDate);
     const projectName = localStorage.getItem('projectName');
@@ -125,7 +126,8 @@ export class ModaldailyweekComponent {
       .createExternalTimesheet(
         this.contactForm.value,
         this.projectId,
-        projectName
+        projectName,
+        docType
       )
       .subscribe((data) => {
         console.log('External Timesheet of projects ' + JSON.stringify(data));

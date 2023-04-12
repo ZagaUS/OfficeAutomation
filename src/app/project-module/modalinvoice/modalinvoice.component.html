@@ -60,7 +60,7 @@
       (click)="onGenerateClick()"
       *ngIf="!invoiceGenerated"
     >
-      Generate
+      Next
     </button>
     <div *ngIf="invoiceGenerated" class="invoice-details">
       <!-- <h2>Invoice Details</h2> -->
@@ -127,7 +127,7 @@
           matInput
           placeholder="InvoiceAmount"
           [(ngModel)]="invoiceAmount"
-          readonly="true"
+          [readonly]="!editMode"
           [value]="invoiceAmount | currency"
         />
       </mat-form-field>
@@ -136,7 +136,7 @@
           matInput
           placeholder="TotalInvoiceAmount"
           [(ngModel)]="totalInvoiceAmount"
-          readonly="true"
+          [readonly]="!editMode"
           [value]="totalInvoiceAmount | currency"
         />
       </mat-form-field>
