@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -93,11 +94,16 @@ export class ApiServicesService {
     );
   }
 
-  getweeklyTimesheetfile(document: any){
-    console.log("checking the input",document);
-    return this.http.get<any>(
-      this.projectMgtUrl + `/projectDetails/document/${document.doucmentId}`+`?documentType=${document.documentType}`
-  )} 
+  getweeklyTimesheetfile(document: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'text/plain');
+    console.log('checking the input', document);
+    return this.http.get(
+      this.projectMgtUrl +
+        `/projectDetails/document/${document.documentId}` +
+        `?documentType=${document.documentType}`,
+      { headers, responseType: 'blob' }
+    );
+  }
   getExternalTimesheetData(projectId: any, docType: any) {
     return this.http.get<any>(
       this.projectMgtUrl +
