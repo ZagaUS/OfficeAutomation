@@ -46,7 +46,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let timesheet of timesheets">
-                    <td style="text-align: center;" contentEditable="true">{{ timesheet.dailyTimesheetId }}</td>
+                    <td style="text-align: center;" contentEditable="true" (input)="updateEditedData($event, timesheet, 'projectId')">{{ timesheet.dailyTimesheetId }}</td>
                     <td style="text-align: center;" contentEditable="true">{{ timesheet.hours }}</td>
                     <td style="text-align: center;" contentEditable="true">{{ timesheet.date }}</td>
                     <td style="text-align: center;" contentEditable="true">{{ timesheet.supportTicket }}</td>

@@ -146,6 +146,7 @@ export class ViewTimesheetComponent {
   totalHours?: number;
   dataSource?: any;
   pdfSrc?: SafeResourceUrl;
+  pdfbaseapi?:any;
 
   constructor(
     private router: Router,
@@ -237,14 +238,22 @@ export class ViewTimesheetComponent {
 
   viewPDF() {
     console.log('View PDF');
+    const document = {
+      documentId:"CI_2023-04-10_2023-04-06",
+      documentType:"WEEKLY"
 
+    }
+    this.apiCall.getweeklyTimesheetfile(document).subscribe((data: any) => {
+      console.log('weekly pdf view clixked ' + JSON.stringify(data));
+      this.pdfbaseapi = data;
+  });
     //decode the base64 encoded string
-    const binaryString = window.atob(pdfBase64);
+    const binaryString = window.atob("docume" + this.pdfbaseapi);
     const byteArray = new Uint8Array(binaryString.length);
     for (let i = 0; i < binaryString.length; i++) {
       byteArray[i] = binaryString.charCodeAt(i);
-    }
-
+      
+  }
     // Create a Blob object from the Uint8Array
     const blob = new Blob([byteArray], { type: 'application/pdf' });
 

@@ -91,4 +91,10 @@ export class ApiServicesService {
       this.projectMgtUrl + '/projectDetails/viewProjectDetails'
     );
   }
+
+  getweeklyTimesheetfile(document: any){
+    console.log("checking the input",document);
+    return this.http.get<any>(
+      this.projectMgtUrl + `/projectDetails/document/${document.doucmentId}`+`?documentType=${document.documentType}`
+  )} 
 }
