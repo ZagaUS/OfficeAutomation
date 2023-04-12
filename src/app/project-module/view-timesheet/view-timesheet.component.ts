@@ -120,7 +120,8 @@ export class ViewTimesheetComponent {
   selectedValue?: any;
   daily?: any = true;
   weekly?: any = false;
-  categories: string[] = ['Daily', 'Weekly', 'Approved'];
+  external?: any = false;
+  categories: string[] = ['Daily', 'Weekly', 'Approved', 'External'];
   weeklyDisplayedColumns: string[] = [
     'weeklyTimesheetId',
     'projectName',
@@ -135,6 +136,14 @@ export class ViewTimesheetComponent {
     'projectName',
     'date',
     'hours',
+    'actions',
+  ];
+  externalDisplayedColumns: string[] = [
+    'projectId',
+    'documentId',
+    'projectName',
+    'startDate',
+    'endDate',
     'actions',
   ];
   columnShown?: any = this.dailyDisplayedColumns;
@@ -164,6 +173,7 @@ export class ViewTimesheetComponent {
   durationInSeconds = 5;
   modalRef: MdbModalRef<ModaltimesheetComponent> | null = null;
   modalRefI: MdbModalRef<ModalinvoiceComponent> | null = null;
+  docType: any = 'EXTERNAL';
 
   openTimeModal() {
     this.modalRef = this.modalService.open(ModaltimesheetComponent, {
@@ -265,21 +275,29 @@ export class ViewTimesheetComponent {
 
   applyFilterForCategory() {
     this.selectedValue = this.radioGroup?.value;
-    if (this.selectedValue === 'All') {
-      this.dataSource.filter = ''; // clear filter
-      this.daily = true;
+    if (this.selectedValue === 'External') {
+      // this.dataSource.filter = ''; // clear filter
+      this.daily = false;
       this.weekly = false;
-      this.columnShown = this.dailyDisplayedColumns;
-      this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
-      this.totalHours = this.DAILY_ELEMENT_DATA.map(
-        (el: { hours: any }) => el.hours
-      ).reduce((a: any, b: any) => a + b, 0);
+      this.external = true;
+      this.columnShown = this.externalDisplayedColumns;
+      this.apiCall
+        .getExternalTimesheetData(this.projectId, this.docType)
+        .subscribe((data) => {
+          console.log('External data' + data);
+          this.dataSource = new MatTableDataSource(data);
+        });
+      // this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
+      // this.totalHours = this.DAILY_ELEMENT_DATA.map(
+      //   (el: { hours: any }) => el.hours
+      // ).reduce((a: any, b: any) => a + b, 0);
     } else {
       console.log('applyFilterForCategory' + this.radioGroup?.value);
       this.dataSource.filter = this.selectedValue;
       if (this.selectedValue === 'Daily') {
         this.daily = true;
         this.weekly = false;
+        this.external = false;
         this.columnShown = this.dailyDisplayedColumns;
         // this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
         // this.totalHours = this.DAILY_ELEMENT_DATA.filter(
@@ -300,6 +318,7 @@ export class ViewTimesheetComponent {
       } else if (this.selectedValue === 'Weekly') {
         this.weekly = true;
         this.daily = false;
+        this.external = false;
         this.columnShown = this.weeklyDisplayedColumns;
         // this.dataSource = new MatTableDataSource(WEEKLY_ELEMENT_DATA);
         // this.totalHours = WEEKLY_ELEMENT_DATA.filter(
@@ -321,6 +340,7 @@ export class ViewTimesheetComponent {
       } else if (this.selectedValue === 'Approved') {
         this.daily = false;
         this.weekly = true;
+        this.external = false;
         this.columnShown = this.weeklyDisplayedColumns;
         // this.dataSource = new MatTableDataSource(WEEKLY_ELEMENT_DATA);
         // this.dataSource.filter = this.selectedValue;
@@ -335,14 +355,18 @@ export class ViewTimesheetComponent {
           .subscribe((data: any) => {
             console.log('weeklyTimesheet ' + JSON.stringify(data));
             this.WEEKLY_ELEMENT_DATA = data;
-            this.totalHours = this.WEEKLY_ELEMENT_DATA.map(
-              (el: { duration: any }) => el.duration
-            ).reduce((a: any, b: any) => a + b, 0);
+            this.totalHours = this.WEEKLY_ELEMENT_DATA.filter(
+              (el: { timesheetType: string }) => el.timesheetType === 'APPROVED'
+            )
+              .map((el: { duration: any }) => el.duration)
+              .reduce((a: any, b: any) => a + b, 0);
             this.dataSource = new MatTableDataSource(this.WEEKLY_ELEMENT_DATA);
+            this.dataSource.filter = 'APPROVED';
           });
       } else {
         this.daily = true;
         this.weekly = false;
+        this.external = false;
         this.columnShown = this.dailyDisplayedColumns;
         this.dataSource = new MatTableDataSource(this.DAILY_ELEMENT_DATA);
         this.totalHours = this.DAILY_ELEMENT_DATA.map(
