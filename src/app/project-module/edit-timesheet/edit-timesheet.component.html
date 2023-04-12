@@ -1,0 +1,74 @@
+   <!-- <div style="overflow-x: auto;"> -->
+    <div style="overflow-x: auto; margin-bottom: 40px;background-color: lightblue;">
+    <table [@tableAnimation] style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+          <th style="width: 100px; text-align: left; padding: 5px;">Project ID</th>
+          <th style="width: 150px; text-align: left; padding: 5px;">Employee Name</th>
+          <th style="width: 150px; text-align: left; padding: 5px;">Project Name</th>
+          <th style="width: 120px; text-align: left; padding: 5px;">Employee Role</th>
+          <th style="width: 150px; text-align: left; padding: 5px;">Weekly Timesheet ID</th>
+          <th style="width: 80px; text-align: left; padding: 5px;">Duration</th>
+          <th style="width: 120px; text-align: left; padding: 5px;">Start Date</th>
+          <th style="width: 120px; text-align: left; padding: 5px;">End Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let timesheet of projectDetail">
+            <td style="text-align: left; padding: 5px; height: 80px;" contentEditable="true">{{ timesheet.projectId }}</td>
+            <td style="text-align: left; padding: 5px; " contentEditable="true">{{ timesheet.employeeName }}</td>
+            <td style="text-align: left; padding: 5px; " contentEditable="true">{{ timesheet.projectName }}</td>
+            <td style="text-align: left; padding: 5px; " contentEditable="true">{{ timesheet.employeeRole }}</td>
+            <td style="text-align: left; padding: 5px; " contentEditable="true">{{ timesheet.weeklyTimesheetId }}</td>
+            <td style="text-align: left; padding: 5px; " contentEditable="true">{{ timesheet.duration }}</td>
+            <td style="text-align: left; padding: 5px; " contentEditable="true">{{ timesheet.startDate }}</td>
+            <td style="text-align: left; padding: 5px; " contentEditable="true">{{ timesheet.endDate }}</td>
+            
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="height: 400px; overflow: auto;">
+    
+    <table [@tableAnimation] style="table-layout: fixed; width: 100%; border-collapse: collapse;">
+      <thead>
+        <tr>
+            <th style="width: 120px;">Daily Timesheet ID</th>
+            <th style="width: 80px;">Hours</th>
+            <th style="width: 80px;">Date</th>
+            <th style="width: 120px;">Support Ticket</th>
+            <th style="width: 120px;">Client Owners</th>
+            <th style="width: 120px;">Red Hat Owners</th>
+            <th style="width: 120px; white-space: nowrap;">Description</th>
+            <th style="width: 150px;">Timesheet Type</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let timesheet of timesheets">
+                    <td style="text-align: center;" contentEditable="true">{{ timesheet.dailyTimesheetId }}</td>
+                    <td style="text-align: center;" contentEditable="true">{{ timesheet.hours }}</td>
+                    <td style="text-align: center;" contentEditable="true">{{ timesheet.date }}</td>
+                    <td style="text-align: center;" contentEditable="true">{{ timesheet.supportTicket }}</td>
+                    <td style="text-align: center;" contentEditable="true">
+                      <ul>
+                        <li *ngFor="let clientOwner of timesheet.clientOwners">{{ clientOwner }}</li>
+                      </ul>
+                    </td>
+                    <td style="text-align: center;" contentEditable="true">
+                      <ul>
+                        <li *ngFor="let redHatOwner of timesheet.redHatOwners">{{ redHatOwner }}</li>
+                      </ul>
+                    </td>
+                    <td contentEditable="true">{{ timesheet.description }}</td>
+                    <td style="text-align: center;" contentEditable="true">{{ timesheet.timesheetType }}</td>
+                    
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+          
+  
+
+ 

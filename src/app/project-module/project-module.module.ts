@@ -25,6 +25,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ModalinvoiceComponent } from './modalinvoice/modalinvoice.component';
 import { ModaldailyweekComponent } from './modaldailyweek/modaldailyweek.component';
+import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 
 
@@ -36,7 +38,8 @@ import { ModaldailyweekComponent } from './modaldailyweek/modaldailyweek.compone
     ViewTimesheetComponent,
     ModaltimesheetComponent,
     ModalinvoiceComponent,
-    ModaldailyweekComponent
+    ModaldailyweekComponent,
+    EditTimesheetComponent
 
   ],
   imports: [
@@ -57,7 +60,8 @@ import { ModaldailyweekComponent } from './modaldailyweek/modaldailyweek.compone
     MdbModalModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [ProjectModuleComponent],

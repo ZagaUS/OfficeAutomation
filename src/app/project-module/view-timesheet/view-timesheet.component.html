@@ -165,11 +165,12 @@
               ></mat-icon>
               <!-- <p>View</p> -->
             </a>
+
             <a
               *ngIf="weekly || daily"
-              (click)="test()"
               class="icon"
               style="margin-left: 10px"
+              (click)="editTimesheet()"
               ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon>
               <!-- <p>Edit</p> -->
             </a>
