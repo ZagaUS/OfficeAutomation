@@ -360,7 +360,15 @@ export class ViewTimesheetComponent {
   }
 
   test() {
-    alert('test');
-    console.log('test');
+    alert('testing');
+    console.log('testi');
+  }
+  editTimesheet() {
+    this.router.navigate([
+        '/editTimesheet',
+        // this.dataSource.data[0].projectId,
+      ]);
+    // alert('testing');
+    console.log('testi');
   }
 }
