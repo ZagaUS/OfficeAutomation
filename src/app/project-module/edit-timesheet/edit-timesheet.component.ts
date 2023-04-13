@@ -89,18 +89,42 @@ export class EditTimesheetComponent {
         'Worked on feature X for almost all the task are completed  worked with someone attende the meeting and also th details of the tasks are uodated ib thefd hagdhvbh',
       timesheetType: 'Billable',
     },
+    {
+      dailyTimesheetId: 1,
+      hours: 8,
+      date: '2023-04-01',
+      supportTicket: 'ABC-123',
+      clientOwners: ['Client 1', 'Client 2'],
+      redHatOwners: ['Red Hat 1', 'Red Hat 2'],
+      description:
+        'Worked on feature X for almost all the task are completed  worked with someone attende the meeting and also th details of the tasks are uodated ib thefd hagdhvbh',
+      timesheetType: 'Billable',
+    },{
+      dailyTimesheetId: 1,
+      hours: 8,
+      date: '2023-04-01',
+      supportTicket: 'ABC-123',
+      clientOwners: ['Client 1', 'Client 2'],
+      redHatOwners: ['Red Hat 1', 'Red Hat 2'],
+      description:
+        'Worked on feature X for almost all the task are completed  worked with someone attende the meeting and also th details of the tasks are uodated ib thefd hagdhvbh',
+      timesheetType: 'Billable',
+    },
   ];
-  editedData: any;
+  editedData: any[] = [];
 
-
-  updateEditedData(event: any, timesheet: any, field: string) {
-    const newValue = event.target.textContent.trim();
-    const index = this.editedData.findIndex((data: { id: any; }) => data.id === timesheet.id);
+  onCellEdit(event: any, timesheet: any, field: string, value?: any) {
+    const newValue = value ?? event.target.textContent.trim();
+    const index = this.editedData.findIndex(data => data.id === timesheet.id);
     if (index === -1) {
       this.editedData.push({id: timesheet.id, [field]: newValue});
-      console.log("editedData")
+      console.log("NewValue+++++",newValue);
     } else {
       this.editedData[index][field] = newValue;
+      console.log("NewValueelse----",newValue);
     }
   }
+  
+  
+  
 }

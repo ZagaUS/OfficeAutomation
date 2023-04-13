@@ -44,9 +44,9 @@
             <th style="width: 150px;">Timesheet Type</th>
             </tr>
             </thead>
-            <tbody>
+            <!-- <tbody>
                 <tr *ngFor="let timesheet of timesheets">
-                    <td style="text-align: center;" contentEditable="true" (input)="updateEditedData($event, timesheet, 'projectId')">{{ timesheet.dailyTimesheetId }}</td>
+                    <td style="text-align: center;" contentEditable="true">{{ timesheet.dailyTimesheetId }}</td>
                     <td style="text-align: center;" contentEditable="true">{{ timesheet.hours }}</td>
                     <td style="text-align: center;" contentEditable="true">{{ timesheet.date }}</td>
                     <td style="text-align: center;" contentEditable="true">{{ timesheet.supportTicket }}</td>
@@ -65,7 +65,30 @@
                     
         </tr>
     </tbody>
-  </table>
+  </table> -->
+    <tbody>
+      <tr *ngFor="let timesheet of timesheets">
+        <td style="text-align: center;" contentEditable="true" (input)="onCellEdit($event, timesheet, 'dailyTimesheetId')">{{ timesheet.dailyTimesheetId }}</td>
+        <td style="text-align: center;" contentEditable="true" (input)="onCellEdit($event, timesheet, 'hours')">{{ timesheet.hours }}</td>
+        <td style="text-align: center;" contentEditable="true" (input)="onCellEdit($event, timesheet, 'date')">{{ timesheet.date }}</td>
+        <td style="text-align: center;" contentEditable="true" (input)="onCellEdit($event, timesheet, 'supportTicket')">{{ timesheet.supportTicket }}</td>
+        <td style="text-align: center;" contentEditable="true">
+            <ul>
+                <li *ngFor="let clientOwner of timesheet.clientOwners" contentEditable="true" 
+                (input)="onCellEdit($event, timesheet, 'clientOwners')">{{ clientOwner }}</li>
+              </ul>
+              </td>
+              <td style="text-align: center;" contentEditable="true">
+                <ul>
+                  <li *ngFor="let redHatOwner of timesheet.redHatOwners" contentEditable="true" 
+                  (input)="onCellEdit($event, timesheet, 'redHatOwners')">{{ redHatOwner }}</li>
+                </ul>
+              </td>
+              <td contentEditable="true" (input)="onCellEdit($event, timesheet, 'description')">{{ timesheet.description }}</td>
+              <td style="text-align: center;" contentEditable="true" (input)="onCellEdit($event, timesheet, 'timesheetType')">{{ timesheet.timesheetType }}</td>
+              </tr>
+              </tbody>
+              </table>             
 </div>
 
           
