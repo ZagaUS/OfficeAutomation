@@ -158,7 +158,12 @@
         <th mat-header-cell *matHeaderCellDef>Action</th>
         <td mat-cell *matCellDef="let element">
           <div class="actionContainer">
-            <a *ngIf="weekly || external" (click)="viewPDF()" class="icon"
+            <a
+              *ngIf="weekly || external"
+              (click)="
+                viewPDF(element.projectName, element.startDate, element.endDate)
+              "
+              class="icon"
               ><mat-icon
                 style="font-size: x-large"
                 fontIcon="visibility"

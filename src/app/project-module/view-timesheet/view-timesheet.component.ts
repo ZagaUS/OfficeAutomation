@@ -155,7 +155,7 @@ export class ViewTimesheetComponent {
   totalHours?: number;
   dataSource?: any;
   pdfSrc?: SafeResourceUrl;
-  pdfbaseapi?:any;
+  pdfbaseapi?: any;
 
   constructor(
     private router: Router,
@@ -246,30 +246,36 @@ export class ViewTimesheetComponent {
     //   });
   }
 
-  viewPDF() {
+  viewPDF(projectName: any, startDate: any, endDate: any) {
     console.log('View PDF');
     const document = {
-      documentId:"CI_2023-04-10_2023-04-06",
-      documentType:"WEEKLY"
-
-    }
+      documentId: projectName + '_' + startDate + '_' + endDate,
+      documentType: this.selectedValue == 'External' ? 'EXTERNAL' : 'WEEKLY',
+    };
     this.apiCall.getweeklyTimesheetfile(document).subscribe((data: any) => {
-      console.log('weekly pdf view clixked ' + JSON.stringify(data));
-      this.pdfbaseapi = data;
-  });
-    //decode the base64 encoded string
-    const binaryString = window.atob("docume" + this.pdfbaseapi);
-    const byteArray = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-      byteArray[i] = binaryString.charCodeAt(i);
-      
-  }
-    // Create a Blob object from the Uint8Array
-    const blob = new Blob([byteArray], { type: 'application/pdf' });
+      // console.log('weekly pdf view clixked ' + data);
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = reader.result as string;
+        const base64Data = dataUrl.split(',')[1];
+        const binaryData = window.atob(base64Data);
+        console.log(binaryData);
+        this.pdfbaseapi = binaryData;
+        //decode the base64 encoded string
+        const binaryString = window.atob(this.pdfbaseapi);
+        const byteArray = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+          byteArray[i] = binaryString.charCodeAt(i);
+        }
+        // Create a Blob object from the Uint8Array
+        const blob = new Blob([byteArray], { type: 'application/pdf' });
 
-    //Create a url
-    const fileUrl = URL.createObjectURL(blob);
-    window.open(fileUrl, '_blank');
+        //Create a url
+        const fileUrl = URL.createObjectURL(blob);
+        window.open(fileUrl, '_blank');
+      };
+      reader.readAsDataURL(data);
+    });
   }
 
   applyFilter(event: Event) {
@@ -398,9 +404,9 @@ export class ViewTimesheetComponent {
   }
   editTimesheet() {
     this.router.navigate([
-        '/editTimesheet',
-        // this.dataSource.data[0].projectId,
-      ]);
+      '/editTimesheet',
+      // this.dataSource.data[0].projectId,
+    ]);
     // alert('testing');
     console.log('testi');
   }
