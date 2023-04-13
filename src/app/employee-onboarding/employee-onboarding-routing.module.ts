@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeOnboardingComponent } from './employee-onboarding.component';
-import { EmployeeSidenavComponent } from './employee-sidenav/employee-sidenav.component';
 import { ViewEmployeeInfoComponent } from './view-employee-info/view-employee-info.component';
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { JobHistoryComponent } from './job-history/job-history.component';
+import { EducationComponent } from './education/education.component';
 
 const routes: Routes = [
   {
@@ -10,12 +12,20 @@ const routes: Routes = [
     component: EmployeeOnboardingComponent,
     children: [
       {
-        path: 'sidenav',
-        component: EmployeeSidenavComponent,
+        path: '',
+        component: ViewEmployeeInfoComponent,
       },
       {
-        path: 'sidenavnew',
-        component: ViewEmployeeInfoComponent,
+        path: 'personalInfo',
+        component: PersonalInfoComponent,
+      },
+      {
+        path: 'jobHistory',
+        component: JobHistoryComponent,
+      },
+      {
+        path: 'educationInfo',
+        component: EducationComponent,
       },
     ],
   },

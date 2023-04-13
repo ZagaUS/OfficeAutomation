@@ -11,11 +11,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmployeeSidenavComponent } from './employee-sidenav/employee-sidenav.component';
 import { ViewEmployeeInfoComponent } from './view-employee-info/view-employee-info.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { JobHistoryComponent } from './job-history/job-history.component';
+import { EducationComponent } from './education/education.component';
 
 @NgModule({
-  declarations: [EmployeeOnboardingComponent, EmployeeSidenavComponent, ViewEmployeeInfoComponent],
+  declarations: [EmployeeOnboardingComponent, ViewEmployeeInfoComponent, PersonalInfoComponent, JobHistoryComponent, EducationComponent],
   imports: [
     CommonModule,
     EmployeeOnboardingRoutingModule,
@@ -28,6 +31,7 @@ import { ViewEmployeeInfoComponent } from './view-employee-info/view-employee-in
     MatListModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatToolbarModule,
   ],
 })
 export class EmployeeOnboardingModule {}

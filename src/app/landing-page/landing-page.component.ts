@@ -11,7 +11,7 @@ export class LandingPageComponent {
   moduleInfo = [
     {
       cardName: 'Employee Onboarding',
-      link: '/employeeOnboarding',
+      link: '/employeedashboard',
     },
     {
       cardName: 'Project Management',

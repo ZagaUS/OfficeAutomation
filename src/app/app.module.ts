@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 
 
 
@@ -45,6 +46,7 @@ import { MatSliderModule } from '@angular/material/slider';
     // TimesheetComponent,
     // MeetingMinutesComponent,
     LandingPageComponent,
+    EmployeeDashboardComponent,
     // ProjectSidenavComponent,
   ],
   imports: [

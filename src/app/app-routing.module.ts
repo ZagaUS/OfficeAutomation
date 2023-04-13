@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
         (m) => m.InvoiceModuleModule
       ),
   },
+  { path: 'employeedashboard', component: EmployeeDashboardComponent },
   {
     path: 'employeeOnboarding',
     loadChildren: () =>
