@@ -2,24 +2,24 @@
 <h2>EDUCATION</h2>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div>
-    <mat-form-field style="width:50%">
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>DEGREE</mat-label>
       <input matInput placeholder="Degree" formControlName="degree" [readonly]="isReadOnly">
     </mat-form-field>
-    <mat-form-field style="width:50%">
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>SPECIALIZATION</mat-label>
       <input matInput placeholder="Specialization" formControlName="specialization" [readonly]="isReadOnly">
     </mat-form-field>
-    <mat-form-field style="width:50%">
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>YEAR</mat-label>
       <input matInput placeholder="Year" formControlName="year" [readonly]="isReadOnly">
     </mat-form-field>
-    <mat-form-field style="width:50%">
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>GRADUATE</mat-label>
       <input matInput placeholder="Graduate" formControlName="graduate" [readonly]="isReadOnly">
     </mat-form-field>
     </div>
-    <button style="margin-left:600px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
+    <button style="margin-left:80px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
     <button style="margin-left:25px" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>
   </form>
   <p style="margin-top: 60px;"></p>

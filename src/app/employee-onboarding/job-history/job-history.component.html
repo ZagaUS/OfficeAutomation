@@ -2,11 +2,11 @@
   <h2>JOB HISTORY</h2>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div style="background-color: lightgray;">
-    <mat-form-field>
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>COMPANY NAME</mat-label>
       <input matInput placeholder="Company Name" formControlName="companyName" [readonly]="isReadOnly">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>START DATE</mat-label>
       <!-- <input matInput placeholder="Employee ID" formControlName="employeeId" [readonly]="isReadOnly"> -->
       <input
@@ -23,7 +23,7 @@
         <mat-datepicker #startDatePicker></mat-datepicker>
 
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>END DATE</mat-label>
       <!-- <input matInput placeholder="Employee Role" formControlName="employeeRole" [readonly]="isReadOnly"> -->
       <input
@@ -39,16 +39,16 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #endDatePicker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="margin-left:35px;width:50%;">
         <mat-label>FIELD</mat-label>
         <input matInput placeholder="Field" formControlName="field" [readonly]="isReadOnly">
       </mat-form-field>
-    <mat-form-field>
+    <mat-form-field style="margin-left:35px;width:50%;">
       <mat-label>EXPERIENCE</mat-label>
       <input matInput placeholder="Experience" formControlName="experience" [readonly]="isReadOnly">
     </mat-form-field>
     </div>
-    <button style="margin-left:600px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
+    <button style="margin-left:80px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
     <button style="margin-left:25px" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>
   </form>
   <p style="margin-top: 60px;"></p>
