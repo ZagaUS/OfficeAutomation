@@ -1,21 +1,22 @@
-<div style="background-color: lightgray;width:100%;">
+<div style="background-color: lightgray; width: 100%;display: flex; flex-direction: column;">
+<h2>EDUCATION</h2>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div>
     <mat-form-field style="width:50%">
       <mat-label>DEGREE</mat-label>
-      <input matInput placeholder="Employee Name" formControlName="employeeName" [readonly]="isReadOnly">
+      <input matInput placeholder="Degree" formControlName="degree" [readonly]="isReadOnly">
     </mat-form-field>
     <mat-form-field style="width:50%">
       <mat-label>SPECIALIZATION</mat-label>
-      <input matInput placeholder="Employee ID" formControlName="employeeId" [readonly]="isReadOnly">
+      <input matInput placeholder="Specialization" formControlName="specialization" [readonly]="isReadOnly">
     </mat-form-field>
     <mat-form-field style="width:50%">
       <mat-label>YEAR</mat-label>
-      <input matInput placeholder="Employee Role" formControlName="employeeRole" [readonly]="isReadOnly">
+      <input matInput placeholder="Year" formControlName="year" [readonly]="isReadOnly">
     </mat-form-field>
     <mat-form-field style="width:50%">
       <mat-label>GRADUATE</mat-label>
-      <input matInput placeholder="Gender" formControlName="gender" [readonly]="isReadOnly">
+      <input matInput placeholder="Graduate" formControlName="graduate" [readonly]="isReadOnly">
     </mat-form-field>
     </div>
     <button style="margin-left:600px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>

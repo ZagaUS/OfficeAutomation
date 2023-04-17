@@ -16,6 +16,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { JobHistoryComponent } from './job-history/job-history.component';
 import { EducationComponent } from './education/education.component';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [EmployeeOnboardingComponent, ViewEmployeeInfoComponent, PersonalInfoComponent, JobHistoryComponent, EducationComponent],
@@ -32,6 +33,7 @@ import { EducationComponent } from './education/education.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
+    MatDatepickerModule
   ],
 })
 export class EmployeeOnboardingModule {}

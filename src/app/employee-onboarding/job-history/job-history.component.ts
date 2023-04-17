@@ -17,13 +17,11 @@ ngOnInit() {
   // this.http.get('/api/employee').subscribe((employee: any) => {
   // Use the response to set the initial values of the form fields
   this.myForm = this.fb.group({
-  employeeName: ['Anushiya'],
-  employeeId: ['1234'],
-  employeeRole: ['Software developer'],
-  gender: ['Female'],
-  education: ['Bachelor of Science'],
-  yearsOfExperience: [1],
-  dateOfJoining: ['2022-01-01']
+  companyName: ['ZAGAA'],
+  experience: ['3'],
+  startDate: ['2022-01-01'],
+  endDate: ['2022-01-01'],
+  field:['Devops'],
 }); 
 }  
 //  });

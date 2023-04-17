@@ -1,25 +1,51 @@
-<div style="background-color: lightgray;width:100%;">
+<div style="background-color: lightgray; width: 100%;display: flex; flex-direction: column;">
+  <h2>JOB HISTORY</h2>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <div style="background-color: lightgray;">
     <mat-form-field>
       <mat-label>COMPANY NAME</mat-label>
-      <input matInput placeholder="Employee Name" formControlName="employeeName" [readonly]="isReadOnly">
+      <input matInput placeholder="Company Name" formControlName="companyName" [readonly]="isReadOnly">
     </mat-form-field>
     <mat-form-field>
       <mat-label>START DATE</mat-label>
-      <input matInput placeholder="Employee ID" formControlName="employeeId" [readonly]="isReadOnly">
+      <!-- <input matInput placeholder="Employee ID" formControlName="employeeId" [readonly]="isReadOnly"> -->
+      <input
+          matInput
+          [matDatepicker]="startDatePicker"
+          placeholder="startDate"
+          formControlName="startDate"
+          [readonly]="isReadOnly"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+
     </mat-form-field>
     <mat-form-field>
       <mat-label>END DATE</mat-label>
-      <input matInput placeholder="Employee Role" formControlName="employeeRole" [readonly]="isReadOnly">
+      <!-- <input matInput placeholder="Employee Role" formControlName="employeeRole" [readonly]="isReadOnly"> -->
+      <input
+          matInput
+          [matDatepicker]="endDatePicker"
+          placeholder="EndDate"
+          formControlName="endDate"
+          [readonly]="isReadOnly"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
     </mat-form-field>
     <mat-form-field>
         <mat-label>FIELD</mat-label>
-        <input matInput placeholder="Date of Joining" formControlName="dateOfJoining" [readonly]="isReadOnly">
+        <input matInput placeholder="Field" formControlName="field" [readonly]="isReadOnly">
       </mat-form-field>
     <mat-form-field>
       <mat-label>EXPERIENCE</mat-label>
-      <input matInput placeholder="Gender" formControlName="gender" [readonly]="isReadOnly">
+      <input matInput placeholder="Experience" formControlName="experience" [readonly]="isReadOnly">
     </mat-form-field>
     </div>
     <button style="margin-left:600px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>

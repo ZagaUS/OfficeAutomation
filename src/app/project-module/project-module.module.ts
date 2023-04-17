@@ -22,7 +22,7 @@ import { MdbModalModule, } from 'mdb-angular-ui-kit/modal';
 import { ModaltimesheetComponent } from './modaltimesheet/modaltimesheet.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule} from '@angular/material/datepicker';
 import { ModalinvoiceComponent } from './modalinvoice/modalinvoice.component';
 import { ModaldailyweekComponent } from './modaldailyweek/modaldailyweek.component';
 import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
