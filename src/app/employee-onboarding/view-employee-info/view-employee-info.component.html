@@ -1,1 +1,40 @@
-<p>view-employee-info works!</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>EMPLOYEE_NAME</mat-label>
+    <input matInput placeholder="Employee Name" formControlName="employeeName" [readonly]="isReadOnly">
+  </mat-form-field>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>EMPLOYEE_ID</mat-label>
+    <input matInput placeholder="Employee ID" formControlName="employeeId" [readonly]="isReadOnly">
+  </mat-form-field>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>EMPLOYEE_ROLE</mat-label>
+    <input matInput placeholder="Employee Role" formControlName="employeeRole" [readonly]="isReadOnly">
+  </mat-form-field>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>DATE_OF_JOINING</mat-label>
+    <input matInput placeholder="Date of Joining" formControlName="dateOfJoining" [readonly]="isReadOnly">
+  </mat-form-field>
+</div>
+<div>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>GENDER</mat-label>
+    <input matInput placeholder="Gender" formControlName="gender" [readonly]="isReadOnly">
+  </mat-form-field>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>EDUCATION</mat-label>
+    <input matInput placeholder="Education" formControlName="education" [readonly]="isReadOnly">
+  </mat-form-field>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>YEARS_OF_EXPERIENCE</mat-label>
+    <input matInput placeholder="Years of Experience" formControlName="yearsOfExperience" [readonly]="isReadOnly">
+  </mat-form-field>
+  <mat-form-field style="margin-left:25px">
+    <mat-label>DATE_OF_JOINING</mat-label>
+    <input matInput placeholder="Date of Joining" formControlName="dateOfJoining" [readonly]="isReadOnly">
+  </mat-form-field>
+  </div>
+  <button style="margin-left:525px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
+  <button style="margin-left:25px" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>
+</form>
