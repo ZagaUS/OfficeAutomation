@@ -18,9 +18,18 @@ import { JobHistoryComponent } from './job-history/job-history.component';
 import { EducationComponent } from './education/education.component';
 import { SkillsCertificationComponent } from './skills-certification/skills-certification.component';
 import { DayoffComponent } from './dayoff/dayoff.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
-  declarations: [EmployeeOnboardingComponent, ViewEmployeeInfoComponent, PersonalInfoComponent, JobHistoryComponent, EducationComponent, SkillsCertificationComponent, DayoffComponent],
+  declarations: [
+    EmployeeOnboardingComponent,
+    ViewEmployeeInfoComponent,
+    PersonalInfoComponent,
+    JobHistoryComponent,
+    EducationComponent,
+    SkillsCertificationComponent,
+    DayoffComponent,
+  ],
   imports: [
     CommonModule,
     EmployeeOnboardingRoutingModule,
@@ -34,6 +43,7 @@ import { DayoffComponent } from './dayoff/dayoff.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
+    MatDatepickerModule,
   ],
 })
 export class EmployeeOnboardingModule {}
