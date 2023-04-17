@@ -6,6 +6,12 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-edit-timesheet',
@@ -42,8 +48,9 @@ export class EditTimesheetComponent {
   timesheetType?: any;
   clientOwners?: any;
   redHatOwners?: any;
+  weeklyTimesheetForm: FormGroup;
 
-  projectDetail = [
+  projectDetail: any = [
     {
       projectId: 1,
       employeeName: 'Anushiya',
@@ -66,6 +73,12 @@ export class EditTimesheetComponent {
   //   endDate: '2023-04-07',
   // }
   //
+
+  constructor(private fb: FormBuilder) {
+    this.weeklyTimesheetForm = this.fb.group({
+      projectId: new FormControl(),
+    });
+  }
 
   timesheets = [
     {
@@ -99,7 +112,8 @@ export class EditTimesheetComponent {
       description:
         'Worked on feature X for almost all the task are completed  worked with someone attende the meeting and also th details of the tasks are uodated ib thefd hagdhvbh',
       timesheetType: 'Billable',
-    },{
+    },
+    {
       dailyTimesheetId: 1,
       hours: 8,
       date: '2023-04-01',
@@ -115,16 +129,23 @@ export class EditTimesheetComponent {
 
   onCellEdit(event: any, timesheet: any, field: string, value?: any) {
     const newValue = value ?? event.target.textContent.trim();
-    const index = this.editedData.findIndex(data => data.id === timesheet.id);
+    const index = this.editedData.findIndex((data) => data.id === timesheet.id);
     if (index === -1) {
-      this.editedData.push({id: timesheet.id, [field]: newValue});
-      console.log("NewValue+++++",newValue);
+      this.editedData.push({ id: timesheet.id, [field]: newValue });
+      console.log('NewValue+++++', newValue);
     } else {
       this.editedData[index][field] = newValue;
-      console.log("NewValueelse----",newValue);
+      console.log('NewValueelse----', newValue);
     }
   }
-  
-  
-  
+
+  onEditInput(value: any, index: number) {
+    console.log('EditInput' + value);
+    this.projectDetail[index] = value;
+  }
+
+  onClickWeeklyUpdate() {
+    console.log('NewValueform ', this.projectId);
+    console.log('NewValueform ', this.projectDetail);
+  }
 }
