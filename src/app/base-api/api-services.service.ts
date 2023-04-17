@@ -111,4 +111,15 @@ export class ApiServicesService {
         `?documentType=${docType}`
     );
   }
+
+  getWeeklyTimesheetDataByWeekId(weeklyTimesheetId: any) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        `/weeklyTimesheet/getWeeklyTimesheetByWeeklyTimesheetId/${weeklyTimesheetId}`
+    );
+  }
+
+  updateWeeklyTimesheetData(weeklyTimesheetData: any) {
+    // return this.http.put<any>(this.projectMgtUrl0);
+  }
 }

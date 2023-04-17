@@ -402,12 +402,13 @@ export class ViewTimesheetComponent {
     alert('testing');
     console.log('testi');
   }
-  editTimesheet() {
+  editTimesheet(weeklyTimesheetId: any) {
     this.router.navigate([
       '/editTimesheet',
       // this.dataSource.data[0].projectId,
     ]);
     // alert('testing');
+    localStorage.setItem('weeklyTimesheetId', weeklyTimesheetId);
     console.log('testi');
   }
 }

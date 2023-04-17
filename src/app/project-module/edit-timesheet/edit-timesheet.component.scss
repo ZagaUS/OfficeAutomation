@@ -14,10 +14,67 @@ table {
     font-size: 20
   }
   
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+  // tr:nth-child(even) {
+  //   background-color: #f2f2f2;
+  // }
+
   .clientOwners-column {
     width: 500px;
     height: 100px;
+}
+
+.tdInputStyle1 {
+  text-align: left;
+  padding: 5px;
+  height: 80px;
+  width: 110px;
+  border: none;
+  background-color: lightblue;
+  font-size: 18px;
+}
+
+.tdInputStyle2 {
+  text-align: left;
+  padding: 5px;
+  height: 80px;
+  width: 150px;
+  border: none;
+  background-color: lightblue;
+  font-size: 18px;
+}
+
+.tdInputTimesheetStyle1 { 
+  text-align: left;
+  height: auto;
+  padding: 5px;
+  height: 80px;
+  width: 100px;
+  border: none;
+  font-size: 18px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.tdInputTimesheetStyle2 { 
+  text-align: left;
+  height: auto;
+  padding: 5px;
+  height: 100px;
+  width: 200px;
+  border: none;
+  font-size: 18px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.tdInputTimesheetStyle3 { 
+  text-align: left;
+  height: auto;
+  padding: 5px;
+  height: 30px;
+  width: 100px;
+  border: none;
+  font-size: 18px;
+  text-align: center;
+  background-color: #fff;
 }

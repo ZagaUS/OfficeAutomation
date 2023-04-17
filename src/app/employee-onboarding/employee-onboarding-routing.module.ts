@@ -5,6 +5,8 @@ import { ViewEmployeeInfoComponent } from './view-employee-info/view-employee-in
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { JobHistoryComponent } from './job-history/job-history.component';
 import { EducationComponent } from './education/education.component';
+import { SkillsCertificationComponent } from './skills-certification/skills-certification.component';
+import { DayoffComponent } from './dayoff/dayoff.component';
 
 const routes: Routes = [
   {
@@ -20,12 +22,20 @@ const routes: Routes = [
         component: PersonalInfoComponent,
       },
       {
+        path: 'skills',
+        component: SkillsCertificationComponent,
+      },
+      {
         path: 'jobHistory',
         component: JobHistoryComponent,
       },
       {
         path: 'educationInfo',
         component: EducationComponent,
+      },
+      {
+        path: 'dayoff',
+        component: DayoffComponent,
       },
     ],
   },

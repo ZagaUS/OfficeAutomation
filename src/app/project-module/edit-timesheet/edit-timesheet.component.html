@@ -166,9 +166,9 @@
         </td>
       </tr>
     </tbody>
-  </table>
-</div>
-<button mat-raised-button color="primary" (click)="onClickWeeklyUpdate()">
+  </table> -->
+<!-- </div> -->
+<!-- <button mat-raised-button color="primary" (click)="onClickWeeklyUpdate()">
   Update
 </button> -->
 
@@ -180,60 +180,181 @@
     <thead>
       <tr>
         <th style="width: 100px; text-align: left; padding: 5px">Project ID</th>
-        <!-- <th style="width: 150px; text-align: left; padding: 5px">
+        <th style="width: 150px; text-align: left; padding: 5px">
           Employee Name
         </th>
         <th style="width: 150px; text-align: left; padding: 5px">
           Project Name
         </th>
-        <th style="width: 120px; text-align: left; padding: 5px">
+        <th style="width: 150px; text-align: left; padding: 5px">
           Employee Role
         </th>
-        <th style="width: 150px; text-align: left; padding: 5px">
+        <th style="width: 100px; text-align: left; padding: 5px">
           Weekly Timesheet ID
         </th>
-        <th style="width: 80px; text-align: left; padding: 5px">Duration</th>
-        <th style="width: 120px; text-align: left; padding: 5px">Start Date</th>
-        <th style="width: 120px; text-align: left; padding: 5px">End Date</th> -->
+        <th style="width: 100px; text-align: left; padding: 5px">Duration</th>
+        <th style="width: 100px; text-align: left; padding: 5px">Start Date</th>
+        <th style="width: 100px; text-align: left; padding: 5px">End Date</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let timesheet of projectDetail; let i = index">
-        <td
-          style="text-align: left; padding: 5px; height: 80px"
-          contentEditable="true"
-        >
+        <td style="text-align: left; padding: 5px; height: 80px">
           <input
+            class="tdInputStyle1"
             type="text"
             [value]="timesheet.projectId"
             [(ngModel)]="timesheet.projectId"
           />
         </td>
-        <!-- <td style="text-align: left; padding: 5px" contentEditable="true">
-          {{ timesheet.employeeName }}
+        <td style="text-align: left; padding: 5px">
+          <input
+            class="tdInputStyle2"
+            type="text"
+            [value]="timesheet.employeeName"
+            [(ngModel)]="timesheet.employeeName"
+          />
         </td>
-        <td style="text-align: left; padding: 5px" contentEditable="true">
-          {{ timesheet.projectName }}
+        <td style="text-align: left; padding: 5px">
+          <input
+            class="tdInputStyle2"
+            type="text"
+            [value]="timesheet.projectName"
+            [(ngModel)]="timesheet.projectName"
+          />
         </td>
-        <td style="text-align: left; padding: 5px" contentEditable="true">
-          {{ timesheet.employeeRole }}
+        <td style="text-align: left; padding: 5px">
+          <input
+            class="tdInputStyle2"
+            type="text"
+            [value]="timesheet.employeeRole"
+            [(ngModel)]="timesheet.employeeRole"
+          />
         </td>
-        <td style="text-align: left; padding: 5px" contentEditable="true">
-          {{ timesheet.weeklyTimesheetId }}
+        <td style="text-align: left; padding: 5px">
+          <input
+            class="tdInputStyle1"
+            type="text"
+            [value]="timesheet.weeklyTimesheetId"
+            [(ngModel)]="timesheet.weeklyTimesheetId"
+          />
         </td>
-        <td style="text-align: left; padding: 5px" contentEditable="true">
-          {{ timesheet.duration }}
+        <td style="text-align: left; padding: 5px">
+          <input
+            class="tdInputStyle1"
+            type="text"
+            [value]="timesheet.duration"
+            [(ngModel)]="timesheet.duration"
+          />
         </td>
-        <td style="text-align: left; padding: 5px" contentEditable="true">
-          {{ timesheet.startDate }}
+        <td style="text-align: left; padding: 5px">
+          <input
+            class="tdInputStyle1"
+            type="text"
+            [value]="timesheet.startDate"
+            [(ngModel)]="timesheet.startDate"
+          />
         </td>
-        <td style="text-align: left; padding: 5px" contentEditable="true">
-          {{ timesheet.endDate }}
-        </td> -->
+        <td style="text-align: left; padding: 5px">
+          <input
+            class="tdInputStyle1"
+            type="text"
+            [value]="timesheet.endDate"
+            [(ngModel)]="timesheet.endDate"
+          />
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+
+<div style="height: 400px; overflow: auto">
+  <table
+    [@tableAnimation]
+    style="table-layout: fixed; width: 100%; border-collapse: collapse"
+  >
+    <thead>
+      <tr>
+        <th style="width: 100px">Daily Timesheet ID</th>
+        <th style="width: 100px">Hours</th>
+        <th style="width: 100px">Date</th>
+        <th style="width: 120px">Support Ticket</th>
+        <th style="width: 120px">Client Owners</th>
+        <th style="width: 120px">Red Hat Owners</th>
+        <th style="width: 120px; white-space: nowrap">Description</th>
+        <th style="width: 150px">Timesheet Type</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr style="background-color: #fff" *ngFor="let timesheet of timesheets">
+        <td style="text-align: center">
+          <input
+            class="tdInputTimesheetStyle1"
+            type="text"
+            [value]="timesheet.dailyTimesheetId"
+            [(ngModel)]="timesheet.dailyTimesheetId"
+          />
+        </td>
+        <td style="text-align: center">
+          <input
+            class="tdInputTimesheetStyle1"
+            type="text"
+            [value]="timesheet.hours"
+            [(ngModel)]="timesheet.hours"
+          />
+        </td>
+        <td style="text-align: center">
+          <input
+            class="tdInputTimesheetStyle1"
+            type="text"
+            [value]="timesheet.date"
+            [(ngModel)]="timesheet.date"
+          />
+        </td>
+        <td style="text-align: center">
+          <input
+            class="tdInputTimesheetStyle1"
+            type="text"
+            [value]="timesheet.supportTicket"
+            [(ngModel)]="timesheet.supportTicket"
+          />
+        </td>
+        <td style="text-align: center">
+          <ul>
+            <li *ngFor="let clientOwner of timesheet.clientOwners">
+              {{ clientOwner }}
+            </li>
+          </ul>
+        </td>
+        <td style="text-align: center">
+          <ul>
+            <li *ngFor="let redHatOwner of timesheet.redHatOwners">
+              {{ redHatOwner }}
+            </li>
+          </ul>
+        </td>
+        <td>
+          <textarea
+            class="tdInputTimesheetStyle2"
+            type="text"
+            [value]="timesheet.description"
+            [(ngModel)]="timesheet.description"
+          ></textarea>
+        </td>
+        <td style="text-align: center">
+          <input
+            class="tdInputTimesheetStyle1"
+            type="text"
+            [value]="timesheet.timesheetType"
+            [(ngModel)]="timesheet.timesheetType"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <button mat-raised-button color="primary" (click)="onClickWeeklyUpdate()">
   Update
 </button>

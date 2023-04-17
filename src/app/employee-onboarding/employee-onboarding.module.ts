@@ -16,9 +16,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { JobHistoryComponent } from './job-history/job-history.component';
 import { EducationComponent } from './education/education.component';
+import { SkillsCertificationComponent } from './skills-certification/skills-certification.component';
+import { DayoffComponent } from './dayoff/dayoff.component';
 
 @NgModule({
-  declarations: [EmployeeOnboardingComponent, ViewEmployeeInfoComponent, PersonalInfoComponent, JobHistoryComponent, EducationComponent],
+  declarations: [EmployeeOnboardingComponent, ViewEmployeeInfoComponent, PersonalInfoComponent, JobHistoryComponent, EducationComponent, SkillsCertificationComponent, DayoffComponent],
   imports: [
     CommonModule,
     EmployeeOnboardingRoutingModule,
