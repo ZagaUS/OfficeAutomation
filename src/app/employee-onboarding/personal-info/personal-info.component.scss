@@ -1,16 +1,18 @@
-/* Style for the form element */
 form {
     // display: flex;
     // flex-direction: column;
     // flex-wrap: wrap;
     margin-top: 50px;
+    // background-color: lightgray;
   }
 
 div{
     display: flex;
     flex-direction: row;
-    padding-left: 40px;
-    padding-right: 40px;
+    text-align: center;
+    justify-content: center;
+    // padding-left: 40px;
+    // padding-right: 40px;
   }
   
   /* Style for the form fields */

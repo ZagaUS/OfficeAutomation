@@ -8,15 +8,14 @@ form {
 
 div{
     display: flex;
-    flex-direction: row;
-    padding-left: 40px;
-    padding-right: 40px;
+    flex-direction: column;
   }
   
   /* Style for the form fields */
   mat-form-field {
     width: calc(50% - 25px);
     margin: 20px;
+    margin-left: 380px;
   }
   
   /* Style for the buttons */
