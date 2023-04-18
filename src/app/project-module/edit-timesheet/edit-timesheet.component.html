@@ -205,6 +205,7 @@
             type="text"
             [value]="timesheet.projectId"
             [(ngModel)]="timesheet.projectId"
+            readonly="true"
           />
         </td>
         <td style="text-align: left; padding: 5px">
@@ -237,6 +238,7 @@
             type="text"
             [value]="timesheet.weeklyTimesheetId"
             [(ngModel)]="timesheet.weeklyTimesheetId"
+            readonly="true"
           />
         </td>
         <td style="text-align: left; padding: 5px">
@@ -294,6 +296,7 @@
             type="text"
             [value]="timesheet.dailyTimesheetId"
             [(ngModel)]="timesheet.dailyTimesheetId"
+            readonly="true"
           />
         </td>
         <td style="text-align: center">
@@ -355,6 +358,11 @@
   </table>
 </div>
 
-<button mat-raised-button color="primary" (click)="onClickWeeklyUpdate()">
+<button
+  mat-raised-button
+  class="btnStyle"
+  color="primary"
+  (click)="onClickWeeklyUpdate()"
+>
   Update
 </button>
