@@ -94,7 +94,7 @@ export class ProjectDashboardComponent {
 
   //
   test() {
-    alert('test');
+    alert('Coming soon!');
     console.log('test');
   }
 }
