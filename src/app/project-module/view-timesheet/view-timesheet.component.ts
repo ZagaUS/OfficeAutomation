@@ -411,4 +411,21 @@ export class ViewTimesheetComponent {
     localStorage.setItem('weeklyTimesheetId', weeklyTimesheetId);
     console.log('testi');
   }
+
+  deleteTimesheet(
+    timesheetType: any,
+    dailyTimesheetId: any,
+    weeklyTimesheetId: any
+  ) {
+    console.log(
+      'deleteTimesheet',
+      weeklyTimesheetId + ' - ' + dailyTimesheetId + ' - ' + timesheetType
+    );
+    if (timesheetType == 'Daily') {
+      this.apiCall.deleteDailyTimesheet(dailyTimesheetId).subscribe((data) => {
+        window.location.reload();
+      });
+    } else {
+    }
+  }
 }

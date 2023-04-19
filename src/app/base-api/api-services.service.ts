@@ -125,4 +125,15 @@ export class ApiServicesService {
       weeklyTimesheetData
     );
   }
+
+  deleteDailyTimesheet(dailyTimesheetId: any) {
+    return this.http.delete<any>(
+      this.projectMgtUrl +
+        `/dailyTimesheet/deleteDailyTimeSheet/${dailyTimesheetId}`
+    );
+  }
+
+  deleteWeeklyTimesheet(weeklyTimesheetId: any) {
+    // return this.http.delete<any>( this.projectMgtUrl + ``
+  }
 }
