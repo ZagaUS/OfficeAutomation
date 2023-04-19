@@ -12,7 +12,7 @@ export class EmployeeOnboardingComponent {
   navRouting: any = [
     {
       name: 'Employee Details',
-      link: '/viewEmployee',
+      link: '/employeeOnboarding',
     },
     {
       name: 'Personal Information',

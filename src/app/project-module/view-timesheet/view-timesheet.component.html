@@ -161,7 +161,12 @@
             <a
               *ngIf="weekly || external"
               (click)="
-                viewPDF(element.projectName, element.startDate, element.endDate)
+                viewPDF(
+                  element.projectName,
+                  element.startDate,
+                  element.endDate,
+                  element.weeklyTimesheetId
+                )
               "
               class="icon"
               ><mat-icon

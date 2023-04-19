@@ -52,8 +52,12 @@ export class ModaltimesheetComponent {
       projectName: localStorage.getItem('projectName'),
       startDate: startDate,
       endDate: endDate,
+      documentType: 'WEEKLY',
     };
-    console.log('Start date: ' + startDate, 'end date: ' + endDate);
+    console.log(
+      'Start date: ' + startDate,
+      'end date: ' + endDate + ' ' + JSON.stringify(generateWeekly)
+    );
     this.api.createWeeklyTimesheetbyDate(generateWeekly).subscribe((data) => {
       console.log('Data: ' + JSON.stringify(data));
       window.location.reload();

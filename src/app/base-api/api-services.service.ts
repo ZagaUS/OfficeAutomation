@@ -83,7 +83,7 @@ export class ApiServicesService {
   createWeeklyTimesheetbyDate(weeklyData: any) {
     return this.http.post(
       this.projectMgtUrl +
-        `/weeklyTimesheet/createTimesheet?endDate=${weeklyData.endDate}&projectId=${weeklyData.projectId}&projectName=${weeklyData.projectName}&startDate=${weeklyData.startDate}`,
+        `/weeklyTimesheet/createTimesheet?documentType=${weeklyData.documentType}&endDate=${weeklyData.endDate}&projectId=${weeklyData.projectId}&projectName=${weeklyData.projectName}&startDate=${weeklyData.startDate}`,
       null
     );
   }
@@ -107,7 +107,7 @@ export class ApiServicesService {
   getExternalTimesheetData(projectId: any, docType: any) {
     return this.http.get<any>(
       this.projectMgtUrl +
-        `/projectDetails/document/listByType/${projectId}` +
+        `/projectDetails/document/listbyType/${projectId}` +
         `?documentType=${docType}`
     );
   }

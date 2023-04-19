@@ -44,16 +44,17 @@ export class ModaldailyweekComponent {
   timesheetType?: string = 'Daily';
   fileName: any = 'dummy';
   onFileSelected(event: any) {
-    const files = event.target.files[0];
-    console.log(files.name);
+    const files: File = event.target.files[0];
+    // console.log(files.name);
     this.fileName = files.name;
     const fileInputElement = event.target;
     fileInputElement.value = '';
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.contactForm.get('uploadfile')?.setValue(reader.result);
-    };
-    reader.readAsDataURL(files);
+    this.contactForm.get('uploadfile')?.setValue(files);
+    // const reader = new FileReader();
+    // reader.onload = () => {
+    //   this.contactForm.get('uploadfile')?.setValue(reader.result);
+    // };
+    // reader.readAsDataURL(files);
     // if (files.length > 0) {
     //   this.contactForm.patchValue({
     //     uploadfile: files,

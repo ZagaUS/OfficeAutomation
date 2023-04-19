@@ -1,30 +1,80 @@
-<div style="background-color:lightgray; width: 100%;display: flex; flex-direction: column;">
-    <h2>DAYOFF</h2>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <div>
-        <mat-form-field style="margin-left:35px;width:50%;">
-          <mat-label>EMPLOYEE_ID</mat-label>
-          <input matInput placeholder="EmployeeId" formControlName="employeeId" [readonly]="isReadOnly">
-        </mat-form-field>
-        <mat-form-field style="margin-left:35px;width:50%;">
-          <mat-label>EMPLOYEE_NAME</mat-label>
-          <input matInput placeholder="EmployeeName" formControlName="employeeName" [readonly]="isReadOnly">
-        </mat-form-field>
-        <mat-form-field style="margin-left:35px;width:50%;">
-          <mat-label>ALLOCATED LEAVE</mat-label>
-          <input matInput placeholder="AllocatedLeave" formControlName="allocatedLeave" [readonly]="isReadOnly">
-        </mat-form-field>
-        <mat-form-field style="margin-left:35px;width:50%;">
-          <mat-label>USED</mat-label>
-          <input matInput placeholder="Used" formControlName="used" [readonly]="isReadOnly">
-        </mat-form-field>
-        <mat-form-field style="margin-left:35px;width:50%;">
-            <mat-label>BALANCE</mat-label>
-            <input matInput placeholder="Balance" formControlName="balance" [readonly]="isReadOnly">
-          </mat-form-field>
-        </div>
-        <button style="margin-left:80px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
-        <button style="margin-left:25px" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>
-      </form>
-      <p style="margin-top: 60px;"></p>
+<div
+  style="
+    background-color: lightgray;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  "
+>
+  <h2>DAYOFF</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div>
+      <mat-form-field style="margin-left: 35px; width: 50%">
+        <mat-label>EMPLOYEE_ID</mat-label>
+        <input
+          matInput
+          placeholder="EmployeeId"
+          formControlName="employeeId"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 35px; width: 50%">
+        <mat-label>EMPLOYEE_NAME</mat-label>
+        <input
+          matInput
+          placeholder="EmployeeName"
+          formControlName="employeeName"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 35px; width: 50%">
+        <mat-label>ALLOCATED LEAVE</mat-label>
+        <input
+          matInput
+          placeholder="AllocatedLeave"
+          formControlName="allocatedLeave"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 35px; width: 50%">
+        <mat-label>USED</mat-label>
+        <input
+          matInput
+          placeholder="Used"
+          formControlName="used"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 35px; width: 50%">
+        <mat-label>BALANCE</mat-label>
+        <input
+          matInput
+          placeholder="Balance"
+          formControlName="balance"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
     </div>
+    <button
+      style="margin-left: 80px"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="isReadOnly"
+    >
+      Submit
+    </button>
+    <button
+      style="margin-left: 25px"
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="onEdit()"
+      *ngIf="isReadOnly"
+    >
+      Edit
+    </button>
+  </form>
+  <p style="margin-top: 60px"></p>
+</div>
