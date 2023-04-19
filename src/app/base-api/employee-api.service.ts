@@ -34,9 +34,9 @@ export class EmployeeApiService {
         this.employeeURL + `getPersonalInfoById/?employeeId=${employeeId}`
       );
     }
-    updatePersonalValues(employeeId: string, PersonalValues:any){
+    updatePersonalValues(PersonalValues:any){
       return this.http.put<any>(
-        this.employeeURL + 'updateEmployeeInfo/' +employeeId,
+        this.employeeURL + 'updatePersonalInfo/',
         PersonalValues
       );
     }
@@ -55,7 +55,12 @@ export class EmployeeApiService {
 
     getListOfJobHistory(employeeId: string){
       return this.http.get<any>(
-        this.employeeURL + 'getEmployeeInfo/' +employeeId
+        this.employeeURL + `getJobHistoryById/?employeeId=${employeeId}`
       );
     }
+    getListOfEducation(employeeId: string){
+      return this.http.get<any>(
+        this.employeeURL + `getEducationDetailsById/?employeeId=${employeeId}`
+      );
+      }
 }

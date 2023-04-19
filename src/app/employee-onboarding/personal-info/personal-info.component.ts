@@ -85,7 +85,7 @@ viewPDF() {
     const PersonalValues = this.myForm.value;
     console.log(PersonalValues);
     console.log("Personal infoo",PersonalValues);
-    this.api.updateEmployeeInfo(this.employeeId,PersonalValues).subscribe((data:any) => {
+    this.api.updatePersonalValues(PersonalValues).subscribe((data:any) => {
     });
   }
   }

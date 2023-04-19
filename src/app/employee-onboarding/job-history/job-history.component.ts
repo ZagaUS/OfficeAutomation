@@ -4,6 +4,7 @@ import { MatRadioGroup } from '@angular/material/radio';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 
 export interface PeriodicElement {
   companyName: string;
@@ -13,22 +14,22 @@ export interface PeriodicElement {
   field: String;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    companyName: 'zaga',
-    experience: '1',
-    startDate: '22/1/2023',
-    endDate: '22/6/2023',
-    field: 'developer'
-  },
-  {
-    companyName: 'ZAGAGA',
-    experience: '2',
-    startDate: '22/2/2022',
-    endDate: '2/2/2020',
-    field: 'developer'
-  },
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     companyName: 'zaga',
+//     experience: '1',
+//     startDate: '22/1/2023',
+//     endDate: '22/6/2023',
+//     field: 'developer'
+//   },
+//   {
+//     companyName: 'ZAGAGA',
+//     experience: '2',
+//     startDate: '22/2/2022',
+//     endDate: '2/2/2020',
+//     field: 'developer'
+//   },
+// ];
 @Component({
   selector: 'app-job-history',
   templateUrl: './job-history.component.html',
@@ -37,6 +38,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class JobHistoryComponent {
   myForm!: FormGroup;
   isReadOnly = true;
+  employeeId: any = 2;
 
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
   // dataSource?: any;
@@ -53,17 +55,19 @@ export class JobHistoryComponent {
     'action',
   ];
 
-  constructor(private router: Router, private api: ApiServicesService) {}
+  constructor(private router: Router, private api: EmployeeApiService) {}
 
   ngOnInit(): void {
     console.log("Im'in");
     console.log("Im'in");
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    // this.api.getListOfJobHistory().subscribe((data) => {
-    //   console.log('List of projects ' + JSON.stringify(data));
-    //   this.dataSource = new MatTableDataSource(data);
+
+    this.api.getListOfJobHistory(this.employeeId).subscribe((data) => {
+      console.log('List of projects ' + JSON.stringify(data));
+      this.dataSource = new MatTableDataSource(data.jobHistoryDetails);
       // this.ELEMENT_DATA = data;
-    // });
+    });
+    
+    // this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   }
 
   applyFilter(event: Event) {

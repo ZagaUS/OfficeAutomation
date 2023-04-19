@@ -5,29 +5,29 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 
-export interface PeriodicElement {
-  degree: string;
-  specialization: String;
-  year: String;
-  graduate: String;
-  // field: String;
-}
+// export interface PeriodicElement {
+//   degree: string;
+//   specialization: String;
+//   year: String;
+//   graduate: String;
+//   // field: String;
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    degree: 'MSC',
-    specialization: 'something',
-    year: '2',
-    graduate: 'Graduated'
-    // field: 'developer'
-  },
-  {
-    degree: 'BSC',
-    specialization: 'something',
-    year: '3',
-    graduate: 'Graduated'
-  },
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     degree: 'MSC',
+//     specialization: 'something',
+//     year: '2',
+//     graduate: 'Graduated'
+//     // field: 'developer'
+//   },
+//   {
+//     degree: 'BSC',
+//     specialization: 'something',
+//     year: '3',
+//     graduate: 'Graduated'
+//   },
+// ];
 
 
 @Component({
@@ -40,6 +40,7 @@ export class EducationComponent {
   
   myForm!: FormGroup;
   isReadOnly = true;
+  employeeId: any = 2;
 
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
   // dataSource?: any;
@@ -60,12 +61,12 @@ export class EducationComponent {
   ngOnInit(): void {
     console.log("Im'in");
     console.log("Im'in");
-    this.dataSource = new MatTableDataSource(ELEMENT_DATA);
-    // this.api.getListOfJobHistory().subscribe((data) => {
-    //   console.log('List of projects ' + JSON.stringify(data));
-    //   this.dataSource = new MatTableDataSource(data);
+    // this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+    this.api.getListOfEducation(this.employeeId).subscribe((data) => {
+      console.log('List of projects ' + JSON.stringify(data));
+      this.dataSource = new MatTableDataSource(data.educationDetails);
       // this.ELEMENT_DATA = data;
-    // });
+    });
   }
 
   applyFilter(event: Event) {
