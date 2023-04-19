@@ -49,6 +49,7 @@ onEdit() {
     console.log("Employee infoo",empValue);
     this.api.updateEmployeeInfo(this.employeeId,empValue).subscribe((data:any) => {
       console.log("data updated+++++++++++++",JSON.stringify(data));
+      alert('updated successfully');
     });
 
     }

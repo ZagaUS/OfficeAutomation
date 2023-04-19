@@ -42,6 +42,7 @@ export class DayoffComponent {
     console.log(formValues);
     this.api.updateDayOff(this.employeeId,formValues).subscribe((data:any) => {
       console.log("data updated",data);
+      alert('updated successfully');
     });
   }
 }

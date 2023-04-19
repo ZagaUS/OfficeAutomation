@@ -5,29 +5,29 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 
-// export interface PeriodicElement {
-//   degree: string;
-//   specialization: String;
-//   year: String;
-//   graduate: String;
-//   // field: String;
-// }
+export interface PeriodicElement {
+  degree: string;
+  specialization: String;
+  year: String;
+  graduate: String;
+  // field: String;
+}
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     degree: 'MSC',
-//     specialization: 'something',
-//     year: '2',
-//     graduate: 'Graduated'
-//     // field: 'developer'
-//   },
-//   {
-//     degree: 'BSC',
-//     specialization: 'something',
-//     year: '3',
-//     graduate: 'Graduated'
-//   },
-// ];
+const ELEMENT_DATA: PeriodicElement[] = [
+  {
+    degree: 'MSC',
+    specialization: 'something',
+    year: '2',
+    graduate: 'Graduated'
+    // field: 'developer'
+  },
+  {
+    degree: 'BSC',
+    specialization: 'something',
+    year: '3',
+    graduate: 'Graduated'
+  },
+];
 
 
 @Component({
@@ -85,48 +85,8 @@ export class EducationComponent {
     }
   }
 
-  // viewEmployee(projectId?: any, projectName?: any) {
-  //   console.log('viewProject', projectId);
-  //   localStorage.setItem('projectId', projectId);
-  //   localStorage.setItem('projectName', projectName);
-  //   this.router.navigate(['/employeeOnboarding']);
-  // }
-
-  //
   test() {
     alert('test');
     console.log('test');
   }
 }
-
-//   myForm!: FormGroup;
-//   isReadOnly = true;
-  
-//   constructor(private fb: FormBuilder) { 
-    
-// }
-// ngOnInit() {
-//   // this.http.get('/api/employee').subscribe((employee: any) => {
-//   // Use the response to set the initial values of the form fields
-//   this.myForm = this.fb.group({
-//   degree:['BE'],
-//   specialization:['something'],
-//   year: [4],
-//   graduate: ['GRADUATED']
-// }); 
-// }  
-// //  });
-
-// onEdit() {
-//   this.isReadOnly = false;
-// }
-
-  
-//   onSubmit() {
-//     this.isReadOnly = false;
-//     const formValues = this.myForm.value;
-//     console.log(formValues);
-
-//     }
-  
-// }

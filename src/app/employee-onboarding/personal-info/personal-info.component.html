@@ -51,14 +51,10 @@
       <input matInput placeholder="Years of Experience" formControlName="address" [readonly]="isReadOnly">
     </mat-form-field>
     </div>
-    <div style="background-color: lightgray;">
-      <!-- <mat-form-field style="margin-left:25px"> -->
-      <!-- <mat-label>ViewDocuments</mat-label> -->
+    <!-- <div style="background-color: lightgray;">
       <button mat-raised-button color="primary" [disabled]="read" >ViewDocuments</button>
-      <!-- <input matInput placeholder="Date of Joining" formControlName="dateOfJoining" [readonly]="isReadOnly"> -->
     <button mat-raised-button color="primary" type="button" (click)="viewPDF()">View</button>
-    <!-- </mat-form-field> -->
-    </div>
+    </div> -->
     <div style="background-color: lightgray;">
     <button style="margin-left:50px; margin-top:50px;" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
     <button style="margin-left:25px; margin-top:50px;" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>

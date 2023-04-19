@@ -14,22 +14,22 @@ export interface PeriodicElement {
   field: String;
 }
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     companyName: 'zaga',
-//     experience: '1',
-//     startDate: '22/1/2023',
-//     endDate: '22/6/2023',
-//     field: 'developer'
-//   },
-//   {
-//     companyName: 'ZAGAGA',
-//     experience: '2',
-//     startDate: '22/2/2022',
-//     endDate: '2/2/2020',
-//     field: 'developer'
-//   },
-// ];
+const ELEMENT_DATA: PeriodicElement[] = [
+  {
+    companyName: 'zaga',
+    experience: '1',
+    startDate: '22/1/2023',
+    endDate: '22/6/2023',
+    field: 'developer'
+  },
+  {
+    companyName: 'ZAGAGA',
+    experience: '2',
+    startDate: '22/2/2022',
+    endDate: '2/2/2020',
+    field: 'developer'
+  },
+];
 @Component({
   selector: 'app-job-history',
   templateUrl: './job-history.component.html',
@@ -86,45 +86,10 @@ export class JobHistoryComponent {
     }
   }
 
-  // viewEmployee(projectId?: any, projectName?: any) {
-  //   console.log('viewProject', projectId);
-  //   localStorage.setItem('projectId', projectId);
-  //   localStorage.setItem('projectName', projectName);
-  //   this.router.navigate(['/employeeOnboarding']);
-  // }
-
-  //
+  
   test() {
     alert('test');
     console.log('test');
   }
 }
 
-//   constructor(private fb: FormBuilder) {
-
-// }
-// ngOnInit() {
-//   // this.http.get('/api/employee').subscribe((employee: any) => {
-//   // Use the response to set the initial values of the form fields
-//   this.myForm = this.fb.group({
-//   companyName: ['ZAGAA'],
-//   experience: ['3'],
-//   startDate: ['2022-01-01'],
-//   endDate: ['2022-01-01'],
-//   field:['Devops'],
-// });
-// }
-// //  });
-
-// onEdit() {
-//   this.isReadOnly = false;
-// }
-
-//   onSubmit() {
-//     this.isReadOnly = false;
-//     const formValues = this.myForm.value;
-//     console.log(formValues);
-
-//     }
-
-// }

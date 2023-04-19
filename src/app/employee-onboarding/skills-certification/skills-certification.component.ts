@@ -151,6 +151,6 @@ onEdit() {
     const formValues = this.myForm.value;
     console.log(formValues);
     console.log(formValues.skillsName)
-  
+    alert('updated successfully');  
   }
 }
