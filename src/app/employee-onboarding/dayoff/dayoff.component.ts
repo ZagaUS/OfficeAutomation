@@ -10,7 +10,7 @@ import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 export class DayoffComponent {
   myForm: FormGroup;
   isReadOnly = true;
-  employeeId: any = 1;
+  employeeId?: any = localStorage.getItem('employeeId');
 
   constructor(
     private fb: FormBuilder,

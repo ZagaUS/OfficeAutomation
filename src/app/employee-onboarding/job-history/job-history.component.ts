@@ -38,7 +38,7 @@ export interface PeriodicElement {
 export class JobHistoryComponent {
   myForm!: FormGroup;
   isReadOnly = true;
-  employeeId: any = 2;
+  employeeId?: any = localStorage.getItem('employeeId');
 
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
   // dataSource?: any;

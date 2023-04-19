@@ -52,7 +52,7 @@ export class EmployeeApiService {
 
     getEmployeeInfobyId(employeeId: string){
       return this.http.get<any>(
-        this.employeeURL + 'getEmployeeInfo/' +employeeId
+        this.employeeURL + `getEmployeeInfo?employeeId=${employeeId}`
       );
     }
     updateEmployeeInfo(employeeId: string,empValue:any){

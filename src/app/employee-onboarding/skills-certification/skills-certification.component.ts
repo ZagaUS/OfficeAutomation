@@ -11,7 +11,7 @@ import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 export class SkillsCertificationComponent {
   myForm!: FormGroup;
   isReadOnly = true;
-  employeeId: any = 5;
+  employeeId?: any = localStorage.getItem('employeeId');
   skillsNameArr: any;
   toolsNameArr: any;
   

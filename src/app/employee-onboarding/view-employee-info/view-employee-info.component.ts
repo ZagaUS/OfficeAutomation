@@ -11,7 +11,7 @@ export class ViewEmployeeInfoComponent {
 
   myForm!: FormGroup;
   isReadOnly = true;
-  employeeId: any = 1;
+  employeeId?: any = localStorage.getItem('employeeId');
   
   constructor(private fb: FormBuilder,
     private api:EmployeeApiService) { 

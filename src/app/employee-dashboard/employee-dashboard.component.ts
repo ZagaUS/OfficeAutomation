@@ -5,21 +5,21 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatRadioGroup } from '@angular/material/radio';
 import { EmployeeApiService } from '../base-api/employee-api.service';
 
-// export interface PeriodicElement {
-//   employeeId: string;
-//   employeeName: String;
-//   employeeRole: String;
-//   projectAssigned: String;
-// }
+export interface PeriodicElement {
+  employeeId: string;
+  employeeName: String;
+  employeeRole: String;
+  projectAssigned: String;
+}
 
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {
-//     employeeId: '1',
-//     employeeName: 'employee',
-//     employeeRole: 'Consultant',
-//     projectAssigned: 'Active',
-//   },
-// ];
+const ELEMENT_DATA: PeriodicElement[] = [
+  {
+    employeeId: '1',
+    employeeName: 'employee',
+    employeeRole: 'Consultant',
+    projectAssigned: 'Active',
+  },
+];
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -68,10 +68,10 @@ export class EmployeeDashboardComponent {
     }
   }
 
-  viewEmployee(projectId?: any, projectName?: any) {
-    console.log('viewProject', projectId);
-    localStorage.setItem('projectId', projectId);
-    localStorage.setItem('projectName', projectName);
+  viewEmployee(employeeId?: any, employeeName?: any) {
+    console.log('viewEmployee', employeeId);
+    localStorage.setItem('employeeId', employeeId);
+    localStorage.setItem('employeeName', employeeName);
     this.router.navigate(['/employeeOnboarding']);
   }
 

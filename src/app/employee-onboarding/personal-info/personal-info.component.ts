@@ -12,8 +12,8 @@ export class PersonalInfoComponent {
   myForm!: FormGroup;
   isReadOnly = true;
   read = true;
-  pdfbaseapi?: any;
-  employeeId: any = 1;
+  pdfbaseapi?: any;  
+  employeeId?: any = localStorage.getItem('employeeId');
   
   constructor(
     private api: EmployeeApiService,
