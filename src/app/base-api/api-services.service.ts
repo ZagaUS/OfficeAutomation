@@ -120,6 +120,9 @@ export class ApiServicesService {
   }
 
   updateWeeklyTimesheetData(weeklyTimesheetData: any) {
-    // return this.http.put<any>(this.projectMgtUrl0);
+    return this.http.put<any>(
+      this.projectMgtUrl + '/weeklyTimesheet/updateWeeklyTimesheet',
+      weeklyTimesheetData
+    );
   }
 }

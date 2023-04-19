@@ -168,5 +168,14 @@ export class EditTimesheetComponent {
     console.log('NewValueform ', this.projectId);
     console.log('NewValueform ', this.projectDetail);
     console.log('NewValueform ', this.timesheets);
+    this.api
+      .updateWeeklyTimesheetData(this.projectDetail[0])
+      .subscribe((data) => {
+        this.projectDetail = [];
+        this.projectDetail.push(data);
+        this.timesheets = data.timesheets;
+        console.log('GET DATA' + JSON.stringify(data));
+        alert('Updated Successfully!');
+      });
   }
 }
