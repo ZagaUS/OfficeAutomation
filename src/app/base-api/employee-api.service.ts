@@ -6,11 +6,20 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class EmployeeApiService {
+
+
   getweeklyTimesheetfile(document: Document) {
     throw new Error('Method not implemented.');
   }
   employeeURL = environment.employeeUrl;
   constructor(private http: HttpClient) {}
+
+  
+  getEmployeeDetail(){
+    return this.http.get<any>(
+      this.employeeURL + 'getListOfEmployeeInfo'
+    );
+  }
 
   getListOfDayOffbyId(employeeId: string) {
     return this.http.get<any>(

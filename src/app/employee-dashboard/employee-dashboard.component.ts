@@ -3,22 +3,23 @@ import { Router } from '@angular/router';
 import { ApiServicesService } from '../base-api/api-services.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatRadioGroup } from '@angular/material/radio';
+import { EmployeeApiService } from '../base-api/employee-api.service';
 
-export interface PeriodicElement {
-  employeeId: string;
-  employeeName: String;
-  employeeRole: String;
-  projectAssigned: String;
-}
+// export interface PeriodicElement {
+//   employeeId: string;
+//   employeeName: String;
+//   employeeRole: String;
+//   projectAssigned: String;
+// }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    employeeId: '1',
-    employeeName: 'employee',
-    employeeRole: 'Consultant',
-    projectAssigned: 'Active',
-  },
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     employeeId: '1',
+//     employeeName: 'employee',
+//     employeeRole: 'Consultant',
+//     projectAssigned: 'Active',
+//   },
+// ];
 
 @Component({
   selector: 'app-employee-dashboard',
@@ -29,7 +30,7 @@ export class EmployeeDashboardComponent {
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
   // dataSource?: any;
   ELEMENT_DATA?: any[];
-  dataSource?: any = new MatTableDataSource(ELEMENT_DATA);
+  dataSource?: any;
   // categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
   displayedColumns: string[] = [
     'employeeId',
@@ -39,16 +40,16 @@ export class EmployeeDashboardComponent {
     'action',
   ];
 
-  constructor(private router: Router, private api: ApiServicesService) {}
+  constructor(private router: Router, private api: EmployeeApiService) {}
 
   ngOnInit(): void {
     console.log("Im'in");
-    // console.log("Im'in");
-    // this.api.getListOfProjects().subscribe((data) => {
-    //   console.log('List of projects ' + JSON.stringify(data));
-    //   this.dataSource = new MatTableDataSource(data);
-    //   // this.ELEMENT_DATA = data;
-    // });
+    console.log("Im'in");
+    this.api.getEmployeeDetail().subscribe((data) => {
+      console.log('List of projects ' + JSON.stringify(data));
+      this.dataSource = new MatTableDataSource(data);
+      // this.ELEMENT_DATA = data;
+    });
   }
 
   applyFilter(event: Event) {
