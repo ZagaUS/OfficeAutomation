@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 
 @Component({
   selector: 'app-view-employee-info',
@@ -10,24 +11,32 @@ export class ViewEmployeeInfoComponent {
 
   myForm!: FormGroup;
   isReadOnly = true;
+  employeeId: any = 1;
   
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,
+    private api:EmployeeApiService) { 
     
+  this.myForm = this.fb.group({
+    employeeName: [''],
+    employeeId: [''],
+    employeeRole: [' '],
+    jobTitle: [''],
+    employeeEmail: ['  '],
+    password: [],
+    dateOfJoining: [''],
+    department:[''],
+    reportingManager:[''],
+    employeeStatus:[''],
+    overallExperience:[''],
+    projectAssignmentStatus:[''],
+  });
 }
 ngOnInit() {
-  // this.http.get('/api/employee').subscribe((employee: any) => {
-  // Use the response to set the initial values of the form fields
-  this.myForm = this.fb.group({
-  employeeName: ['Anushiya'],
-  employeeId: ['1234'],
-  employeeRole: ['Software developer'],
-  gender: ['Female'],
-  education: ['Bachelor of Science'],
-  yearsOfExperience: [1],
-  dateOfJoining: ['2022-01-01']
-}); 
+  this.api.getEmployeeInfobyId(this.employeeId).subscribe((data) => {
+    console.log('List of employeeINFO ' + JSON.stringify(data));
+    this.myForm.setValue(data);
+  });
 }  
-//  });
 
 onEdit() {
   this.isReadOnly = false;
@@ -36,8 +45,11 @@ onEdit() {
   
   onSubmit() {
     this.isReadOnly = false;
-    const formValues = this.myForm.value;
-    console.log(formValues);
+    const empValue = this.myForm.value;
+    console.log("Employee infoo",empValue);
+    this.api.updateEmployeeInfo(this.employeeId,empValue).subscribe((data:any) => {
+      console.log("data updated+++++++++++++",JSON.stringify(data));
+    });
 
     }
   

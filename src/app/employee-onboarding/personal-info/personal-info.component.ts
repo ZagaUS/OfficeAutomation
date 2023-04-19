@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 
 @Component({
   selector: 'app-personal-info',
@@ -12,26 +13,34 @@ export class PersonalInfoComponent {
   isReadOnly = true;
   read = true;
   pdfbaseapi?: any;
+  employeeId: any = 1;
   
   constructor(
-    private apiCall: ApiServicesService,
+    private api: EmployeeApiService,
     private fb: FormBuilder) { 
+      this.myForm = this.fb.group({
+        employeeId:[''],
+        employeeName:[''], 
+        gender:[''],
+        nationality:[''],
+        maritalStatus:[''], 
+        language:[''], 
+        dateOfBirth:[''],
+        bloodGroup:[''], 
+        personalEmail:[''], 
+        personalPhone:[''],
+        emergencyPhone:[''], 
+        address:[''], 
+});
     
 }
 ngOnInit() {
-  // this.http.get('/api/employee').subscribe((employee: any) => {
-  // Use the response to set the initial values of the form fields
-  this.myForm = this.fb.group({
-  employeeName: ['Anushiya'],
-  employeeId: ['1234'],
-  employeeRole: ['Software developer'],
-  gender: ['Female'],
-  education: ['Bachelor of Science'],
-  yearsOfExperience: [1],
-  dateOfJoining: ['2022-01-01']
-}); 
+  this.api.getPersonalInfobyId(this.employeeId).subscribe((data) => {
+    console.log('List of dayOFF ' + JSON.stringify(data));
+    this.myForm.setValue(data);
+  });
+
 }  
-//  });
 
 onEdit() {
   this.isReadOnly = false;
@@ -43,7 +52,7 @@ viewPDF() {
   //   documentId: projectName + '_' + startDate + '_' + endDate,
   //   documentType: this.selectedValue == 'External' ? 'EXTERNAL' : 'WEEKLY',
   // };
-  this.apiCall.getweeklyTimesheetfile(document).subscribe((data: any) => {
+  this.api.getPersonalInfobyId(this.employeeId).subscribe((data: any) => {
     // console.log('weekly pdf view clixked ' + data);
     const reader = new FileReader();
     reader.onload = () => {
@@ -73,8 +82,10 @@ viewPDF() {
   
   onSubmit() {
     this.isReadOnly = false;
-    const formValues = this.myForm.value;
-    console.log(formValues);
-
-    }
+    const PersonalValues = this.myForm.value;
+    console.log(PersonalValues);
+    console.log("Personal infoo",PersonalValues);
+    this.api.updateEmployeeInfo(this.employeeId,PersonalValues).subscribe((data:any) => {
+    });
+  }
   }

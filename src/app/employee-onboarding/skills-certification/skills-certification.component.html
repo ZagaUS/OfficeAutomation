@@ -1,1 +1,45 @@
-<p>skills-certification works!</p>
+<div style="background-color: lightgray; width: 100%;display: flex; flex-direction: column;">
+    <h2>SKILLS CERTIFICATION</h2>
+    <p style="margin-top: 30px;"></p>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div>
+        <mat-form-field style="margin-left:35px;width:50%;">
+          <mat-label>EMPLOYEE_ID</mat-label>
+          <input matInput placeholder="EmployeeId" formControlName="employeeId" [readonly]="isReadOnly">
+        </mat-form-field>
+        <mat-form-field style="margin-left:35px;width:50%;">
+          <mat-label>EMPLOYEE_NAME</mat-label>
+          <input matInput placeholder="EmployeeName" formControlName="employeeName" [readonly]="isReadOnly">
+        </mat-form-field>
+        <mat-form-field style="margin-left:35px;width:50%;">
+          <mat-label>YEARS_OF_EXPERIENCE</mat-label>
+          <input matInput placeholder="Years_Of_Experience" formControlName="yearsOfExperience" [readonly]="isReadOnly">
+        </mat-form-field>
+        
+        <mat-form-field style="margin-left:35px;width:50%;">
+          <mat-label>COMPETENCY_LEVEL</mat-label>
+          <input matInput placeholder="CompetencyLevel" formControlName="compentencyLevel" [readonly]="isReadOnly">
+        </mat-form-field>
+        
+          </div>
+          <p style="margin-top: 30px;"></p>
+        <div>
+            <mat-form-field style="margin-left:135px;width:50%;margin-right:40px"  >
+            <mat-label>SKILLS NAME</mat-label>
+            <input matInput placeholder="SkillsName" formControlName="skillsName" [value]="skillsNameArr" [readonly]="isReadOnly">
+            <button style="margin-left:360px;padding: 2px 4px;font-size: 10px;" mat-raised-button color="primary" type="button" (click)="onEdit()">ADD</button>
+          </mat-form-field> 
+       
+        <mat-form-field style="margin-left:35px;width:50%;margin-right: 230px;">
+          <mat-label>TOOLSNAME</mat-label>
+          <input matInput placeholder="ToolsName" formControlName="toolsName" [value]="toolsNameArr" [readonly]="isReadOnly">
+          <button style="margin-left:360px;padding: 2px 4px;font-size: 10px;" mat-raised-button color="primary" type="button" (click)="onEdit()">ADD</button>
+        </mat-form-field>
+        </div>
+        
+        <p style="margin-top: 30px;"></p>
+        <button style="margin-left:30px" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly">Submit</button>
+        <button style="margin-left:25px" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>
+      </form>
+      <p style="margin-top: 300px;"></p>
+    </div>
