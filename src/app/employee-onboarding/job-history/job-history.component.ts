@@ -63,11 +63,19 @@ export class JobHistoryComponent {
 
     this.api.getListOfJobHistory(this.employeeId).subscribe((data) => {
       console.log('List of projects ' + JSON.stringify(data));
-      this.dataSource = new MatTableDataSource(data.jobHistoryDetails);
-      // this.ELEMENT_DATA = data;
+      const updatedjobHistoryDetails = data.jobHistoryDetails.map((element: PeriodicElement) => {
+        return {
+          companyName: element.companyName ?? 'N/A',
+          experience: element.experience ?? 'N/A',
+          startDate: element.startDate ?? 'N/A',
+          endDate: element.endDate.trim() === '' ? 'N/A' : element.endDate,
+          field: element.field ?? 'N/A'
+        };
+      });
+      console.log(updatedjobHistoryDetails);
+      this.dataSource = new MatTableDataSource(updatedjobHistoryDetails);
     });
     
-    // this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   }
 
   applyFilter(event: Event) {

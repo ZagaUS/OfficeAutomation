@@ -1,17 +1,11 @@
 <div
-  style="
-    background-color: lightgray;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  "
+  class="card"
 >
-  <h2>DAYOFF</h2>
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<h2 class="card-header">DAYOFF</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
     <div>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>EMPLOYEE_ID</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_ID</mat-label>
         <input
           matInput
           placeholder="EmployeeId"
@@ -19,8 +13,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>EMPLOYEE_NAME</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_NAME</mat-label>
         <input
           matInput
           placeholder="EmployeeName"
@@ -28,8 +22,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>ALLOCATED LEAVE</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">ALLOCATED LEAVE</mat-label>
         <input
           matInput
           placeholder="AllocatedLeave"
@@ -37,8 +31,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>USED</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">USED</mat-label>
         <input
           matInput
           placeholder="Used"
@@ -46,8 +40,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>BALANCE</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">BALANCE</mat-label>
         <input
           matInput
           placeholder="Balance"
@@ -56,8 +50,10 @@
         />
       </mat-form-field>
     </div>
+  </form>
+    <div style="display: flex;flex-direction: row;">
     <button
-      style="margin-left: 80px"
+    class="button"
       mat-raised-button
       color="primary"
       type="submit"
@@ -66,7 +62,7 @@
       Submit
     </button>
     <button
-      style="margin-left: 25px"
+      class="button" style="margin-left: 10px;"
       mat-raised-button
       color="accent"
       type="button"
@@ -75,6 +71,5 @@
     >
       Edit
     </button>
-  </form>
-  <p style="margin-top: 60px"></p>
+  </div>
 </div>

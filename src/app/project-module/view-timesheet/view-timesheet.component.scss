@@ -1,19 +1,78 @@
+// table {
+//    width: 100%;
+//  }
+ 
+// .mat-mdc-form-field {
+//    font-size: 14px;
+//    width: 100%;
+// }
+
+// .tableContainer {
+//    margin: 20px;
+// }
+
+// .actionContainer {
+//    display: flex;
+//    flex-direction: row;
+// }
+
+// .icon:hover {
+//    cursor: pointer;
+//    color: red;
+// }
+
+// .categoryContainer {
+//    margin-bottom: 20px;   
+// }
+
+// .electric-blue {
+//    background-color: #007bff !important;
+//    color: #050505 !important;
+//  }
+
+// .modal
+// {
+//    max-width: 80rem !important;
+//    width: 150% !important;
+// }
+//  .btns {
+//    // display: flex;
+//    // flex-direction: row;
+//    float: right;
+//    align-items: center;
+//    margin-left: 10px;
+//    flex-shrink: 0;
+//    justify-content: flex-end;
+//  }
+ 
+ 
+// .mat-footer {
+//    font-weight: 500;
+// }
+
 table {
    width: 100%;
- }
+   border-collapse: collapse;
+   border: 1px solid #ccc;
+   background-color: #fff;
+}
  
 .mat-mdc-form-field {
-   font-size: 14px;
+   font-size: 16px;
    width: 100%;
+   padding: 10px;
 }
 
 .tableContainer {
    margin: 20px;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+   padding: 20px;
 }
 
 .actionContainer {
    display: flex;
    flex-direction: row;
+   gap: 10px;
 }
 
 .icon:hover {
@@ -25,38 +84,23 @@ table {
    margin-bottom: 20px;   
 }
 
-.electric-blue {
-   background-color: #007bff !important;
-   color: #050505 !important;
- }
-
-// .btns {
-//    margin-top: 10px;
-//    flex-grow: 1;
-//    // display: flex;
-//    flex-direction: row; 
-//    // justify-content: flex-end;
-//    // text-align: end;
-//    // margin-top: 5px;
-//    padding-right:10px;
-// }
-.modal
-{
-   max-width: 80rem !important;
-   width: 150% !important;
+.modal {
+   max-width: 800px;
+   width: 100%;
 }
- .btns {
-   // display: flex;
-   // flex-direction: row;
+
+.btns {
    float: right;
    align-items: center;
    margin-left: 10px;
    flex-shrink: 0;
    justify-content: flex-end;
- }
- 
- 
-.mat-footer {
-   font-weight: 500;
 }
 
+.mat-footer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-weight: 500;
+   padding: 10px;
+}

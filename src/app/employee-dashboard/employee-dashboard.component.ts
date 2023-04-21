@@ -9,7 +9,7 @@ export interface PeriodicElement {
   employeeId: string;
   employeeName: String;
   employeeRole: String;
-  projectAssigned: String;
+  projectAssignmentStatus: Boolean;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -17,7 +17,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
     employeeId: '1',
     employeeName: 'employee',
     employeeRole: 'Consultant',
-    projectAssigned: 'Active',
+    projectAssignmentStatus: true,
   },
 ];
 
@@ -47,10 +47,19 @@ export class EmployeeDashboardComponent {
     console.log("Im'in");
     this.api.getEmployeeDetail().subscribe((data) => {
       console.log('List of projects ' + JSON.stringify(data));
-      this.dataSource = new MatTableDataSource(data);
-      // this.ELEMENT_DATA = data;
+      const updatedData = data.map((element: PeriodicElement) => {
+        console.log('projectAssigned value:', element.projectAssignmentStatus);
+        return {
+          employeeId: element.employeeId,
+          employeeName: element.employeeName,
+          employeeRole: element.employeeRole,
+          projectAssigned: element.projectAssignmentStatus ? 'Active' : 'Inactive'
+        };
+      });
+      this.dataSource = new MatTableDataSource(updatedData);
     });
   }
+  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

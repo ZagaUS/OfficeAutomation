@@ -1,17 +1,9 @@
-<div
-  style="
-    background-color: lightgray;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  "
->
-  <h2 style="margin: 20px">PERSONAL INFORMATION</h2>
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-    <div style="background-color: lightgray">
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>EMPLOYEE_NAME</mat-label>
+<div class="card">
+  <h2 class="card-header">PERSONAL INFORMATION</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
+    <div>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_NAME</mat-label>
         <input
           matInput
           placeholder="Employee Name"
@@ -19,8 +11,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>EMPLOYEE_ID</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_ID</mat-label>
         <input
           matInput
           placeholder="Employee ID"
@@ -28,8 +20,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>NATIONALITY</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">NATIONALITY</mat-label>
         <input
           matInput
           placeholder="Employee Role"
@@ -37,8 +29,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>DATE_OF_BIRTH</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">DATE_OF_BIRTH</mat-label>
         <input
           matInput
           placeholder="Date of Joining"
@@ -46,10 +38,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-    </div>
-    <div style="background-color: lightgray">
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>GENDER</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">GENDER</mat-label>
         <input
           matInput
           placeholder="Gender"
@@ -57,8 +47,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>LANGUAGE</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">LANGUAGE</mat-label>
         <input
           matInput
           placeholder="Education"
@@ -66,8 +56,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>BlOOD GROUP</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">BlOOD GROUP</mat-label>
         <input
           matInput
           placeholder="Years of Experience"
@@ -75,8 +65,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>PERSONAL EMAIL</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">PERSONAL EMAIL</mat-label>
         <input
           matInput
           placeholder="Years of Experience"
@@ -84,10 +74,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-    </div>
-    <div style="background-color: lightgray">
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>PERSONAL PHONE</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">PERSONAL PHONE</mat-label>
         <input
           matInput
           placeholder="Years of Experience"
@@ -95,8 +83,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>EMERGENCY PHONE</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMERGENCY PHONE</mat-label>
         <input
           matInput
           placeholder="Years of Experience"
@@ -104,8 +92,8 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 35px; width: 50%">
-        <mat-label>ADDRESS</mat-label>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">ADDRESS</mat-label>
         <input
           matInput
           placeholder="Years of Experience"
@@ -114,13 +102,10 @@
         />
       </mat-form-field>
     </div>
-    <!-- <div style="background-color: lightgray;">
-      <button mat-raised-button color="primary" [disabled]="read" >ViewDocuments</button>
-    <button mat-raised-button color="primary" type="button" (click)="viewPDF()">View</button>
-    </div> -->
-    <div style="background-color: lightgray">
+    </form>
+    <div style="display: flex;flex-direction: row;">
       <button
-        style="margin-left: 50px; margin-top: 50px"
+      class ="button"
         mat-raised-button
         color="primary"
         type="submit"
@@ -129,7 +114,8 @@
         Submit
       </button>
       <button
-        style="margin-left: 25px; margin-top: 50px"
+      style="margin-left: 10px;"
+      class ="button"
         mat-raised-button
         color="accent"
         type="button"
@@ -139,6 +125,4 @@
         Edit
       </button>
     </div>
-    <p style="margin-top: 60px"></p>
-  </form>
-</div>
+

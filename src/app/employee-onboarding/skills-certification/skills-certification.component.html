@@ -1,63 +1,133 @@
-<div style="background-color: lightgray; width: 100%; flex-direction: column;">
-  <h2>SKILLS CERTIFICATION</h2>
-  <!-- <p style="margin-top: 30px;"></p> -->
-  <form [formGroup]="myForm" >
-    <div style="display: flex;">
-      <mat-form-field style="width: 58%; margin-top: 20px;">
-        <mat-label>EMPLOYEE_ID</mat-label>
-        <input matInput placeholder="EmployeeId" formControlName="employeeId" [readonly]="isReadOnly">
-      </mat-form-field>
-      <mat-form-field style="width: 48%; margin-top: 20px;">
-        <mat-label>EMPLOYEE_NAME</mat-label>
-        <input matInput placeholder="EmployeeName" formControlName="employeeName" [readonly]="isReadOnly">
-      </mat-form-field>
-      <mat-form-field style="width: 48%; margin-top: 20px;">
-        <mat-label>YEARS_OF_EXPERIENCE</mat-label>
-        <input matInput placeholder="Years_Of_Experience" formControlName="yearsOfExperience" [readonly]="isReadOnly">
-      </mat-form-field>
-      <mat-form-field style="width: 48%; margin-top: 20px;">
-        <mat-label>COMPETENCY_LEVEL</mat-label>
-        <input matInput placeholder="CompetencyLevel" formControlName="compentencyLevel" [readonly]="isReadOnly">
-      </mat-form-field>
-    </div>
-    <div style="margin-top: 30px;">
-      <label style="margin-left: 0px;">SKILLS NAME</label>
-      <div style="display:flex; gap: 10px; margin-left: 80px; margin-right: 80px;">
-        <div *ngFor="let skill of skillsNameArr" style="border-radius: 20px; background-color: #efefef; padding: 2px 10px; display: flex; align-items: center; font-size: 14px; font-weight: 600;">
-          <span style="margin-right:10px;">{{ skill }}</span>
-          <button style="background-color: #e74c3c; color: #fff; border-radius: 50%; padding: 5px; cursor: pointer;" [disabled]="isReadOnly" (click)="removeSkillsName(skill)"> 
+<div class="card">
+  <h2 class="card-header">SKILLS CERTIFICATION</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label class="label">EMPLOYEE_ID</mat-label>
+      <input
+        matInput
+        placeholder="EmployeeId"
+        formControlName="employeeId"
+        [readonly]="isReadOnly"
+      />
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label class="label">EMPLOYEE_NAME</mat-label>
+      <input
+        matInput
+        placeholder="EmployeeName"
+        formControlName="employeeName"
+        [readonly]="isReadOnly"
+      />
+    </mat-form-field>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label class="label">YEARS_OF_EXPERIENCE</mat-label>
+      <input
+        matInput
+        placeholder="Years_Of_Experience"
+        formControlName="yearsOfExperience"
+        [readonly]="isReadOnly"
+      />
+    </mat-form-field>
+    <mat-form-field
+      class="form-field"
+      appearance="outline"
+      style="margin-right: 30px"
+    >
+      <mat-label class="label">COMPETENCY_LEVEL</mat-label>
+      <input
+        matInput
+        placeholder="CompetencyLevel"
+        formControlName="compentencyLevel"
+        [readonly]="isReadOnly"
+      />
+    </mat-form-field>
+    <div style="display: flex; flex-direction: column">
+      <label style="margin-left: 0px">SKILLS NAME</label>
+      <div
+        style="display: flex; gap: 10px; margin-left: 80px; margin-right: 80px"
+      >
+        <div
+          *ngFor="let skill of skillsNameArr"
+          style="
+            border-radius: 20px;
+            background-color: #efefef;
+            padding: 2px 10px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+          "
+        >
+          <span style="margin-right: 10px">{{ skill }}</span>
+          <button
+            style="
+              background-color: #e74c3c;
+              color: #fff;
+              border-radius: 50%;
+              padding: 5px;
+              cursor: pointer;
+            "
+            [disabled]="isReadOnly"
+            (click)="removeSkillsName(skill)"
+          >
             <i class="fa fa-times"></i>
-            <!-- <div *ngIf="myForm.get('skillsName')"> -->
-            <!-- <button mat-icon-button color="warn"[disabled]="isReadOnly" (click)="removeSkillsName(skill)">
-              <mat-icon>close</mat-icon> -->
           </button>
         </div>
+      </div>
+      <label style="margin-left: 0px">TOOLS NAME</label>
+      <div
+        style="display: flex; gap: 10px; margin-left: 80px; margin-right: 80px"
+      >
+        <div
+          *ngFor="let tool of toolsNameArr"
+          style="
+            border-radius: 20px;
+            background-color: #efefef;
+            padding: 2px 10px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+          "
+        >
+          <span style="margin-right: 10px">{{ tool }}</span>
+          <button
+            style="
+              background-color: #e74c3c;
+              color: #fff;
+              border-radius: 50%;
+              padding: 5px;
+              cursor: pointer;
+            "
+            [disabled]="isReadOnly"
+            (click)="removeSkillsName(tool)"
+          >
+            <i class="fa fa-times"></i>
+          </button>
         </div>
       </div>
-    <!-- </div> -->
-    <div style="margin-top: 30px;">
-      <label style=" margin-left: 0px;">TOOLS NAME</label>
-      <div style="display:flex; gap: 10px; margin-left: 80px; margin-right: 80px;">
-        <div *ngFor="let tool of toolsNameArr" style="border-radius: 20px; background-color: #efefef; padding: 2px 10px; display: flex; align-items: center; font-size: 14px; font-weight: 600;">
-          <span style="margin-right: 10px;">{{ tool }}</span>
-              <button style="background-color: #e74c3c; color: #fff; border-radius: 50%; padding: 5px; cursor: pointer;" [disabled]="isReadOnly" (click)="removeSkillsName(tool)">
-                <i class="fa fa-times"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-      <!-- <mat-form-field style="margin-left:35px;width:50%;margin-right: 230px;">
-        <mat-label>TOOLSNAME</mat-label>
-        <input matInput placeholder="ToolsName" formControlName="toolsName" [value]="toolsNameArr" [readonly]="isReadOnly">
-         </mat-form-field> -->
-        <!-- </div> -->
-        <div>
-        <p style="margin-top: 80px;"></p>
-        <button style="margin-left:30px; margin-top: 60px;" mat-raised-button color="primary" type="submit" [disabled]="isReadOnly" (click)="onSubmit()">Submit</button>
-        <button style="margin-left:25px; margin-top: 60px;" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>
-      </div>
- 
-      </form>
-      <p style="margin-top: 300px;"></p>
     </div>
+  </form>
+  <div>
+    <button
+      class="button"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="isReadOnly"
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+    <button
+      class="button"
+      mat-raised-button
+      color="accent"
+      type="button"
+      (click)="onEdit()"
+      *ngIf="isReadOnly"
+    >
+      Edit
+    </button>
+  </div>
+</div>
