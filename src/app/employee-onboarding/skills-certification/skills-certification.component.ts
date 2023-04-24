@@ -14,6 +14,8 @@ export class SkillsCertificationComponent {
   employeeId?: any = localStorage.getItem('employeeId');
   skillsNameArr: any;
   toolsNameArr: any;
+  addingNewSkill = false;
+  addingNewTool  = false;
   
   
   constructor(private fb: FormBuilder,
@@ -65,81 +67,70 @@ mapToolsName(toolsName: string[] | null): FormArray {
   return formArray;
 }
 
-addSkillsName() {
+addSkillsName(skillsName: string) {
   // this.skillsNameArr.push(this.myForm.get('skillsName').value);
   // this.myForm.get('skillsName').setValue('');
+  console.log("added Skill",skillsName);
+  this.addingNewSkill=true;
+  if (skillsName) {
+    this.skillsNameArr.push(skillsName);
+    this.myForm.get('skillsNameArr')?.setValue(this.skillsNameArr);
+    console.log("added",this.skillsNameArr);    
+  }
 }
 
-addToolsName() {
-  // this.toolsNameArr.push(this.myForm.get('toolsName').value);
-  // this.myForm.get('toolsName').setValue('');
+  
+
+
+addToolsName(toolsName:string){
+  console.log("added Skill",toolsName);
+  this.addingNewSkill=true;
+  if (toolsName) {
+    this.skillsNameArr.push(toolsName);
+    this.myForm.get('toolsNameArr')?.setValue(this.toolsNameArr);
+    console.log("added",this.toolsNameArr);    
+  }
 }
 
-// removeSkillsName(skill: string): void {
-//   console.log("skillsNameArr before:", this.skillsNameArr);
-//   console.log("skillsNameArr skill :",skill);
-//   const index = this.skillsNameArr.indexOf(skill);
-//   if (index !== -1) {
-//     this.skillsNameArr.splice(index, 1);
-//     console.log("skillsNameArr after:", this.skillsNameArr);
-//   }
-// }
-// removeSkillsName(skill: any): FormArray {
-//   const index = this.skillsNameArr.indexOf(skill);
-//   if (index !== -1) {
-//     this.skillsNameArr.splice(index, 1);
-//   }
-//   const formArray = this.myForm.get('skillsName') as FormArray;
-//   console.log("value: " +this.skillsNameArr);
-//   // formArray.push(this.skillsNameArr);
-//   formArray.push(this.fb.control(this.skillsNameArr));
-//   console.log("skillValue"+this.skillsNameArr);
-//   console.log("return of remove",formArray);
-//   return formArray;
-// }
-// removeSkillsName(skill: any): FormArray {
-//   const index = this.skillsNameArr.indexOf(skill);
-//   if (index !== -1) {
-//     this.skillsNameArr.splice(index, 1);
-//   }
-//   const formArray = this.myForm.get('skillsName') as FormArray;
-//   console.log("value: " + this.skillsNameArr);
-  
-//   setTimeout(() => {
-//     formArray.clear();
-//     this.skillsNameArr.forEach((skill: any) => {
-//       formArray.push(this.fb.control(skill));
-//     });
-//   });
-  
-//   console.log("skillValue" + this.skillsNameArr);
-//   console.log("return of remove", formArray);
-//   return formArray;
-// }
-
-removeSkillsName(skill: any): FormArray {
+removeSkillsName(skill: any): void {
   const index = this.skillsNameArr.indexOf(skill);
   if (index !== -1) {
     this.skillsNameArr.splice(index, 1);
   }
-  const formArray = this.myForm.get('skillsName') as FormArray;
-  console.log("value: " + this.skillsNameArr);
-  
-  setTimeout(() => {
-    formArray.clear();
-    this.skillsNameArr.forEach((skill: any) => {
-      formArray.push(this.fb.control(skill));
+  const formArray = this.myForm.get('skillsNameArr') as FormArray;
+  if (formArray) { // check if formArray is not null or undefined
+    setTimeout(() => {
+      formArray.clear();
+      this.skillsNameArr.forEach((skill: any) => {
+        formArray.push(this.fb.control(skill));
+      });
+      this.myForm.get('skillsNameArr')?.setValue(this.skillsNameArr);
     });
-  });
   
-  console.log("skillValue" + this.skillsNameArr);
-  console.log("return of remove", formArray);
-  return formArray;
+
+  // return formArray;
+}
 }
 
+removeToolsName(tool:any){
+  const index = this.toolsNameArr.indexOf(tool);
+  if (index !== -1) {
+    this.toolsNameArr.splice(index, 1);
+  }
+  const formArray = this.myForm.get('toolsNameArr') as FormArray;
+  if (formArray) { // check if formArray is not null or undefined
+    setTimeout(() => {
+      formArray.clear();
+      this.toolsNameArr.forEach((tool: any) => {
+        formArray.push(this.fb.control(tool));
+      });
+      this.myForm.get('toolsNameArr')?.setValue(this.toolsNameArr);
+    });
+  
 
-
-
+  // return formArray;
+}
+}
 
 onEdit() {
   this.isReadOnly = false;
@@ -151,6 +142,6 @@ onEdit() {
     const formValues = this.myForm.value;
     console.log(formValues);
     console.log(formValues.skillsName)
-    alert('updated successfully');  
+    // alert('updated successfully');  
   }
 }

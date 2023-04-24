@@ -133,7 +133,11 @@ export class ApiServicesService {
     );
   }
 
-  deleteWeeklyTimesheet(weeklyTimesheetId: any) {
-    // return this.http.delete<any>( this.projectMgtUrl + ``
+  deleteWeeklyTimesheet(weeklyTimesheetId: any,timesheetType: any) {
+    console.log('deleteWeeklyTimesheet', weeklyTimesheetId, timesheetType);
+    return this.http.delete<any>(
+      this.projectMgtUrl +
+        `/projectDetails/document/deleteById?documentId=${weeklyTimesheetId}&documentType=${timesheetType}`
+    );
   }
 }

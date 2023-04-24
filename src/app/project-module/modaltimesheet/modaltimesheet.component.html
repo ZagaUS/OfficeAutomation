@@ -4,7 +4,8 @@
   </button>
   <h2>Generate Timesheet</h2>
   <form [formGroup]="contactForm">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>StartDate</mat-label>
       <input
         matInput
         [matDatepicker]="startDatePicker"
@@ -17,7 +18,8 @@
       ></mat-datepicker-toggle>
       <mat-datepicker #startDatePicker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>EndDate</mat-label>
       <input
         matInput
         [matDatepicker]="endDatePicker"

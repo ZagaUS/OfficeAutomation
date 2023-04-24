@@ -121,6 +121,7 @@ export class ViewTimesheetComponent {
   daily?: any = true;
   weekly?: any = false;
   external?: any = false;
+  timesheetType?: any = 'WEEKLY';
   categories: string[] = ['Daily', 'Weekly', 'Approved', 'External'];
   weeklyDisplayedColumns: string[] = [
     'weeklyTimesheetId',
@@ -429,20 +430,12 @@ export class ViewTimesheetComponent {
     console.log('testi');
   }
 
-  deleteTimesheet(
-    timesheetType: any,
-    dailyTimesheetId: any,
-    weeklyTimesheetId: any
-  ) {
-    console.log(
-      'deleteTimesheet',
-      weeklyTimesheetId + ' - ' + dailyTimesheetId + ' - ' + timesheetType
-    );
-    if (timesheetType == 'Daily') {
-      this.apiCall.deleteDailyTimesheet(dailyTimesheetId).subscribe((data) => {
-        window.location.reload();
+  deleteTimesheet(weeklyTimesheetId: any) {
+    // if (timesheetType == 'Weekly') {
+      console.log(weeklyTimesheetId)
+      this.apiCall.deleteWeeklyTimesheet(weeklyTimesheetId,this.timesheetType).subscribe((data) => {
+        console.log(data);
+        // window.location.reload();
       });
-    } else {
     }
-  }
 }

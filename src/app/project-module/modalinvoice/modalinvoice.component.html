@@ -4,14 +4,16 @@
   </button>
   <h2>Generate Invoice</h2>
   <form [formGroup]="contactForm">
-    <mat-form-field *ngIf="!invoiceGenerated">
+    <mat-form-field *ngIf="!invoiceGenerated" appearance="outline">
+      <mat-label>ProjectName</mat-label>
       <input
         matInput
         placeholder="Project Name"
         formControlName="projectName"
       />
     </mat-form-field>
-    <mat-form-field *ngIf="!invoiceGenerated">
+    <mat-form-field *ngIf="!invoiceGenerated" appearance="outline">
+      <mat-label>StartDate</mat-label>
       <input
         matInput
         [matDatepicker]="startDatePicker"
@@ -24,7 +26,8 @@
       ></mat-datepicker-toggle>
       <mat-datepicker #startDatePicker></mat-datepicker>
     </mat-form-field>
-    <mat-form-field *ngIf="!invoiceGenerated">
+    <mat-form-field *ngIf="!invoiceGenerated" appearance="outline">
+      <mat-label>EndDate</mat-label>
       <input
         matInput
         [matDatepicker]="endDatePicker"
@@ -64,7 +67,8 @@
     </button>
     <div *ngIf="invoiceGenerated" class="invoice-details">
       <!-- <h2>Invoice Details</h2> -->
-      <mat-form-field *ngIf="invoiceGenerated">
+      <mat-form-field *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>ClientAddress</mat-label>
         <input
           matInput
           placeholder="ClientAddress"
@@ -73,7 +77,8 @@
           [value]="clientAddress"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>PayOrder</mat-label>
         <input
           matInput
           placeholder="PayOrder"
@@ -82,7 +87,8 @@
           [value]="payOrder"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>SFDC</mat-label>
         <input
           matInput
           placeholder="SFDC"
@@ -93,7 +99,8 @@
       </mat-form-field>
     </div>
     <div class="invoice-details">
-      <mat-form-field *ngIf="invoiceGenerated">
+      <mat-form-field *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>PA</mat-label>
         <input
           matInput
           placeholder="PA"
@@ -102,7 +109,8 @@
           [value]="pa"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>TotalManDays</mat-label>
         <input
           matInput
           placeholder="TotalManDays"
@@ -111,7 +119,8 @@
           [value]="totalManDays"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>ManDays</mat-label>
         <input
           matInput
           placeholder="ManDays"
@@ -122,7 +131,8 @@
       </mat-form-field>
     </div>
     <div class="invoice-details">
-      <mat-form-field *ngIf="invoiceGenerated">
+      <mat-form-field *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>InvoiceAmount</mat-label>
         <input
           matInput
           placeholder="InvoiceAmount"
@@ -131,7 +141,8 @@
           [value]="invoiceAmount | currency"
         />
       </mat-form-field>
-      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated">
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>TotalInvoiceAmount</mat-label>
         <input
           matInput
           placeholder="TotalInvoiceAmount"
@@ -140,7 +151,8 @@
           [value]="totalInvoiceAmount | currency"
         />
       </mat-form-field>
-      <mat-form-field *ngIf="invoiceGenerated" style="margin-left: 10px">
+      <mat-form-field *ngIf="invoiceGenerated" style="margin-left: 10px" appearance="outline">
+        <mat-label>Date</mat-label>
         <input
           matInput
           [matDatepicker]="endDatePicker"
