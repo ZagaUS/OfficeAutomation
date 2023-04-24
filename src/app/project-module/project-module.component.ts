@@ -15,15 +15,15 @@ export class ProjectModuleComponent {
 
   navRouting: any = [
     {
-      name: 'Project Details',
+      name: 'PROJECT DETAILS',
       link: '/projectModule',
     },
     {
-      name: 'Timesheet',
+      name: 'TIMESHEET',
       link: 'timesheet',
     },
     {
-      name: 'Meeting minnutes',
+      name: 'MEETING MINUTES',
       link: 'meetingMinutes',
       route: this.route,
     },

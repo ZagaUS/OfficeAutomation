@@ -11,6 +11,10 @@
    // justify-content: center;
    // align-items: center;
 }
+.example-toolbar {  
+  background: linear-gradient(to bottom, #055d8c, #055d8c);
+  color: white;
+}
 
 .mat-toolbar-row {
    display: flex;
@@ -19,8 +23,10 @@
  }
  
  .toolbar-title {
-   text-align: center;
- }
+  font-size: 26px;
+  font-weight: bold;
+  color:white;
+}
 
  .electric-blue {
    background-color: #007bff !important;

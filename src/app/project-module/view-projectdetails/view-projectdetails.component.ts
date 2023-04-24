@@ -92,6 +92,7 @@ export class ViewProjectdetailsComponent {
     console.log("updated data",updatedData);
       this.api.updateProjectDetails(updatedData).subscribe((data:any) => {
       console.log("data updated",data);
+      alert("updated data successfully")
     });
   }
 }

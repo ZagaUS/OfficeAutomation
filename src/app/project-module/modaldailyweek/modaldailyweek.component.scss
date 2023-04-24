@@ -137,7 +137,7 @@ button.mat-raised-button:hover {
       }
 
       mat-datepicker-toggle {
-        color: #007bff;
+        color: #074a6e;
         cursor: pointer;
 
         &:hover {
@@ -165,8 +165,9 @@ button.mat-raised-button:hover {
 
     button {
       margin-top: 20px;
-      background-color: #007bff;
-      color: #000;
+      background: linear-gradient(to bottom, #074a6e , #074a6e );
+      color: #f3eeee;
+
 
       // &:hover {
       //   background-color: #0062cc;

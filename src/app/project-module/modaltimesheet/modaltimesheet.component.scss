@@ -74,7 +74,7 @@ button.mat-raised-button {
 
 
 button.mat-raised-button:hover {
-  background-color: #007bff;
+  background-color: #edf3fa;
   color: #fff;
 }
 
@@ -111,11 +111,11 @@ button.mat-raised-button:hover {
       }
 
       mat-datepicker-toggle {
-        color: #007bff;
+        color: #074a6e;
         cursor: pointer;
 
         &:hover {
-          color: #0062cc;
+          color: #074a6e;
         }
       }
     }
@@ -131,8 +131,9 @@ button.mat-raised-button:hover {
 
     button {
       margin-top: 20px;
-      background-color: #007bff;
-      color: #000;
+      // background-color: #007bff;
+      background: linear-gradient(to bottom, #074a6e , #074a6e );
+      color: #f3eeee;
 
       // &:hover {
       //   background-color: #0062cc;

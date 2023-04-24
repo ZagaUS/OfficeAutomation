@@ -24,3 +24,18 @@ table {
 .categoryContainer {
    margin-bottom: 20px;
 }
+
+.center-row {
+   flex-grow: 1;
+   display: flex;
+   background: linear-gradient(to bottom, #055d8c, #055d8c);
+   color: #fff;
+   font-size: 24px;
+   font-weight: bold;
+ }
+ 
+ 
+ mat-icon-button {
+   color: #fff!important;
+ }
+ 

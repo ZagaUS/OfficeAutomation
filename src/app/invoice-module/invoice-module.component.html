@@ -1,3 +1,11 @@
+
+ <mat-toolbar-row class="center-row">
+    <!-- <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <span class="toolbar-title">INVOICE MANAGEMENT</span>
+  </mat-toolbar-row>
+
 <div class="tableContainer">
   <mat-form-field>
     <mat-label>Search by invoiceId Name / Invoice ID</mat-label>
@@ -12,9 +20,9 @@
   <div class="categoryContainer">
     <button
       mat-raised-button
-      class="btns electric-blue"
-      style="margin-left: 10px"
-      color="primary"
+      style="background: linear-gradient(to bottom, #055d8c, #055d8c);
+      margin-left: 10px;
+      color:white"
       data-toggle="modal"
       (click)="openInvoiceModal()"
     >
