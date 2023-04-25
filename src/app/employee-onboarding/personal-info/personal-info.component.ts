@@ -87,6 +87,7 @@ viewPDF() {
     console.log("Personal infoo",PersonalValues);
     this.api.updatePersonalValues(PersonalValues).subscribe((data:any) => {
     });
+
     alert('updated successfully');
   }
   }
