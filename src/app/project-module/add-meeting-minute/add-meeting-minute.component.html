@@ -1,0 +1,83 @@
+<form [formGroup]="meetingForm" (ngSubmit)="onSubmit()">
+    <label style="margin-top: 30px;color: #074a6e;">
+      EMPLOYEE NAME
+      <input type="text" formControlName="employeeName">
+    </label>
+  
+    <label>
+      PROJECT NAME
+      <input type="text" formControlName="projectName">
+    </label>
+  
+    <label>
+      PROJECT ID
+      <input type="text" formControlName="projectId">
+    </label>
+  
+    <label>
+      MEETING MINUTES ID
+      <input type="text" formControlName="meetingMinutesId">
+    </label>
+    <div style="display: flex;flex-direction:row;">
+    <label>
+      DATE
+      <input type="date" formControlName="date">
+    </label>
+  
+    <label>
+      START TIME
+      <input type="time" formControlName="startTime">
+    </label>
+    <label>
+      END TIME
+      <input type="time" formControlName="endTime">
+    </label>
+  </div>
+    <label>
+      MEETING OBJECTIVE
+      <textarea formControlName="meetingObjective"></textarea>
+    </label>
+  
+    <label>
+        ATTENDEES PRESENT:
+        <div *ngFor="let attendee of meetingForm.controls['attendeesPresent'].value">
+          <div>
+            <label>Name: </label>
+            <input type="text" formControlName="name" [value]="attendee.name" (input)="onAttendeesChange($event)">
+          </div>
+          <div>
+            <label>Organization: </label>
+            <input type="text" formControlName="role" [value]="attendee.organization" (input)="onAttendeesChange($event)">
+          </div>
+        </div>
+      </label>
+      
+  
+    <label>
+      AGENDA:
+      <div formArrayName="agenda">
+          <p></p>
+        <div style="display:flex;flex-direction: row;" *ngFor="let item of agendaItems.controls; let i=index" [formGroupName]="i">
+          <label>
+              TOPIC
+              <input formControlName="topic">
+              </label>
+              <label>
+                TimeTaken
+          <input formControlName="timeTaken">
+          </label>
+          <label>
+            presentedBy
+      <input formControlName="presentedBy">
+      </label>
+      <label>
+        description
+  <input formControlName="description">
+  </label>
+        </div>
+      </div>
+    </label>
+  
+    <button style="margin-bottom: 20px;"type="submit">Submit</button>
+  </form>
+  

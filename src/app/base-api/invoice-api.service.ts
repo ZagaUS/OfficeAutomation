@@ -15,7 +15,7 @@ export class InvoiceApiService {
 
   createInvoice(invoiceData: any) {
     return this.http.post<any>(
-      this.invoiceUrl + '/createInvoicee/pdf',
+      this.invoiceUrl + 'createInvoicee/pdf',
       invoiceData
     );
   }

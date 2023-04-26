@@ -11,19 +11,19 @@
 
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav
-      class="example-sidenav"
-      color="primary"
-      #sidenav
-      mode="side"
-      #snav
-    >
-      <mat-nav-list>
-        <div *ngFor="let nav of navRouting">
-          <a mat-list-item [routerLink]="nav.link">{{ nav.name }}</a>
-        </div>
-      </mat-nav-list>
-    </mat-sidenav>
-
+    class="example-sidenav"
+    color="primary"
+    #sidenav
+    mode="side"
+    #snav
+  >
+  <mat-nav-list class="custom-nav-list">
+    <div *ngFor="let nav of navRouting">
+      <a mat-list-item [routerLink]="nav.link">{{ nav.name }}</a>
+    </div>
+  </mat-nav-list>
+  </mat-sidenav>
+  
     <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>

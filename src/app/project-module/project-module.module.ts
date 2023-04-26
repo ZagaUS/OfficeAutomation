@@ -27,6 +27,9 @@ import { ModalinvoiceComponent } from './modalinvoice/modalinvoice.component';
 import { ModaldailyweekComponent } from './modaldailyweek/modaldailyweek.component';
 import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { MeetingMinuteComponent } from './meeting-minute/meeting-minute.component';
+import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minute.component';
+import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
 
 
 
@@ -39,7 +42,11 @@ import { MatSliderModule } from '@angular/material/slider';
     ModaltimesheetComponent,
     ModalinvoiceComponent,
     ModaldailyweekComponent,
-    EditTimesheetComponent
+    EditTimesheetComponent,
+    MeetingMinuteComponent,
+    AddMeetingMinuteComponent,
+    ViewMeetingMinutesComponent,
+
 
   ],
   imports: [

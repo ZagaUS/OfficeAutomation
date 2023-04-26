@@ -124,9 +124,9 @@
         <input
           matInput
           placeholder="ManDays"
-          [(ngModel)]="manDays"
+          [(ngModel)]="manHours"
           [readonly]="!editMode"
-          [value]="manDays"
+          [value]="manHours"
         />
       </mat-form-field>
     </div>
@@ -151,6 +151,16 @@
           [value]="totalInvoiceAmount | currency"
         />
       </mat-form-field>
+      <!-- <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>Rate</mat-label>
+        <input
+          matInput
+          placeholder="rate"
+          [(ngModel)]="rate"
+          [readonly]="!editMode"
+          [value]="rate | currency"
+        />
+      </mat-form-field> -->
       <mat-form-field *ngIf="invoiceGenerated" style="margin-left: 10px" appearance="outline">
         <mat-label>Date</mat-label>
         <input

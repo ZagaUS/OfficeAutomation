@@ -1,0 +1,21 @@
+<div style="margin-bottom: 200px;">
+  <h1>{{ meetingDetails.employeeName }} - {{ meetingDetails.projectName }}</h1>
+  <p>Meeting ID: {{ meetingDetails.meetingMinutesId }}</p>
+  <p>Date: {{ meetingDetails.date }}</p>
+  <p>Time: {{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
+  <p>Objective: {{ meetingDetails.meetingObjective }}</p>
+
+  <h2>Attendees</h2>
+  <ul>
+    <li *ngFor="let attendee of meetingDetails.attendeesPresent">
+      {{ attendee.name }} ({{ attendee.role }})
+    </li>
+  </ul>
+
+  <h2>Agenda</h2>
+  <ul>
+    <li *ngFor="let item of meetingDetails.agenda">
+      {{ item.time }} - {{ item.item }}
+    </li>
+  </ul>
+</div>

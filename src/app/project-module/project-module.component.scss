@@ -10,16 +10,24 @@
 }
 
 .example-sidenav {
-  background: linear-gradient(to bottom, #055d8c, #055d8c);
+  background: linear-gradient(to bottom, #033e79 0%, #43b2ee 100%);
   
 }
-
-mat-nav-list a {
-  color: #fff;
-  text-decoration: double;
+.custom-nav-list a {
+  color: white!important;
   font-weight: bold!important;
-  font-family: Arial, sans-serif;
-  // transition: all 0.2s ease-in-out;
+}
+
+// mat-nav-list a {
+//   color: #fff;
+//   text-decoration: double;
+//   font-weight: bold!important;
+//   font-family: Arial, sans-serif;
+//   // transition: all 0.2s ease-in-out;
+// }
+.mat-list-item-content {
+  color: white !important;
+  font-weight: bold !important;
 }
 
 
@@ -28,9 +36,9 @@ mat-nav-list a:hover {
   transform: translateY(-3px);
 }
 
-mat-nav-list a:focus {
-  outline: none;
-}
+// mat-nav-list a:focus {
+//   outline: none;
+// }
 
 
 .toolbar-title {

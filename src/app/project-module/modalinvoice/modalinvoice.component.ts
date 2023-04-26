@@ -24,14 +24,20 @@ export class ModalinvoiceComponent {
   endDate?: any = new Date();
   invoiceGenerated = false;
   indata: any;
-  clientAddress: any;
-  payOrder: any;
-  sfdc: any;
-  pa: any;
-  totalManDays: any;
-  manDays: any;
-  invoiceAmount: any;
-  totalInvoiceAmount: any;
+  clientAddress?: string;
+  payOrder?: string;
+  sfdc?: string;
+  pa?: string;
+  totalManDays?: any;
+  manHours?: any;
+  invoiceAmount?: any;
+  totalInvoiceAmount?: any;
+  rate:any;
+  
+  projectName?: string;
+  duration?: string;
+  description?: string;
+  date?: any = new Date();
 
   constructor(
     private snackBar: MatSnackBar,
@@ -47,10 +53,6 @@ export class ModalinvoiceComponent {
       // message: ['', Validators.required]
     });
   }
-  projectName?: string;
-  duration?: string;
-  description?: string;
-  date?: any = new Date();
 
   ngOnInit(): void {}
 
@@ -78,10 +80,19 @@ export class ModalinvoiceComponent {
       sfdc: this.sfdc,
       pa: this.pa,
       totalManDays: this.totalManDays,
-      manDays: this.manDays,
+      manHours: this.manHours,
       invoiceAmount: this.invoiceAmount,
       totalInvoiceAmount: this.totalInvoiceAmount,
-    };
+      projectId: '10',
+      projectName:'DIGI-TEL',
+      consultant:'hari',
+      startDate:'23/4/2023',
+      endDate: '23/4/2023',
+      duration: '2',
+      rate: 300,
+      note: 'done virtually'
+       };
+
     console.log('++++++++++++++++', indata);
     this.invoiceApi.createInvoice(indata).subscribe((data) => {
       console.log('invoice response' + JSON.stringify(data));
@@ -112,24 +123,13 @@ export class ModalinvoiceComponent {
     this.contactForm.get('endDate')?.setValue(endDate);
     console.log('Start date: ' + startDate, 'end date: ' + endDate);
     console.log(this.contactForm.value);
-    // this.api.getInvoiceDetails().subscribe((data: any) => {
-    //   console.log('Invoice details received ' + JSON.stringify(data));
-    //   this.clientAddress = data.clientAddress;
-    //   // this.payOrder = data.payOrder;
-    //   this.sfdc = data.sfdc;                    NEEDED DONT REMOVE THIS
-    //   this.pa = data.pa;
-    //   this.totalManDays = data.totalManDays;
-    //   this.manDays = data.manDays;
-    //   this.invoiceAmount = data.totalAmount;
-    //   this.totalInvoiceAmount = data.totalInvoiceAmount;
-    // });
-
-    this.clientAddress = 'CLIENT_ADDRESS';
-    this.payOrder = 'String';
-    this.sfdc = '76778y5r6y'; //NEEDED DONT REMOVE THIS
+  
+    this.clientAddress = 'Madison USA';
+    this.payOrder = '12345';
+    this.sfdc = '12345'; //NEEDED DONT REMOVE THIS
     this.pa = '544785';
     this.totalManDays = 10;
-    this.manDays = 6;
+    this.manHours = 6;
     this.invoiceAmount = 20000;
     this.totalInvoiceAmount = 50000;
 
@@ -145,6 +145,7 @@ export class ModalinvoiceComponent {
     // this.contactForm.reset();
   }
 
+
   applyFilterForCategory() {
     const selectedValue = this.radioGroup?.value;
     if (selectedValue === 'All') {
@@ -155,4 +156,5 @@ export class ModalinvoiceComponent {
       // this.dataSource.filter = selectedValue;
     }
   }
+
 }
