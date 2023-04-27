@@ -32,8 +32,8 @@ export class ModalinvoiceComponent {
   manHours?: any;
   invoiceAmount?: any;
   totalInvoiceAmount?: any;
-  rate:any;
-  
+  rate: any;
+
   projectName?: string;
   duration?: string;
   description?: string;
@@ -64,18 +64,41 @@ export class ModalinvoiceComponent {
   onClickInvoiceSave() {
     // console.log(this.invoiceForm.value);
     const date = formatDate(this.date, this.dateFormat, 'en-US');
-    const indata = {
-      // date:'23/4/2023',
-      // clientAddress:'4567',
-      // payOrder:'456',
-      // sfdc:'45678',
-      // pa:'567',
-      // totalManDays:'10',
-      // manDays:'2',
-      // invoiceAmount:'1000',
-      // totalInvoiceAmount:'10000'
+    // const indata = {
+    //   // date:'23/4/2023',
+    //   // clientAddress:'4567',
+    //   // payOrder:'456',
+    //   // sfdc:'45678',
+    //   // pa:'567',
+    //   // totalManDays:'10',
+    //   // manDays:'2',
+    //   // invoiceAmount:'1000',
+    //   // totalInvoiceAmount:'10000'
+    //   date: date,
+    //   clientAddress: this.clientAddress,
+    //   payOrder: this.payOrder,
+    //   sfdc: this.sfdc,
+    //   pa: this.pa,
+    //   totalManDays: this.totalManDays,
+    //   manHours: this.manHours,
+    //   invoiceAmount: this.invoiceAmount,
+    //   totalInvoiceAmount: this.totalInvoiceAmount,
+    //   projectId: '10',
+    //   projectName: 'DIGI-TEL',
+    //   consultant: 'hari',
+    //   startDate: '23/4/2023',
+    //   endDate: '23/4/2023',
+    //   duration: '2',
+    //   rate: 300,
+    //   note: 'done virtually',
+    // };
+
+    const updatedData = {
       date: date,
       clientAddress: this.clientAddress,
+      projectName: 'DIGI',
+      consultant: 'Anushiya',
+      note: 'service done virtually',
       payOrder: this.payOrder,
       sfdc: this.sfdc,
       pa: this.pa,
@@ -83,18 +106,15 @@ export class ModalinvoiceComponent {
       manHours: this.manHours,
       invoiceAmount: this.invoiceAmount,
       totalInvoiceAmount: this.totalInvoiceAmount,
-      projectId: '10',
-      projectName:'DIGI-TEL',
-      consultant:'hari',
-      startDate:'23/4/2023',
-      endDate: '23/4/2023',
-      duration: '2',
-      rate: 300,
-      note: 'done virtually'
-       };
+      projectId: '1',
+      startDate: '2022-03-10',
+      endDate: '2022-03-12',
+      duration: '2022-03-10-2022-03-12',
+      rate: 0,
+    };
 
-    console.log('++++++++++++++++', indata);
-    this.invoiceApi.createInvoice(indata).subscribe((data) => {
+    console.log('++++++++++++++++', updatedData);
+    this.invoiceApi.createInvoice(updatedData).subscribe((data) => {
       console.log('invoice response' + JSON.stringify(data));
       // window.location.reload();
     });
@@ -123,7 +143,7 @@ export class ModalinvoiceComponent {
     this.contactForm.get('endDate')?.setValue(endDate);
     console.log('Start date: ' + startDate, 'end date: ' + endDate);
     console.log(this.contactForm.value);
-  
+
     this.clientAddress = 'Madison USA';
     this.payOrder = '12345';
     this.sfdc = '12345'; //NEEDED DONT REMOVE THIS
@@ -145,7 +165,6 @@ export class ModalinvoiceComponent {
     // this.contactForm.reset();
   }
 
-
   applyFilterForCategory() {
     const selectedValue = this.radioGroup?.value;
     if (selectedValue === 'All') {
@@ -156,5 +175,4 @@ export class ModalinvoiceComponent {
       // this.dataSource.filter = selectedValue;
     }
   }
-
 }
