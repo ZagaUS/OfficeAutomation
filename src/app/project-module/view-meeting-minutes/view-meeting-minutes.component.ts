@@ -42,14 +42,14 @@ export class ViewMeetingMinutesComponent {
       endTime: '10:00',
       meetingObjective: 'Discuss project status',
       attendeesPresent: [
-        { name: 'ari', role: 'Developer' },
-        { name: 'ari', role: 'Designer' },
-        { name: 'ari', role: 'Project Manager' }
+        { name: 'ari', organization: 'Developer' },
+        { name: 'ari', organization: 'Designer' },
+        { name: 'ari', organization: 'Project Manager' }
       ],
       agenda: [
-        { item: 'Review project schedule', time: '09:00-09:15' },
-        { item: 'Demo new features', time: '09:15-09:45' },
-        { item: 'Discuss project risks', time: '09:45-10:00' }
+        { topic: 'Review project schedule', timeTaken: '09:00-09:15', presentedBy: 'hari' , description:'worked'},
+        { topic: 'Review project schedule', timeTaken: '09:00-09:15', presentedBy: 'hari' , description:'worked'},
+        { topic: 'Review project schedule', timeTaken: '09:00-09:15', presentedBy: 'hari' , description:'worked'},
       ]
     };
   }

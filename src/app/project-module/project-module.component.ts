@@ -36,6 +36,7 @@ export class ProjectModuleComponent {
 
   ngOnInit(): void {
     console.log('Project ID ' + localStorage.getItem('projectId'));
+    console.log('Project Name ' + localStorage.getItem('projectName'));
   }
 
   pageRoute() {

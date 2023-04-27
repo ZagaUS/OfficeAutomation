@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 export interface Attendees {
@@ -14,53 +14,96 @@ export interface Attendees {
 })
 export class AddMeetingMinuteComponent {
   meetingForm: FormGroup;
-    @Input() attendees: string[] = [];
-    
-    constructor(private route: Router,private fb: FormBuilder) {
-      this.meetingForm = this.fb.group({
-        employeeName: '',
-        projectName: '',
-        projectId: '',
-        meetingMinutesId: '',
-        date: '',
-        startTime: '',
-        endTime: '',
-        meetingObjective: '',
-        attendeesPresent: [[]],
-        agenda: this.fb.array([
-          this.fb.group({
-            topic: '',
-            timeTaken: '',
-            presentedBy:'',
-            description:''
-          })
-        ])
-      });
-    }
-    onAttendeesChange(event: Event) {
-      const input = event.target as HTMLInputElement;
-      this.meetingForm.controls['attendeesPresent'].setValue(input.value.split(','));
-    }
-    
-  
-    get agendaItems() {
-      return this.meetingForm.get('agenda') as FormArray;
-    }
-  
-    addAgendaItem() {
-      this.agendaItems.push(this.fb.group({
-        topic: '',
-        timeTaken: '',
-            presentedBy:'',
-            description:''
-      }));
-    }
-    
-  
-    onSubmit() {
-      console.log(this.meetingForm.value);
-      alert("updated successfully");
-      this.route.navigate(['meetingMinutes']);
-    }
+  attendeesPresentItems: FormArray;
+  attendeesForm: FormGroup;
+  projectId?: any = localStorage.getItem('projectId');
+  projectName?: any = localStorage.getItem('projectName');
 
+  constructor(private fb: FormBuilder,
+    private router: Router,) {
+    this.meetingForm = this.fb.group({
+      employeeName: [''],
+      projectName: [this.projectName],
+      projectId: [this.projectId],
+      meetingMinutesId: [''],
+      date: [''],
+      startTime: [''],
+      endTime: [''],
+      meetingObjective: [''],
+      attendeesPresent: this.fb.array([this.createAttendee()]),
+      agenda: this.fb.array([this.createAgendaItem()])
+    });
+
+    this.attendeesForm = this.fb.group({
+      attendees: this.fb.array([])
+    });
+
+    this.attendeesPresentItems = this.meetingForm.get('attendeesPresent') as FormArray;
+  }
+
+  get agendaItems() {
+    return this.meetingForm.get('agenda') as FormArray;
+  }
+
+  createAgendaItem(): FormGroup {
+    return this.fb.group({
+      topic: [''],
+      timeTaken: [''],
+      presentedBy: [''],
+      description: ['']
+    });
+  }
+
+  addAgendaItem(): void {
+    this.agendaItems.push(this.createAgendaItem());
+  }
+
+  removeAgendaItem(index: number): void {
+    this.agendaItems.removeAt(index);
+  }
+
+  get attendees() {
+    return this.meetingForm.get('attendeesPresent') as FormArray;
+  }
+
+  addAttendee(): void {
+    this.attendees.push(this.createAttendee());
+  }
+
+  createAttendee(): FormGroup {
+    return this.fb.group({
+      name: [''],
+      organization: ['']
+    });
+  }
+
+  removeAttendee(index: number): void {
+    this.attendeesPresentItems.removeAt(index);
+  }
+
+  onSubmit() {
+    const attendees = this.meetingForm.value.attendeesPresent.flatMap((attendee: Attendees) => {
+      const names = attendee.name.split(',');
+      const orgs = attendee.organization.split(',');
+      return names.map((name: string, i: number) => ({ name: name.trim(), organization: orgs[i].trim() }));
+    });
+  
+    const meetingFormValue = {
+      employeeName: this.meetingForm.value.employeeName,
+      projectName: this.meetingForm.value.projectName,
+      projectId: this.meetingForm.value.projectId,
+      meetingMinutesId: this.meetingForm.value.meetingMinutesId,
+      date: this.meetingForm.value.date,
+      startTime: this.meetingForm.value.startTime,
+      endTime: this.meetingForm.value.endTime,
+      meetingObjective: this.meetingForm.value.meetingObjective,
+      attendeesPresent: attendees,
+      agenda: this.meetingForm.value.agenda
+    };
+  
+    console.log("finalOutput", meetingFormValue);
+    alert("updated sucessfully");
+    this.router.navigate(['meetingMinutes']);
+  }
+   
 }

@@ -1,5 +1,5 @@
-<div style="margin-bottom: 200px;">
-  <h1>{{ meetingDetails.employeeName }} - {{ meetingDetails.projectName }}</h1>
+<div style="margin-bottom: 200px;margin-left: 400px;margin-top: 20px;">
+  <h1 style="margin-bottom:30px">{{ meetingDetails.employeeName }} - {{ meetingDetails.projectName }}</h1>
   <p>Meeting ID: {{ meetingDetails.meetingMinutesId }}</p>
   <p>Date: {{ meetingDetails.date }}</p>
   <p>Time: {{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
@@ -8,14 +8,15 @@
   <h2>Attendees</h2>
   <ul>
     <li *ngFor="let attendee of meetingDetails.attendeesPresent">
-      {{ attendee.name }} ({{ attendee.role }})
+      {{ attendee.name }} ({{ attendee.organization }})
     </li>
   </ul>
 
   <h2>Agenda</h2>
   <ul>
     <li *ngFor="let item of meetingDetails.agenda">
-      {{ item.time }} - {{ item.item }}
+      {{ item.topic }} - {{ item.timeTaken }}
+      {{item.presentedBy}} - {{item.description}}
     </li>
   </ul>
 </div>

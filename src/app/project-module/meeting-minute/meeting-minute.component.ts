@@ -75,15 +75,6 @@ export class MeetingMinuteComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  // applyFilterForCategory() {
-  //   const selectedValue = this.radioGroup?.value;
-  //   if (selectedValue === 'All') {
-  //     this.dataSource.filter = ''; // clear filter
-  //   } else {
-  //     console.log('applyFilterForCategory' + this.radioGroup?.value);
-  //     this.dataSource.filter = selectedValue;
-  //   }
-  // }
 
   viewProject(projectId?: any, projectName?: any) {
     console.log('viewProject', projectId);
