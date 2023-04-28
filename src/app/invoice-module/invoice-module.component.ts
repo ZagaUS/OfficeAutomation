@@ -54,6 +54,7 @@ export class InvoiceModuleComponent {
   dataSource?: any;
   modalRef: MdbModalRef<ModaltimesheetComponent> | null = null;
   modalRefI: MdbModalRef<ModalinvoiceComponent> | null = null;
+  pdfbaseapi: any;
 
   constructor(
     private router: Router,
@@ -83,7 +84,36 @@ export class InvoiceModuleComponent {
     });
   }
 
-  viewInvoice() {}
+  viewInvoice() {
+    console.log('View PDF');
+
+    // console.log('payload: ' + JSON.stringify(this.document));
+    this.invoiceApi;
+    // .getweeklyTimesheetfile(this.document)
+    // .subscribe((data: any) => {
+    // console.log('weekly pdf view clixked ' + data);
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = reader.result as string;
+      const base64Data = dataUrl.split(',')[1];
+      const binaryData = window.atob(base64Data);
+      console.log(binaryData);
+      this.pdfbaseapi = binaryData;
+      //decode the base64 encoded string
+      const binaryString = window.atob(this.pdfbaseapi);
+      const byteArray = new Uint8Array(binaryString.length);
+      for (let i = 0; i < binaryString.length; i++) {
+        byteArray[i] = binaryString.charCodeAt(i);
+      }
+      // Create a Blob object from the Uint8Array
+      const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+      //Create a url
+      const fileUrl = URL.createObjectURL(blob);
+      window.open(fileUrl, '_blank');
+    };
+    // reader.readAsDataURL(data);
+  }
   test() {
     alert('test');
     console.log('test');
