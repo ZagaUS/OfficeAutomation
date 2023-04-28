@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiServicesService } from 'src/app/base-api/api-services.service';
 
 export interface Agenda {
   item: string;
@@ -17,10 +19,10 @@ export interface Attendees {
 })
 export class ViewMeetingMinutesComponent {
   meetingDetails?:any;
-    employeeName?: string;
+    employeeName?: string = 'anu';
     projectName?: string;
     projectId?: string;
-    meetingMinutesId?: string;
+    meetingMinutesId?: any = localStorage.getItem('meetingMinutesId');
     date?: string;
     startTime?: string;
     endTime?: string;
@@ -28,8 +30,11 @@ export class ViewMeetingMinutesComponent {
     attendeesPresent?: Attendees[];
     agenda?: Agenda[];
 
+constructor(private router:Router,private api:ApiServicesService){
 
-  
+}
+
+    
   
   ngOnInit() {
     this.meetingDetails = {
@@ -52,6 +57,15 @@ export class ViewMeetingMinutesComponent {
         { topic: 'Review project schedule', timeTaken: '09:00-09:15', presentedBy: 'hari' , description:'worked'},
       ]
     };
+
+    //api call to get data
+    this.api.getMeetingMinutes(this.meetingMinutesId).subscribe((data) => {
+      console.log(data.employeeName);
+      this.meetingDetails = data;
+    });
+  console.log('meetingMinutesId',localStorage.getItem('meetingMinutesId'));
+  console.log('MeetId',localStorage.getItem('meetingMinutesId'));
   }
+  
 }
   

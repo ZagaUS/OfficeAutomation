@@ -10,6 +10,10 @@ export class LandingPageComponent {
   @Input() title?: string;
   moduleInfo = [
     {
+      cardName: 'Hiring Process',
+      link: '/hiring-page',
+    },
+    {
       cardName: 'Employee Onboarding',
       link: '/employeedashboard',
     },

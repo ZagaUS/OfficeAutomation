@@ -140,4 +140,21 @@ export class ApiServicesService {
         `/projectDetails/document/deleteById?documentId=${weeklyTimesheetId}&documentType=${timesheetType}`
     );
   }
+
+  getMeetingList(projectId:any){
+    return this.http.get<any>(
+      this.projectMgtUrl +
+     `/meetingMinutes/getMeetingMinutesByProjectId/${projectId}`
+  )}
+
+createMeetingMinutes(customValue:any){
+  return this.http.post(
+    this.projectMgtUrl + "/meetingMinutes/createMeetingMinutes",customValue
+  )}
+
+  getMeetingMinutes(meetingMinutesId:any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/meetingMinutes/getMeetingMinutesByMeetingMinutesId/${meetingMinutesId}`
+  )}
+
 }

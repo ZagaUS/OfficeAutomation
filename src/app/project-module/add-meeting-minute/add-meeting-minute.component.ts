@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ApiServicesService } from 'src/app/base-api/api-services.service';
 
 export interface Attendees {
   name: string;
@@ -18,8 +19,10 @@ export class AddMeetingMinuteComponent {
   attendeesForm: FormGroup;
   projectId?: any = localStorage.getItem('projectId');
   projectName?: any = localStorage.getItem('projectName');
+  meetingMinutesId?: string;
 
   constructor(private fb: FormBuilder,
+    private api: ApiServicesService,
     private router: Router,) {
     this.meetingForm = this.fb.group({
       employeeName: [''],
@@ -102,6 +105,11 @@ export class AddMeetingMinuteComponent {
     };
   
     console.log("finalOutput", meetingFormValue);
+    this.api.createMeetingMinutes(meetingFormValue).subscribe((data:any) => {
+      console.log("data updated",data);
+      // console.log(localStorage.getItem('meetingMinutesId'));
+
+  });
     alert("updated sucessfully");
     this.router.navigate(['meetingMinutes']);
   }

@@ -41,10 +41,10 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class MeetingMinuteComponent {
     
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
-  // dataSource?: any;
+  dataSource?: any;
   ELEMENT_DATA?: any[];
-    dataSource?: any = new MatTableDataSource(ELEMENT_DATA);
-  // categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
+    // dataSource?: any = new MatTableDataSource(ELEMENT_DATA);
+    projectId?: any = localStorage.getItem('projectId');
   displayedColumns: string[] = [
     'projectId',
     'projectName',
@@ -61,12 +61,12 @@ export class MeetingMinuteComponent {
 
   ngOnInit(): void {
     console.log("Im'in");
-    // console.log("Im'in");
-    // this.api.getListOfProjects().subscribe((data) => {
-      // console.log('List of projects ' + JSON.stringify(data));
-      // this.dataSource = new MatTableDataSource(data);
-      // this.ELEMENT_DATA = data;
-    // });
+    console.log("projectid", this.projectId);
+    this.api.getMeetingList(this.projectId).subscribe((data) => {
+      console.log('List of projects ' + JSON.stringify(data));
+      this.dataSource = new MatTableDataSource(data);
+      this.ELEMENT_DATA = data;
+    });
   }
 
   applyFilter(event: Event) {
@@ -76,10 +76,12 @@ export class MeetingMinuteComponent {
   }
 
 
-  viewProject(projectId?: any, projectName?: any) {
+  viewMeeting(projectId?: any, projectName?: any, meetingMinutesId?:any) {
     console.log('viewProject', projectId);
     localStorage.setItem('projectId', projectId);
     localStorage.setItem('projectName', projectName);
+    localStorage.setItem('meetingMinutesId', meetingMinutesId);
+    console.log('MeetId',localStorage.getItem('meetingMinutesIds'));
     // this.router.navigate(['/projectModule']);
     this.router.navigate(['/viewMeeting']);
   }

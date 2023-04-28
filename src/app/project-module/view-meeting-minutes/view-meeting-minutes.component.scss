@@ -12,14 +12,18 @@ h1 {
   
   /* Style for the attendee list */
   ul {
-    list-style-type: none;
+    list-style-type: none!important;
     margin: 0;
     padding: 0;
+    list-style-type: none;
   }
   
   li {
     font-size: 16px;
     margin-bottom: 5px;
+    list-style-type: none!important;
+    
+    
   }
   
   li:before {
