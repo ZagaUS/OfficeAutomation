@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HiringPageComponent } from './hiring-page/hiring-page.component';
 import { HiringProcessComponent } from './hiring-process.component';
 import { PamWorkflowComponent } from './pam-workflow/pam-workflow.component';
+import { ViewTrackHiringWorkflowComponent } from './view-track-hiring-workflow/view-track-hiring-workflow.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
         path: 'pamProcess',
         component: PamWorkflowComponent,
       },
+      {
+        path: 'viewTrackHiringWorkflow',
+        component: ViewTrackHiringWorkflowComponent,
+      }
     ],
   },
 ];

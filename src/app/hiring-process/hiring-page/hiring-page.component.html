@@ -1,13 +1,5 @@
-<!-- <mat-toolbar-row class="center-row">
-  <div class="hiringbtnStyle">
-    <span class="toolbar-title">HIRING PROCESS</span>
-    <button mat-raised-button (click)="showProcesses()" class="btnStyle">
-      Ongoing process
-    </button>
-  </div>
-</mat-toolbar-row> -->
 <div class="hiringbtnStyle">
-  <button mat-raised-button routerLink="pamProcess" class="btnStyle">
+  <button mat-raised-button routerLink="pamProcess" class="btns">
     Ongoing process
   </button>
 </div>
@@ -19,7 +11,7 @@
       </h1>
 
       <div class="form-fields">
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="custom-placeholder">
           <mat-label>Candidate Name</mat-label>
           <input
             matInput
@@ -29,7 +21,7 @@
           />
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="custom-placeholder">
           <mat-label>Email ID</mat-label>
           <input
             matInput
@@ -40,7 +32,7 @@
           />
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="custom-placeholder">
           <mat-label>Designation</mat-label>
           <input
             matInput
@@ -50,7 +42,7 @@
           />
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="custom-placeholder">
           <mat-label>Experience</mat-label>
           <input
             matInput
@@ -61,7 +53,7 @@
           />
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="custom-placeholder">
           <mat-label>Applied Date</mat-label>
           <input
             matInput
@@ -71,13 +63,14 @@
             name="appliedDate"
           />
           <mat-datepicker-toggle
+          style=" color:#074a6e "
             matSuffix
             [for]="datePicker"
           ></mat-datepicker-toggle>
           <mat-datepicker #datePicker></mat-datepicker>
         </mat-form-field>
 
-        <div class="upload-container">
+        <div class="upload-container" >
           <mat-label>Resume</mat-label>
           <button
             style="margin-left: 5px"
@@ -93,12 +86,15 @@
             (change)="onFileInput(fileInput.files)"
           />
           <button
-            style="margin-left: 30px"
-            [disabled]="!file"
+            style="margin-left: 30px;"
+            [disabled]=""
             type="submit"
+            color="primary"
             mat-raised-button
+            routerLink="viewTrackHiringWorkflow"
             (click)="onSubmit()"
-          >
+          >   
+          <!-- !file to be in disabled -->
             Submit
           </button>
         </div>

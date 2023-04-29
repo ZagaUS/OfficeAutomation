@@ -19,12 +19,14 @@ import {
 import { HiringProcessComponent } from './hiring-process.component';
 import { PamWorkflowComponent } from './pam-workflow/pam-workflow.component';
 import { MatCardModule } from '@angular/material/card';
+import { ViewTrackHiringWorkflowComponent } from './view-track-hiring-workflow/view-track-hiring-workflow.component';
 
 @NgModule({
   declarations: [
     HiringPageComponent,
     HiringProcessComponent,
     PamWorkflowComponent,
+    ViewTrackHiringWorkflowComponent,
   ],
   imports: [
     CommonModule,
