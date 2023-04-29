@@ -1,0 +1,104 @@
+<div class="hiringbtnStyle">
+  <button mat-raised-button routerLink="pamProcess" class="btns">
+    Ongoing process
+  </button>
+</div>
+<mat-card class="card">
+  <mat-card-content>
+    <div class="upload-input">
+      <h1 style="margin-left: 35%; font-weight: bold; color: #074a6e">
+        Candidate Information
+      </h1>
+
+      <div class="form-fields">
+        <mat-form-field appearance="outline" class="custom-placeholder">
+          <mat-label>Candidate Name</mat-label>
+          <input
+            matInput
+            placeholder="Candidate Name"
+            [(ngModel)]="candidateName"
+            name="candidateName"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="custom-placeholder">
+          <mat-label>Email ID</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Email ID"
+            [(ngModel)]="emailId"
+            name="emailId"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="custom-placeholder">
+          <mat-label>Designation</mat-label>
+          <input
+            matInput
+            placeholder="Designation"
+            [(ngModel)]="designation"
+            name="designation"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="custom-placeholder">
+          <mat-label>Experience</mat-label>
+          <input
+            matInput
+            type="number"
+            placeholder="Experience (in years)"
+            [(ngModel)]="experience"
+            name="experience"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="custom-placeholder">
+          <mat-label>Applied Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="datePicker"
+            placeholder="Date"
+            [(ngModel)]="appliedDate"
+            name="appliedDate"
+          />
+          <mat-datepicker-toggle
+          style=" color:#074a6e "
+            matSuffix
+            [for]="datePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="upload-container" >
+          <mat-label>Resume</mat-label>
+          <button
+            style="margin-left: 5px"
+            mat-raised-button
+            (click)="fileInput.click()"
+          >
+            {{ file ? file.name : "Select" }}
+          </button>
+          <input
+            hidden
+            type="file"
+            #fileInput
+            (change)="onFileInput(fileInput.files)"
+          />
+          <button
+            style="margin-left: 30px;"
+            [disabled]=""
+            type="submit"
+            color="primary"
+            mat-raised-button
+            routerLink="viewTrackHiringWorkflow"
+            (click)="onSubmit()"
+          >   
+          <!-- !file to be in disabled -->
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

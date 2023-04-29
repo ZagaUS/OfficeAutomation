@@ -18,13 +18,31 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { ModaltimesheetComponent } from './modaltimesheet/modaltimesheet.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { ModalinvoiceComponent } from './modalinvoice/modalinvoice.component';
+import { ModaldailyweekComponent } from './modaldailyweek/modaldailyweek.component';
+import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MeetingMinuteComponent } from './meeting-minute/meeting-minute.component';
+import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minute.component';
+import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
 
 @NgModule({
   declarations: [
     ProjectModuleComponent,
     ViewProjectdetailsComponent,
     ViewTimesheetComponent,
+    ModaltimesheetComponent,
+    ModalinvoiceComponent,
+    ModaldailyweekComponent,
+    EditTimesheetComponent,
+    MeetingMinuteComponent,
+    AddMeetingMinuteComponent,
+    ViewMeetingMinutesComponent,
   ],
   imports: [
     CommonModule,
@@ -41,8 +59,11 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
-    MatSortModule,
-    NgxExtendedPdfViewerModule,
+    MdbModalModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [ProjectModuleComponent],

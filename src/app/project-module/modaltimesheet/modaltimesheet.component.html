@@ -1,0 +1,37 @@
+<div class="mat-dialog-container">
+  <button class="close-button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h2>Generate Timesheet</h2>
+  <form [formGroup]="contactForm">
+    <mat-form-field appearance="outline">
+      <mat-label>StartDate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="startDatePicker"
+        placeholder="Start Date"
+        formControlName="startDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>EndDate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        placeholder="End Date"
+        formControlName="endDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="onGenerateClick()">Generate</button>
+</div>

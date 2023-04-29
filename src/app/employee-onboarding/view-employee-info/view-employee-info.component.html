@@ -1,0 +1,146 @@
+<div class="card">
+  <h2 class="card-header">EMPLOYEE INFORMATION</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
+    <div>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_NAME</mat-label>
+        <input
+          matInput
+          placeholder="Employee Name"
+          formControlName="employeeName"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_ID</mat-label>
+        <input
+          matInput
+          placeholder="Employee ID"
+          formControlName="employeeId"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_ROLE</mat-label>
+        <input
+          matInput
+          placeholder="Employee Role"
+          formControlName="employeeRole"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">JOB TITLE</mat-label>
+        <input
+          matInput
+          placeholder="JobTitle"
+          formControlName="jobTitle"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">DATE_OF_JOINING</mat-label>
+        <input
+          matInput
+          placeholder="Date of Joining"
+          formControlName="dateOfJoining"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE EMAIL</mat-label>
+        <input
+          matInput
+          placeholder="EmployeeEmail"
+          formControlName="employeeEmail"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">PASSWORD</mat-label>
+        <input
+          matInput
+          placeholder="Password"
+          formControlName="password"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">DEPARTMENT</mat-label>
+        <input
+          matInput
+          placeholder="Department"
+          formControlName="department"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+       <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">REPORTING MANAGER</mat-label>
+        <input
+          matInput
+          placeholder="ReportingManager"
+          formControlName="reportingManager"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE STATUS</mat-label>
+        <input
+          matInput
+          placeholder="EmployeeStatus"
+          formControlName="employeeStatus"
+          [readonly]="isReadOnly"
+          class="form-field"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">OVERALL EXPERIENCE</mat-label>
+        <input
+          matInput
+          placeholder="Over all Experience"
+          formControlName="overallExperience"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>   
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">PROJECT ASSIGNMENT</mat-label>
+        <input
+          matInput
+          placeholder="Project Assignment Status"
+          formControlName="projectAssignmentStatus"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+    </div>
+   </form>
+   <div style="display: flex;flex-direction: row;">
+   <button class ="button"
+   mat-raised-button
+   color="primary"
+   type="submit"
+   [disabled]="isReadOnly"
+ >
+   Submit
+ </button>
+ <button style="margin-left: 10px;" class ="button"
+ mat-raised-button
+ color="primary"
+ type="button"
+ (click)="onEdit()"
+ *ngIf="isReadOnly"
+>
+ Edit
+</button>
+</div>
+</div>

@@ -1,0 +1,60 @@
+<div style="margin: 20px auto; max-width: 800px; padding: 20px;">
+  <h1 style="font-size: 2.0rem;font-weight: bold; margin-bottom: 2rem; margin-left: 150px;color: #074a6e;">
+    MEETING MINUTES - {{meetingDetails.date}}
+  </h1>
+  <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 250px;color: #074a6e;">
+    {{ meetingDetails.projectName | uppercase }} - {{ meetingDetails.employeeName }}
+</h1>
+  
+  <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
+    <div>
+      <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Meeting ID:</p>
+      <p>{{ meetingDetails.meetingMinutesId }}</p>
+    </div>
+    <div>
+      <p style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</p>
+      <p>{{ meetingDetails.date }}</p>
+    </div>
+    <div>
+      <p style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</p>
+      <p>{{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
+    </div>
+  </div>
+  <div style="margin-bottom: 1rem;">
+    <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Meeting Objective:</h2>
+    <p>{{ meetingDetails.meetingObjective }}</p>
+  </div>
+  
+  <div style="margin-bottom: 1rem;">
+    <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
+    <div *ngFor="let attendee of meetingDetails.attendeesPresent">
+      {{ attendee.name }} ({{ attendee.organization.toUpperCase() }})
+    </div>
+  </div>
+  <div>
+    <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
+    <ul style="list-style: none;">
+      <div *ngFor="let item of meetingDetails.agenda" style="list-style: none;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+          <div>
+            <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Topic:</p>
+            <p>{{ item.topic }}</p>
+          </div>
+          <div>
+            <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Presented by:</p>
+            <p>{{ item.presentedBy }}</p>
+          </div>
+          <div>
+            <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Time Taken:</p>
+            <p>{{ item.timeTaken }}</p>
+          </div>
+          <div>
+        <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description:</p>
+        <p>{{ item.description }}</p>
+      </div>
+
+      </div>
+      </div>
+    </ul>
+  </div>
+</div>

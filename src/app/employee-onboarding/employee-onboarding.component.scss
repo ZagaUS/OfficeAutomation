@@ -1,0 +1,49 @@
+.center-row {
+  flex-grow: 1;
+  display: flex;
+  background: linear-gradient(to bottom, #055d8c, #055d8c);
+
+}
+
+ .example-sidenav {
+  width: 250px;
+}
+
+.example-sidenav {
+  background: linear-gradient(to bottom, #033e79 0%, #43b2ee 100%);
+  
+}
+
+mat-nav-list a {
+  color: #fff;
+  text-decoration: double;
+  font-weight: bold!important;
+  font-family: Arial, sans-serif; 
+  transition: all 0.2s ease-in-out;
+}
+
+
+mat-nav-list a:hover {
+  // color: #ff9800;
+  background: linear-gradient(to bottom, #0a73dd 0%, #074a6e 100%);
+  transform: translateY(-3px);
+}
+
+mat-nav-list a:focus {
+  outline: none;
+}
+
+
+.toolbar-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+mat-icon-button {
+  color: #fff!important;
+}
+
+.mat-sidenav {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  
+}

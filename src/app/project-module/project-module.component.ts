@@ -16,16 +16,15 @@ export class ProjectModuleComponent {
   navRouting: any = [
     {
       name: 'Project Details',
-      link: '/projectModule/:id',
+      link: '/projectModule',
     },
     {
       name: 'Timesheet',
       link: 'timesheet',
     },
     {
-      name: 'Meeting minnutes',
+      name: 'Meeting Minutes',
       link: 'meetingMinutes',
-      route: this.route,
     },
   ];
 
@@ -36,8 +35,8 @@ export class ProjectModuleComponent {
   ];
 
   ngOnInit(): void {
-    this.projectId = this.route.snapshot.paramMap.get('projectId');
-    console.log(`projectId: ${this.projectId}`);
+    console.log('Project ID ' + localStorage.getItem('projectId'));
+    console.log('Project Name ' + localStorage.getItem('projectName'));
   }
 
   pageRoute() {

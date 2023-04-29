@@ -1,0 +1,70 @@
+
+.center-row {
+    flex-grow: 1;
+    display: flex;
+    background: linear-gradient(to bottom, #055d8c, #055d8c);
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .toolbar-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+.btnStyle {
+  color: #000;
+  // margin-left: 80%;
+  margin: 1% 0 1% 85%;
+}
+.btns {
+    // float: right;
+    align-items: center;
+    margin-left: 10px;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    background: linear-gradient(to bottom, #074a6e , #074a6e );
+    color: #f3eeee!important;
+    margin: 1% 0 1% 85%;     
+ }
+.card {
+    width: 60%;
+    // margin-top: 10%;
+    margin: auto;
+  }
+  
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field {
+    width: 50%;
+  }
+  
+  .mat-form-field-label {
+    color: #074a6e;
+    font-weight: bold; 
+    font-size: 16px; 
+  }
+
+  .custom-placeholder ::placeholder {
+    color: #074a6e;
+  }
+ 
+  .upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .upload-container button:first-child {
+    margin-right: 5px;
+    background: linear-gradient(to bottom, #074a6e , #074a6e );
+  }
+  

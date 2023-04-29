@@ -1,0 +1,73 @@
+<div
+  class="card"
+>
+<h2 class="card-header">DAYOFF</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
+    <div>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_ID</mat-label>
+        <input
+          matInput
+          placeholder="EmployeeId"
+          formControlName="employeeId"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_NAME</mat-label>
+        <input
+          matInput
+          placeholder="EmployeeName"
+          formControlName="employeeName"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">ALLOCATED LEAVE</mat-label>
+        <input
+          matInput
+          placeholder="AllocatedLeave"
+          formControlName="allocatedLeave"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">USED</mat-label>
+        <input
+          matInput
+          placeholder="Used"
+          formControlName="used"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">BALANCE</mat-label>
+        <input
+          matInput
+          placeholder="Balance"
+          formControlName="balance"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+    </div>
+  </form>
+    <div style="display: flex;flex-direction: row;">
+    <button
+    class="button"
+      mat-raised-button
+       type="submit"
+      [disabled]="isReadOnly"
+    >
+      Submit
+    </button>
+    <button
+      class="button" style="margin-left: 10px;"
+      mat-raised-button
+      type="button"
+      (click)="onEdit()"
+      *ngIf="isReadOnly"
+    >
+      Edit
+    </button>
+  </div>
+</div>

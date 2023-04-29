@@ -13,9 +13,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectDashboardComponent } from './project-dashboard/project-dashboard.component';
-// import { ViewProjectdetailsComponent } from './projectModule/view-projectdetails/view-projectdetails.component';
-// import { TimesheetComponent } from './projectModule/timesheet/timesheet.component';
-// import { MeetingMinutesComponent } from './projectModule/meeting-minutes/meeting-minutes.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -23,20 +20,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-// import { ProjectSidenavComponent } from './projectModule/project-sidenav/project-sidenav.component';
 import { ProjectModuleModule } from './project-module/project-module.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSliderModule } from '@angular/material/slider';
+import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProjectDashboardComponent,
-    // ViewProjectdetailsComponent,
-    // TimesheetComponent,
-    // MeetingMinutesComponent,
     LandingPageComponent,
-    // ProjectSidenavComponent,
+    EmployeeDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +56,12 @@ import { HttpClientModule } from '@angular/common/http';
     ProjectModuleModule,
     HttpClientModule,
     MatToolbarModule,
+    MdbModalModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

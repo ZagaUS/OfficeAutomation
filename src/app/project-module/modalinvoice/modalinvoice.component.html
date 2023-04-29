@@ -1,0 +1,198 @@
+<div class="mat-dialog-container">
+  <button class="close-button" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <h2>Generate Invoice</h2>
+  <form [formGroup]="contactForm">
+    <mat-form-field *ngIf="!invoiceGenerated" appearance="outline">
+      <mat-label>ProjectName</mat-label>
+      <input
+        matInput
+        placeholder="Project Name"
+        formControlName="projectName"
+      />
+    </mat-form-field>
+    <mat-form-field *ngIf="!invoiceGenerated" appearance="outline">
+      <mat-label>StartDate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="startDatePicker"
+        placeholder="Start Date"
+        formControlName="startDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="startDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #startDatePicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field *ngIf="!invoiceGenerated" appearance="outline">
+      <mat-label>EndDate</mat-label>
+      <input
+        matInput
+        [matDatepicker]="endDatePicker"
+        placeholder="End Date"
+        formControlName="endDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="endDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #endDatePicker></mat-datepicker>
+    </mat-form-field>
+    <!-- <div class="categoryContainer">
+      <mat-radio-group *ngIf="!invoiceGenerated"
+        aria-labelledby="label"
+        class="radioGroup"
+        formControlName="category"
+      >
+        <mat-radio-button
+          class="radiobtn"
+          *ngFor="let category of categories"
+          [value]="category"
+        >
+          {{ category }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div> -->
+  </form>
+
+  <div>
+    <button
+      mat-raised-button
+      (click)="onGenerateClick()"
+      *ngIf="!invoiceGenerated"
+    >
+      Next
+    </button>
+    <div *ngIf="invoiceGenerated" class="invoice-details">
+      <!-- <h2>Invoice Details</h2> -->
+      <mat-form-field *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>ClientAddress</mat-label>
+        <input
+          matInput
+          placeholder="ClientAddress"
+          [(ngModel)]="clientAddress"
+          [readonly]="!editMode"
+          [value]="clientAddress"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>PayOrder</mat-label>
+        <input
+          matInput
+          placeholder="PayOrder"
+          [(ngModel)]="payOrder"
+          [readonly]="!editMode"
+          [value]="payOrder"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>SFDC</mat-label>
+        <input
+          matInput
+          placeholder="SFDC"
+          [(ngModel)]="sfdc"
+          [readonly]="!editMode"
+          [value]="sfdc"
+        />
+      </mat-form-field>
+    </div>
+    <div class="invoice-details">
+      <mat-form-field *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>PA</mat-label>
+        <input
+          matInput
+          placeholder="PA"
+          [(ngModel)]="pa"
+          [readonly]="!editMode"
+          [value]="pa"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>TotalManDays</mat-label>
+        <input
+          matInput
+          placeholder="TotalManDays"
+          [(ngModel)]="totalManDays"
+          [readonly]="!editMode"
+          [value]="totalManDays"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>ManDays</mat-label>
+        <input
+          matInput
+          placeholder="ManDays"
+          [(ngModel)]="manHours"
+          [readonly]="!editMode"
+          [value]="manHours"
+        />
+      </mat-form-field>
+    </div>
+    <div class="invoice-details">
+      <mat-form-field *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>InvoiceAmount</mat-label>
+        <input
+          matInput
+          placeholder="InvoiceAmount"
+          [(ngModel)]="invoiceAmount"
+          [readonly]="!editMode"
+          [value]="invoiceAmount | currency"
+        />
+      </mat-form-field>
+      <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>TotalInvoiceAmount</mat-label>
+        <input
+          matInput
+          placeholder="TotalInvoiceAmount"
+          [(ngModel)]="totalInvoiceAmount"
+          [readonly]="!editMode"
+          [value]="totalInvoiceAmount | currency"
+        />
+      </mat-form-field>
+      <!-- <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+        <mat-label>Rate</mat-label>
+        <input
+          matInput
+          placeholder="rate"
+          [(ngModel)]="rate"
+          [readonly]="!editMode"
+          [value]="rate | currency"
+        />
+      </mat-form-field> -->
+      <mat-form-field *ngIf="invoiceGenerated" style="margin-left: 10px" appearance="outline">
+        <mat-label>Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="endDatePicker"
+          placeholder="Date"
+          [(ngModel)]="date"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button
+      style="margin-left: 150px"
+      *ngIf="invoiceGenerated"
+      mat-raised-button
+      color="primary"
+      (click)="editInvoice()"
+    >
+      Edit
+    </button>
+    <button
+      style="margin-left: 40px"
+      *ngIf="invoiceGenerated"
+      mat-raised-button
+      color="primary"
+      (click)="onClickInvoiceSave()"
+    >
+      Generate Invoice PDF
+    </button>
+  </div>
+</div>

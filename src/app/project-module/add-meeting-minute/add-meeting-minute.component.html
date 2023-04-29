@@ -1,0 +1,92 @@
+   <h1>MEETING MINUTES</h1>
+   <form [formGroup]="meetingForm" (ngSubmit)="onSubmit()">
+    <label style="margin-top: 30px;color: #074a6e;">
+      EMPLOYEE NAME
+      <input type="text" formControlName="employeeName">
+    </label>
+  
+    <label>
+      PROJECT NAME
+      <input type="text" formControlName="projectName">
+    </label>
+  
+    <label>
+      PROJECT ID
+      <input type="text" formControlName="projectId">
+    </label>
+    
+  
+    <label>
+      MEETING MINUTES ID
+      <input type="text" formControlName="meetingMinutesId">
+    </label>
+    
+    <div style="display: flex; flex-direction: row;">
+      <label style="display: flex; flex-direction: column;">
+        DATE
+        <input type="date" formControlName="date">
+      </label>
+    
+      <label style="display: flex; flex-direction: column;margin-left: 30px;">
+        START TIME
+        <input type="time" formControlName="startTime">
+      </label>
+    
+      <label style="display: flex; flex-direction: column;margin-left: 30px;">
+        END TIME
+        <input type="time" formControlName="endTime">
+      </label>
+    </div>
+    
+  
+    <label>
+      MEETING OBJECTIVE
+      <textarea formControlName="meetingObjective"></textarea>
+    </label>
+    
+    <label>
+      AGENDA:
+      <div formArrayName="agenda">
+        <div style="margin-top: 10px;"*ngFor="let item of agendaItems.controls; let i=index" [formGroupName]="i">
+          <label>
+            TOPIC
+            <input formControlName="topic" class="form-control">
+          </label>
+          <label>
+            TIME TAKEN
+            <input formControlName="timeTaken" class="form-control">
+          </label>
+          <label>
+            PRESENTED BY
+            <input formControlName="presentedBy" class="form-control">
+          </label>
+          <label>
+            DESCRIPTION
+          </label>
+            <textarea formControlName="description">
+            </textarea>
+        </div>
+      </div>
+    </label>
+
+
+    
+    <label>
+      ATTENDEES PRESENT:
+      <div formArrayName="attendeesPresent">
+        <div style="margin-top: 10px;" *ngFor="let attendee of attendeesPresentItems.controls; let i=index" [formGroupName]="i">
+          <label>
+            NAME
+            <input type="text" formControlName="name">
+          </label>
+          <label>
+            ORGANIZATION
+            <input type="text" formControlName="organization">
+          </label>
+        </div>
+      </div>
+    </label>
+  
+    <button style="margin-bottom: 20px;" type="submit">Submit</button>
+  </form>
+  

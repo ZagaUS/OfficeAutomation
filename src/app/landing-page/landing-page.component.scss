@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  height: 100vh;
+}
+
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center; /* Add this line */
+}
+
+.square-card {
+  width: 260px;
+  height: 260px;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex; /* Add this line */
+  flex-direction: column; /* Add this line */
+  justify-content: center; /* Add this line */
+}
+
+.mat-card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  display: flex; /* Add this line */
+  align-items: center; /* Add this line */
+  justify-content: center; /* Add this line */
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Add this line */
+}
+
+.col-md-12 {
+  max-width: 1200px;
+}

@@ -1,0 +1,150 @@
+<div class="mat-dialog-container">
+  <h2>Create Timesheet</h2>
+  <button class="close-button" color="primary" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+  <div>
+    <button mat-raised-button color="primary" (click)="onClickDaily()">
+      Daily
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      style="margin-left: 10px"
+      (click)="onClickExternal()"
+    >
+      External
+    </button>
+  </div>
+  <!-- <form [formGroup]="contactForm"> -->
+  <div *ngIf="showDaily || showExternal" class="showDailyContent">
+    <mat-form-field *ngIf="showDaily" appearance="outline">
+      <mat-label>ProjectName</mat-label>
+      <input matInput placeholder="ProjectName" [(ngModel)]="projectName" />
+    </mat-form-field>
+    <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
+      <mat-label>Duration</mat-label>
+      <input matInput placeholder="hours" [(ngModel)]="duration" />
+    </mat-form-field>
+    <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Description" [(ngModel)]="description" />
+    </mat-form-field>
+  </div>
+
+  <div class="showDailyContent">
+    <mat-form-field *ngIf="showDaily" appearance="outline">
+      <mat-label>SupportTicket</mat-label>
+      <input matInput placeholder="SupportTicket" [(ngModel)]="supportTicket" />
+    </mat-form-field>
+    <!-- <mat-form-field style="margin-left: 10px" *ngIf="showDaily">
+      <input matInput placeholder="ClientOwners" [(ngModel)]="clientOwners" />
+    </mat-form-field> -->
+    <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
+      <mat-label>ClientOwners</mat-label>
+      <input matInput placeholder="ClientOwners" [(ngModel)]="clientOwner" />
+    </mat-form-field>
+
+    <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
+      <mat-label>RedHatOwners</mat-label>
+      <input matInput placeholder="RedHatOwners" [(ngModel)]="redhatOwner" />
+    </mat-form-field>
+  </div>
+  <mat-form-field *ngIf="showDaily" appearance="outline">
+    <mat-label>Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="endDatePicker"
+      placeholder="Date"
+      [(ngModel)]="date"
+    />
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="endDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #endDatePicker></mat-datepicker>
+  </mat-form-field>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onClickDailySave()"
+    *ngIf="showDaily"
+  >
+    Create Daily
+  </button>
+  <div class="showExternalContent">
+    <form [formGroup]="contactForm">
+      <div class="uploadbtn">
+        <mat-form-field *ngIf="showExternal" appearance="outline">
+          <mat-label>Upload file</mat-label>
+          <input
+            matInput
+            placeholder="File Name"
+            formControlName="fileName"
+            [value]="fileName"
+          />
+        </mat-form-field>
+        <div *ngIf="showExternal" style="margin-left: 20px">
+          <input
+            type="file"
+            (change)="onFileSelected($event)"
+            hidden
+            #fileInput
+            formControlName="uploadfile"
+          />
+          <button
+            mat-button
+            type="button"
+            style="padding: 30px"
+            (click)="fileInput.click()"
+          >
+            Choose File
+          </button>
+        </div>
+      </div>
+      <mat-form-field *ngIf="showExternal" appearance="outline">
+        <mat-label>Hours</mat-label>
+        <input matInput placeholder="hours" formControlName="hours" />
+      </mat-form-field>
+      <mat-form-field *ngIf="showExternal" appearance="outline">
+        <mat-label>StartDate</mat-label>
+        <input
+          matInput
+          [matDatepicker]="startDatePicker"
+          placeholder="startDate"
+          formControlName="startDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="startDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field *ngIf="showExternal" appearance="outline">
+        <mat-label>EndDate</mat-label>
+        <input
+          matInput
+          [matDatepicker]="endDatePicker"
+          placeholder="Enddate"
+          formControlName="endDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
+      </mat-form-field>
+    </form>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onClickExternalSave()"
+      *ngIf="showExternal"
+    >
+      Submit External
+    </button>
+  </div>
+</div>
+<!-- </form> -->
+<!-- <button mat-raised-button (click)="onGenerateClick()">Generate</button> -->
+<!-- </div> -->

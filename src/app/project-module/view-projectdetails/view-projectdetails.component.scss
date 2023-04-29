@@ -1,73 +1,76 @@
-// Card CSS
-
-  
-.container {
-  margin: 100px;
+.project-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 20px;
   display: flex;
-  flex-direction: column;
-}
-
-.form-field-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.form-field-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 8px;
-}
-
-
-.loginbtn {
-  display: flex;
-  left: 43%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .card-header {
+  font-size: 24px;
+  color: #333;
   text-align: center;
-  padding: 30px;
-  top: 30px;
-  padding-bottom: 10px;
+  font-weight: bold;
+  margin-bottom: 30px;
 }
 
-.card-header1 {
-  text-align: center;
-  padding: 30px;
-  top: 30px;
-  padding-bottom: 10px;
+.form-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-//  .example-card {
-//    width: 50%;
-//    // padding: 25px;
-//    position: absolute;
-//    left: 0%;
-//    top: 0%;
-//  }
-
-.example-card2 {
-  width: 80%;
-  // padding: 50px;
-  position: absolute;
-  left: 10%;
-  top: 0%;
-}
-/* Editable styles */
-/* Editable styles */
-.mat-form-field-wrapper input.editable,
-.mat-form-field-wrapper textarea.editable {
- background-color: #ffffff;
- border: 1px solid #ced4da;
- color: #495057;
+.form-field {
+  width: 45%;
+  margin-bottom: 20px;
+  margin-left: 1%;
 }
 
-/* Readonly styles */
-.mat-form-field-wrapper input.readonly,
-.mat-form-field-wrapper textarea.readonly {
- background-color: #e9ecef;
- border: 1px solid #ced4da;
- color: #868e96;
+.form-label {
+     font-size: 18px;
+    color: #2a05e5;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+
+.form-input {
+  font-size: 16px;
+  // color: #333;
+  line-height: 1.5;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  width: 100%;
+}
+
+.form-input.editable {
+  border-color: #666;
+}
+
+.form-button {
+  width: 200px; /* set a specific width */
+  margin-top: 20px;
+  margin: 0 auto; /* center horizontally */
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(to bottom, #0a73dd 0%, #074a6e 100%);
+  color: #fff;
+  // background-color: #007bff;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* add transform transition */
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); /* animate scale on hover */
 }

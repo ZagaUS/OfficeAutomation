@@ -1,35 +1,33 @@
-<mat-card class="example-card2">
-  <mat-card-title class="card-header1">Project Details</mat-card-title>
-  <div class="container">
-    <ng-container *ngFor="let item of data[0] | keyvalue">
+<!-- <div style="background-color: aqua; width: 100%;"> -->
+<mat-card class="project-card">
+  <mat-card-title class="card-header">Project Details</mat-card-title>
+  <div class="form-container">
+    <ng-container *ngFor="let item of data | keyvalue">
       <mat-form-field
-        style="padding-bottom: 5px"
-        appearance="fill"
+        class="form-field"
+        appearance="outline"
         [class.readonly]="readonly"
       >
-        <mat-label>{{ item.key }}</mat-label>
+        <mat-label class="form-label">{{ item.key }}</mat-label>
         <input
           matInput
-          placeholder="Input placeholder"
+          placeholder=" "
           [(ngModel)]="item.value"
           [class.editable]="!editable"
-          [class.readonly]="readonly"
+          [readonly]="readonly"
           [ngModelOptions]="{ updateOn: 'blur' }"
-          (ngModelChange)="formData[item.key] = item.value"
-          value="{{ item.value }}"
+          (blur)="updateFormData(item.key, item.value.toString())"
+          class="form-input"
         />
       </mat-form-field>
     </ng-container>
-    <p>
-      <button
-        mat-raised-button
-        color="primary"
-        class="loginbtn"
-        (click)="editable ? submitForm(formData) : edit()"
-      >
-        {{ editable ? "SUBMIT" : "EDIT" }}
-      </button>
-    </p>
+    <button
+      mat-raised-button
+      class="form-button"
+      (click)="editable ? submitForm(formData) : edit()"
+    >
+      {{ editable ? "SUBMIT" : "EDIT" }}
+    </button>
   </div>
   <mat-card-actions style="text-align: center"> </mat-card-actions>
 </mat-card>

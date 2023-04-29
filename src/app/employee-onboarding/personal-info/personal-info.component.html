@@ -1,0 +1,128 @@
+<div class="card">
+  <h2 class="card-header">PERSONAL INFORMATION</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form">
+    <div>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_NAME</mat-label>
+        <input
+          matInput
+          placeholder="Employee Name"
+          formControlName="employeeName"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMPLOYEE_ID</mat-label>
+        <input
+          matInput
+          placeholder="Employee ID"
+          formControlName="employeeId"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">NATIONALITY</mat-label>
+        <input
+          matInput
+          placeholder="Employee Role"
+          formControlName="nationality"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">DATE_OF_BIRTH</mat-label>
+        <input
+          matInput
+          placeholder="Date of Joining"
+          formControlName="dateOfBirth"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">GENDER</mat-label>
+        <input
+          matInput
+          placeholder="Gender"
+          formControlName="gender"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">LANGUAGE</mat-label>
+        <input
+          matInput
+          placeholder="Education"
+          formControlName="language"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">BlOOD GROUP</mat-label>
+        <input
+          matInput
+          placeholder="Years of Experience"
+          formControlName="bloodGroup"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">PERSONAL EMAIL</mat-label>
+        <input
+          matInput
+          placeholder="Years of Experience"
+          formControlName="personalEmail"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">PERSONAL PHONE</mat-label>
+        <input
+          matInput
+          placeholder="Years of Experience"
+          formControlName="personalPhone"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">EMERGENCY PHONE</mat-label>
+        <input
+          matInput
+          placeholder="Years of Experience"
+          formControlName="emergencyPhone"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label class="label">ADDRESS</mat-label>
+        <input
+          matInput
+          placeholder="Years of Experience"
+          formControlName="address"
+          [readonly]="isReadOnly"
+        />
+      </mat-form-field>
+    </div>
+    </form>
+    <div style="display: flex;flex-direction: row;">
+      <button
+      class ="button"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="isReadOnly"
+      >
+        Submit
+      </button>
+      <button
+      style="margin-left: 10px;"
+      class ="button"
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="onEdit()"
+        *ngIf="isReadOnly"
+      >
+        Edit
+      </button>
+    </div>
+

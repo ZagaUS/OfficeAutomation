@@ -1,0 +1,41 @@
+table {
+   width: 100%;
+ }
+ 
+.mat-mdc-form-field {
+   font-size: 14px;
+   width: 100%;
+}
+
+.tableContainer {
+   margin: 20px;
+}
+
+.actionContainer {
+   display: flex;
+   flex-direction: row;
+}
+
+.icon:hover {
+   cursor: pointer;
+   color: red;
+}
+
+.categoryContainer {
+   margin-bottom: 20px;
+}
+
+.center-row {
+   flex-grow: 1;
+   display: flex;
+   background: linear-gradient(to bottom, #055d8c, #055d8c);
+   color: #fff;
+   font-size: 24px;
+   font-weight: bold;
+ }
+ 
+ 
+ mat-icon-button {
+   color: #fff!important;
+ }
+ 
