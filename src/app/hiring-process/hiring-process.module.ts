@@ -19,9 +19,15 @@ import {
 import { HiringProcessComponent } from './hiring-process.component';
 import { MatCardModule } from '@angular/material/card';
 import { HiringPamDashboardComponent } from './hiring-pam-dashboard/hiring-pam-dashboard.component';
+import { ViewTrackHiringWorkflowComponent } from './view-track-hiring-workflow/view-track-hiring-workflow.component';
 
 @NgModule({
-  declarations: [HiringPageComponent, HiringProcessComponent, HiringPamDashboardComponent],
+  declarations: [
+    HiringPageComponent,
+    HiringProcessComponent,
+    HiringPamDashboardComponent,
+    ViewTrackHiringWorkflowComponent,
+  ],
   imports: [
     CommonModule,
     HiringProcessRoutingModule,

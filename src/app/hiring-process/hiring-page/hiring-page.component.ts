@@ -37,10 +37,7 @@ export class HiringPageComponent {
       file: this.file,
     };
     console.log('Form Data:', formData);
-    // TODO: submit form data to server
+    // alert("updated successfully");
   }
 
-  // showProcesses(){
-  //   this.route.navigate(['/hiring-pam-process']);
-  // }
 }
