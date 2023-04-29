@@ -10,7 +10,7 @@ export class InvoiceApiService {
   constructor(private http: HttpClient) {}
 
   getAllInvoices() {
-    return this.http.get<any>(this.invoiceUrl + '/getAllInvoices');
+    return this.http.get<any>(this.invoiceUrl + 'getAllInvoices');
   }
 
   createInvoice(invoiceData: any) {
