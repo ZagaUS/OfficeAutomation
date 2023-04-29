@@ -17,15 +17,11 @@ import {
   MatDatepickerModule,
 } from '@angular/material/datepicker';
 import { HiringProcessComponent } from './hiring-process.component';
-import { PamWorkflowComponent } from './pam-workflow/pam-workflow.component';
 import { MatCardModule } from '@angular/material/card';
+import { HiringPamDashboardComponent } from './hiring-pam-dashboard/hiring-pam-dashboard.component';
 
 @NgModule({
-  declarations: [
-    HiringPageComponent,
-    HiringProcessComponent,
-    PamWorkflowComponent,
-  ],
+  declarations: [HiringPageComponent, HiringProcessComponent, HiringPamDashboardComponent],
   imports: [
     CommonModule,
     HiringProcessRoutingModule,
