@@ -25,15 +25,22 @@ export class HiringPageComponent {
 
   onSubmit() {
     console.log('Form submitted!');
-    console.log('Candidate Name:', this.candidateName);
-    console.log('Email ID:', this.emailId);
-    console.log('Designation:', this.designation);
-    console.log('Experience:', this.experience);
-    console.log('Applied Date:', this.appliedDate);
-    console.log('File:', this.file);
-  } // TODO: submit form data to server
-
-  showProcesses() {
-    this.route.navigate(['pamProcess']);
+    const localDate = this.appliedDate
+      ? this.appliedDate.toLocaleDateString()
+      : null;
+    const formData = {
+      candidateName: this.candidateName,
+      emailId: this.emailId,
+      designation: this.designation,
+      experience: this.experience,
+      appliedDate: localDate,
+      file: this.file,
+    };
+    console.log('Form Data:', formData);
+    // TODO: submit form data to server
   }
+
+  // showProcesses(){
+  //   this.route.navigate(['/hiring-pam-process']);
+  // }
 }
