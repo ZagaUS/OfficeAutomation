@@ -12,15 +12,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { HiringPamProcessesComponent } from './hiring-pam-processes/hiring-pam-processes.component';
-import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
-
+import {
+  MatDatepicker,
+  MatDatepickerModule,
+} from '@angular/material/datepicker';
+import { HiringProcessComponent } from './hiring-process.component';
+import { PamWorkflowComponent } from './pam-workflow/pam-workflow.component';
 
 @NgModule({
-  declarations: [
-    HiringPageComponent,
-    HiringPamProcessesComponent
-  ],
+  declarations: [HiringPageComponent, HiringProcessComponent, PamWorkflowComponent],
   imports: [
     CommonModule,
     HiringProcessRoutingModule,
@@ -34,7 +34,7 @@ import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
-    MatDatepickerModule
-  ]
+    MatDatepickerModule,
+  ],
 })
-export class HiringProcessModule { }
+export class HiringProcessModule {}

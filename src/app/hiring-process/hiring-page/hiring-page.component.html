@@ -1,56 +1,92 @@
-<mat-toolbar-row class="center-row">
-    <div class="hiringbtnStyle" >
-        <span class="toolbar-title">HIRING PROCESS</span>
-        <button mat-raised-button (click)="showProcesses()"  class="btnStyle" >Ongoing process</button>
-    </div>
-  </mat-toolbar-row>
-  <div class="upload-input">
-    <h1 style="margin-left:5%;font-weight: bold;color:#074a6e">Candidate Information</h1>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Candidate Name</mat-label>
-      <input matInput placeholder="Candidate Name" [(ngModel)]="candidateName" name="candidateName">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Email ID</mat-label>
-      <input matInput type="email" placeholder="Email ID" [(ngModel)]="emailId" name="emailId">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Designation</mat-label>
-      <input matInput placeholder="Designation" [(ngModel)]="designation" name="designation">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Experience</mat-label>
-      <input matInput type="number" placeholder="Experience (in years)" [(ngModel)]="experience" name="experience">
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-        <mat-label>Applied Date</mat-label>
-        <input
-          matInput
-          [matDatepicker]="datePicker"
-          placeholder="Date"
-          [(ngModel)]="appliedDate"
-          name="appliedDate"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="datePicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #datePicker></mat-datepicker>
-      </mat-form-field>
-
-    <div class="upload-container">
-      <mat-label>Resume</mat-label>
-      <button style="margin-left:5px;" mat-raised-button (click)="fileInput.click()">
-        {{ file ? file.name : 'Select' }}
-      </button>
-      <input hidden type="file" #fileInput (change)="onFileInput(fileInput.files)">
-      <button style="margin-left: 30px;" [disabled]="!file" type="submit" mat-raised-button (click)="onSubmit()">
-        Submit
-      </button>
-    </div>
+<!-- <mat-toolbar-row class="center-row">
+  <div class="hiringbtnStyle">
+    <span class="toolbar-title">HIRING PROCESS</span>
+    
   </div>
+</mat-toolbar-row> -->
+<div class="upload-input">
+  <h1 style="margin-left: 5%; font-weight: bold; color: #074a6e">
+    Candidate Information
+  </h1>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Candidate Name</mat-label>
+    <input
+      matInput
+      placeholder="Candidate Name"
+      [(ngModel)]="candidateName"
+      name="candidateName"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email ID</mat-label>
+    <input
+      matInput
+      type="email"
+      placeholder="Email ID"
+      [(ngModel)]="emailId"
+      name="emailId"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Designation</mat-label>
+    <input
+      matInput
+      placeholder="Designation"
+      [(ngModel)]="designation"
+      name="designation"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Experience</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Experience (in years)"
+      [(ngModel)]="experience"
+      name="experience"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Applied Date</mat-label>
+    <input
+      matInput
+      [matDatepicker]="datePicker"
+      placeholder="Date"
+      [(ngModel)]="appliedDate"
+      name="appliedDate"
+    />
+    <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+    <mat-datepicker #datePicker></mat-datepicker>
+  </mat-form-field>
+
+  <div class="upload-container">
+    <mat-label>Resume</mat-label>
+    <button
+      style="margin-left: 5px"
+      mat-raised-button
+      (click)="fileInput.click()"
+    >
+      {{ file ? file.name : "Select" }}
+    </button>
+    <input
+      hidden
+      type="file"
+      #fileInput
+      (change)="onFileInput(fileInput.files)"
+    />
+    <button
+      style="margin-left: 30px"
+      [disabled]="!file"
+      type="submit"
+      mat-raised-button
+      (click)="onSubmit()"
+    >
+      Submit
+    </button>
+  </div>
+</div>

@@ -1,22 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HiringPageComponent } from './hiring-page/hiring-page.component';
-import { HiringPamProcessesComponent } from './hiring-pam-processes/hiring-pam-processes.component';
+import { HiringProcessComponent } from './hiring-process.component';
+import { PamWorkflowComponent } from './pam-workflow/pam-workflow.component';
 
 const routes: Routes = [
   {
-    path : '', component: HiringPageComponent, children: [
-    {
-      path : 'hiring-pam-process', 
-      component: HiringPamProcessesComponent
-    }
-  ] 
-},
-  
+    path: '',
+    component: HiringProcessComponent,
+    children: [
+      {
+        path: '',
+        component: HiringPageComponent,
+      },
+      {
+        path: 'pamProcess',
+        component: PamWorkflowComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class HiringProcessRoutingModule { }
+export class HiringProcessRoutingModule {}

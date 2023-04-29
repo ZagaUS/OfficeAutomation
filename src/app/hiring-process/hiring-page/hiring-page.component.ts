@@ -5,19 +5,16 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-hiring-page',
   templateUrl: './hiring-page.component.html',
-  styleUrls: ['./hiring-page.component.scss']
+  styleUrls: ['./hiring-page.component.scss'],
 })
 export class HiringPageComponent {
-  
- 
- 
   constructor(private route: Router) {}
-  
+
   candidateName: string = '';
   emailId: string = '';
   designation: string = '';
   experience: string = '';
-  appliedDate: Date | null= null;
+  appliedDate: Date | null = null;
   file: File | null = null;
 
   onFileInput(files: FileList | null) {
@@ -25,7 +22,7 @@ export class HiringPageComponent {
       this.file = files.item(0);
     }
   }
-  
+
   onSubmit() {
     console.log('Form submitted!');
     console.log('Candidate Name:', this.candidateName);
@@ -34,16 +31,9 @@ export class HiringPageComponent {
     console.log('Experience:', this.experience);
     console.log('Applied Date:', this.appliedDate);
     console.log('File:', this.file);
-  }  // TODO: submit form data to server
+  } // TODO: submit form data to server
 
-
-  showProcesses(){
-    this.route.navigate(['/hiring-pam-process']);
+  showProcesses() {
+    this.route.navigate(['pamProcess']);
   }
-  
-  }
-
-
-
-
-  
+}
