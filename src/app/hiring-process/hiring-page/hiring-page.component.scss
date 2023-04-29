@@ -13,53 +13,82 @@
     font-weight: bold;
   }
   
-  .upload-input {
+//   .upload-input {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     width: 70%;
+//     height: 500px;
+//     margin-top: 24px;
+//     padding: 10px;
+//     margin-left: 180px;
+//     border: 2px solid #ccc;
+//     border-radius: 4px;
+//     background-color: #fff;
+//     box-shadow: 0 0 5px #074a6e(0, 0, 0, 0.3);
+//   }
+  
+//   .upload-container {
+//     display: flex;
+//     flex-direction: row;
+//     align-items: center;
+//     justify-content: center;
+//     height: 80%;
+//     color:#074a6e
+//   }
+  
+//   mat-form-field {
+//     width: 60%;
+//     margin-right: 16px;
+//   }
+  
+//   button {
+//     margin-left: 5px;
+//     color: #074a6e !important;
+//   }
+  
+//   button[disabled] {
+//     opacity: 0.5;
+//     cursor: default;
+//   }
+  
+//   input[type="file"] {
+//     display: none;
+//   }
+  
+//   .btnStyle {
+//     color: #000;
+//     flex-grow: 2;
+//     margin-left: 260%;
+//     justify-content: flex-end;
+//   }
+
+.card {
+    width: 60%;
+    margin-top: 30px;
+    margin: 0 auto;
+  }
+  
+  .form-fields {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 70%;
-    height: 500px;
-    margin-top: 24px;
-    padding: 10px;
-    margin-left: 180px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #fff;
-    box-shadow: 0 0 5px #074a6e(0, 0, 0, 0.3);
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .mat-form-field {
+    width: 50%;
   }
   
   .upload-container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     justify-content: center;
-    height: 80%;
-    color:#074a6e
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   
-  mat-form-field {
-    width: 60%;
-    margin-right: 16px;
+  .upload-container button:first-child {
+    margin-right: 5px;
   }
   
-  button {
-    margin-left: 5px;
-    color: #074a6e !important;
-  }
-  
-  button[disabled] {
-    opacity: 0.5;
-    cursor: default;
-  }
-  
-  input[type="file"] {
-    display: none;
-  }
-  
-  .btnStyle {
-    color: #000;
-    flex-grow: 2;
-    margin-left: 260%;
-    justify-content: flex-end;
-  }
-

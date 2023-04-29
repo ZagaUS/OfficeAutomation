@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HiringPamProcessesComponent } from './hiring-pam-processes/hiring-pam-processes.component';
 import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MatDatepicker, MatDatepickerModule } from '@angular/material/datepicker
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCardModule
   ]
 })
 export class HiringProcessModule { }
