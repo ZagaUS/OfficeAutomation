@@ -11,7 +11,7 @@ export class LandingPageComponent {
   moduleInfo = [
     {
       cardName: 'Hiring Process',
-      link: '/hiring-page',
+      link: '/hiringProcess',
     },
     {
       cardName: 'Employee Onboarding',

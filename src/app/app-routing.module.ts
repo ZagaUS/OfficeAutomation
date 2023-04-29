@@ -31,6 +31,13 @@ const routes: Routes = [
         (m) => m.EmployeeOnboardingModule
       ),
   },
+  {
+    path: 'hiringProcess',
+    loadChildren: () =>
+      import(`./hiring-process/hiring-process.module`).then(
+        (m) => m.HiringProcessModule
+      ),
+  },
 ];
 
 @NgModule({
