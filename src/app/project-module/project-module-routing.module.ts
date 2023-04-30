@@ -7,6 +7,7 @@ import { EditTimesheetComponent } from './edit-timesheet/edit-timesheet.componen
 import { MeetingMinuteComponent } from './meeting-minute/meeting-minute.component';
 import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minute.component';
 import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'meetingMinutes', component: MeetingMinuteComponent},
       { path: 'addMeeting', component: AddMeetingMinuteComponent},
       { path: 'viewMeeting', component: ViewMeetingMinutesComponent},
+      { path: 'createProject', component: CreateProjectComponent}
     ],
   }
 ];

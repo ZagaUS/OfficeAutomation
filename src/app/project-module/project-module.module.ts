@@ -30,6 +30,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MeetingMinuteComponent } from './meeting-minute/meeting-minute.component';
 import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minute.component';
 import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
+import { CreateProjectComponent } from './create-project/create-project.component';
 
 
 
@@ -46,6 +47,7 @@ import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting
     MeetingMinuteComponent,
     AddMeetingMinuteComponent,
     ViewMeetingMinutesComponent,
+    CreateProjectComponent,
 
 
   ],

@@ -1,6 +1,20 @@
-<div class="circle-container">
-    <div [ngClass]="{'circle': true, 'green': flag1}"></div>
-    <div [ngClass]="{'circle': true, 'green': flag2}"></div>
-    <div [ngClass]="{'circle': true, 'green': flag3}"></div>
-  </div>
+<mat-card style="margin-top: 50px;">
+    <h2 class="heading">Hiring Workflow Tracking</h2>
+    <mat-card-content>
+      <div class="circle-container">
+        <div class="circle-header">
+          <h3>Step 1</h3>
+          <div [ngClass]="{'circle': true, 'green': flag1}"></div>
+        </div>
+        <div class="circle-header">
+          <h3>Step 2</h3>
+          <div [ngClass]="{'circle': true, 'green': flag2}"></div>
+        </div>
+        <div class="circle-header">
+          <h3>Step 3</h3>
+          <div [ngClass]="{'circle': true, 'green': flag3}"></div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
   
