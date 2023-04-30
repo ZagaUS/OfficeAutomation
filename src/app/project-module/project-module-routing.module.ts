@@ -9,6 +9,7 @@ import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minu
 import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'meetingMinutes', component: MeetingMinuteComponent},
       { path: 'addMeeting', component: AddMeetingMinuteComponent},
       { path: 'viewMeeting', component: ViewMeetingMinutesComponent},
-      { path: 'createProject', component: CreateProjectComponent}
+      { path: 'createProject', component: CreateProjectComponent},
+      
     ],
   }
 ];

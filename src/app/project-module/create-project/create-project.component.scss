@@ -1,77 +1,81 @@
 .project-card {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 30px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .card-header {
-    font-size: 24px;
-    color: #333;
-    text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header {
+
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0 8px 0;
+  color: #074a6e;
+  text-align: center;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.form-field {
+  width: 47%;
+  margin-bottom: 20px;
+  margin-left: 3%;
+  color: #074a6e!important;
+}
+
+.form-label {
+     font-size: 18px;
+    color: #2a05e5;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
-  
-  .form-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
-  }
-  
-  .form-field {
-    width: 45%;
-    margin-bottom: 20px;
-    margin-left: 1%;
-  }
-  
-  .form-label {
-       font-size: 18px;
-      color: #2a05e5;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-  
-  
-  .form-input {
-    font-size: 16px;
-    // color: #333;
-    line-height: 1.5;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #f5f5f5;
-    width: 100%;
-  }
-  
-  .form-input.editable {
-    border-color: #fdf8f8;
-  }
-  
-  .form-button {
-    width: 200px; /* set a specific width */
-    margin-top: 20px;
-    margin: 0 auto; /* center horizontally */
-    font-size: 18px;
-    font-weight: bold;
-    background: linear-gradient(to bottom, #0a73dd 0%, #074a6e 100%);
-    color: #fff;
-    // background-color: #007bff;
-    border-radius: 5px;
-    border: none;
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out; /* add transform transition */
-    cursor: pointer;
-  }
-  
-  .form-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05); /* animate scale on hover */
-  }
-  
+
+
+.form-input {
+  font-size: 16px;
+  // color: #333;
+  line-height: 1.5;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+  width: 100%;
+}
+
+.form-input.editable {
+  border-color: #fdf8f8;
+}
+
+.form-button {
+  width: 100px; 
+  margin-top: 20px;
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 600px;
+  background: linear-gradient(to bottom, #0a73dd 0%, #074a6e 100%);
+  color: #fff;
+  // background-color: #007bff;
+  border-radius: 5px;
+  border: none;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05); 
+}
