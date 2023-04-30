@@ -4,11 +4,13 @@ import { ProjectDashboardComponent } from './project-dashboard/project-dashboard
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import { CreateProjectComponent } from './project-module/create-project/create-project.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'landing', component: LandingPageComponent },
   { path: 'projectdashboard', component: ProjectDashboardComponent },
+  { path: 'createProject', component: CreateProjectComponent},
   {
     path: 'projectModule',
     loadChildren: () =>

@@ -1,7 +1,8 @@
 <div class="tableContainer">
   <span style="padding: 40px 10px 40px 10px; font-size: 30px"
-    >Project Dashboard</span
-  >
+    >Project Dashboard
+  </span>
+
   <mat-form-field style="margin-top: 20px">
     <mat-label>Search by Project Name / Project ID</mat-label>
     <input
@@ -23,6 +24,15 @@
         {{ category }}
       </mat-radio-button>
     </mat-radio-group>
+    <button
+    routerLink="/createProject"
+    mat-raised-button
+    class="btns"
+    color="primary"
+    data-toggle="modal"
+    (click)="onAdd()"
+  >Add New Project
+  </button>
   </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

@@ -11,6 +11,12 @@ export class ApiServicesService {
 
   constructor(private http: HttpClient) {}
 
+  createProjectDetails(projectDetails:any){
+    return this.http.post(
+      this.projectMgtUrl + '/projectDetails/createProjectDetails',projectDetails
+    )
+  }
+
   getListOfProjects() {
     return this.http.get<any>(
       this.projectMgtUrl + '/projectDetails/viewProjectDetails'

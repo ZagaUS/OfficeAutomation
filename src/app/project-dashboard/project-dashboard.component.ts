@@ -97,4 +97,6 @@ export class ProjectDashboardComponent {
     alert('Coming soon!');
     console.log('test');
   }
+  onAdd()
+  {}
 }
