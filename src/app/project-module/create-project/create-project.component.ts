@@ -5,20 +5,19 @@ import { ApiServicesService } from 'src/app/base-api/api-services.service';
 @Component({
   selector: 'app-create-project',
   templateUrl: './create-project.component.html',
-  styleUrls: ['./create-project.component.scss']
+  styleUrls: ['./create-project.component.scss'],
 })
 export class CreateProjectComponent {
   myForm!: FormGroup;
-  
-  constructor(private fb: FormBuilder,
-     private api:ApiServicesService) {
+
+  constructor(private fb: FormBuilder, private api: ApiServicesService) {
     this.createForm();
   }
-  
+
   createForm() {
     this.myForm = this.fb.group({
       clientEmail: [''],
-      clientName:[''],
+      clientName: [''],
       clientAddress: [''],
       clientCountry: [''],
       clientCurrency: [''],
@@ -41,24 +40,22 @@ export class CreateProjectComponent {
       to: [''],
       totalAmount: [''],
       unitPrice: [''],
-      pa:[''],
-      po:[''],
-      sfdc:[''],
+      pa: [''],
+      po: [''],
+      sfdc: [''],
       validDate: [''],
       totalManDays: [''],
       duration: [''],
       date: [''],
     });
   }
-  
-  
+
   onSubmit() {
     const projectDetails = this.myForm.value;
-      this.api.createProjectDetails(projectDetails).subscribe((data:any) => {
-        console.log("data updated",data);
-        // do something with the response, if needed
-      });
+    this.api.createProjectDetails(projectDetails).subscribe((data: any) => {
+      console.log('data updated', data);
+      alert('Updated successfully');
+      // do something with the response, if needed
+    });
   }
-  
-  }
-  
+}
