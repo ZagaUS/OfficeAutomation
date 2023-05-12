@@ -92,5 +92,11 @@ export class EmployeeApiService {
         createEmployeeDetails
       );
     }
-    
+
+    deleteEmployee(employeeId: string){
+      return this.http.delete<any>(
+        // this.employeeURL + 'deleteEmployee' + employeeId
+        this.employeeURL + `deleteEmployee?employeeId=${employeeId}`
+      );
+    }
 }
