@@ -89,4 +89,8 @@ export class EmployeeDashboardComponent {
     alert('test');
     console.log('test');
   }
+
+  onAdd() {
+    
+  }
 }
