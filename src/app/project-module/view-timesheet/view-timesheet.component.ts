@@ -229,6 +229,7 @@ export class ViewTimesheetComponent {
       .subscribe((data: any) => {
         console.log('daily ' + JSON.stringify(data));
         this.DAILY_ELEMENT_DATA = data;
+        this.selectedValue = "Daily"
         this.totalHours = this.DAILY_ELEMENT_DATA.map(
           (el: { hours: any }) => el.hours
         ).reduce((a: any, b: any) => a + b, 0);
@@ -430,14 +431,25 @@ export class ViewTimesheetComponent {
     console.log('testi');
   }
 
-  deleteTimesheet(weeklyTimesheetId: any) {
-    // if (timesheetType == 'Weekly') {
-    console.log(weeklyTimesheetId);
+  deleteWeeklyTimesheetById(weeklyTimesheetId: any,dailyTimesheetId:any) {
+    if (this.selectedValue == 'Weekly') {
+    console.log("weeklyTimesheet+++++",weeklyTimesheetId);
     this.apiCall
-      .deleteWeeklyTimesheet(weeklyTimesheetId, this.timesheetType)
+      .deleteWeeklyTimesheet(weeklyTimesheetId)
       .subscribe((data) => {
+        alert('deleted')
         console.log(data);
         // window.location.reload();
       });
   }
+  else{
+    this.apiCall
+    .deletedailyTimesheetById(dailyTimesheetId)
+    .subscribe((data) => {
+      alert("deleted")
+      console.log(data);
+    });
+  }
+   
+}
 }

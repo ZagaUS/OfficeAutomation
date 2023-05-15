@@ -23,6 +23,11 @@ export class ApiServicesService {
     );
   }
 
+  deleteProjectById(projectId:any){
+    return this.http.delete<any>(
+      this.projectMgtUrl + '/projectDetails/deleteProjectDetails/'+projectId
+    )
+  }
   getDailyTimesheetByProjectId(projectId: string) {
     return this.http.get<any>(
       this.projectMgtUrl +
@@ -132,18 +137,18 @@ export class ApiServicesService {
     );
   }
 
-  deleteDailyTimesheet(dailyTimesheetId: any) {
+  deletedailyTimesheetById(dailyTimesheetId: any) {
     return this.http.delete<any>(
       this.projectMgtUrl +
         `/dailyTimesheet/deleteDailyTimeSheet/${dailyTimesheetId}`
     );
   }
 
-  deleteWeeklyTimesheet(weeklyTimesheetId: any, timesheetType: any) {
-    console.log('deleteWeeklyTimesheet', weeklyTimesheetId, timesheetType);
+  deleteWeeklyTimesheet(weeklyTimesheetId: any) {
+    console.log('deleteWeeklyTimesheet', weeklyTimesheetId);
     return this.http.delete<any>(
       this.projectMgtUrl +
-        `/projectDetails/document/deleteById?documentId=${weeklyTimesheetId}&documentType=${timesheetType}`
+          `/weeklyTimesheet/deleteWeeklyTimesheet/${weeklyTimesheetId}`
     );
   }
 
@@ -166,5 +171,11 @@ export class ApiServicesService {
       this.projectMgtUrl +
         `/meetingMinutes/getMeetingMinutesByMeetingMinutesId/${meetingMinutesId}`
     );
+  }
+
+  deleteMeetingMinutesById(meetingMinutesId: any){
+    return this.http.delete<any>(
+      this.projectMgtUrl +  `/meetingMinutes/deleteMeetingMinutesById/${meetingMinutesId}`
+    )
   }
 }
