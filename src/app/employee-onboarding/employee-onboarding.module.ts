@@ -22,6 +22,7 @@ import { DayoffComponent } from './dayoff/dayoff.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { DocumentsComponent } from './documents/documents.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import {MatChipsModule} from '@angular/material/chips';
     SkillsCertificationComponent,
     DayoffComponent,
     CreateEmployeeComponent,
+    DocumentsComponent,
   ],
   imports: [
     CommonModule,
