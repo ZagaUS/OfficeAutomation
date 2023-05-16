@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -99,4 +100,13 @@ export class EmployeeApiService {
         this.employeeURL + `deleteEmployee?employeeId=${employeeId}`
       );
     }
+
+    downloadPDF(employeeId: string): Observable<Blob> {
+      const headers = new HttpHeaders().set('Accept', 'text/plain');
+      return this.http.get(
+        this.employeeURL + `pdf/${employeeId}`,
+        { headers, responseType: 'blob' }
+      );
+    }
+    
 }

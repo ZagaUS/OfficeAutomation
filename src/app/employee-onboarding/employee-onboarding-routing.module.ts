@@ -8,6 +8,7 @@ import { EducationComponent } from './education/education.component';
 import { SkillsCertificationComponent } from './skills-certification/skills-certification.component';
 import { DayoffComponent } from './dayoff/dayoff.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import { DocumentsComponent } from './documents/documents.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'createEmployee',
         component: CreateEmployeeComponent
+      },
+      {
+        path: 'documents',
+        component: DocumentsComponent
       }
     ],
   },
