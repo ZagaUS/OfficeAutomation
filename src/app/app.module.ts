@@ -29,6 +29,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,8 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
     MatDatepickerModule,
     MatNativeDateModule,
     MatSliderModule,
+    MatChipsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

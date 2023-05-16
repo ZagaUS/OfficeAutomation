@@ -93,8 +93,11 @@ export class ProjectDashboardComponent {
   }
 
   //
-  test() {
-    alert('Coming soon!');
+  test(projectId:any) {
+    this.api.deleteProjectById(projectId).subscribe((data) => {
+    console.log('List of Project ' +JSON.stringify(data));
+  })
+    alert('List of project deleted successfully');
     console.log('test');
   }
   onAdd()

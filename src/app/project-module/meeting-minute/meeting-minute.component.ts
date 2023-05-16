@@ -87,9 +87,13 @@ export class MeetingMinuteComponent {
   }
 
   //
-  test() {
-    alert('Coming soon!');
-    console.log('test');
+  test(meetingMinutesId:any) {
+    this.api.deleteMeetingMinutesById(meetingMinutesId)
+    .subscribe((data) => {
+    alert('deleted')
+    console.log(data);
+  });
+    
   }
 
 
