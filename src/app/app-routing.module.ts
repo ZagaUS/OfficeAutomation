@@ -5,12 +5,15 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { CreateProjectComponent } from './project-module/create-project/create-project.component';
+import { CreateEmployeeComponent } from './employee-onboarding/create-employee/create-employee.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: '', redirectTo: '/landing', pathMatch: 'full'},
   { path: 'landing', component: LandingPageComponent },
   { path: 'projectdashboard', component: ProjectDashboardComponent },
   { path: 'createProject', component: CreateProjectComponent},
+  { path: 'createEmployee', component: CreateEmployeeComponent},
   {
     path: 'projectModule',
     loadChildren: () =>

@@ -1,0 +1,237 @@
+<mat-card class="employee-card">
+    <mat-card-title class="card-header">Create New Employee</mat-card-title>
+      <div class="form-container">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">  
+      <!-- Employee Information -->
+      <mat-card-title class="card-header">Employee Information</mat-card-title>
+
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Employee Id</mat-label>
+        <input matInput type="number"  formControlName="employeeId" >
+      </mat-form-field> -->
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Employee Name</mat-label>
+          <input matInput formControlName="employeeName" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Employee Role</mat-label>
+          <input matInput formControlName="employeeRole" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Job Title</mat-label>
+          <input matInput type="text"  formControlName="jobTitle" >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Date Of Joining</mat-label>
+          <input matInput type="date"  formControlName="dateOfJoining" >
+        </mat-form-field>
+   
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Employee EmailId</mat-label>
+          <input matInput formControlName="employeeEmail" type="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Password</mat-label>
+          <input matInput type="number"  formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Department</mat-label>
+          <input matInput type="text"  formControlName="department">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Reporting Manager</mat-label>
+          <input matInput type="text"  formControlName="reportingManager">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Employee Status</mat-label>
+          <input matInput type="text"  formControlName="employeeStatus">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Overall Experience</mat-label>
+          <input matInput type="integer"  formControlName="overallExperience">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Project Assigned</mat-label>
+          <input matInput type="boolean"  formControlName="projectAssignmentStatus">
+        </mat-form-field>
+
+      <!-- Personal Information -->
+      <mat-card-title class="card-header">Personal Information</mat-card-title>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Gender</mat-label>
+        <input matInput type="text"  formControlName="gender">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Nationality</mat-label>
+        <input matInput type="text"  formControlName="nationality">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Marital Status</mat-label>
+        <input matInput type="text"  formControlName="maritalStatus">
+      </mat-form-field>
+
+      <mat-form-field style="margin-top: 20px;" appearance="outline" class="form-field">
+        <mat-label>Date Of Birth</mat-label> 
+        <input matInput type="date"  formControlName="dateOfBirth">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Blood Group</mat-label>
+        <input matInput type="text"  formControlName="bloodGroup">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Personal EmailId</mat-label>
+        <input matInput type="text"  formControlName="personalEmail">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Personal Phonenumber</mat-label>
+        <input matInput type="number"  formControlName="personalPhone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Emergency Phonenumber</mat-label>
+        <input matInput type="number"  formControlName="emergencyPhone">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" rows="3">
+      </mat-form-field>
+
+      <table style="margin-bottom: 20px;"formArrayName="language">
+        <mat-label style="margin-left: 30px;">Languages</mat-label>
+          <button mat-raised-button style="margin-left: 20px;color:#074a6e" type="button" (click)="addLanguages()" class="btn btn-primary">Add</button>
+
+        <mat-form-field style="margin-left: 20px;" appearance="outline" *ngFor="let language of language.controls; let i = index">
+          <td>
+            <input matInput type="text" [formControlName]="i" placeholder="language {{ i + 1 }}">
+          </td>
+          <td>
+            <button mat-raised-button style="color:#074a6e" type="button" (click)="removeLanguages(i)" class="btn btn-danger">Remove</button>
+          </td>
+        </mat-form-field>
+    </table>
+
+      <!-- Education Details -->
+      <mat-card-title class="card-header">Education Details</mat-card-title>
+
+      <table style="margin-bottom: 20px;" formArrayName="educationDetails">
+        <div *ngFor="let edu of educationDetails.controls; let i = index;" [formGroupName]="i">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>College Name</mat-label>
+            <input matInput type="text" formControlName="collegeName">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Degree</mat-label>
+            <input matInput type="text" formControlName="degree">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Branch</mat-label>
+            <input matInput type="text" formControlName="specialization">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Year Of Passing</mat-label>
+            <input matInput type="number" formControlName="year">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Graduated</mat-label>
+            <input matInput type="text" formControlName="graduate">
+          </mat-form-field>
+          <button mat-icon-button (click)="removeEducationDetails(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <button mat-raised-button style="margin-left: 20px;color:#074a6e" type="button" (click)="addEducationDetails()" class="btn btn-primary">Add Education</button>
+      </table>
+      
+      <!-- Job History -->
+      <mat-card-title class="card-header">Job History</mat-card-title>
+
+      <table style="margin-bottom: 20px;" formArrayName="jobHistoryDetails">
+        <div *ngFor="let job of jobHistoryDetails.controls; let i = index;" [formGroupName]="i">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Company Name</mat-label>
+            <input matInput type="text" formControlName="companyName">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Start Date</mat-label>
+            <input matInput type="date" formControlName="startDate">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>End Date</mat-label>
+            <input matInput type="date" formControlName="endDate">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Designation</mat-label>
+            <input matInput type="text" formControlName="field">
+          </mat-form-field>
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Experience</mat-label>
+            <input matInput type="number" formControlName="experience">
+          </mat-form-field>
+          <button mat-icon-button (click)="removeJobHistory(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+        <button mat-raised-button style="margin-left: 20px;color:#074a6e" type="button" (click)="addJobHistory()">Add Job History</button>
+      </table>
+
+      <!-- Skills -->
+      <mat-card-title class="card-header">Skills</mat-card-title>
+
+      <table style="margin-bottom: 20px;" formArrayName="skillsName">
+          <mat-label style="margin-left: 30px;">Known Skills</mat-label>
+          <button mat-raised-button style="margin-left: 20px;color:#074a6e" type="button" (click)="addSkillsName()" class="btn btn-primary">Add Skills</button>
+          <mat-form-field style="margin-left: 20px;" appearance="outline" *ngFor="let skill of skillsName.controls; let i = index">
+            <td>
+              <input matInput type="text" [formControlName]="i" placeholder="skill {{ i + 1 }}">
+            </td>
+            <td>
+              <button mat-raised-button style="color:#074a6e" type="button" (click)="removeSkillsName(i)" class="btn btn-danger">Remove</button>
+            </td>
+          </mat-form-field>
+      </table>
+
+      <table style="margin-bottom: 20px;" formArrayName="toolsName">
+        <mat-label style="margin-left: 30px;">Known Tools</mat-label>
+        <button mat-raised-button style="margin-left: 20px;color:#074a6e" type="button" (click)="addToolsName()" class="btn btn-primary">Add Tools</button>
+        <mat-form-field style="margin-left: 20px;" appearance="outline" *ngFor="let tool of toolsName.controls; let i = index">
+          <td>
+            <input matInput type="text" [formControlName]="i" placeholder="tool {{ i + 1 }}">
+          </td>
+          <td>
+            <button mat-raised-button style="color:#074a6e" type="button" (click)="removeToolsName(i)" class="btn btn-danger">Remove</button>
+          </td>
+        </mat-form-field>
+      </table>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>YearsOfExperience</mat-label>
+        <input matInput type="number" formControlName="yearsOfExperience">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Compentency Level</mat-label>
+        <input matInput type="text" formControlName="compentencyLevel">
+      </mat-form-field>
+
+     <button mat-raised-button  class="form-button" type="submit ">Submit</button>
+
+    </form>
+    </div>
+</mat-card>

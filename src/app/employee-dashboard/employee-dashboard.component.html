@@ -12,6 +12,17 @@
     />
   </mat-form-field>
 
+  <!-- <div class="categoryContainer"> -->
+    <button
+    routerLink="/createEmployee"
+    mat-raised-button
+    class="btns"
+    color="primary"
+    data-toggle="modal"
+    (click)="onAdd()"
+  >Add New Employee
+  </button>
+
   <!-- <div class="categoryContainer">
       <mat-radio-group aria-labelledby="label" class="radioGroup">
         <mat-radio-button
@@ -64,7 +75,7 @@
             ></mat-icon>
             <!-- <p>View</p> -->
           </a>
-          <a (click)="test()" class="icon" style="margin-left: 10px"
+          <a (click)="test(element.employeeId)" class="icon" style="margin-left: 10px"
             ><mat-icon style="font-size: x-large" fontIcon="delete"></mat-icon>
             <!-- <p>Delete</p> -->
           </a>

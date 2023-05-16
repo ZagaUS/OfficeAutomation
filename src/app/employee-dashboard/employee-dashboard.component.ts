@@ -59,7 +59,6 @@ export class EmployeeDashboardComponent {
       this.dataSource = new MatTableDataSource(updatedData);
     });
   }
-  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -84,9 +83,17 @@ export class EmployeeDashboardComponent {
     this.router.navigate(['/employeeOnboarding']);
   }
 
-  //
-  test() {
-    alert('test');
+  test(employeeId: any) {
+    this.api.deleteEmployee(employeeId).subscribe((data) => {
+      console.log('Employee Details ' + JSON.stringify(data));
+
+    })
+    alert('employee deleted');
     console.log('test');
   }
+
+  onAdd() {
+    
+  }
+
 }
