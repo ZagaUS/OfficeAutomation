@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiServicesService {
   projectMgtUrl = environment.projectMgtUrl;
+  employeeURL = environment.employeeUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -176,6 +177,18 @@ export class ApiServicesService {
   deleteMeetingMinutesById(meetingMinutesId: any){
     return this.http.delete<any>(
       this.projectMgtUrl +  `/meetingMinutes/deleteMeetingMinutesById/${meetingMinutesId}`
+    )
+  }
+
+  getInactiveEmployeeList(){
+    return this.http.get<any>(
+      this.employeeURL + 'getListOfInactiveEmployeeInfo'
+    )
+  }
+
+  assignProjectToEmployee(projectId:any,employeeData:any){
+    return this.http.post<any>(
+      this.projectMgtUrl + `/projectDetails/projectAssignment/${projectId}?employeeEmail=${employeeData.employeeEmail}&employeeId=${employeeData.employeeId}&employeeName=${employeeData.employeeName}&employeeRole=${employeeData.employeeRole}`,null
     )
   }
 }

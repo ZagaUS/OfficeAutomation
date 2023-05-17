@@ -26,6 +26,10 @@ export class ProjectModuleComponent {
       name: 'Meeting Minutes',
       link: 'meetingMinutes',
     },
+    {
+      name: 'Project Assignment',
+      link: 'projectAssignment',
+    }
   ];
 
   fillerContent: String[] = [

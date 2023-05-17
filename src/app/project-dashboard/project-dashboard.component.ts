@@ -3,6 +3,8 @@ import { MatRadioGroup } from '@angular/material/radio';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ApiServicesService } from '../base-api/api-services.service';
+import { ProjectAssignmentComponent } from '../project-assignment/project-assignment.component';
+import { MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 export interface PeriodicElement {
   projectId: string;
@@ -54,10 +56,12 @@ export class ProjectDashboardComponent {
     // 'role',
     'action',
   ];
+  assignee: any;
+  unassignedCheck: boolean = false;
 
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private router: Router, private api: ApiServicesService) {}
+  constructor(private router: Router, private api: ApiServicesService,private modalService: MdbModalService) {}
 
   ngOnInit(): void {
     console.log("Im'in");
@@ -83,6 +87,12 @@ export class ProjectDashboardComponent {
       console.log('applyFilterForCategory' + this.radioGroup?.value);
       this.dataSource.filter = selectedValue;
     }
+    if(selectedValue == "UnAssigned"){
+      this.unassignedCheck = true;
+    }
+    else {
+      this.unassignedCheck = false;
+    }
   }
 
   viewProject(projectId?: any, projectName?: any) {
@@ -102,4 +112,14 @@ export class ProjectDashboardComponent {
   }
   onAdd()
   {}
+
+  employeeAssign() {
+    this.assignee = this.modalService.open(ProjectAssignmentComponent, {
+      modalClass: 'modal-lg',
+    });
+    this.assignee.onClose.subscribe((message: any) => {
+      console.log(message);
+    });
+  }
+
 }

@@ -26,10 +26,12 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { ProjectAssignmentComponent } from './project-assignment/project-assignment.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import {MatChipsModule} from '@angular/material/chips';
     ProjectDashboardComponent,
     LandingPageComponent,
     EmployeeDashboardComponent,
+    ProjectAssignmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSliderModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSelectModule
 
   ],
   providers: [],

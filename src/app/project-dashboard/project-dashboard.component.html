@@ -33,6 +33,8 @@
     (click)="onAdd()"
   >Add New Project
   </button>
+
+  
   </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -82,6 +84,14 @@
             ><mat-icon style="font-size: x-large" fontIcon="delete"></mat-icon>
             <!-- <p>Delete</p> -->
           </a>
+          <button *ngIf="unassignedCheck" mat-raised-button
+          class="assignBtn"
+    color="primary"
+    data-toggle="modal"
+    (click)="employeeAssign()"
+  >Assign
+  </button>
+          <!-- <button mat-raised-button class="btns" color="primary" data-toggle="modal" (click)="employeeAssign()">Assign Employee</button> -->
         </div>
       </td>
     </ng-container>
