@@ -14,6 +14,10 @@ export class InvoiceApiService {
     return this.http.get<any>(this.invoiceUrl + '/getAllInvoices');
   }
 
+  getProjectDetails(projectGetData: any){
+    return this.http.get<any>(this.invoiceUrl + `/getProjectDetailsInvoice/${projectGetData.projectName},${projectGetData.startDate},${projectGetData.endDate}`);
+  }
+
   createInvoice(invoiceData: any) {
     return this.http.post<any>(
       this.invoiceUrl + '/createInvoicee/pdf',
@@ -27,5 +31,11 @@ export class InvoiceApiService {
       headers,
       responseType: 'blob',
     });
+  }
+
+  deleteGenrateInvoice(invoiceId: any){
+    return this.http.delete<any>(
+      this.invoiceUrl+`/deleteInvoice/${invoiceId}`
+      );
   }
 }

@@ -85,12 +85,12 @@ export class InvoiceModuleComponent {
     });
   }
 
-  viewInvoice(invoiceId: any, date: any) {
+  viewInvoice(documentId:any) {
     console.log('View PDF');
 
     // console.log('payload: ' + JSON.stringify(this.document));
     // const documentId = invoiceId + '_' + date;
-    const documentId = 'DIGI_2023-04-27_30';
+    // const documentId = 'DIGI_2023-04-27_30';
     console.log(documentId + ' DocumentId');
     this.invoiceApi.getPdf(documentId).subscribe((data: any) => {
       console.log('weekly pdf view clixked ' + data);
@@ -117,8 +117,11 @@ export class InvoiceModuleComponent {
       reader.readAsDataURL(data);
     });
   }
-  test() {
-    alert('test');
-    console.log('test');
+  deleteInvoice(invoiceId:any) {
+    this.invoiceApi.deleteGenrateInvoice(invoiceId).subscribe((res:any) => {
+      console.log("Deleted successfully");
+      alert("Deleted successfully");
+      window.location.reload();
+    })
   }
 }
