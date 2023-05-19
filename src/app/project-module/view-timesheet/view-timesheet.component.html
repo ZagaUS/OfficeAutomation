@@ -21,7 +21,7 @@
       </mat-radio-button>
     </mat-radio-group>
 
-    <button
+    <!-- <button
       mat-raised-button
       class="btns electric-blue"
       style="margin-left: 10px"
@@ -30,7 +30,7 @@
       (click)="openInvoiceModal()"
     >
       Generate Invoice
-    </button>
+    </button> -->
     <button
       mat-raised-button
       class="btns electric-blue"
@@ -176,14 +176,14 @@
               <!-- <p>View</p> -->
             </a>
 
-            <a
+            <!-- <a
               *ngIf="weekly || daily"
               class="icon"
               style="margin-left: 10px"
               (click)="editTimesheet(element.weeklyTimesheetId)"
-              ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon>
+              ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon> -->
               <!-- <p>Edit</p> -->
-            </a>
+            <!-- </a> -->
             <a
               (click)="deleteWeeklyTimesheetById(element.weeklyTimesheetId,element.dailyTimesheetId)"
               class="icon"
