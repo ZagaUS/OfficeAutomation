@@ -113,7 +113,8 @@ export class ProjectDashboardComponent {
   onAdd()
   {}
 
-  employeeAssign() {
+  employeeAssign(projectId: any) {
+    localStorage.setItem('projectId', projectId);
     this.assignee = this.modalService.open(ProjectAssignmentComponent, {
       modalClass: 'modal-lg',
     });
