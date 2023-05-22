@@ -31,6 +31,7 @@ import { MeetingMinuteComponent } from './meeting-minute/meeting-minute.componen
 import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minute.component';
 import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { QuoteCreationComponent } from './quote-creation/quote-creation.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CreateProjectComponent } from './create-project/create-project.componen
     AddMeetingMinuteComponent,
     ViewMeetingMinutesComponent,
     CreateProjectComponent,
+    QuoteCreationComponent,
   ],
   imports: [
     CommonModule,
