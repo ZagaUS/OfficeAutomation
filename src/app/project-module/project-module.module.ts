@@ -32,6 +32,9 @@ import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minu
 import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
 import { QuoteCreationComponent } from './quote-creation/quote-creation.component';
+import { QuoteComponent } from './quote/quote.component';
+import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
+import { ModelPouploadComponent } from './model-poupload/model-poupload.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,9 @@ import { QuoteCreationComponent } from './quote-creation/quote-creation.componen
     ViewMeetingMinutesComponent,
     CreateProjectComponent,
     QuoteCreationComponent,
+    QuoteComponent,
+    PurchaseOrderComponent,
+    ModelPouploadComponent,
   ],
   imports: [
     CommonModule,

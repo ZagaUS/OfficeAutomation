@@ -122,5 +122,6 @@ export class ProjectDashboardComponent {
       console.log(message);
     });
   }
-
+  onCreate(){}
+  onUpload(){}
 }

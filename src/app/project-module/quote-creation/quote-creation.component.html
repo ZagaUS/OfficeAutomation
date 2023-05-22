@@ -1,1 +1,73 @@
-<p>quote-creation works!</p>
+<mat-card class="quote-card">
+    <mat-card-title class="card-header">Create Quote</mat-card-title>
+      <div  class="form-container">
+  <form [formGroup]="quoteForm" (ngSubmit)="onCreate()">  
+
+<!-- Quote Information -->
+    <!-- <mat-form-field appearance="outline" class="form-field">
+    <mat-label>From</mat-label>
+    <input matInput   type="text"   formControlName="from" >
+    </mat-form-field> -->
+        
+      
+      
+    <mat-form-field appearance="outline" class="form-field">
+    <mat-label>To</mat-label>
+    <input matInput   type="text"   formControlName="to" >
+    </mat-form-field>
+
+    <!-- Payment Information -->
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>PA</mat-label>
+        <input matInput   type="text"   formControlName="pa"  >
+       </mat-form-field>
+        
+      
+      
+            <mat-form-field appearance="outline" class="form-field">
+        <mat-label>PO</mat-label>
+        <input matInput   type="text"   formControlName="po"  >
+       </mat-form-field>
+      
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>SFDC</mat-label>
+        <input matInput   type="text"   formControlName="sfdc"  >
+       </mat-form-field>
+        
+      
+      
+            <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Unit Price</mat-label>
+        <input matInput   type="text"  formControlName="unitPrice"  >
+       </mat-form-field>
+        
+      
+      
+            <mat-form-field appearance="outline" class="form-field">
+        <mat-label>TotalManDays</mat-label>
+        <input matInput   type="text"  formControlName="totalManDays"  >
+       </mat-form-field>
+        
+      
+      
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>TotalAmount</mat-label>
+          <input matInput formControlName="totalAmount"  >
+         </mat-form-field>
+        
+        <!-- Other Information -->
+        
+            <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Valid Date</mat-label>
+          <input matInput   type="date"   formControlName="validDate"  >
+         </mat-form-field>
+      
+      
+         <button mat-raised-button  class="form-button" type="submit ">Create</button>
+          
+        </form>
+        </div>
+        </mat-card>
+        
+        

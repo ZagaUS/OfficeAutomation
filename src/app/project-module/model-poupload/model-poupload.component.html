@@ -1,0 +1,33 @@
+<div class="mat-dialog-container">
+    <button class="close-button" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <h2>Upload PO</h2>
+<div class="uploadbtn">
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Upload file</mat-label>
+      <input
+        matInput
+        placeholder="File Name"
+        [value]="fileName"
+      />
+    </mat-form-field> -->
+    <div  style="margin-left: 20px">
+      <input
+        type="file"
+        (change)="onFileSelected($event)"
+        hidden
+        #fileInput
+    
+      />
+      <button
+        mat-button
+        type="button"
+        style="padding: 30px"
+        (click)="fileInput.click()"
+      >
+        Choose File
+      </button>
+    </div>
+  </div>
+</div>
