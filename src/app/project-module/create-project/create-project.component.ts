@@ -16,7 +16,7 @@ export class CreateProjectComponent {
 
   createForm() {
     this.myForm = this.fb.group({
-      clientEmail: [''],
+      clientEmail: ['', Validators.email],
       clientName: [''],
       clientAddress: [''],
       clientCountry: [''],
