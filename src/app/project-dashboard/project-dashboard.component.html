@@ -67,6 +67,7 @@
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">
         <div class="actionContainer">
+        
           <a
             (click)="viewProject(element.projectId, element.projectName)"
             class="icon"
@@ -92,6 +93,8 @@
   >Assign
   </button>
           <!-- <button mat-raised-button class="btns" color="primary" data-toggle="modal" (click)="employeeAssign()">Assign Employee</button> -->
+          <button>Quote</button> 
+          <button>PO</button>
         </div>
       </td>
     </ng-container>
