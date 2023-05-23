@@ -14,29 +14,29 @@ export interface PeriodicElement {
   projectStatus: String;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    projectId: '1',
-    projectName: 'citioverdraft',
-    employeeName: 'employee',
-    role: 'Consultant',
-    projectStatus: 'Active',
-  },
-  {
-    projectId: '2',
-    projectName: 'citi ci',
-    employeeName: 'Employee',
-    role: 'Consultant',
-    projectStatus: 'UnAssigned',
-  },
-  {
-    projectId: '3',
-    projectName: 'citi ci',
-    employeeName: 'Employee',
-    role: 'Consultant',
-    projectStatus: 'Completed',
-  },
-];
+// const ELEMENT_DATA: PeriodicElement[] = [
+//   {
+//     projectId: '1',
+//     projectName: 'citioverdraft',
+//     employeeName: 'employee',
+//     role: 'Consultant',
+//     projectStatus: 'Active',
+//   },
+//   {
+//     projectId: '2',
+//     projectName: 'citi ci',
+//     employeeName: 'Employee',
+//     role: 'Consultant',
+//     projectStatus: 'UnAssigned',
+//   },
+//   {
+//     projectId: '3',
+//     projectName: 'citi ci',
+//     employeeName: 'Employee',
+//     role: 'Consultant',
+//     projectStatus: 'Completed',
+//   },
+// ];
 
 @Component({
   selector: 'app-project-dashboard',

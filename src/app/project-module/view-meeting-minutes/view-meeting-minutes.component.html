@@ -8,18 +8,19 @@
   
   <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
     <div>
-      <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Meeting ID:</p>
+      <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Meeting ID:</h2>
       <p>{{ meetingDetails.meetingMinutesId }}</p>
     </div>
     <div>
-      <p style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</p>
+      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
       <p>{{ meetingDetails.date }}</p>
     </div>
     <div>
-      <p style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</p>
+      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</h2>
       <p>{{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
     </div>
   </div>
+  
   <div style="margin-bottom: 1rem;">
     <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Meeting Objective:</h2>
     <p>{{ meetingDetails.meetingObjective }}</p>
@@ -28,11 +29,11 @@
   <div style="margin-bottom: 1rem;">
     <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
     <div *ngFor="let attendee of meetingDetails.attendeesPresent">
-      {{ attendee.name }} ({{ attendee.organization.toUpperCase() }})
+      <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p>
     </div>
   </div>
   <div>
-    <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
+    <!-- <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
     <ul style="list-style: none;">
       <div *ngFor="let item of meetingDetails.agenda" style="list-style: none;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
@@ -50,11 +51,32 @@
           </div>
           <div>
         <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description:</p>
-        <p>{{ item.description }}</p>
+        <p class="word-wrap">{{ item.description }}</p>
       </div>
 
       </div>
       </div>
-    </ul>
+    </ul> -->
+
+    <h2 class="agenda-heading" style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
+    <table class="agenda-table">
+      <thead>
+        <tr>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Topic</th>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Presented by</th>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Time Taken</th>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of meetingDetails.agenda">
+          <td class="word-wrap">{{ item.topic }}</td>
+          <td class="word-wrap">{{ item.presentedBy }}</td>
+          <td class="word-wrap">{{ item.timeTaken }}</td>
+          <td class="word-wrap">{{ item.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
   </div>
 </div>
