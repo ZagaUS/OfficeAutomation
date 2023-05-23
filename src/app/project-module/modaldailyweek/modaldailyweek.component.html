@@ -18,18 +18,22 @@
   </div>
   <!-- <form [formGroup]="contactForm"> -->
   <div *ngIf="showDaily || showExternal" class="showDailyContent">
+
     <mat-form-field *ngIf="showDaily" appearance="outline">
       <mat-label>ProjectName</mat-label>
       <input matInput placeholder="ProjectName" [(ngModel)]="projectName" />
     </mat-form-field>
+
     <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
+      <mat-label>EmployeeName</mat-label>
+      <input matInput placeholder="EmployeeName" [(ngModel)]="employeeName" />
+    </mat-form-field>
+  
+    <mat-form-field  style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
       <mat-label>Duration</mat-label>
-      <input matInput placeholder="hours" [(ngModel)]="duration" />
+      <input matInput placeholder="Duration" [(ngModel)]="duration" />
     </mat-form-field>
-    <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
-      <mat-label>Description</mat-label>
-      <input matInput placeholder="Description" [(ngModel)]="description" />
-    </mat-form-field>
+       
   </div>
 
   <div class="showDailyContent">
@@ -49,7 +53,18 @@
       <mat-label>RedHatOwners</mat-label>
       <input matInput placeholder="RedHatOwners" [(ngModel)]="redhatOwner" />
     </mat-form-field>
+
   </div>
+
+  
+  <div class="showDailyContent">
+    <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Description" [(ngModel)]="description"></textarea>
+      <!-- <input matInput placeholder="Description" [(ngModel)]="description" /> -->
+    </mat-form-field>
+  </div>
+
   <mat-form-field *ngIf="showDaily" appearance="outline">
     <mat-label>Date</mat-label>
     <input
@@ -64,6 +79,7 @@
     ></mat-datepicker-toggle>
     <mat-datepicker #endDatePicker></mat-datepicker>
   </mat-form-field>
+
   <button
     mat-raised-button
     color="primary"
@@ -72,6 +88,7 @@
   >
     Create Daily
   </button>
+  
   <div class="showExternalContent">
     <form [formGroup]="contactForm">
       <div class="uploadbtn">
