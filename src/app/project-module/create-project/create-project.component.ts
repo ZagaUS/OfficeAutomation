@@ -1,6 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+
+interface CurrencyData {
+  country: string;
+  currency: string;
+  timezones: string[];
+}
 
 @Component({
   selector: 'app-create-project',
@@ -9,6 +20,11 @@ import { ApiServicesService } from 'src/app/base-api/api-services.service';
 })
 export class CreateProjectComponent {
   myForm!: FormGroup;
+  countryList: string[] = [];
+  selectedCountry: string = '';
+  selectedCurrency: string = '';
+  selectedTimezones: string[] = [];
+  jsonData: CurrencyData[] = [];
 
   constructor(private fb: FormBuilder, private api: ApiServicesService) {
     this.createForm();
@@ -16,7 +32,7 @@ export class CreateProjectComponent {
 
   createForm() {
     this.myForm = this.fb.group({
-      clientEmail: [''],
+      clientEmail: ['', Validators.email],
       clientName: [''],
       clientAddress: [''],
       clientCountry: [''],
@@ -30,7 +46,7 @@ export class CreateProjectComponent {
       projectName: [''],
       projectId: [''],
       projectManager: [''],
-      projectAssignmentStatus: [''],
+      projectAssignmentStatus: ['Un Assigned'],
       quoteId: [''],
       quoteStatus: [''],
       serviceDescription: [''],
@@ -47,9 +63,23 @@ export class CreateProjectComponent {
       totalManDays: [''],
       duration: [''],
       date: [''],
+      selectedCurrency: new FormControl(),
+      selectedTimezone: new FormControl(),
     });
   }
 
+  ngOnInit(): void {
+    // this.projectId = "41";
+    this.api.getDropDown().subscribe((jsonData) => {
+      console.log('List of Drpdown ' + JSON.stringify(jsonData));
+
+      this.countryList = jsonData.map(
+        (data: { country: any; '': any }) => data.country
+      );
+
+      this.jsonData = jsonData;
+    });
+  }
   onSubmit() {
     const projectDetails = this.myForm.value;
     this.api.createProjectDetails(projectDetails).subscribe((data: any) => {
@@ -57,5 +87,15 @@ export class CreateProjectComponent {
       alert('Updated successfully');
       // do something with the response, if needed
     });
+  }
+
+  onCountryChange(country: string): void {
+    const selectedData = this.jsonData.find((data) => data.country === country);
+    if (selectedData) {
+      this.selectedCountry = selectedData.country;
+      //this.selectedCurrency = selectedData.currency;
+      this.myForm.get('clientCurrency')?.setValue(selectedData.currency);
+      this.selectedTimezones = selectedData.timezones;
+    }
   }
 }

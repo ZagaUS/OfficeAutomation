@@ -1,90 +1,137 @@
 <mat-card class="project-card">
   <mat-card-title class="card-header">Create Project</mat-card-title>
-    <div  class="form-container">
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">  
-    <!-- Client Information -->
-    
+  <div class="form-container">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <!-- Client Information -->
+
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Client Name</mat-label>
-        <input matInput  formControlName="clientName" type="text">
+        <input matInput formControlName="clientName" type="text" />
+      </mat-form-field>
 
-     </mat-form-field>
- 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Client Email</mat-label>
-        <input matInput formControlName="clientEmail" type="email">
+        <input matInput formControlName="clientEmail" type="email" />
+        <mat-error
+          *ngIf="
+            myForm?.get('clientEmail')?.invalid &&
+            myForm?.get('clientEmail')?.touched
+          "
+        >
+          <span *ngIf="myForm?.get('clientEmail')?.hasError('email')"
+            >Invalid email format</span
+          >
+        </mat-error>
+      </mat-form-field>
 
-     </mat-form-field>
-  
-   <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Client Address</mat-label>
-      <input matInput formControlName="clientAddress" rows="3">
-     </mat-form-field>
-  
-   <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Client Country</mat-label>
-      <input matInput type="text"  formControlName="clientCountry" >
-     </mat-form-field>
-  
-   <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Client Currency</mat-label>
-      <input matInput type="text"  formControlName="clientCurrency" >
-     </mat-form-field>
-  
-   <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Client Timezone</mat-label>
-      <input matInput   type="text"  formControlName="clientTimezone" >
-     </mat-form-field>  <!-- Employee Information -->
-    
-      <!-- <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Employee Name</mat-label>
-      <input matInput   type="text"  formControlName="employeeName" >
-     </mat-form-field>
-  
-   <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Employee ID</mat-label>
-      <input matInput   type="text"   formControlName="employeeId" >
-       </mat-form-field>
-  
       <mat-form-field appearance="outline" class="form-field">
-    <mat-label>Employee Email</mat-label>
-    <input matInput   type="email"   formControlName="employeeEmail"  >
-   </mat-form-field>
+        <mat-label>Client Address</mat-label>
+        <input matInput formControlName="clientAddress" rows="3" />
+      </mat-form-field>
+
       <mat-form-field appearance="outline" class="form-field">
-    <mat-label>Employee Number</mat-label>
-    <input matInput   type="text"   formControlName="employeeNumber"  >
-   </mat-form-field>
+        <mat-label>Country</mat-label>
+        <mat-select
+          formControlName="clientCountry"
+          (selectionChange)="onCountryChange($event.value)"
+        >
+          <mat-option *ngFor="let data of jsonData" [value]="data.country">{{
+            data.country
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="form-field"
+        *ngIf="selectedCountry"
+      >
+        <mat-label>Currency</mat-label>
+        <input matInput formControlName="clientCurrency" />
+      </mat-form-field>
+      <!-- <mat-label>Currency</mat-label>
+        <mat-select formControlName="selectedCurrency">
+          <ng-container *ngFor="let data of jsonData">
+            <mat-option
+              *ngIf="data.country === selectedCountry"
+              [value]="data.currency"
+            >
+              {{ data.currency }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field> -->
+
+      <mat-form-field
+        appearance="outline"
+        class="form-field"
+        *ngIf="selectedCountry"
+      >
+        <mat-label>Timezones</mat-label>
+        <mat-select formControlName="clientTimezone">
+          <ng-container *ngFor="let data of jsonData">
+            <ng-container *ngIf="data.country === selectedCountry">
+              <mat-option
+                *ngFor="let timezone of data.timezones"
+                [value]="timezone"
+              >
+                {{ timezone }}
+              </mat-option>
+            </ng-container>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- <mat-label>Timezones</mat-label>
+        <mat-select formControlName="selectedTimezone">
+          <ng-container *ngFor="let data of jsonData">
+            <mat-option
+              *ngIf="data.country === selectedCountry"
+              [value]="data.timezones"
+              *ngFor="let data.timezones.timezone of data.timezones"
+            >
+              {{ data.timezones.timezone }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field> -->
+
       <mat-form-field appearance="outline" class="form-field">
-    <mat-label>Employee Role</mat-label>
-    <input matInput   type="text"   formControlName="employeeRole" >
-   </mat-form-field> -->
-   <!-- Project Information -->
-  
-      <mat-form-field appearance="outline" class="form-field">
-    <mat-label>Project Name</mat-label>
-    <input matInput   type="text"   formControlName="projectName"  >
-   </mat-form-field>
+        <mat-label>Project Name</mat-label>
+        <input matInput type="text" formControlName="projectName" />
+      </mat-form-field>
       <!-- <mat-form-field appearance="outline" class="form-field">
     <mat-label>Project ID</mat-label>
     <input matInput   type="text"   formControlName="projectId"  >
    </mat-form-field> -->
-  
-    <!-- Project Information - continued -->
+
+      <!-- Project Information - continued -->
 
       <mat-form-field appearance="outline" class="form-field">
-  <mat-label>Project Manager</mat-label>
-  <input matInput   type="text"   formControlName="projectManager"  >
- </mat-form-field>
-  
+        <mat-label>Project Name</mat-label>
+        <input matInput type="text" formControlName="projectName" />
+      </mat-form-field>
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Project ID</mat-label>
+        <input matInput type="text" formControlName="projectId" />
+      </mat-form-field> -->
 
+      <!-- Project Information - continued -->
 
       <mat-form-field appearance="outline" class="form-field">
-  <mat-label>Project Assignment Status</mat-label>
-  <input matInput   formControlName="projectAssignmentStatus" >
- </mat-form-field>
-  
+        <mat-label>Project Manager</mat-label>
+        <input matInput type="text" formControlName="projectManager" />
+      </mat-form-field>
 
-<!-- Quote Information -->
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Project Assignment Status</mat-label>
+        <mat-select formControlName="projectAssignmentStatus">
+          <mat-option value="Un Assigned">Un Assigned</mat-option>
+          <mat-option value="Assigned">Assigned</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Quote Information -->
 
       <!-- <mat-form-field appearance="outline" class="form-field">
   <mat-label>Quote ID</mat-label>
@@ -97,9 +144,8 @@
   <mat-label>Quote Status</mat-label>
   <input matInput   type="text"   formControlName="quoteStatus"  >
  </mat-form-field> -->
-  
 
-<!-- Service Information -->
+      <!-- Service Information -->
 
       <!-- <mat-form-field appearance="outline" class="form-field">
   <mat-label>Service Description</mat-label>
@@ -107,98 +153,82 @@
  </mat-form-field>
    -->
 
-<!-- Time Information -->
+      <!-- Time Information -->
 
       <mat-form-field appearance="outline" class="form-field">
-  <mat-label>Start Date</mat-label>
-  <input matInput   type="date"   formControlName="startDate" >
- </mat-form-field>
-  
-
+        <mat-label>Start Date</mat-label>
+        <input matInput type="date" formControlName="startDate" />
+      </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field">
-  <mat-label>End Date</mat-label>
-  <input matInput   type="date"  formControlName="endDate"  >
- </mat-form-field>
-  
- <mat-form-field appearance="outline" class="form-field">
-  <mat-label>Date</mat-label>
-  <input matInput   type="date"  formControlName="date"  >
- </mat-form-field>
-  
+        <mat-label>End Date</mat-label>
+        <input matInput type="date" formControlName="endDate" />
+      </mat-form-field>
+
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Date</mat-label>
+        <input matInput type="date" formControlName="date" />
+      </mat-form-field> -->
 
       <mat-form-field appearance="outline" class="form-field">
-  <mat-label>Duration</mat-label>
-  <input matInput   type="text"  formControlName="duration" >
- </mat-form-field>
-  
+        <mat-label>Duration</mat-label>
+        <input matInput type="text" formControlName="duration" />
+      </mat-form-field>
 
-<!-- Location Information -->
+      <!-- Location Information -->
 
-      <mat-form-field appearance="outline" class="form-field">
-  <mat-label>From</mat-label>
-  <input matInput   type="text"   formControlName="from" >
- </mat-form-field>
-  
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>From</mat-label>
+        <input matInput type="text" formControlName="from" />
+      </mat-form-field> -->
 
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>To</mat-label>
+        <input matInput type="text" formControlName="to" />
+      </mat-form-field> -->
 
-      <mat-form-field appearance="outline" class="form-field">
-  <mat-label>To</mat-label>
-  <input matInput   type="text"   formControlName="to" >
- </mat-form-field>
-  
+      <!-- Payment Information -->
 
-<!-- Payment Information -->
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>PA</mat-label>
+        <input matInput type="text" formControlName="pa" />
+      </mat-form-field> -->
 
-      <mat-form-field appearance="outline" class="form-field">
-  <mat-label>PA</mat-label>
-  <input matInput   type="text"   formControlName="pa"  >
- </mat-form-field>
-  
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>PO</mat-label>
+        <input matInput type="text" formControlName="po" />
+      </mat-form-field> -->
 
-
-      <mat-form-field appearance="outline" class="form-field">
-  <mat-label>PO</mat-label>
-  <input matInput   type="text"   formControlName="po"  >
- </mat-form-field>
-
- <mat-form-field appearance="outline" class="form-field">
-  <mat-label>SFDC</mat-label>
-  <input matInput   type="text"   formControlName="sfdc"  >
- </mat-form-field>
-  
-
+      <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>SFDC</mat-label>
+        <input matInput type="text" formControlName="sfdc" />
+      </mat-form-field> -->
 
       <mat-form-field appearance="outline" class="form-field">
-  <mat-label>Unit Price</mat-label>
-  <input matInput   type="text"  formControlName="unitPrice"  >
- </mat-form-field>
-  
-
+        <mat-label>Unit Price</mat-label>
+        <input matInput type="text" formControlName="unitPrice" />
+      </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field">
-  <mat-label>TotalManDays</mat-label>
-  <input matInput   type="text"  formControlName="totalManDays"  >
- </mat-form-field>
-  
-
+        <mat-label>TotalManDays</mat-label>
+        <input matInput type="text" formControlName="totalManDays" />
+      </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>TotalAmount</mat-label>
-    <input matInput formControlName="totalAmount"  >
-   </mat-form-field>
-  
-  <!-- Other Information -->
-  
+        <input matInput formControlName="totalAmount" />
+      </mat-form-field>
+
+      <!-- Other Information -->
+
       <mat-form-field appearance="outline" class="form-field">
-    <mat-label>Valid Date</mat-label>
-    <input matInput   type="date"   formControlName="validDate"  >
-   </mat-form-field>
+        <mat-label>Valid Date</mat-label>
+        <input matInput type="date" formControlName="validDate" />
+      </mat-form-field>
 
-
-   <button mat-raised-button  class="form-button" type="submit ">Submit</button>
-    
-  </form>
+      <button mat-raised-button class="form-button" type="submit ">
+        Submit
+      </button>
+    </form>
   </div>
-  </mat-card>
-  
+</mat-card>

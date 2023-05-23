@@ -12,10 +12,11 @@ export class ApiServicesService {
 
   constructor(private http: HttpClient) {}
 
-  createProjectDetails(projectDetails:any){
+  createProjectDetails(projectDetails: any) {
     return this.http.post(
-      this.projectMgtUrl + '/projectDetails/createProjectDetails',projectDetails
-    )
+      this.projectMgtUrl + '/projectDetails/createProjectDetails',
+      projectDetails
+    );
   }
 
   getListOfProjects() {
@@ -24,10 +25,10 @@ export class ApiServicesService {
     );
   }
 
-  deleteProjectById(projectId:any){
+  deleteProjectById(projectId: any) {
     return this.http.delete<any>(
-      this.projectMgtUrl + '/projectDetails/deleteProjectDetails/'+projectId
-    )
+      this.projectMgtUrl + '/projectDetails/deleteProjectDetails/' + projectId
+    );
   }
   getDailyTimesheetByProjectId(projectId: string) {
     return this.http.get<any>(
@@ -149,7 +150,7 @@ export class ApiServicesService {
     console.log('deleteWeeklyTimesheet', weeklyTimesheetId);
     return this.http.delete<any>(
       this.projectMgtUrl +
-          `/weeklyTimesheet/deleteWeeklyTimesheet/${weeklyTimesheetId}`
+        `/weeklyTimesheet/deleteWeeklyTimesheet/${weeklyTimesheetId}`
     );
   }
 
@@ -174,21 +175,30 @@ export class ApiServicesService {
     );
   }
 
-  deleteMeetingMinutesById(meetingMinutesId: any){
+  deleteMeetingMinutesById(meetingMinutesId: any) {
     return this.http.delete<any>(
-      this.projectMgtUrl +  `/meetingMinutes/deleteMeetingMinutesById/${meetingMinutesId}`
-    )
+      this.projectMgtUrl +
+        `/meetingMinutes/deleteMeetingMinutesById/${meetingMinutesId}`
+    );
   }
 
-  getInactiveEmployeeList(){
+  getInactiveEmployeeList() {
     return this.http.get<any>(
       this.employeeURL + 'getListOfInactiveEmployeeInfo'
-    )
+    );
   }
 
-  assignProjectToEmployee(projectId:any,employeeData:any){
+  getDropDown() {
+    return this.http.get<any>(
+      this.projectMgtUrl + '/dropdown/countryDropDowns'
+    );
+  }
+
+  assignProjectToEmployee(projectId: any, employeeData: any) {
     return this.http.post<any>(
-      this.projectMgtUrl + `/projectDetails/projectAssignment/${projectId}?employeeEmail=${employeeData.employeeEmail}&employeeId=${employeeData.employeeId}&employeeName=${employeeData.employeeName}&employeeRole=${employeeData.employeeRole}`,null
-    )
+      this.projectMgtUrl +
+        `/projectDetails/projectAssignment/${projectId}?employeeEmail=${employeeData.employeeEmail}&employeeId=${employeeData.employeeId}&employeeName=${employeeData.employeeName}&employeeRole=${employeeData.employeeRole}`,
+      null
+    );
   }
 }
