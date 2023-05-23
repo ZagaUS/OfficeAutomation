@@ -6,6 +6,10 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { CreateProjectComponent } from './project-module/create-project/create-project.component';
 import { CreateEmployeeComponent } from './employee-onboarding/create-employee/create-employee.component';
+import { QuoteCreationComponent } from './project-module/quote-creation/quote-creation.component';
+import { QuoteComponent } from './project-module/quote/quote.component';
+import { PurchaseOrderComponent } from './project-module/purchase-order/purchase-order.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -14,6 +18,9 @@ const routes: Routes = [
   { path: 'projectdashboard', component: ProjectDashboardComponent },
   { path: 'createProject', component: CreateProjectComponent},
   { path: 'createEmployee', component: CreateEmployeeComponent},
+  { path: 'quoteCreation', component: QuoteCreationComponent},
+  { path: 'quote' , component: QuoteComponent},
+  { path: 'purchaseOrder', component: PurchaseOrderComponent},
   {
     path: 'projectModule',
     loadChildren: () =>

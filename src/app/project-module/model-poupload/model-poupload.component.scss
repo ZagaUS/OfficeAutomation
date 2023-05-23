@@ -1,0 +1,168 @@
+.mat-dialog-container {
+    width: 800px;
+    height: 600px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .showDailyContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  h2 {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  
+  
+  
+  .modal-dialog-content {
+    margin-top: 20px;
+  }
+  
+  button.modal-buttons {
+    margin-top: 20px;
+  }
+  
+  .mat-form-field {
+    width: 100%;
+    margin-top: 10px;
+    margin-left: 50px;
+  }
+  
+  
+  input.mat-input {
+    font-size: 16px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button.mat-raised-button {
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    width: 120px;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+  }
+  .mat-dialog-container.extended {
+    width:100%;
+  }
+  
+  
+  button.mat-raised-button:hover {
+    background-color: #edf3fa;
+    color: #fff;
+  }
+  
+  :host {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    // padding: 2em;
+    padding-left: 50em;
+    padding-top: 20em;
+  
+    .mat-dialog-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2em;
+      background-color: #fff;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+      position: absolute;
+  
+      h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+  
+      mat-form-field {
+        width: 100%;
+        margin-top: 20px;
+  
+        input {
+          font-size: 15px;
+        }
+  
+        mat-datepicker-toggle {
+          color: #074a6e;
+          cursor: pointer;
+  
+          &:hover {
+            color: #074a6e;
+          }
+        }
+      }
+  
+      .close-button {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+      }
+  
+      button {
+        margin-top: 20px;
+        // background-color: #007bff;
+        background: linear-gradient(to bottom, #074a6e , #074a6e );
+        color: #f3eeee;
+  
+        // &:hover {
+        //   background-color: #0062cc;
+        // }
+      }
+    }
+  }
+  
+  @media (min-width: 768px) {
+    :host {
+      .mat-dialog-container {
+        padding: 3em;
+      }
+    }
+  }
+  
+  @media (min-width: 992px) {
+    :host {
+      .mat-dialog-container {
+        padding: 4em;
+      }
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    :host {
+      .mat-dialog-container {
+        padding: 5em;
+      }
+    }
+  }
+  
