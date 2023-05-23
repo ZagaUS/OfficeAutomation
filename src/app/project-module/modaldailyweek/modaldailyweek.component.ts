@@ -31,7 +31,7 @@ export class ModaldailyweekComponent {
   }
   showDaily = false;
   showExternal = false;
-  projectName?: string;
+  projectName?: any = localStorage.getItem('projectName');
   duration?: string;
   description?: string;
   date?: string;
