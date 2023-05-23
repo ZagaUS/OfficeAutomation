@@ -8,13 +8,29 @@
     <mat-label>From</mat-label>
     <input matInput   type="text"   formControlName="from" >
     </mat-form-field> -->
-        
-      
+    
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Project Name</mat-label>
+        <input matInput   type="text"   formControlName="projectName" >
+        </mat-form-field>  
+     
+    
       
     <mat-form-field appearance="outline" class="form-field">
     <mat-label>To</mat-label>
     <input matInput   type="text"   formControlName="to" >
     </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Start Date</mat-label>
+        <input matInput   type="date"   formControlName="validDate"  >
+       </mat-form-field>
+    
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>End Date</mat-label>
+        <input matInput   type="date"   formControlName="validDate"  >
+       </mat-form-field>
+    
 
     <!-- Payment Information -->
 
@@ -49,7 +65,16 @@
         <input matInput   type="text"  formControlName="totalManDays"  >
        </mat-form-field>
         
-      
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>GST</mat-label>
+        <mat-select formControlName="gst">
+          <mat-option>18</mat-option>
+          <mat-option>2.5</mat-option>
+          <mat-option>28</mat-option>          
+        </mat-select>
+      </mat-form-field>
+
+  
       
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>TotalAmount</mat-label>
@@ -65,6 +90,8 @@
       
       
          <button mat-raised-button  class="form-button" type="submit ">Create</button>
+
+         <button mat-raised-button  class="form-buttons" type="submit ">Generate Quote</button>
           
         </form>
         </div>
