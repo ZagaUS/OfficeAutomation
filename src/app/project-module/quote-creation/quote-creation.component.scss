@@ -60,12 +60,29 @@
   }
   
   .form-button {
-    width: 100px; 
+    width:200px; 
     margin-top: 20px;
     margin: 0 auto;
     font-size: 18px;
     font-weight: bold;
-    margin-left: 600px;
+    margin-left: 500px;
+    background: linear-gradient(to bottom, #0a73dd 0%, #074a6e 100%);
+    color: #fff;
+    // background-color: #007bff;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .form-buttons {
+    width: 200px; 
+    margin-top: 1px;
+    position: absolute;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 80px;
     background: linear-gradient(to bottom, #0a73dd 0%, #074a6e 100%);
     color: #fff;
     // background-color: #007bff;
@@ -76,6 +93,11 @@
   }
   
   .form-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+  }
+
+  .form-buttons:hover {
     background-color: #0056b3;
     transform: scale(1.05); 
   }
