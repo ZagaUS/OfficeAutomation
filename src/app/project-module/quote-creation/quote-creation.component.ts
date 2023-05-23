@@ -9,6 +9,11 @@ import { ApiServicesService } from 'src/app/base-api/api-services.service';
 })
 export class QuoteCreationComponent {
   quoteForm!: FormGroup;
+  gstNumber?: any = [24,18,1];
+  projectName?: any = localStorage.getItem('projectName');
+  to?: any = localStorage.getItem('clientAddress');
+  clientCurrency?:any = localStorage.getItem('clientCurrency');
+ 
 
 constructor(private fb: FormBuilder, private api: ApiServicesService) {
   this.createForm();
@@ -16,8 +21,14 @@ constructor(private fb: FormBuilder, private api: ApiServicesService) {
 
 createForm() {
   this.quoteForm = this.fb.group({
-    projectName: [''],
-    to: [''],
+    projectId: [''],
+    projectName: [this.projectName],
+    quoteStatus: [''],
+    from:[''],
+    to: [this.to],
+    serviceDescription: [''],
+    clientCurrency: [this.clientCurrency],
+    totalPrice: [''],
     totalAmount: [''],
     unitPrice: [''],
     pa: [''],
@@ -25,14 +36,18 @@ createForm() {
     sfdc: [''],
     validDate: [''],
     totalManDays: [''],
-    // duration: [''],
-    // date: [''],
+    gstAmount: [''],
+    gstPercent: [''],
+    duration: [''],
+    date: [''],
+    employeeRole: [''],
+    employeeName: [''],
   });
 }
 
 onCreate() {
-  const quoteDetails = this.quoteForm.value;
-  this.api.createProjectDetails(quoteDetails).subscribe((data: any) => {
+  const quote = this.quoteForm.value;
+  this.api.createQuotes(quote).subscribe((data: any) => {
     console.log('data updated', data);
     alert('Updated successfully');
     // do something with the response, if needed

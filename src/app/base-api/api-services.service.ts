@@ -201,4 +201,11 @@ export class ApiServicesService {
       null
     );
   }
+
+  createQuotes(quote: any) {
+    return this.http.post(
+      this.projectMgtUrl + '/Quotes/createQuotes',
+      quote
+    );
+  }
 }

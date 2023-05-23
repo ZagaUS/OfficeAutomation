@@ -50,6 +50,17 @@
         <mat-label>SFDC</mat-label>
         <input matInput   type="text"   formControlName="sfdc"  >
        </mat-form-field>
+
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Client Currency</mat-label>
+        <input matInput   type="text"  formControlName="clientCurrency"  >
+       </mat-form-field>
+
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Duration</mat-label>
+        <input matInput   type="text"  formControlName="duration"  >
+       </mat-form-field>
+        
         
       
       
@@ -64,16 +75,38 @@
         <mat-label>TotalManDays</mat-label>
         <input matInput   type="text"  formControlName="totalManDays"  >
        </mat-form-field>
-        
+
+       
        <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Total Price</mat-label>
+        <input matInput   type="text"  formControlName="totalPrice"  >
+       </mat-form-field>
+
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>GST</mat-label>
+        <mat-select formControlName="gstPercent" name="GST">
+          <mat-option *ngFor="let gst of gstNumber" [value]="gst">
+            {{gst}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+        
+
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>GST Amount</mat-label>
+        <input matInput   type="text"  formControlName="gstAmount">
+       </mat-form-field>
+       <!-- <mat-form-field appearance="outline" class="form-field">
         <mat-label>GST</mat-label>
         <mat-select formControlName="gst">
           <mat-option>18</mat-option>
           <mat-option>2.5</mat-option>
           <mat-option>28</mat-option>          
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
 
+   
   
       
             <mat-form-field appearance="outline" class="form-field">

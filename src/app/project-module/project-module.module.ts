@@ -36,6 +36,7 @@ import { QuoteCreationComponent } from './quote-creation/quote-creation.componen
 import { QuoteComponent } from './quote/quote.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { ModelPouploadComponent } from './model-poupload/model-poupload.component';
+import { ViewQuoteComponent } from './view-quote/view-quote.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { ModelPouploadComponent } from './model-poupload/model-poupload.componen
     QuoteComponent,
     PurchaseOrderComponent,
     ModelPouploadComponent,
+    ViewQuoteComponent,
   ],
   imports: [
     CommonModule,
