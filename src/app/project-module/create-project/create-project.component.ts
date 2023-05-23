@@ -46,7 +46,7 @@ export class CreateProjectComponent {
       projectName: [''],
       projectId: [''],
       projectManager: [''],
-      projectAssignmentStatus: ['Un Assigned'],
+      projectAssignmentStatus: ['false'],
       quoteId: [''],
       quoteStatus: [''],
       serviceDescription: [''],
