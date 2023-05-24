@@ -126,8 +126,9 @@ export class ProjectDashboardComponent {
       console.log(message);
     });
   }
-  onCreate(clientAddress?: any,clientCurrency?: any){
+  onCreate(projectName?:any, clientAddress?: any,clientCurrency?: any){
     console.log('viewProject', clientAddress, clientCurrency);
+    localStorage.setItem('projectName', projectName);
     localStorage.setItem('clientAddress', clientAddress);
     localStorage.setItem('clientCurrency', clientCurrency);
 

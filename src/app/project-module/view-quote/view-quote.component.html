@@ -1,1 +1,34 @@
-<p>view-quote works!</p>
+<!-- <div style="background-color: aqua; width: 100%;"> -->
+    <mat-card class="quote-card">
+        <mat-card-title class="card-header">Quote Details</mat-card-title>
+        <div class="form-container">
+          <ng-container *ngFor="let item of data | keyvalue">
+            <mat-form-field
+              class="form-field"
+              appearance="outline"
+              [class.readonly]="readonly"
+            >
+              <mat-label class="form-label">{{ item.key }}</mat-label>
+              <input
+                matInput
+                placeholder=" "
+                [(ngModel)]="item.value"
+                [class.editable]="!editable"
+                [readonly]="readonly"
+                [ngModelOptions]="{ updateOn: 'blur' }"
+                (blur)="updateFormData(item.key, item.value.toString())"
+                class="form-input"
+              />
+            </mat-form-field>
+          </ng-container>
+          <button
+            mat-raised-button
+            class="form-button"
+            (click)="editable ? submitForm(formData) : edit()"
+          >
+            {{ editable ? "SUBMIT" : "EDIT" }}
+          </button>
+        </div>
+        <mat-card-actions style="text-align: center"> </mat-card-actions>
+      </mat-card>
+      
