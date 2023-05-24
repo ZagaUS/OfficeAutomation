@@ -12,7 +12,7 @@ export class QuoteCreationComponent {
   gstNumber?: any = [24,18,1];
   projectName?: any = localStorage.getItem('projectName');
   to?: any = localStorage.getItem('clientAddress');
-  clientCurrency?:any = localStorage.getItem('clientCurrency');
+  clientCurrency?: any = localStorage.getItem('clientCurrency');
  
 
 constructor(private fb: FormBuilder, private api: ApiServicesService) {

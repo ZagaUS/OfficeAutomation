@@ -106,12 +106,11 @@
   </button>
           <!-- <button mat-raised-button class="btns" color="primary" data-toggle="modal" (click)="employeeAssign()">Assign Employee</button> -->
           <button
-            routerLink="/quote"
             mat-raised-button
             class="btns"
             color="primary"
             data-toggle="modal"
-            (click)="onCreate()"
+            (click)="onCreate(element.clientAddress, element.clientCurrency)"
             >Quote</button> 
           <button
           routerLink="/purchaseOrder"

@@ -12,6 +12,8 @@ export interface PeriodicElement {
   employeeName: String;
   role: String;
   projectStatus: String;
+//   clientCurrency: String;
+//   clientAddress: String;
 }
 
 // const ELEMENT_DATA: PeriodicElement[] = [
@@ -99,6 +101,8 @@ export class ProjectDashboardComponent {
     console.log('viewProject', projectId);
     localStorage.setItem('projectId', projectId);
     localStorage.setItem('projectName', projectName);
+
+
     this.router.navigate(['/projectModule']);
   }
 
@@ -122,6 +126,12 @@ export class ProjectDashboardComponent {
       console.log(message);
     });
   }
-  onCreate(){}
+  onCreate(clientAddress?: any,clientCurrency?: any){
+    console.log('viewProject', clientAddress, clientCurrency);
+    localStorage.setItem('clientAddress', clientAddress);
+    localStorage.setItem('clientCurrency', clientCurrency);
+
+    this.router.navigate(['/quote']);
+  }
   onUpload(){}
 }
