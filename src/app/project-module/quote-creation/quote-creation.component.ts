@@ -9,10 +9,14 @@ import { ApiServicesService } from 'src/app/base-api/api-services.service';
 })
 export class QuoteCreationComponent {
   quoteForm!: FormGroup;
-  gstNumber?: any = [24,18,1];
+  gstNumber?: any = [0,5,12,18,28];
   projectName?: any = localStorage.getItem('projectName');
   to?: any = localStorage.getItem('clientAddress');
-  clientCurrency?:any = localStorage.getItem('clientCurrency');
+  clientCurrency?: any = localStorage.getItem('clientCurrency');
+  unitPrice?: any = localStorage.getItem('unitPrice');
+  startDate?: any = localStorage.getItem('startDate');
+endDate?: any = localStorage.getItem('endDate');
+duration?: any = localStorage.getItem('duration');  
  
 
 constructor(private fb: FormBuilder, private api: ApiServicesService) {
@@ -30,16 +34,17 @@ createForm() {
     clientCurrency: [this.clientCurrency],
     totalPrice: [''],
     totalAmount: [''],
-    unitPrice: [''],
+    unitPrice: [this.unitPrice],
     pa: [''],
     po: [''],
     sfdc: [''],
     validDate: [''],
+    startDate:[this.startDate],
+    endDate:[this.endDate],
     totalManDays: [''],
     gstAmount: [''],
     gstPercent: [''],
-    duration: [''],
-    date: [''],
+    duration: [this.duration],
     employeeRole: [''],
     employeeName: [''],
   });
