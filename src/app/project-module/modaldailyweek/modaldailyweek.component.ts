@@ -33,6 +33,7 @@ export class ModaldailyweekComponent {
   showExternal = false;
   projectName?: any = localStorage.getItem('projectName');
   employeeName?: any = localStorage.getItem('employeeName');
+  // employeeName?: string;
   duration?: string;
   description?: string;
   date?: string;
@@ -124,7 +125,7 @@ export class ModaldailyweekComponent {
     this.contactForm.get('endDate')?.setValue(endDate);
     this.contactForm.get('startDate')?.setValue(startDate);
     const projectName = localStorage.getItem('projectName');
-    const employeeName = localStorage.getItem('employeeName')
+    // const employeeName = localStorage.getItem('employeeName');
 
     this.api
       .createExternalTimesheet(

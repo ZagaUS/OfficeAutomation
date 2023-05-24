@@ -25,7 +25,7 @@ export class AddMeetingMinuteComponent {
     private api: ApiServicesService,
     private router: Router,) {
     this.meetingForm = this.fb.group({
-      employeeName: [''],
+      employeeName: [localStorage.getItem('employeeName')],
       projectName: [this.projectName],
       projectId: [this.projectId],
       meetingMinutesId: [''],
