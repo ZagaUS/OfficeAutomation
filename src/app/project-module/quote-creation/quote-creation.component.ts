@@ -11,13 +11,14 @@ export class QuoteCreationComponent {
   quoteForm!: FormGroup;
   gstNumber?: any = [0,5,12,18,28];
   projectName?: any = localStorage.getItem('projectName');
+  projectId?:any = localStorage.getItem('projectId');
   to?: any = localStorage.getItem('clientAddress');
   clientCurrency?: any = localStorage.getItem('clientCurrency');
   unitPrice?: any = localStorage.getItem('unitPrice');
   startDate?: any = localStorage.getItem('startDate');
 endDate?: any = localStorage.getItem('endDate');
 duration?: any = localStorage.getItem('duration');  
-projectId?: any = localStorage.getItem('projectId');
+// projectId?: any = localStorage.getItem('projectId');
  
 
 constructor(private fb: FormBuilder, private api: ApiServicesService) {
