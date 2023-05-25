@@ -209,6 +209,13 @@ export class ApiServicesService {
     );
   }
 
+  generateQuote(quoteId:any, quote: any) {
+    return this.http.post<any>(
+      this.projectMgtUrl +
+        `/Quotes/generateQuote/${quoteId}`, quote
+    );
+  }
+
   createQuotes(quote: any) {
     return this.http.post(
       this.projectMgtUrl + '/Quotes/createQuotes',
@@ -218,7 +225,7 @@ export class ApiServicesService {
 
   getAllQuotes(projectId?: any){
     return this.http.get<any>(
-      this.projectMgtUrl + `/Quotes/viewQuoteDetails/${projectId}`
+      this.projectMgtUrl + `/Quotes/getQuotesByProjectId/${projectId}`
     );
   }
 

@@ -1,4 +1,7 @@
+import { formatDate } from '@angular/common';
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
 
@@ -8,6 +11,8 @@ import { ApiServicesService } from 'src/app/base-api/api-services.service';
   styleUrls: ['./quote-creation.component.scss']
 })
 export class QuoteCreationComponent {
+
+  dateFormat = 'yyyy-MM-dd';
   quoteForm!: FormGroup;
   gstNumber?: any = [0,5,12,18,28];
   projectName?: any = localStorage.getItem('projectName');
@@ -60,5 +65,9 @@ onCreate() {
     // do something with the response, if needed
   });
 }
+
+ 
+//   this.quoteForm.reset();
 }
+
 

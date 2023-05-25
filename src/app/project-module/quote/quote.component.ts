@@ -37,12 +37,12 @@ export class QuoteComponent {
     
   }
 
-  viewQuote(quoteName?: any) {
-    console.log('viewQuote',quoteName);
-    // localStorage.setItem('projectId', projectId);
-    localStorage.setItem('quoteName', quoteName);
-    // this.router.navigate(['/projectModule']);
-  }
+  // viewQuote(quoteName?: any) {
+  //   console.log('viewQuote',quoteName);
+  //   // localStorage.setItem('projectId', projectId);
+  //   localStorage.setItem('quoteName', quoteName);
+  //   // this.router.navigate(['/projectModule']);
+  // }
 onCreate(){}
 
 onDelete(quoteId?: any){

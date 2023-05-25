@@ -60,4 +60,33 @@ export class ViewQuoteComponent {
       alert('updated data successfully');
     });
   }
+    onGenerateClick(){
+      console.log('generate click' , this.quoteId);
+      // const startDate = formatDate(
+      //   this.quoteForm.value.startDate,
+      //   this.dateFormat,
+      //   'en-US'
+      // );
+      // const endDate = formatDate(
+      //   this.quoteForm.value.endDate,
+      //   this.dateFormat,
+      //   'en-US'
+      // );
+      // const generateQuote = {
+      //   projectId: localStorage.getItem('projectId'),
+      //   projectName: localStorage.getItem('projectName'),
+      //   // startDate: startDate,
+      //   // endDate: endDate,
+      // };
+      // console.log(
+      //   // 'Start date: ' + startDate,
+      //   // 'end date: ' + endDate + ' ' +
+      //    JSON.stringify(generateQuote)
+      // );
+      this.api.generateQuote(this.quoteId, this.formData).subscribe((data) => {
+        console.log('Data: ' + JSON.stringify(data));
+        window.location.reload();
+      });
+  }
+
 }

@@ -1,7 +1,7 @@
 <mat-card class="quote-card">
     <mat-card-title class="card-header">Create Quote</mat-card-title>
       <div  class="form-container">
-  <form [formGroup]="quoteForm" (ngSubmit)="onCreate()">  
+  <form [formGroup]="quoteForm" >  
 
 <!-- Quote Information -->
     <!-- <mat-form-field appearance="outline" class="form-field">
@@ -122,9 +122,9 @@
          </mat-form-field>
       
       
-         <button mat-raised-button  class="form-button" type="submit ">Create</button>
+         <button mat-raised-button  class="form-button" type="submit "  (click)="onCreate()">Create</button>
 
-         <button mat-raised-button  class="form-buttons" type="submit ">Generate Quote</button>
+         <!-- <button mat-raised-button  class="form-buttons" type="submit " (click)="onGenerateClick()">Generate Quote</button> -->
           
         </form>
         </div>

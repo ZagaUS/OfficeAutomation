@@ -60,6 +60,9 @@ export class PurchaseOrderComponent {
     this.api.deletePO(poId).subscribe((data) =>{
       console.log('PO deleted successfully');
     })
+    alert('successfully deleted the quote')
+    console.log('validating the delete alert box');
+    window.location.reload();
   }
 
 
@@ -71,7 +74,7 @@ export class PurchaseOrderComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
-      // window.location.reload();
+      window.location.reload();
     });
   }
 

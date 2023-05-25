@@ -51,7 +51,7 @@
     <!-- quoteNumber Column -->
     <ng-container matColumnDef="quoteNumber">
       <th mat-header-cell *matHeaderCellDef>Quote Number</th>
-      <td mat-cell *matCellDef="let element">{{ element.quoteNumber}}</td>
+      <td mat-cell *matCellDef="let element">{{ element.quoteId}}</td>
     </ng-container>
 
 <!-- date Column -->
@@ -85,7 +85,7 @@
           class="btns"
           color="primary"
           data-toggle="modal"
-          (click)="view(element.quoteNumber)"
+          (click)="view(element.quoteId)"
         >View
         </button>
 
@@ -103,7 +103,7 @@
             class="btns"
             color="primary"
             data-toggle="modal"
-            (click)="onDelete(element.quoteNumber)"
+            (click)="onDelete(element.quoteId)"
             >Delete</button>
 
           <button
