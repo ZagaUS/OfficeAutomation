@@ -17,6 +17,7 @@ export class QuoteCreationComponent {
   startDate?: any = localStorage.getItem('startDate');
 endDate?: any = localStorage.getItem('endDate');
 duration?: any = localStorage.getItem('duration');  
+projectId?: any = localStorage.getItem('projectId');
  
 
 constructor(private fb: FormBuilder, private api: ApiServicesService) {
@@ -25,7 +26,7 @@ constructor(private fb: FormBuilder, private api: ApiServicesService) {
 
 createForm() {
   this.quoteForm = this.fb.group({
-    projectId: [''],
+    projectId: [this.projectId],
     projectName: [this.projectName],
     quoteStatus: [''],
     from:[''],

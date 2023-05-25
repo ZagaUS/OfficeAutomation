@@ -126,8 +126,9 @@ export class ProjectDashboardComponent {
       console.log(message);
     });
   }
-  onCreate(projectName?:any, clientAddress?: any,clientCurrency?: any, startDate?: any, endDate?: any, duration?: any, unitPrice?: any) {
+  onCreate(projectId?:any, projectName?:any, clientAddress?: any,clientCurrency?: any, startDate?: any, endDate?: any, duration?: any, unitPrice?: any) {
     console.log('viewProject', clientAddress, clientCurrency, unitPrice);
+    localStorage.setItem('projectId', projectId);
     localStorage.setItem('projectName', projectName);
     localStorage.setItem('clientAddress', clientAddress);
     localStorage.setItem('clientCurrency', clientCurrency);

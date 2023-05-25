@@ -208,4 +208,41 @@ export class ApiServicesService {
       quote
     );
   }
+
+  viewAllPO(projectId: any) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        `/po/viewAllPO/${projectId}` 
+    );
+  }
+
+  uploadPO(
+    po: any,
+    projectId: any,
+    projectName: any,
+    poId:any,
+  ) {
+    console.log(
+      'uploadPO' +
+        ' ' +
+        po.uploadfile +
+        ' ' +
+        projectId +
+        ' ' +
+        projectName +
+        ' ' +
+        po.endDate +
+        ' ' +
+        po.startDate
+    );
+    return this.http.post(
+      this.projectMgtUrl +
+        `/po/uploadPO/endDate=${po.endDate}&startDate=${po.startDate}&projectId=${projectId}&projectName=${projectName}&poId=${poId}`,
+      po.uploadfile,
+      {
+        headers: { 'Content-Type': 'application/octet-stream' },
+      }
+    );
+  }
+
 }

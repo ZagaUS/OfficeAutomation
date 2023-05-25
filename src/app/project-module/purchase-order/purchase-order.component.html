@@ -2,28 +2,18 @@
     <span style="padding: 40px 10px 40px 10px; font-size: 30px"
       >List of PO 
     </span>
-  
-    <!-- <mat-form-field style="margin-top: 20px">
-      <mat-label>Search by Project Name / Project ID</mat-label>
-      <input
+<!--   
+    <mat-form-field style="margin-top: 0px">
+      <mat-label>Search by Project Name / Project ID</mat-label> -->
+      <!-- <input
         matInput
         (keyup)="applyFilter($event)"
         placeholder="Name/Id"
         #input
-      />
-    </mat-form-field> -->
+      /> -->
+    <!-- </mat-form-field>  --> 
   
     <div class="categoryContainer">
-     <!-- <mat-radio-group aria-labelledby="label" class="radioGroup">
-        <mat-radio-button
-          class="radiobtn"
-          *ngFor="let category of categories"
-          (change)="applyFilterForCategory()"
-          [value]="category"
-        >
-          {{ category }}
-        </mat-radio-button>
-      </mat-radio-group>  -->
       <button
       mat-raised-button
       class="btns"
@@ -37,18 +27,18 @@
     </div>
     
   
-    <!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8"> -->
-      <!-- ProjectId Column
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- ProjectId Column -->
       <ng-container matColumnDef="projectId">
         <th mat-header-cell *matHeaderCellDef>ProjectId</th>
         <td mat-cell *matCellDef="let element">{{ element.projectId }}</td>
       </ng-container>
-   -->
+  
       <!-- ProjectName Column -->
-      <!-- <ng-container matColumnDef="poName">
+      <ng-container matColumnDef="poName">
         <th mat-header-cell *matHeaderCellDef>PO Name</th>
         <td mat-cell *matCellDef="let element">{{ element.poName }}</td>
-      </ng-container> -->
+      </ng-container>
   
       <!-- EmployeeName Column -->
       <!-- <ng-container matColumnDef="employeeName">
@@ -66,26 +56,26 @@
       <!-- <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef>Action</th>
   
-        <td mat-cell *matCellDef="let element">
-          <div class="actionContainer"> -->
+        <td mat-cell *matCellDef="let element"> -->
+          <div class="actionContainer"> 
           
-            <!-- <a
-              (click)="viewPO(element.poName)"
+            <a
+              (click)="viewPO()"
               class="icon"
               ><mat-icon
                 style="font-size: x-large"
                 fontIcon="visibility"
               ></mat-icon>
-              <p>View</p> -->
-            <!-- </a>  -->
+              <p>View</p>
+            </a> 
             <!-- <a (click)="test()" class="icon" style="margin-left: 10px"
-              ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon> -->
-            <!-- <p>Edit</p> -->
-            <!-- </a> -->
+              ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon> 
+            <p>Edit</p>
+            </a> -->
             <!-- <a (click)="test(element.projectId)" class="icon" style="margin-left: 10px"
-              ><mat-icon style="font-size: x-large" fontIcon="delete"></mat-icon> -->
-              <!-- <p>Delete</p> -->
-            <!-- </a> -->
+              ><mat-icon style="font-size: x-large" fontIcon="delete"></mat-icon> 
+               <p>Delete</p>
+            </a> -->
             <!-- <button *ngIf="unassignedCheck" mat-raised-button
             class="assignBtn"
       color="primary"
