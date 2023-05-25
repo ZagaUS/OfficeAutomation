@@ -9,6 +9,7 @@ import { CreateEmployeeComponent } from './employee-onboarding/create-employee/c
 import { QuoteCreationComponent } from './project-module/quote-creation/quote-creation.component';
 import { QuoteComponent } from './project-module/quote/quote.component';
 import { PurchaseOrderComponent } from './project-module/purchase-order/purchase-order.component';
+import { ViewQuoteComponent } from './project-module/view-quote/view-quote.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'quoteCreation', component: QuoteCreationComponent},
   { path: 'quote' , component: QuoteComponent},
   { path: 'purchaseOrder', component: PurchaseOrderComponent},
+  { path: 'viewQuote', component: ViewQuoteComponent},
   {
     path: 'projectModule',
     loadChildren: () =>

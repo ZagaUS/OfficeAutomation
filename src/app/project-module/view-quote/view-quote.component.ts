@@ -16,8 +16,8 @@ export class ViewQuoteComponent {
    @Input()
   value?: any;
   // projectId?: any;
-  projectId?: any = localStorage.getItem('projectId');
-
+  quoteId?: any = localStorage.getItem('quoteId');
+  // quoteId?: any ;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -32,7 +32,7 @@ export class ViewQuoteComponent {
 
   ngOnInit(): void {
     // this.projectId = "41";
-    this.api.getProjectDetails(this.projectId).subscribe((data) => {
+    this.api.getQuoteView(this.quoteId).subscribe((data) => {
       console.log('List of Quotes' + JSON.stringify(data));
       this.data = data;
     });

@@ -30,6 +30,7 @@ export class ApiServicesService {
       this.projectMgtUrl + '/projectDetails/deleteProjectDetails/' + projectId
     );
   }
+
   getDailyTimesheetByProjectId(projectId: string) {
     return this.http.get<any>(
       this.projectMgtUrl +
@@ -208,4 +209,28 @@ export class ApiServicesService {
       quote
     );
   }
+
+  getAllQuotes(projectId?: any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/viewQuoteDetails/${projectId}`
+    );
+  }
+
+  getQuotePdf(projectId?: any, quoteId?:any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/getQuotePdf?projectId=${projectId}&quoteId=${quoteId}`
+    )
+  }
+
+  deleteQuoteById(quoteId: any){
+    return this.http.delete<any>(
+      this.projectMgtUrl + `/Quotes/deleteQuote/${quoteId}`
+    );
+  }
+
+   getQuoteView(quoteId: any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/getQuotes/${quoteId}`
+    );
+   }
 }

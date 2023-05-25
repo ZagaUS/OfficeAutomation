@@ -11,6 +11,7 @@ export class QuoteCreationComponent {
   quoteForm!: FormGroup;
   gstNumber?: any = [0,5,12,18,28];
   projectName?: any = localStorage.getItem('projectName');
+  projectId?:any = localStorage.getItem('projectId');
   to?: any = localStorage.getItem('clientAddress');
   clientCurrency?: any = localStorage.getItem('clientCurrency');
   unitPrice?: any = localStorage.getItem('unitPrice');
@@ -25,7 +26,7 @@ constructor(private fb: FormBuilder, private api: ApiServicesService) {
 
 createForm() {
   this.quoteForm = this.fb.group({
-    projectId: [''],
+    projectId: [this.projectId],
     projectName: [this.projectName],
     quoteStatus: [''],
     from:[''],
