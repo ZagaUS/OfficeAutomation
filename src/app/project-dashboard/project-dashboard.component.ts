@@ -49,6 +49,8 @@ export class ProjectDashboardComponent {
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
   // dataSource?: any;
   ELEMENT_DATA?: any[];
+  correct?: any = true;
+  wrong?:any = false;
   dataSource?: any;
   categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
   displayedColumns: string[] = [
@@ -68,6 +70,7 @@ export class ProjectDashboardComponent {
   ngOnInit(): void {
     console.log("Im'in");
     // console.log("Im'in");
+    localStorage.setItem('navStatus',this.wrong);
     this.api.getListOfProjects().subscribe((data) => {
       console.log('List of projects ' + JSON.stringify(data));
       this.dataSource = new MatTableDataSource(data);
@@ -97,12 +100,19 @@ export class ProjectDashboardComponent {
     }
   }
 
-  viewProject(projectId?: any, projectName?: any, employeeName?: any) {
-    console.log('viewProject', projectId);
+  viewProject(projectId?: any, projectName?: any, employeeName?: any, quoteStatus?:any, poStatus?:any) {
+    console.log('viewProject', projectId + " qout " + quoteStatus + poStatus);
     localStorage.setItem('projectId', projectId);
     localStorage.setItem('projectName', projectName);
     localStorage.setItem('employeeName', employeeName);
+    
     this.router.navigate(['/projectModule']);
+    if(quoteStatus == false && poStatus == false){
+      localStorage.setItem('navStatus', this.wrong);
+    }
+    else {
+      localStorage.setItem('navStatus', this.correct);
+    }
   }
 
   //
