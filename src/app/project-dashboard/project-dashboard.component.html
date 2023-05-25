@@ -113,12 +113,11 @@
             (click)="onCreate(element.projectId,element.projectName,element.clientAddress, element.clientCurrency, element.startDate, element.endDate, element.duration, element.unitPrice)"
             >Quote</button> 
           <button
-          routerLink="/purchaseOrder"
           mat-raised-button
           class="btns"
           color="primary"
           data-toggle="modal"
-          (click)="onUpload()"
+          (click)="onUpload(element.projectName,element.projectId)"
           >PO</button>
         </div>
       </td>

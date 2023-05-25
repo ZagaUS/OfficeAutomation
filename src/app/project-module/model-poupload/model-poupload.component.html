@@ -3,7 +3,7 @@
   <button class="close-button" color="primary" (click)="close()">
     <mat-icon>close</mat-icon>
   </button>
-  <div class="showExternalContent">
+  <!-- <div class="showExternalContent"> -->
 
     <form [formGroup]="contactForm">
       <div class="uploadbtn">
@@ -35,8 +35,8 @@
         </div>
       </div>
       <mat-form-field class="showExternalContent" appearance="outline">
-        <mat-label>Hours</mat-label>
-        <input matInput placeholder="hours" formControlName="hours" />
+        <mat-label>Project Name</mat-label>
+        <input matInput placeholder="Project Name"  [value]="projectName" />
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>StartDate</mat-label>
@@ -66,12 +66,14 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #endDatePicker></mat-datepicker>
       </mat-form-field>
-    </form>
-    <button
+      <button
       mat-raised-button
+      style="margin-left: 30%;"
       color="primary"
       (click)="onClickExternalSave()"
       >Submit External</button>  
+    </form>
+    
       
   </div>
-</div>
+<!-- </div> -->

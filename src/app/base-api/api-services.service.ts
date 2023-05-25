@@ -25,6 +25,12 @@ export class ApiServicesService {
     );
   }
 
+  getListOfPO(projectId: string) {
+    return this.http.get<any>(
+      this.projectMgtUrl + '/po/getPOByProjectId/'+ projectId
+    );
+  }
+
   deleteProjectById(projectId: any) {
     return this.http.delete<any>(
       this.projectMgtUrl + '/projectDetails/deleteProjectDetails/' + projectId
@@ -220,12 +226,9 @@ export class ApiServicesService {
     po: any,
     projectId: any,
     projectName: any,
-    poId:any,
   ) {
     console.log(
       'uploadPO' +
-        ' ' +
-        po.uploadfile +
         ' ' +
         projectId +
         ' ' +
@@ -237,12 +240,30 @@ export class ApiServicesService {
     );
     return this.http.post(
       this.projectMgtUrl +
-        `/po/uploadPO/endDate=${po.endDate}&startDate=${po.startDate}&projectId=${projectId}&projectName=${projectName}&poId=${poId}`,
+        `/po/uploadPO?endDate=${po.endDate}&startDate=${po.startDate}&projectId=${projectId}&projectName=${projectName}`,
       po.uploadfile,
       {
         headers: { 'Content-Type': 'application/octet-stream' },
       }
     );
   }
+
+  viewPO(poId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'text/plain');
+    return this.http.get(
+      this.projectMgtUrl +
+        `/po/viewPO/${poId}`,
+        { headers, responseType: 'blob' }
+    );
+  }
+
+  deletePO(poId: any) {
+    console.log('PO', poId);
+    return this.http.delete<any>(
+      this.projectMgtUrl +
+        `/po/deletePOByPoId/${poId}`
+    );
+  }
+
 
 }

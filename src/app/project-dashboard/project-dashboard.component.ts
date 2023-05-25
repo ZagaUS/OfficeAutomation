@@ -138,5 +138,12 @@ export class ProjectDashboardComponent {
 
     this.router.navigate(['/quote']);
   }
-  onUpload(){}
+  onUpload(projectName?: any, projectId?:any){
+    localStorage.setItem('projectName', projectName);
+    localStorage.setItem('projectId', projectId);
+
+
+    this.router.navigate(['/purchaseOrder']);
+
+  }
 }

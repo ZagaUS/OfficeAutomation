@@ -7,11 +7,11 @@ import { MatTableDataSource } from '@angular/material/table';
 
 
 export interface PeriodicElement {
-  projectId: string;
+  poId: string;
   projectName: String;
-  employeeName: String;
-  role: String;
-  projectStatus: String;
+  // employeeName: String;
+  // role: String;
+  // projectStatus: String;
 //   clientCurrency: String;
 //   clientAddress: String;
 }
@@ -23,11 +23,15 @@ export interface PeriodicElement {
 export class PurchaseOrderComponent {
   ELEMENT_DATA?: any[];
   dataSource: any;
+  projectId?: any = localStorage.getItem('projectId');
+  pdfbaseapi?: any;
+  poId?:any;
   modalRef: MdbModalRef<ModelPouploadComponent> | null = null;
   displayedColumns: string[] = [
-    'projectId',
+    // 'projectId',
     'projectName',
     'poId',
+    // 'employeeName',
     // 'role',
     'action',
   ];
@@ -37,27 +41,25 @@ export class PurchaseOrderComponent {
 
    ngOnInit(): void {
     // console.log("Im'in");
-    // // console.log("Im'in");
-    // this.api.getListOfPO().subscribe((data) => {
-    //   console.log('List of projects ' + JSON.stringify(data));
-    //   this.dataSource = new MatTableDataSource(data);
-    //   // this.ELEMENT_DATA = data;
-    // });
+    console.log("Im'in");
+    this.api.getListOfPO(this.projectId).subscribe((data) => {
+      console.log('List of po ' + JSON.stringify(data));
+      this.dataSource = new MatTableDataSource(data);
+      // this.ELEMENT_DATA = data;
+    });
   }
-   viewProject(projectId?: any, projectName?: any) {
-    console.log('viewProject', projectId);
-    localStorage.setItem('projectId', projectId);
-    localStorage.setItem('projectName', projectName);
-
-
-    this.router.navigate(['/projectModule']);
-  }
-  test(projectId:any) {
-    this.api.deleteProjectById(projectId).subscribe((data) => {
-    console.log('List of Project ' +JSON.stringify(data));
-  })
-    alert('List of project deleted successfully');
-    console.log('test');
+   
+  // test(projectId:any) {
+  //   this.api.deletePO(projectId).subscribe((data) => {
+  //   console.log('List of Project ' +JSON.stringify(data));
+  // })
+  //   alert('PO deleted successfully');
+  //   console.log('test');
+  // }
+  deletePO(poId:any){
+    this.api.deletePO(poId).subscribe((data) =>{
+      console.log('PO deleted successfully');
+    })
   }
 
 
@@ -74,5 +76,37 @@ export class PurchaseOrderComponent {
   }
 
     // test(projectId?:any){}
-    viewPO(){}
+    viewPO(  projectName: any,
+      startDate: any,
+      endDate: any){
+        console.log('viewPO');
+        this.poId = projectName + '_' + endDate + '_' + startDate;
+      this.api.viewPO(this.poId).subscribe((data) => {
+      // console.log('viewPO', poId);
+       const reader = new FileReader();
+        reader.onload = () => {
+          const dataUrl = reader.result as string;
+          const base64Data = dataUrl.split(',')[1];
+          const binaryData = window.atob(base64Data);
+          console.log(binaryData);
+          this.pdfbaseapi = binaryData;
+          //decode the base64 encoded string
+          const binaryString = window.atob(this.pdfbaseapi);
+          const byteArray = new Uint8Array(binaryString.length);
+          for (let i = 0; i < binaryString.length; i++) {
+            byteArray[i] = binaryString.charCodeAt(i);
+          }
+          // Create a Blob object from the Uint8Array
+          const blob = new Blob([byteArray], { type: 'application/pdf' });
+
+          //Create a url
+          const fileUrl = URL.createObjectURL(blob);
+          window.open(fileUrl, '_blank');
+        };
+        reader.readAsDataURL(data);
+      });
+      // localStorage.setItem('projectId', projectId);
+      // localStorage.setItem('projectName', projectName);
+  
+    }
 }

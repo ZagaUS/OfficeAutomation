@@ -70,20 +70,15 @@ export class ModelPouploadComponent {
     // const docType = 'EXTERNAL';
     this.contactForm.get('endDate')?.setValue(endDate);
     this.contactForm.get('startDate')?.setValue(startDate);
-    const projectName = localStorage.getItem('projectName');
-    const projectId = localStorage.getItem('projectId');
-    const poId = localStorage.getItem('poId');
+    // const projectName = localStorage.getItem('projectName');
+    // const projectId = localStorage.getItem('projectId');
+    // const poId = localStorage.getItem('poId');
     // const employeeName = localStorage.getItem('employeeName')
 
-    this.api
-      .uploadPO(
+    this.api.uploadPO(
         this.contactForm.value,
         this.projectId,
-        projectName,
-        poId
-      
-      )
-      .subscribe((data) => {
+        this.projectName).subscribe((data) => {
         console.log('External Timesheet of projects ' + JSON.stringify(data));
         window.location.reload();
       });

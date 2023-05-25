@@ -25,19 +25,25 @@
   
     
     </div>
+
+  <!-- </div> -->
     
   
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- ProjectId Column -->
-      <ng-container matColumnDef="projectId">
+      <!-- <ng-container matColumnDef="projectId">
         <th mat-header-cell *matHeaderCellDef>ProjectId</th>
         <td mat-cell *matCellDef="let element">{{ element.projectId }}</td>
-      </ng-container>
+      </ng-container> -->
   
       <!-- ProjectName Column -->
-      <ng-container matColumnDef="poName">
-        <th mat-header-cell *matHeaderCellDef>PO Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.poName }}</td>
+      <ng-container matColumnDef="projectName">
+        <th mat-header-cell *matHeaderCellDef>Project Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.projectName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="poId">
+        <th mat-header-cell *matHeaderCellDef style="padding-left: 100px;">PO Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.poId }}</td>
       </ng-container>
   
       <!-- EmployeeName Column -->
@@ -53,29 +59,40 @@
       </ng-container> -->
   
       <!-- Action Column -->
-      <!-- <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Action</th>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef style="padding-left: 70px;">Action</th>
   
-        <td mat-cell *matCellDef="let element"> -->
+        <td mat-cell *matCellDef="let element">
           <div class="actionContainer"> 
           
-            <a
-              (click)="viewPO()"
-              class="icon"
-              ><mat-icon
-                style="font-size: x-large"
-                fontIcon="visibility"
-              ></mat-icon>
-              <p>View</p>
-            </a> 
+            <button
+            mat-raised-button
+            class="btns"
+            color="primary"
+            data-toggle="modal"
+             (click)="viewPO(element.projectName, element.endDate, element.startDate)"
+          >View
+          </button>
+
+          <button
+          mat-raised-button
+          class="btns"
+          color="primary"
+          data-toggle="modal"
+           (click)="deletePO(element.poId)"
+        >Delete
+        </button>
+            
+            
             <!-- <a (click)="test()" class="icon" style="margin-left: 10px"
               ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon> 
             <p>Edit</p>
             </a> -->
-            <!-- <a (click)="test(element.projectId)" class="icon" style="margin-left: 10px"
+            <!-- <a (click)="test(element.projectId)" class="icon" style="margin-left: 20px"
               ><mat-icon style="font-size: x-large" fontIcon="delete"></mat-icon> 
                <p>Delete</p>
             </a> -->
+          </div>
             <!-- <button *ngIf="unassignedCheck" mat-raised-button
             class="assignBtn"
       color="primary"
@@ -101,20 +118,21 @@
             style="margin-left: 10px"
             (click)="onUpload()"
             >PO</button> -->
-          <!-- </div>
+          <!-- </div> -->
         </td>
-      </ng-container> -->
+      </ng-container>
   
-      <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   
-      Row shown when there is no matching data. -->
-      <!-- <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">
-          No data matching the filter "{{ input.value }}"
-        </td>
-      </tr> -->
-    <!-- </table> -->
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <!-- <td class="mat-cell" colspan="4"> -->
+          <!-- No data matching the filter "{{ input.value }}" -->
+        <!-- </td> -->
+      </tr>
+    </table>
+  </div>
 
 
   
