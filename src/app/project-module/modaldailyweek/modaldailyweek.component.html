@@ -80,7 +80,17 @@
     <mat-datepicker #endDatePicker></mat-datepicker>
   </mat-form-field>
 
-  <button style="font-size: 16px; padding: 10px;"
+  <!-- <button style="font-size: 16px; padding: 10px;"
+    mat-raised-button
+    color="primary"
+    (click)="onClickDailySave()"
+    *ngIf="showDaily"
+  >
+    Create Daily
+  </button> -->
+
+  <div>
+    <button style="font-size: 16px; padding: 10px;"
     mat-raised-button
     color="primary"
     (click)="onClickDailySave()"
@@ -88,6 +98,7 @@
   >
     Create Daily
   </button>
+  </div>
   
   <div class="showExternalContent">
     <form [formGroup]="contactForm">
