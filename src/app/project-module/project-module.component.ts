@@ -8,12 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProjectModuleComponent {
   projectId?: any;
-
+  quoteStatus?: any = localStorage.getItem('quoteStatus');
+  poStatus?:any = localStorage.getItem('poStatus');
+  navStatus?: any;
   constructor(public route: ActivatedRoute, private router: Router) {}
 
   events = [];
 
-  navRouting: any = [
+  withQuoteAndPo: any = [
     {
       name: 'Project Details',
       link: '/projectModule',
@@ -26,11 +28,16 @@ export class ProjectModuleComponent {
       name: 'Meeting Minutes',
       link: 'meetingMinutes',
     },
-    // {
-    //   name: 'Project Assignment',
-    //   link: 'projectAssignment',
-    // }
-  ];
+  ]
+
+  withoutQuoteAndPo: any = [
+    {
+      name: 'Project Details',
+      link: '/projectModule',
+    },
+  ]
+
+  navRouting: any = [];
 
   fillerContent: String[] = [
     'show the details of the project',
@@ -41,6 +48,17 @@ export class ProjectModuleComponent {
   ngOnInit(): void {
     console.log('Project ID ' + localStorage.getItem('projectId'));
     console.log('Project Name ' + localStorage.getItem('projectName'));
+    this.navStatus = localStorage.getItem('navStatus');
+    console.log('quotestats',this.quoteStatus);
+    console.log('NAVVVVV222222222',this.navStatus);
+    
+    if(this.navStatus === "true"){
+      this.navRouting = this.withQuoteAndPo;
+    }
+    else {
+      this.navRouting = this.withoutQuoteAndPo;
+    }
+
   }
 
   pageRoute() {
