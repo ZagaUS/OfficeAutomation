@@ -19,6 +19,7 @@ export class QuoteComponent {
   dataSource?: any;
   pdfbaseapi?: any;
   quoteId?: any ;
+  projectName?:any = localStorage.getItem('projectName');
   projectId?: any = localStorage.getItem("projectId");
   pdfStatus?:any = localStorage.getItem("pdfStatus");
   modalRef: MdbModalRef<ModelSendComponent> | null = null;
@@ -153,9 +154,10 @@ onDownload(quoteId: string) {
   saveFile(blob: Blob) {
     const link = document.createElement('a');
     link.href = window.URL.createObjectURL(blob);
-    link.download = 'file.pdf'; // Replace with your desired file name
+    link.download = (this.projectName +".pdf"); // Replace with your desired file name
     link.click();
-    window.URL.revokeObjectURL(link.href);
+    // window.location.reload();
+    // window.URL.revokeObjectURL(link.href);
   }
 
 

@@ -36,20 +36,20 @@
         </div>
         <mat-form-field class="showExternalContent" appearance="outline">
           <mat-label>Subject</mat-label>
-          <input matInput placeholder="Subject"  value="subject" />
+          <input matInput placeholder="Subject"  formControlName="subject" />
         </mat-form-field>
         <mat-form-field class="showExternalContent" appearance="outline">
           <mat-label>From</mat-label>
-          <input matInput placeholder="From"  value="from" />
+          <input matInput placeholder="From"  formControlName="from" />
         </mat-form-field>
         <mat-form-field class="showExternalContent" appearance="outline">
             <mat-label>To</mat-label>
-            <input matInput placeholder="To"  value="to" />
+            <input matInput placeholder="To"  formControlName="to" />
           </mat-form-field>
           <!-- <div class="showDailyContent"> -->
             <mat-form-field appearance="outline">
               <mat-label>Description</mat-label>
-              <textarea matInput placeholder="Description" value="description"></textarea>
+              <textarea matInput placeholder="Description" formControlName="description"></textarea>
               <!-- <input matInput placeholder="Description" [(ngModel)]="description" /> -->
             </mat-form-field>
           <!-- </div> -->
