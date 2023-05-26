@@ -320,13 +320,14 @@ export class ApiServicesService {
     );
   }
 
-  // downloadQuote(quoteId: any) {
-  //   const headers = new HttpHeaders().set('Accept', 'text/plain');
-  //   return this.http.get<any>(
-  //     this.projectMgtUrl +
-  //     `/Quotes/download/${quoteId}`,
-  //      { headers, responseType: 'blob' }
-  //   );
+  downloadQuote(quoteId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.get(
+      this.projectMgtUrl +
+      `/Quotes/download/${quoteId}`,
+       { headers, responseType: 'blob' }
+    );
+  }
 
 
 }

@@ -119,7 +119,7 @@
           class="btns"
           color="primary"
           data-toggle="modal"
-        
+          (click)="onDownload(element.quoteId)"
           >Download</button>
 
         <button *ngIf="pdfStatus"
