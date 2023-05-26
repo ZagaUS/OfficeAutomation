@@ -134,4 +134,18 @@ export class InvoiceModuleComponent {
       window.location.reload();
     });
   }
+  onDownload(invoiceId: string) {
+    this.invoiceApi.downloadInvoice(invoiceId).subscribe(response => {
+      this.saveFile(response);
+    });
+
+}
+saveFile(blob: Blob) {
+  const link = document.createElement('a');
+  link.href = window.URL.createObjectURL(blob);
+  link.download = 'file.pdf'; // Replace with your desired file name
+  link.click();
+  window.URL.revokeObjectURL(link.href);
+}
+
 }
