@@ -10,6 +10,7 @@ import { ModalinvoiceComponent } from '../modalinvoice/modalinvoice.component';
 import { ModaldailyweekComponent } from '../modaldailyweek/modaldailyweek.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { ModelSendComponent } from '../model-send/model-send.component';
 
 export interface DailyPeriodicElement {
   timesheetId: string;
@@ -416,6 +417,14 @@ export class ViewTimesheetComponent {
     //   this.dataSource.data[0].projectId,
     // ]);
   }
+   onSend(){
+    this.modalRef = this.modalService.open(ModelSendComponent, {
+      modalClass: 'modal-lg',
+    });
+    this.modalRef.onClose.subscribe((message: any) => {
+      console.log(message);
+      window.location.reload();
+    });}
 
   test() {
     alert('testing');

@@ -223,16 +223,16 @@ export class ApiServicesService {
     );
   }
 
-  getAllQuotes(projectId?: any){
+  getAllQuotes(projectId?: any) {
     return this.http.get<any>(
       this.projectMgtUrl + `/Quotes/getQuotesByProjectId/${projectId}`
     );
   }
 
-  getQuotePdf(projectId?: any, quoteId?:any){
+  getQuotePdf(projectId?: any){
     return this.http.get<any>(
-      this.projectMgtUrl + `/Quotes/getQuotePdf?projectId=${projectId}&quoteId=${quoteId}`
-    )
+      this.projectMgtUrl + `/Quotes/getQuotesPdfByProjectId/${projectId}`
+    );
   }
 
   deleteQuoteById(quoteId: any){
@@ -279,12 +279,27 @@ export class ApiServicesService {
       }
     );
   }
+  
+  listQuotebyPdfStatus(pdfStatus:any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/getQuotesByPdfStatus/`, pdfStatus
+    );
+   }
 
   viewPO(poId: any): Observable<Blob> {
     const headers = new HttpHeaders().set('Accept', 'text/plain');
     return this.http.get(
       this.projectMgtUrl +
         `/po/viewPO/${poId}`,
+        { headers, responseType: 'blob' }
+    );
+  }
+
+    viewQuote(quoteId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'text/plain');
+    return this.http.get(
+      this.projectMgtUrl +
+        `/Quotes/getQuotePdf?quoteId=${quoteId}`,
         { headers, responseType: 'blob' }
     );
   }
@@ -296,6 +311,22 @@ export class ApiServicesService {
         `/po/deletePOByPoId/${poId}`
     );
   }
+
+  deleteQuote(quoteId: any) {
+    console.log('PO', quoteId);
+    return this.http.delete<any>(
+      this.projectMgtUrl +
+        `/Quotes/deleteQuotePdf/${quoteId}`
+    );
+  }
+
+  // downloadQuote(quoteId: any) {
+  //   const headers = new HttpHeaders().set('Accept', 'text/plain');
+  //   return this.http.get<any>(
+  //     this.projectMgtUrl +
+  //     `/Quotes/download/${quoteId}`,
+  //      { headers, responseType: 'blob' }
+  //   );
 
 
 }

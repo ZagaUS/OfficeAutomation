@@ -100,18 +100,19 @@ export class ProjectDashboardComponent {
     }
   }
 
-  viewProject(projectId?: any, projectName?: any, employeeName?: any, quoteStatus?:any, poStatus?:any) {
+  viewProject(projectId?: any, projectName?: any, employeeName?: any, quoteStatus?:any, poStatus?:any, pdfStatus?:any) {
     console.log('viewProject', projectId + " qout " + quoteStatus + poStatus);
     localStorage.setItem('projectId', projectId);
     localStorage.setItem('projectName', projectName);
     localStorage.setItem('employeeName', employeeName);
+    localStorage.setItem('pdfStatus', pdfStatus);
     
     this.router.navigate(['/projectModule']);
-    if(quoteStatus == false && poStatus == false){
-      localStorage.setItem('navStatus', this.wrong);
-    }
-    else {
+    if(quoteStatus == true && poStatus == true){
       localStorage.setItem('navStatus', this.correct);
+    }
+       else {
+        localStorage.setItem('navStatus', this.wrong);
     }
   }
 

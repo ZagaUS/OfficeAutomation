@@ -37,6 +37,7 @@ import { QuoteComponent } from './quote/quote.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { ModelPouploadComponent } from './model-poupload/model-poupload.component';
 import { ViewQuoteComponent } from './view-quote/view-quote.component';
+import { ModelSendComponent } from './model-send/model-send.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ViewQuoteComponent } from './view-quote/view-quote.component';
     PurchaseOrderComponent,
     ModelPouploadComponent,
     ViewQuoteComponent,
+    ModelSendComponent,
   ],
   imports: [
     CommonModule,

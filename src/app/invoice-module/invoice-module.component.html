@@ -29,6 +29,19 @@
     >
       Generate Invoice
     </button>
+
+    <button
+    mat-raised-button
+    style="
+      background: linear-gradient(to bottom, #055d8c, #055d8c);
+      margin-left: 1100px;
+      color: white;
+    "
+    data-toggle="modal"
+    (click)="onSend()"
+  >
+    Send Invoice
+  </button>
   </div>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

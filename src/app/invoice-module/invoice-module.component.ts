@@ -5,6 +5,7 @@ import { InvoiceApiService } from '../base-api/invoice-api.service';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { ModaltimesheetComponent } from '../project-module/modaltimesheet/modaltimesheet.component';
 import { ModalinvoiceComponent } from '../project-module/modalinvoice/modalinvoice.component';
+import { ModelSendComponent } from '../project-module/model-send/model-send.component';
 
 export interface PeriodicElement {
   invoiceId: string;
@@ -123,5 +124,14 @@ export class InvoiceModuleComponent {
       alert("Deleted successfully");
       window.location.reload();
     })
+  }
+  onSend(){
+    this.modalRef = this.modalService.open(ModelSendComponent, {
+      modalClass: 'modal-lg',
+    });
+    this.modalRef.onClose.subscribe((message: any) => {
+      console.log(message);
+      window.location.reload();
+    });
   }
 }

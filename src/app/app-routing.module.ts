@@ -11,6 +11,7 @@ import { QuoteComponent } from './project-module/quote/quote.component';
 import { PurchaseOrderComponent } from './project-module/purchase-order/purchase-order.component';
 import { ViewQuoteComponent } from './project-module/view-quote/view-quote.component';
 import { ModelPouploadComponent } from './project-module/model-poupload/model-poupload.component';
+import { ModelSendComponent } from './project-module/model-send/model-send.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'modelPoupload', component: ModelPouploadComponent},
   { path: 'purchaseOrder', component: PurchaseOrderComponent},
   { path: 'viewQuote', component: ViewQuoteComponent},
+  { path: 'modelSend', component: ModelSendComponent},
   {
     path: 'projectModule',
     loadChildren: () =>
