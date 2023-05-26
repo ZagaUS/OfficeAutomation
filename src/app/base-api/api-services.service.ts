@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 export class ApiServicesService {
   projectMgtUrl = environment.projectMgtUrl;
   employeeURL = environment.employeeUrl;
+  emailURL = environment.emailUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -326,6 +327,17 @@ export class ApiServicesService {
       this.projectMgtUrl +
       `/Quotes/download/${quoteId}`,
        { headers, responseType: 'blob' }
+    );
+  }
+
+  sendDocument(contactForm:any){
+    // const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.post(
+      this.emailURL +
+        `/sendEmailWithAttachment?body=${contactForm.description}&fileName=${contactForm.fileName}&from=${contactForm.from}&subject=${contactForm.subject}&to=${contactForm.to}`, contactForm.uploadfile,
+        {
+          headers: { 'Content-Type': 'application/octet-stream' },
+        }
     );
   }
 

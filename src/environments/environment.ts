@@ -3,4 +3,5 @@ export const environment = {
   projectMgtUrl: 'http://localhost:8081/zaga/projectManagement',
   invoiceUrl: 'http://localhost:8083/Zaga/Invoice',
   employeeUrl: 'http://localhost:8090/zaga/employeeOnboarding/',
+  emailUrl: 'http://localhost:8084/emailNotification'
 };

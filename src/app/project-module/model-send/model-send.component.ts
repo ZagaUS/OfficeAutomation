@@ -14,10 +14,16 @@ export class ModelSendComponent {
 
   contactForm: FormGroup;
   @ViewChild('fileInput') fileInput?: ElementRef;
-from:any;
-to:any;
+// from:any = localStorage.getItem('from');
+// subject:any = localStorage.getItem('subject');
+// to = '@gmail.com';
+// from = '@gmail.com';
+// subject : any = localStorage.getItem('subject');
+// description:any = localStorage.getItem('description');
+
 dateFormat = 'yyyy-MM-dd';
 fileName: any = '';
+
 
 constructor(
  private router: Router,
@@ -28,9 +34,14 @@ constructor(
  this.contactForm = this.fb.group({
    fileName: ['', Validators.required],
    uploadfile: ['', Validators.required],
+
    // hours: ['', Validators.required],
-   startDate: [new Date(), Validators.required],
-   endDate: [new Date(), Validators.required],
+  //  startDate: [new Date(), Validators.required],
+  //  endDate: [new Date(), Validators.required],
+  from:['', Validators.required],
+to:['', Validators.required],
+subject:['', Validators.required],
+description: ['', Validators.required],
  });
 }
 
@@ -41,12 +52,19 @@ onFileSelected(event: any) {
  const files: File = event.target.files[0];
  // console.log(files.name);
  this.fileName = files.name;
+ console.log(files.name);
+ this.contactForm.get('fileName')?.setValue(files.name);
  const fileInputElement = event.target;
  fileInputElement.value = '';
  this.contactForm.get('uploadfile')?.setValue(files);
 }
 
-onSend(){}
+onSend(){
+        this.api.sendDocument(this.contactForm.value).subscribe((data) => {
+      console.log('External Timesheet of projects ' + JSON.stringify(data));
+      window.location.reload();
+    });
+}
 
 openFileSelection() {
  this.fileInput?.nativeElement.click();
