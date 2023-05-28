@@ -38,4 +38,14 @@ export class InvoiceApiService {
       this.invoiceUrl+`/deleteInvoice/${invoiceId}`
       );
   }
+   
+  downloadInvoice(invoiceId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.get(
+      this.invoiceUrl +
+      `/Quotes/download/${invoiceId}`,
+       { headers, responseType: 'blob' }
+    );
+  }
+
 }

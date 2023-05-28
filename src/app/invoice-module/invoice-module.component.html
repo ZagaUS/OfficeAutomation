@@ -80,20 +80,31 @@
       <th mat-header-cell *matHeaderCellDef>Action</th>
       <td mat-cell *matCellDef="let element">
         <div class="actionContainer">
-          <a (click)="viewInvoice(element.documentId)" class="icon"
+          <!-- <a (click)="viewInvoice(element.documentId)" class="icon"
             ><mat-icon
               style="font-size: x-large"
               fontIcon="visibility"
             ></mat-icon>
-          </a>
+          </a> -->
+          <button mat-raised-button (click)="onDownload(element.projectId)" class="btns" color="primary"
+          data-toggle="modal" style="margin-left: 10px"
+            >Download </button>
+
+          <button mat-raised-button (click)="deleteInvoice(element.invoiceId)" class="btns" color="primary"
+          data-toggle="modal" style="margin-left: 10px"
+            >Delete </button>
+
+            <button mat-raised-button (click)="viewInvoice(element.projectId)" class="btns" color="primary"
+          data-toggle="modal" style="margin-left: 10px"
+            >view </button>
           <!-- <a (click)="test()" class="icon" style="margin-left: 10px"
              ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon>
              <p>Edit</p> 
            </a> -->
-          <a (click)="deleteInvoice(element.invoiceId)" class="icon" style="margin-left: 10px"
-            ><mat-icon style="font-size: x-large" fontIcon="delete"></mat-icon>
+          <!-- <a (click)="deleteInvoice(element.invoiceId)" class="icon" style="margin-left: 10px"
+            ><mat-icon style="font-size: x-large" fontIcon="delete"></mat-icon> -->
             <!-- <p>Delete</p> -->
-          </a>
+          <!-- </a> -->
         </div>
       </td>
     </ng-container>

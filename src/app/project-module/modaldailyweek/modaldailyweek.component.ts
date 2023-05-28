@@ -36,7 +36,7 @@ export class ModaldailyweekComponent {
   // employeeName?: string;
   duration?: string;
   description?: string;
-  date?: string;
+  date?: any;
   supportTicket?: string;
   clientOwner?: string;
   redhatOwner?: string;
@@ -74,6 +74,12 @@ export class ModaldailyweekComponent {
   }
 
   onClickDailySave() {
+    const date = formatDate(
+      this.date,
+      this.dateFormat,
+      'en-US'
+    );
+    console.log("date " + date);
     this.clientOwner?.split(',').map((item) => {
       console.log('client ' + item);
       this.clientOwners.push(item);
@@ -89,7 +95,7 @@ export class ModaldailyweekComponent {
       projectName: this.projectName,
       employeeName: this.employeeName,
       hours: this.duration,
-      date: this.date,
+      date: date,
       supportTicket: this.supportTicket,
       clientOwners: this.clientOwners,
       redHatOwners: this.redHatOwners,
