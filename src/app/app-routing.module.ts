@@ -12,6 +12,7 @@ import { PurchaseOrderComponent } from './project-module/purchase-order/purchase
 import { ViewQuoteComponent } from './project-module/view-quote/view-quote.component';
 import { ModelPouploadComponent } from './project-module/model-poupload/model-poupload.component';
 import { ModelSendComponent } from './project-module/model-send/model-send.component';
+import { ViewDailytimesheetComponent } from './project-module/view-dailytimesheet/view-dailytimesheet.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'purchaseOrder', component: PurchaseOrderComponent},
   { path: 'viewQuote', component: ViewQuoteComponent},
   { path: 'modelSend', component: ModelSendComponent},
+  { path: 'viewDailytimesheet' , component: ViewDailytimesheetComponent },
   {
     path: 'projectModule',
     loadChildren: () =>

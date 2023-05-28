@@ -119,9 +119,11 @@ export class ViewTimesheetComponent {
   DAILY_ELEMENT_DATA?: any = [];
   WEEKLY_ELEMENT_DATA?: any = [];
   selectedValue?: any;
+  // date ?: 'yyyy-MM-dd';
   daily?: any = true;
   weekly?: any = false;
   external?: any = false;
+  // dailyTimesheet?: any ;
   timesheetType?: any = 'WEEKLY';
   categories: string[] = ['Daily', 'Weekly', 'Approved', 'External'];
   weeklyDisplayedColumns: string[] = [
@@ -158,6 +160,7 @@ export class ViewTimesheetComponent {
   dataSource?: any;
   pdfSrc?: SafeResourceUrl;
   pdfbaseapi?: any;
+  dailyTimesheetId?:any = localStorage.getItem('dailyTimesheetId');
 
   constructor(
     private router: Router,
@@ -221,6 +224,7 @@ export class ViewTimesheetComponent {
     // });
   }
   projectId?: any = localStorage.getItem('projectId');
+  // date?: any = localStorage.getItem('date');
 
   ngOnInit(): void {
     console.log("Im'in");
@@ -459,6 +463,23 @@ export class ViewTimesheetComponent {
       console.log(data);
     });
   }
+
+ 
    
 }
+ getDailyTimesheetByTimesheetId(projectId?: any, projectName?: any, date?:any, dailyTimesheetId?:any){
+ 
+  console.log('viewProject', projectId);
+  localStorage.setItem('projectId', projectId);
+  localStorage.setItem('projectName', projectName);
+  localStorage.setItem('dailyTimesheetId', dailyTimesheetId);
+  localStorage.setItem('date', date);
+  console.log('date', date);
+  console.log('dailyTimesheetId', dailyTimesheetId);
+  // dailyTimesheetId = '_'+date;
+  // localStorage.setItem('dailyTimesheetId', dailyTimesheetId);
+  // console.log('MeetId',localStorage.getItem('dailyTimesheetIds'));
+  // this.router.navigate(['/projectModule']);
+  this.router.navigate(['/viewDailytimesheet']);
+ }
 }

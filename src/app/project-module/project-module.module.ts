@@ -38,6 +38,7 @@ import { PurchaseOrderComponent } from './purchase-order/purchase-order.componen
 import { ModelPouploadComponent } from './model-poupload/model-poupload.component';
 import { ViewQuoteComponent } from './view-quote/view-quote.component';
 import { ModelSendComponent } from './model-send/model-send.component';
+import { ViewDailytimesheetComponent } from './view-dailytimesheet/view-dailytimesheet.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ModelSendComponent } from './model-send/model-send.component';
     ModelPouploadComponent,
     ViewQuoteComponent,
     ModelSendComponent,
+    ViewDailytimesheetComponent,
   ],
   imports: [
     CommonModule,

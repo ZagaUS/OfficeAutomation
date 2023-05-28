@@ -45,6 +45,14 @@ export class ApiServicesService {
         projectId
     );
   }
+  getDailyTimesheetByTimesheetId(dailyTimesheetId: string) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        '/dailyTimesheet/viewDailyTimeSheetBydailyTimeSheetID/' +
+        dailyTimesheetId
+    );
+  }
+  
 
   getWeeklyTimesheetByProjectId(projectId: string) {
     return this.http.get<any>(
@@ -65,9 +73,15 @@ export class ApiServicesService {
       data
     );
   }
+  updateDailyTimesheet(data: any) {
+    return this.http.put(
+      this.projectMgtUrl + '/dailyTimesheet/modifyDailyTimesheet',
+      data
+    );
+  }
 
   createDailyTimesheet(dts: any) {
-    return this.http.post(
+    return this.http.post<any>(
       this.projectMgtUrl + '/dailyTimesheet/createDailyTimeSheet',
       dts
     );
@@ -180,6 +194,13 @@ export class ApiServicesService {
     return this.http.get<any>(
       this.projectMgtUrl +
         `/meetingMinutes/getMeetingMinutesByMeetingMinutesId/${meetingMinutesId}`
+    );
+  }
+
+  viewDailyTimesheet(dailyTimesheetId: any) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        `/viewDailyTimeSheetBydailyTimeSheetID/${dailyTimesheetId}`
     );
   }
 

@@ -1,0 +1,108 @@
+<div style="margin: 20px auto; max-width: 800px; padding: 20px;">
+    <h1 style="font-size: 2.0rem;font-weight: bold; margin-bottom: 2rem; margin-left: 150px;color: #074a6e;">
+      Daily Timesheet - {{dailyTimesheet.date}}
+    </h1>
+    <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 250px;color: #074a6e;">
+      {{ dailyTimesheet.projectName | uppercase }} - {{dailyTimesheet.employeeName }}
+  </h1>
+    
+    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
+      <div>
+        <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Duration:</h2>
+        <p>{{ dailyTimesheet.hours}}</p>
+      </div>
+      <div>
+        <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Daily Timesheet ID:</h2>
+        <p>{{dailyTimesheet.dailyTimesheetId }}</p>
+      </div>
+      <div>
+        <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Support Ticket:</h2>
+        <p>{{ dailyTimesheet.supportTicket }}</p>
+      </div>
+      <div>
+        <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
+        <p>{{dailyTimesheet.date }}</p>
+      </div>
+      <div>
+        <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Timesheet Type:</h2>
+        <p>{{ dailyTimesheet.timesheetType }}</p>
+      </div>
+      <!-- <div>
+        <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</h2>
+        <p>{{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
+      </div> -->
+    </div>
+    
+    <div style="margin-bottom: 1rem;">
+      <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Task:</h2>
+      <p>{{ dailyTimesheet.description }}</p>
+    </div>
+    
+    <div style="margin-bottom: 1rem;">
+      <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Redhat Owners:</h2>
+      <!-- <div *ngFor="let redHatOwner of redHatOwners"> -->
+        <p>{{ dailyTimesheet.redHatOwners }}</p>
+      <!-- </div> -->
+      <div style="margin-bottom: 1rem;">
+        <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
+        <!-- <div *ngFor="let clientOwner of clientOwners"> -->
+          <p>{{ dailyTimesheet.clientOwners }}</p>
+
+          <!-- <button
+          mat-raised-button
+          class="form-button"
+          (click)="editable ? submitForm(dailyTimesheet) : edit()"
+        >
+          {{ editable ? "SUBMIT" : "EDIT" }}
+        </button> -->
+        <!-- </div> -->
+    </div>
+    <div>
+      <!-- <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
+      <ul style="list-style: none;">
+        <div *ngFor="let item of meetingDetails.agenda" style="list-style: none;">
+          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+            <div>
+              <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Topic:</p>
+              <p>{{ item.topic }}</p>
+            </div>
+            <div>
+              <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Presented by:</p>
+              <p>{{ item.presentedBy }}</p>
+            </div>
+            <div>
+              <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Time Taken:</p>
+              <p>{{ item.timeTaken }}</p>
+            </div>
+            <div>
+          <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description:</p>
+          <p class="word-wrap">{{ item.description }}</p>
+        </div>
+  
+        </div>
+        </div>
+      </ul> -->
+  
+      <!-- <h2 class="agenda-heading" style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
+      <table class="agenda-table">
+        <thead>
+          <tr>
+            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Topic</th>
+            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Presented by</th>
+            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Time Taken</th>
+            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of meetingDetails.agenda">
+            <td class="word-wrap">{{ item.topic }}</td>
+            <td class="word-wrap">{{ item.presentedBy }}</td>
+            <td class="word-wrap">{{ item.timeTaken }}</td>
+            <td class="word-wrap">{{ item.description }}</td>
+          </tr>
+        </tbody>
+      </table> -->
+      
+    </div>
+  </div>
+  
