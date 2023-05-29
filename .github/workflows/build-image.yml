@@ -33,23 +33,33 @@ jobs:
           username: ${{ secrets.IMAGE_REPO_USER }}
           password: ${{ secrets.IMAGE_REPO_PASS }}
 
-      - name: Build Docker image
-        run: |
-          docker buildx create --use
-          docker buildx build \
-            --platform linux/amd64,linux/arm64 \
-            -t zagaoss/office-automation:${{ steps.tag.outputs.new_tag }} \
-            -t zagaoss/office-automation:latest \
-            --file ./docker/Dockerfile \
-            --load --progress plain \
-            .
-      
-      - name: Push Docker image
+      - name: Build and push Docker images
         run: |
           docker buildx create --use
           docker buildx build --push \
-            --platform linux/amd64,linux/arm64 \
-            -t zagaoss/office-automation:${{ steps.tag.outputs.new_tag }} \
-            -t zagaoss/office-automation:latest \
-            --file ./docker/Dockerfile \
+            --file path/to/Dockerfile \
+            --tag zagaoss/office-automation:linux-amd64 \
+            --platform linux/amd64 \
             .
+          docker buildx build --push \
+            --file path/to/Dockerfile \
+            --tag zagaoss/office-automation:linux-arm64 \
+            --platform linux/arm64 \
+            .
+
+      - name: Create Docker manifest list
+        run: |
+          docker buildx create --use
+          docker buildx imagetools create \
+            --tag zagaoss/office-automation:${{ steps.tag.outputs.new_tag }} \
+            --tag zagaoss/office-automation:latest \
+            zagaoss/office-automation:linux-amd64 \
+            zagaoss/office-automation:linux-arm64
+
+      - name: Push Docker manifest list
+        run: |
+          docker buildx create --use
+          docker buildx imagetools push \
+            zagaoss/office-automation:${{ steps.tag.outputs.new_tag }}
+          docker buildx imagetools push \
+            zagaoss/office-automation:latest
