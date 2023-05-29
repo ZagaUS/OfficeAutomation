@@ -32,3 +32,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ### build the container image
 docker build -t office-automation . -f ./docker/Dockerfile
 
+### OfficeAutomation images
+images are browseable [here](https://hub.docker.com/repository/docker/zagaoss/office-automation/general)
+```
+docker pull zagaoss/office-automation:latest
+```
+
+

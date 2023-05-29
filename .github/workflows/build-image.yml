@@ -38,6 +38,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          platforms: linux/amd64,linux/arm/v7
           file: ./docker/Dockerfile
           push: true
           tags: zagaoss/office-automation:latest, zagaoss/office-automation:${{ steps.tag.outputs.new_tag }}
