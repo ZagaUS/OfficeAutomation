@@ -45,7 +45,7 @@ export interface PeriodicElement {
 })
 export class InvoiceModuleComponent {
   displayedColumns: string[] = [
-    'invoiceId',
+    // 'invoiceId',
     'date',
     'clientAddress',
     'projectName',
@@ -56,6 +56,8 @@ export class InvoiceModuleComponent {
   modalRef: MdbModalRef<ModaltimesheetComponent> | null = null;
   modalRefI: MdbModalRef<ModalinvoiceComponent> | null = null;
   pdfbaseapi: any;
+  invoiceId?:any = localStorage.getItem('invoiceId');
+  documentId?:any = localStorage.getItem('documentId');
 
   constructor(
     private router: Router,
@@ -118,12 +120,14 @@ export class InvoiceModuleComponent {
       reader.readAsDataURL(data);
     });
   }
+
   deleteInvoice(invoiceId:any) {
-    this.invoiceApi.deleteGenrateInvoice(invoiceId).subscribe((res:any) => {
-      console.log("Deleted successfully");
-      alert("Deleted successfully");
-      window.location.reload();
+    console.log('deleteInvoice', invoiceId);
+    this.invoiceApi.deleteInvoice(invoiceId).subscribe((data)=>{
+      console.log('List of Invoices'+JSON.stringify(data));
     })
+    alert('Invoice deleted successfully');
+    
   }
   onSend(){
     this.modalRef = this.modalService.open(ModelSendComponent, {
@@ -134,8 +138,8 @@ export class InvoiceModuleComponent {
       window.location.reload();
     });
   }
-  onDownload(invoiceId: string) {
-    this.invoiceApi.downloadInvoice(invoiceId).subscribe(response => {
+  onDownload(documentId: string) {
+    this.invoiceApi.downloadInvoice(documentId).subscribe(response => {
       this.saveFile(response);
     });
 

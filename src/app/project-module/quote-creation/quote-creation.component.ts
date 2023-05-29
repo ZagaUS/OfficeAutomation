@@ -19,6 +19,7 @@ export class QuoteCreationComponent {
   projectId?:any = localStorage.getItem('projectId');
   to?: any = localStorage.getItem('clientAddress');
   clientCurrency?: any = localStorage.getItem('clientCurrency');
+  // date?: any = localStorage.getItem('date');
   unitPrice?: any = localStorage.getItem('unitPrice');
   startDate?: any = localStorage.getItem('startDate');
 endDate?: any = localStorage.getItem('endDate');
@@ -37,6 +38,7 @@ createForm() {
     quoteStatus: [''],
     from:[''],
     to: [this.to],
+    date: [''],
     serviceDescription: [''],
     clientCurrency: [this.clientCurrency],
     totalPrice: [''],

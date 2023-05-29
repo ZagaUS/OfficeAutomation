@@ -33,9 +33,11 @@ export class InvoiceApiService {
     });
   }
 
-  deleteGenrateInvoice(invoiceId: any){
+  deleteInvoice(invoiceId: any){
+    console.log('delete This invoice', invoiceId);
     return this.http.delete<any>(
-      this.invoiceUrl+`/deleteInvoice/${invoiceId}`
+      this.invoiceUrl+
+      `/deleteInvoice/${invoiceId}`
       );
   }
    
