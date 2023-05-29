@@ -351,6 +351,16 @@ export class ApiServicesService {
     );
   }
 
+  downloadWeeklyTimesheet(documentId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.get(
+      this.projectMgtUrl +
+      `/weeklyTimesheet/download/${documentId}`,
+       { headers, responseType: 'blob' }
+    );
+  }
+
+
   sendDocument(contactForm:any){
     // const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
     return this.http.post(

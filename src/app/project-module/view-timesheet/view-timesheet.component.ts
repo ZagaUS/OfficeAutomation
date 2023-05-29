@@ -123,8 +123,11 @@ export class ViewTimesheetComponent {
   daily?: any = true;
   weekly?: any = false;
   external?: any = false;
+  // startDate?: any=localStorage.getItem('startDate');
+  // endDate?: any=localStorage.getItem('endDate');
   // dailyTimesheet?: any ;
   timesheetType?: any = 'WEEKLY';
+  documentId?: any = localStorage.getItem('documentId');
   categories: string[] = ['Daily', 'Weekly', 'Approved', 'External'];
   weeklyDisplayedColumns: string[] = [
     'weeklyTimesheetId',
@@ -160,6 +163,7 @@ export class ViewTimesheetComponent {
   dataSource?: any;
   pdfSrc?: SafeResourceUrl;
   pdfbaseapi?: any;
+  projectName?: any= localStorage.getItem('projectName');
   dailyTimesheetId?:any = localStorage.getItem('dailyTimesheetId');
 
   constructor(
@@ -224,6 +228,7 @@ export class ViewTimesheetComponent {
     // });
   }
   projectId?: any = localStorage.getItem('projectId');
+  weeklyTimesheetId?: any = localStorage.getItem('weeklyTimesheetId');
   // date?: any = localStorage.getItem('date');
 
   ngOnInit(): void {
@@ -252,6 +257,20 @@ export class ViewTimesheetComponent {
     //     ).reduce((a: any, b: any) => a + b, 0);
     //     this.dataSource = new MatTableDataSource(this.WEEKLY_ELEMENT_DATA);
     //   });
+  }
+  downloadPDF(weeklyTimesheetId?:any) {
+    this.apiCall.downloadWeeklyTimesheet(weeklyTimesheetId).subscribe(response => {
+      this.saveFile(response);
+    });
+  }
+
+  saveFile(blob: Blob) {
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = (this.weeklyTimesheetId +".pdf"); // Replace with your desired file name
+    link.click();
+    // window.location.reload();
+    // window.URL.revokeObjectURL(link.href);
   }
 
   viewPDF(

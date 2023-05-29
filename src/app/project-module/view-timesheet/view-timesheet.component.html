@@ -185,7 +185,21 @@
                   element.weeklyTimesheetId
                 )
               "
-              >View as PDF</button>
+              >View PDF</button>
+
+              <button
+              *ngIf="weekly"
+              mat-raised-button
+              class="btns"
+              color="primary"
+              data-toggle="modal"
+            
+              (click)="
+                downloadPDF(
+                  element.weeklyTimesheetId
+                )
+              "
+              >Download PDF</button>
               
               <!-- <p>View</p> -->
             

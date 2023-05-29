@@ -39,11 +39,11 @@ export class InvoiceApiService {
       );
   }
    
-  downloadInvoice(invoiceId: any): Observable<Blob> {
+  downloadInvoice(documentId: any): Observable<Blob> {
     const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
     return this.http.get(
       this.invoiceUrl +
-      `/Quotes/download/${invoiceId}`,
+      `/download/${documentId}`,
        { headers, responseType: 'blob' }
     );
   }

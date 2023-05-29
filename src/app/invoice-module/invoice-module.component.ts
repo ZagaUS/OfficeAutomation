@@ -87,7 +87,7 @@ export class InvoiceModuleComponent {
   }
 
   viewInvoice(documentId:any) {
-    console.log('View PDF');
+    console.log('View PDF', documentId);
 
     // console.log('payload: ' + JSON.stringify(this.document));
     // const documentId = invoiceId + '_' + date;
