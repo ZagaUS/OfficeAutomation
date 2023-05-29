@@ -19,6 +19,8 @@ interface MyData {
   styleUrls: ['./view-dailytimesheet.component.scss']
 })
 export class ViewDailytimesheetComponent {
+  editMode = false;
+  saveMode = true;
   dailyTimesheet?:any;
   employeeName?: string ;
   projectName?: string;
@@ -27,6 +29,7 @@ export class ViewDailytimesheetComponent {
   timesheetType?:any;
   supportTicket?:any;
   hours?: number;
+  DailyTimeSheetedit?: any;
   // startTime?: string;
   // endTime?: string;
   description?: any ;
@@ -51,7 +54,7 @@ ngOnInit() {
     projectId: '12345',
     dailyTimesheetId: '',
     date: '',
-    duration: 1,
+    hours: 1,
     timesheetType: 'Daily',
     description: 'Discuss project status',
     redHatOwners: [
@@ -107,4 +110,27 @@ submitForm(formData: any) {
     alert('updated data successfully');
   });
 }
+editDailytimeSheet(){
+  this.editMode = true;
+  console.log('editable');
+}
+
+onclickdailyTimesheet(){
+  this.DailyTimeSheetedit=true;
+  console.log("now edit all fields in daily timesheet")
+}
+
+editDaily() {
+  this.editMode = !this.editMode;
+  console.log('editable');
+}
+saveDaily(){ 
+  console.log("Edited data " +   JSON.stringify(this.dailyTimesheet) );
+  this.api.updateDailyTimesheet(this.dailyTimesheet).subscribe((data: any) => {
+    console.log('data updated', data);
+    alert('updated data successfully');
+  });
+}
+
+
 }

@@ -29,7 +29,7 @@ export class ViewMeetingMinutesComponent {
     meetingObjective?: string;
     attendeesPresent?: Attendees[];
     agenda?: Agenda[];
-
+    editMode = false;
 constructor(private router:Router,private api:ApiServicesService){
 
 }
@@ -65,6 +65,18 @@ constructor(private router:Router,private api:ApiServicesService){
     });
   console.log('meetingMinutesId',localStorage.getItem('meetingMinutesId'));
   console.log('MeetId',localStorage.getItem('meetingMinutesId'));
+  }
+
+  editMeetingMinutes(){
+    this.editMode = !this.editMode;
+    console.log("editable");
+  }
+  saveMeetingMinutes(){
+    console.log("Edited data " +   JSON.stringify(this.meetingDetails) );
+  this.api.updateMeetingMinutes(this.meetingDetails).subscribe((data: any) => {
+    console.log('data updated', data);
+    alert('updated data successfully');
+  });
   }
   
 }

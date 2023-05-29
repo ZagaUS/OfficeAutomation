@@ -74,8 +74,8 @@ export class ApiServicesService {
     );
   }
   updateDailyTimesheet(data: any) {
-    return this.http.put(
-      this.projectMgtUrl + '/dailyTimesheet/modifyDailyTimesheet',
+    return this.http.put<any>(
+      this.projectMgtUrl + '/dailyTimesheet/modifyDailyTimeSheet',
       data
     );
   }
@@ -371,6 +371,11 @@ export class ApiServicesService {
         }
     );
   }
-
+  updateMeetingMinutes(data:any){
+    return this.http.put<any>(
+      this.projectMgtUrl + '/meetingMinutes/modifyMeetingMinutesById',
+      data
+    );
+  }
 
 }

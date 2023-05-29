@@ -9,27 +9,85 @@
   <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
     <div>
       <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Meeting ID:</h2>
-      <p>{{ meetingDetails.meetingMinutesId }}</p>
+      <!-- <p>{{ meetingDetails.meetingMinutesId }}</p> -->
+      <mat-form-field appearance="outline" style="padding-right: 3rem;">
+        <input
+          matInput
+          placeholder="date"
+          [(ngModel)]="meetingDetails.meetingMinutesId"
+          [readonly]="!editMode"
+          [value]="meetingDetails.meetingMinutesId"
+        />
+      </mat-form-field>
     </div>
     <div>
       <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
-      <p>{{ meetingDetails.date }}</p>
+      <!-- <p>{{ meetingDetails.date }}</p> -->
+      <mat-form-field appearance="outline" style="padding-right: 3rem;">
+        <input
+          matInput
+          placeholder="date"
+          [(ngModel)]="meetingDetails.date"
+          [readonly]="!editMode"
+          [value]="meetingDetails.date"
+        />
+      </mat-form-field>
     </div>
     <div>
-      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</h2>
-      <p>{{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
+      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Start Time:</h2>
+      <!-- <p>{{ meetingDetails.startTime }}</p> -->
+      <mat-form-field appearance="outline" style="padding-right: 3rem;">
+        <input
+          matInput
+          placeholder="start Time"
+          [(ngModel)]="meetingDetails.startTime"
+          [readonly]="!editMode"
+          [value]="meetingDetails.startTime"
+          />
+      </mat-form-field>
+    </div>
+    <div>
+      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">End Time:</h2>
+      <!-- <p>{{ meetingDetails.endTime }}</p> -->
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          placeholder="end Time"
+          [(ngModel)]="meetingDetails.endTime"
+          [readonly]="!editMode"
+          [value]="meetingDetails.endTime"
+          />
+      </mat-form-field>
     </div>
   </div>
   
   <div style="margin-bottom: 1rem;">
     <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Meeting Objective:</h2>
-    <p>{{ meetingDetails.meetingObjective }}</p>
+    <!-- <p>{{ meetingDetails.meetingObjective }}</p> -->
+    <mat-form-field appearance="outline">
+      <input
+        matInput
+        placeholder="Meeting Objective"
+        [(ngModel)]="meetingDetails.meetingObjective"
+        [readonly]="!editMode"
+        [value]="meetingDetails.meetingObjective"
+      />
+    </mat-form-field>
   </div>
   
   <div style="margin-bottom: 1rem;">
     <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
     <div *ngFor="let attendee of meetingDetails.attendeesPresent">
-      <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p>
+      <!-- <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p> -->
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          placeholder="name"
+          [(ngModel)]="meetingDetails.name"
+          [readonly]="!editMode"
+          [value]="meetingDetails.name"
+        />
+      </mat-form-field>
     </div>
   </div>
   <div>
@@ -70,13 +128,71 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of meetingDetails.agenda">
-          <td class="word-wrap">{{ item.topic }}</td>
-          <td class="word-wrap">{{ item.presentedBy }}</td>
-          <td class="word-wrap">{{ item.timeTaken }}</td>
-          <td class="word-wrap">{{ item.description }}</td>
+          <td class="word-wrap" style="padding-right: 15rem;">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="topic"
+                [(ngModel)]="item.topic"
+                [readonly]="!editMode"
+                [value]="meetingDetails.meetingMinutesId"
+              />
+            </mat-form-field>
+          </td>
+          <td class="word-wrap" style="padding-right: 15rem;">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="presentedBy"
+                [(ngModel)]="item.presentedBy"
+                [readonly]="!editMode"
+                [value]="item.presentedBy"
+              />
+            </mat-form-field>
+          </td>
+          <td class="word-wrap" style="padding-right: 15rem;">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="timeTaken"
+                [(ngModel)]="item.timeTaken"
+                [readonly]="!editMode"
+                [value]="item.timeTaken"
+              />
+            </mat-form-field>
+          </td>
+          <td class="word-wrap">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="Description"
+                [(ngModel)]="item.description"
+                [readonly]="!editMode"
+                [value]="item.description"
+              />
+            </mat-form-field>
+          </td>
         </tr>
       </tbody>
     </table>
     
   </div>
+  <button
+  style="margin-left: 150px"
+  mat-raised-button
+  color="primary"
+  (click)="editMeetingMinutes()"
+>
+  Edit
+</button>
+
+<button
+style="margin-left: 150px"
+mat-raised-button
+color="primary"
+(click)="saveMeetingMinutes()"
+>
+Save
+</button>
+
 </div>

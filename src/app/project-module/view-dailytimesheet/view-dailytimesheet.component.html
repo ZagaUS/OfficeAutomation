@@ -9,23 +9,73 @@
     <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Duration:</h2>
-        <p>{{ dailyTimesheet.hours}}</p>
+        <!-- <p>{{ dailyTimesheet.hours}}</p> -->
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>Duration</mat-label> -->
+          <input
+            matInput
+            placeholder="Duration"
+            [(ngModel)]="dailyTimesheet.hours"
+            [readonly]="!editMode"
+            [value]="dailyTimesheet.hours"
+          />
+        </mat-form-field>
       </div>
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Daily Timesheet ID:</h2>
-        <p>{{dailyTimesheet.dailyTimesheetId }}</p>
+        <!-- <p>{{dailyTimesheet.dailyTimesheetId }}</p> -->
+        <mat-form-field appearance="outline" >
+          <!-- <mat-label>dailyTimesheetId</mat-label> -->
+          <input
+            matInput
+            placeholder="dailyTimesheetId"
+            [(ngModel)]="dailyTimesheet.dailyTimesheetId"
+            [readonly]=true
+            [value]="dailyTimesheet.dailyTimesheetId"
+          />
+        </mat-form-field>
       </div>
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Support Ticket:</h2>
-        <p>{{ dailyTimesheet.supportTicket }}</p>
+        <!-- <p>{{ dailyTimesheet.supportTicket }}</p> -->
+        <mat-form-field appearance="outline" >
+          <!-- <mat-label>supportTicket</mat-label> -->
+          <input
+            matInput
+            placeholder="supportTicket"
+            [(ngModel)]="dailyTimesheet.supportTicket"
+            [readonly]="!editMode"
+            [value]="dailyTimesheet.supportTicket"
+          />
+        </mat-form-field>
       </div>
       <div>
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
-        <p>{{dailyTimesheet.date }}</p>
+        <!-- <p>{{dailyTimesheet.date }}</p> -->
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>date</mat-label> -->
+          <input
+            matInput
+            placeholder="date"
+            [(ngModel)]="dailyTimesheet.date"
+            [readonly]="!editMode"
+            [value]="dailyTimesheet.date"
+          />
+        </mat-form-field>
       </div>
       <div>
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Timesheet Type:</h2>
-        <p>{{ dailyTimesheet.timesheetType }}</p>
+        <!-- <p>{{ dailyTimesheet.timesheetType }}</p> -->
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>timesheetType</mat-label> -->
+          <input
+            matInput
+            placeholder="timesheetType"
+            [(ngModel)]="dailyTimesheet.timesheetType"
+            [readonly]="!editMode"
+            [value]="dailyTimesheet.timesheetType"
+          />
+        </mat-form-field>
       </div>
       <!-- <div>
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</h2>
@@ -35,18 +85,48 @@
     
     <div style="margin-bottom: 1rem;">
       <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Task:</h2>
-      <p>{{ dailyTimesheet.description }}</p>
+      <!-- <p>{{ dailyTimesheet.description }}</p> -->
+      <mat-form-field appearance="outline">
+        <!-- <mat-label>Task</mat-label> -->
+        <input
+          matInput
+          placeholder="Task"
+          [(ngModel)]="dailyTimesheet.description"
+          [readonly]="!editMode"
+          [value]="dailyTimesheet.description"
+        />
+      </mat-form-field>
     </div>
     
     <div style="margin-bottom: 1rem;">
       <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Redhat Owners:</h2>
       <!-- <div *ngFor="let redHatOwner of redHatOwners"> -->
-        <p>{{ dailyTimesheet.redHatOwners }}</p>
+        <!-- <p>{{ dailyTimesheet.redHatOwners }}</p> -->
+        <mat-form-field appearance="outline">
+          <!-- <mat-label>redHatOwners</mat-label> -->
+          <input
+            matInput
+            placeholder="redHatOwners"
+            [(ngModel)]="dailyTimesheet.redHatOwners"
+            [readonly]=true
+            [value]="dailyTimesheet.redHatOwners"
+          />
+        </mat-form-field>
       <!-- </div> -->
       <div style="margin-bottom: 1rem;">
         <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
         <!-- <div *ngFor="let clientOwner of clientOwners"> -->
-          <p>{{ dailyTimesheet.clientOwners }}</p>
+          <!-- <p>{{ dailyTimesheet.clientOwners }}</p> -->
+          <mat-form-field appearance="outline">
+            <!-- <mat-label>clientOwners</mat-label> -->
+            <input
+              matInput
+              placeholder="clientOwners"
+              [(ngModel)]="dailyTimesheet.clientOwners"
+              [readonly]=true
+              [value]="dailyTimesheet.clientOwners"
+            />
+          </mat-form-field>
 
           <!-- <button
           mat-raised-button
@@ -56,7 +136,25 @@
           {{ editable ? "SUBMIT" : "EDIT" }}
         </button> -->
         <!-- </div> -->
+    
     </div>
+    <button
+      style="margin-left: 150px"
+      mat-raised-button
+      color="primary"
+      (click)="editDaily()"
+    >
+      Edit
+    </button>
+
+    <button
+    style="margin-left: 150px"
+    mat-raised-button
+    color="primary"
+    (click)="saveDaily()"
+  >
+    Save
+  </button>
     <div>
       <!-- <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
       <ul style="list-style: none;">
