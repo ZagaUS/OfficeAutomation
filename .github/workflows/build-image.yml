@@ -33,7 +33,18 @@ jobs:
           username: ${{ secrets.IMAGE_REPO_USER }}
           password: ${{ secrets.IMAGE_REPO_PASS }}
 
-      - name: Build and push Docker image
+      - name: Build Docker image
+        run: |
+          docker buildx create --use
+          docker buildx build \
+            --platform linux/amd64,linux/arm64 \
+            -t zagaoss/office-automation:${{ steps.tag.outputs.new_tag }} \
+            -t zagaoss/office-automation:latest \
+            --file ./docker/Dockerfile \
+            --load --progress plain \
+            .
+      
+      - name: Push Docker image
         run: |
           docker buildx create --use
           docker buildx build --push \
@@ -41,5 +52,4 @@ jobs:
             -t zagaoss/office-automation:${{ steps.tag.outputs.new_tag }} \
             -t zagaoss/office-automation:latest \
             --file ./docker/Dockerfile \
-            --load --progress plain \
             .
