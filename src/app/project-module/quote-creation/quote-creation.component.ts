@@ -37,12 +37,7 @@ createForm() {
     projectName: [this.projectName, Validators.required],
     quoteStatus: [''],
     from:[''],
-<<<<<<< HEAD
-    to: [this.to],
-    date: [''],
-=======
     to: [this.to, Validators.required],
->>>>>>> ad03b31ea82971cd90bf430595528dbb441ed37b
     serviceDescription: [''],
     clientCurrency: [this.clientCurrency, Validators.required],
     totalPrice: ['', Validators.required],
