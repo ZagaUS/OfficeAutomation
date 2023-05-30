@@ -1,13 +1,3 @@
-// .mat-dialog-container {
-//   width: 400px;
-//   height: auto;
-//   background-color: #fff;
-//   padding: 20px;
-//   border-radius: 5px;
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-//   display: flex;
-//   flex-direction: column;
-// }
 .mat-dialog-container {
   width: 800px;
   height: 600px;
@@ -53,8 +43,6 @@ h2 {
   font-size: 24px;
 }
 
-
-
 .modal-dialog-content {
   margin-top: 20px;
 }
@@ -68,7 +56,6 @@ button.modal-buttons {
   margin-top: 10px;
   margin-left: 50px;
 }
-
 
 input.mat-input {
   font-size: 16px;
@@ -93,10 +80,10 @@ button.mat-raised-button {
   justify-content: center;
   align-items:center ;
 }
+
 .mat-dialog-container.extended {
   width:100%;
 }
-
 
 button.mat-raised-button:hover {
   background-color: #007bff;
@@ -108,7 +95,6 @@ button.mat-raised-button:hover {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  // padding: 2em;
   padding-left: 50em;
   padding-top: 20em;
 
@@ -146,14 +132,6 @@ button.mat-raised-button:hover {
       }
     }
 
-    // .close-button {
-    //   position: absolute;
-    //   top: 0;
-    //   right: 0;
-    //   margin: 10px; 
-    //   background-color: #184c80;
-    // }
-
     .close-button {
       position: absolute;
       top: 10px;
@@ -167,11 +145,6 @@ button.mat-raised-button:hover {
       margin-top: 20px;
       background: linear-gradient(to bottom, #074a6e , #074a6e );
       color: #f3eeee;
-
-
-      // &:hover {
-      //   background-color: #0062cc;
-      // }
     }
   }
 }
@@ -199,4 +172,3 @@ button.mat-raised-button:hover {
     }
   }
 }
-
