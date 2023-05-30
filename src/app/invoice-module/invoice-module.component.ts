@@ -45,7 +45,7 @@ export interface PeriodicElement {
 })
 export class InvoiceModuleComponent {
   displayedColumns: string[] = [
-    // 'invoiceId',
+    'invoiceId',
     'date',
     'clientAddress',
     'projectName',
@@ -116,6 +116,7 @@ export class InvoiceModuleComponent {
         //Create a url
         const fileUrl = URL.createObjectURL(blob);
         window.open(fileUrl, '_blank');
+       
       };
       reader.readAsDataURL(data);
     });
@@ -123,6 +124,7 @@ export class InvoiceModuleComponent {
 
   deleteInvoice(invoiceId:any) {
     console.log('deleteInvoice', invoiceId);
+    this.invoiceId = localStorage.getItem('invoiceId');
     this.invoiceApi.deleteInvoice(invoiceId).subscribe((data)=>{
       console.log('List of Invoices'+JSON.stringify(data));
     })
