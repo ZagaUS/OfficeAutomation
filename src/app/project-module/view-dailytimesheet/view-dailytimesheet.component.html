@@ -88,13 +88,7 @@
       <!-- <p>{{ dailyTimesheet.description }}</p> -->
       <mat-form-field appearance="outline">
         <!-- <mat-label>Task</mat-label> -->
-        <input
-          matInput
-          placeholder="Task"
-          [(ngModel)]="dailyTimesheet.description"
-          [readonly]="!editMode"
-          [value]="dailyTimesheet.description"
-        />
+        <textarea matInput placeholder="Task" [(ngModel)]="dailyTimesheet.description" [readonly]="!editMode" [value]="dailyTimesheet.description"></textarea>
       </mat-form-field>
     </div>
     

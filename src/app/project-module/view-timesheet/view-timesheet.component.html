@@ -211,6 +211,16 @@
               ><mat-icon style="font-size: x-large" fontIcon="edit"></mat-icon> -->
               <!-- <p>Edit</p> -->
             <!-- </a> -->
+
+            <button *ngIf="daily" mat-raised-button
+              (click)="getDailyTimesheetByTimesheetId(element.projectId, element.projectName, element.date, element.dailyTimesheetId)"
+              class=" btns"
+              color="primary"
+              data-toggle="modal"
+              style="margin-left: 10px"
+      
+              >View</button>
+
             <button mat-raised-button
               (click)="deleteWeeklyTimesheetById(element.weeklyTimesheetId,element.dailyTimesheetId)"
               class=" btns"
@@ -219,14 +229,6 @@
               style="margin-left: 10px"
               >Delete</button>
 
-              <button *ngIf="daily" mat-raised-button
-              (click)="getDailyTimesheetByTimesheetId(element.projectId, element.projectName, element.date, element.dailyTimesheetId)"
-              class=" btns"
-              color="primary"
-              data-toggle="modal"
-              style="margin-left: 10px"
-      
-              >View</button>
               <!-- <p>Delete</p> -->
           </div>
         </td>

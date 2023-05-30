@@ -163,13 +163,7 @@
           </td>
           <td class="word-wrap">
             <mat-form-field appearance="outline">
-              <input
-                matInput
-                placeholder="Description"
-                [(ngModel)]="item.description"
-                [readonly]="!editMode"
-                [value]="item.description"
-              />
+              <textarea matInput placeholder="Description" [(ngModel)]="item.description" [readonly]="!editMode" [value]="item.description"></textarea>
             </mat-form-field>
           </td>
         </tr>

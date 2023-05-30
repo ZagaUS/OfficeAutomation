@@ -128,7 +128,7 @@ export class ViewTimesheetComponent {
   // dailyTimesheet?: any ;
   timesheetType?: any = 'WEEKLY';
   documentId?: any = localStorage.getItem('documentId');
-  categories: string[] = ['Daily', 'Weekly', 'Approved', 'External'];
+  categories: string[] = ['Daily', 'Weekly', 'External'];
   weeklyDisplayedColumns: string[] = [
     'weeklyTimesheetId',
     'projectName',

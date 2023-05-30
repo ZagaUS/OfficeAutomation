@@ -59,12 +59,14 @@ createForm() {
 }
 
 onCreate() {
+  if (this.quoteForm.valid) {
   const quote = this.quoteForm.value;
   this.api.createQuotes(quote).subscribe((data: any) => {
     console.log('data updated', data);
     alert('Updated successfully');
     // do something with the response, if needed
   });
+}
 }
 
  

@@ -11,24 +11,24 @@
     
     <mat-form-field appearance="outline" class="form-field">
         <mat-label>Project Name</mat-label>
-        <input matInput   type="text"   formControlName="projectName" >
+        <input matInput   type="text"   formControlName="projectName" required="true" >
         </mat-form-field>  
      
     
       
     <mat-form-field appearance="outline" class="form-field">
     <mat-label>To</mat-label>
-    <input matInput   type="text"   formControlName="to" >
+    <input matInput   type="text"   formControlName="to" required="true" >
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="form-field">
         <mat-label>Start Date</mat-label>
-        <input matInput   type="date"   formControlName="startDate"  >
+        <input matInput   type="date"   formControlName="startDate"  required="true" >
        </mat-form-field>
     
        <mat-form-field appearance="outline" class="form-field">
         <mat-label>End Date</mat-label>
-        <input matInput   type="date"   formControlName="endDate"  >
+        <input matInput   type="date"   formControlName="endDate" required="true" >
        </mat-form-field>
     
 
@@ -62,10 +62,10 @@
        </mat-form-field>
         
        
-       <mat-form-field appearance="outline" class="form-field">
+       <!-- <mat-form-field appearance="outline" class="form-field">
         <mat-label>Date</mat-label>
         <input matInput   type="date"   formControlName="date"  >
-       </mat-form-field>
+       </mat-form-field> -->
         
       
       
@@ -100,7 +100,7 @@
 
        <mat-form-field appearance="outline" class="form-field">
         <mat-label>GST Amount</mat-label>
-        <input matInput   type="text"  formControlName="gstAmount">
+        <input matInput   type="text"  formControlName="gstAmount" required="true" >
        </mat-form-field>
        <!-- <mat-form-field appearance="outline" class="form-field">
         <mat-label>GST</mat-label>
@@ -116,14 +116,14 @@
       
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>TotalAmount</mat-label>
-          <input matInput formControlName="totalAmount"  >
+          <input matInput formControlName="totalAmount" required="true" >
          </mat-form-field>
         
         <!-- Other Information -->
         
             <mat-form-field appearance="outline" class="form-field">
           <mat-label>Valid Date</mat-label>
-          <input matInput   type="date"   formControlName="validDate"  >
+          <input matInput   type="date"   formControlName="validDate" required="true" >
          </mat-form-field>
       
       
