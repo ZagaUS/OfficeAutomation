@@ -79,6 +79,10 @@ export class CreateEmployeeComponent {
       yearsOfExperience: [''],
       compentencyLevel: [''],
 
+      allocatedLeave: [''],
+      used: [''],
+      balance: [''],
+
     });
   }
   educationData: any = [];
@@ -235,6 +239,13 @@ export class CreateEmployeeComponent {
       "yearsOfExperience": this.myForm.value.yearsOfExperience,
       "compentencyLevel": this.myForm.value.compentencyLevel
     }
+
+    const dayOff = {
+      "employeeName": this.myForm.value.employeeName,
+      "allocatedLeave": this.myForm.value.allocatedLeave,
+      "used": this.myForm.value.used,
+      "balance": this.myForm.value.balance
+    }
     
     const createEmployee = {
       employeeInfo: employeeInfo,
@@ -242,7 +253,8 @@ export class CreateEmployeeComponent {
       // educationDetails: this.educationData,
       educationDetails: this.myForm.value.educationDetails,
       jobHistoryDetails: this.myForm.value.jobHistoryDetails,
-      skills: skills
+      skills: skills,
+      dayOff: dayOff
     }
 
     console.log("updatedData", createEmployee);
