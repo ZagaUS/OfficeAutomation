@@ -4,16 +4,16 @@
   </h1>
   <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 250px;color: #074a6e;">
     {{ meetingDetails.projectName | uppercase }} - {{ meetingDetails.employeeName }}
-</h1>
+  </h1>
   
   <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
     <div>
       <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Meeting ID:</h2>
       <!-- <p>{{ meetingDetails.meetingMinutesId }}</p> -->
-      <mat-form-field appearance="outline" style="padding-right: 3rem;">
+      <mat-form-field style="width: 200%;" appearance="outline">
         <input
           matInput
-          placeholder="date"
+          placeholder="Meeting ID"
           [(ngModel)]="meetingDetails.meetingMinutesId"
           [readonly]="!editMode"
           [value]="meetingDetails.meetingMinutesId"
@@ -23,7 +23,7 @@
     <div>
       <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
       <!-- <p>{{ meetingDetails.date }}</p> -->
-      <mat-form-field appearance="outline" style="padding-right: 3rem;">
+      <mat-form-field style="width: 200%;" appearance="outline">
         <input
           matInput
           placeholder="date"
@@ -33,10 +33,13 @@
         />
       </mat-form-field>
     </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem;">
     <div>
       <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Start Time:</h2>
       <!-- <p>{{ meetingDetails.startTime }}</p> -->
-      <mat-form-field appearance="outline" style="padding-right: 3rem;">
+      <mat-form-field style="width: 200%;" appearance="outline">
         <input
           matInput
           placeholder="start Time"
@@ -49,7 +52,7 @@
     <div>
       <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">End Time:</h2>
       <!-- <p>{{ meetingDetails.endTime }}</p> -->
-      <mat-form-field appearance="outline">
+      <mat-form-field style="width: 200%;" appearance="outline">
         <input
           matInput
           placeholder="end Time"
@@ -64,7 +67,7 @@
   <div style="margin-bottom: 1rem;">
     <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Meeting Objective:</h2>
     <!-- <p>{{ meetingDetails.meetingObjective }}</p> -->
-    <mat-form-field appearance="outline">
+    <mat-form-field style="width: 100%;" appearance="outline">
       <input
         matInput
         placeholder="Meeting Objective"
@@ -74,22 +77,7 @@
       />
     </mat-form-field>
   </div>
-  
-  <div style="margin-bottom: 1rem;">
-    <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
-    <div *ngFor="let attendee of meetingDetails.attendeesPresent">
-      <!-- <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p> -->
-      <mat-form-field appearance="outline">
-        <input
-          matInput
-          placeholder="name"
-          [(ngModel)]="meetingDetails.name"
-          [readonly]="!editMode"
-          [value]="meetingDetails.name"
-        />
-      </mat-form-field>
-    </div>
-  </div>
+
   <div>
     <!-- <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
     <ul style="list-style: none;">
@@ -171,22 +159,26 @@
     </table>
     
   </div>
-  <button
-  style="margin-left: 150px"
-  mat-raised-button
-  color="primary"
-  (click)="editMeetingMinutes()"
->
-  Edit
-</button>
 
-<button
-style="margin-left: 150px"
-mat-raised-button
-color="primary"
-(click)="saveMeetingMinutes()"
->
-Save
-</button>
+    <div style="margin-bottom: 1rem;">
+      <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
+      <div *ngFor="let attendee of meetingDetails.attendeesPresent">
+        <!-- <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p> -->
+        <mat-form-field appearance="outline">
+          <!-- <input
+            matInput
+            placeholder="name"
+            [(ngModel)]="attendee.name"
+            [readonly]="!editMode"
+            [value]="attendee.name"
+          /> -->
+          <input matInput placeholder="Attendee Details" [value]="attendee.name + ' (' + attendee.organization.toUpperCase() + ')'">
+        </mat-form-field>
+      </div>
+    </div>
+
+  <button style="margin-left: 150px" mat-raised-button color="primary" (click)="editMeetingMinutes()">Edit</button>
+
+  <button style="margin-left: 150px" mat-raised-button color="primary" (click)="saveMeetingMinutes()">Save</button>
 
 </div>

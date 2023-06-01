@@ -6,11 +6,11 @@
       {{ dailyTimesheet.projectName | uppercase }} - {{dailyTimesheet.employeeName }}
   </h1>
     
-    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 50px;">
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Duration:</h2>
         <!-- <p>{{ dailyTimesheet.hours}}</p> -->
-        <mat-form-field appearance="outline">
+        <mat-form-field style="width: 200%;" appearance="outline">
           <!-- <mat-label>Duration</mat-label> -->
           <input
             matInput
@@ -24,7 +24,7 @@
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Daily Timesheet ID:</h2>
         <!-- <p>{{dailyTimesheet.dailyTimesheetId }}</p> -->
-        <mat-form-field appearance="outline" >
+        <mat-form-field style="width: 200%;" appearance="outline" >
           <!-- <mat-label>dailyTimesheetId</mat-label> -->
           <input
             matInput
@@ -35,10 +35,13 @@
           />
         </mat-form-field>
       </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 20px;">
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Support Ticket:</h2>
         <!-- <p>{{ dailyTimesheet.supportTicket }}</p> -->
-        <mat-form-field appearance="outline" >
+        <mat-form-field style="width: 200%;" appearance="outline" >
           <!-- <mat-label>supportTicket</mat-label> -->
           <input
             matInput
@@ -52,7 +55,7 @@
       <div>
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
         <!-- <p>{{dailyTimesheet.date }}</p> -->
-        <mat-form-field appearance="outline">
+        <mat-form-field style="width: 200%;" appearance="outline">
           <!-- <mat-label>date</mat-label> -->
           <input
             matInput
@@ -63,10 +66,12 @@
           />
         </mat-form-field>
       </div>
+    </div>
+
       <div>
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Timesheet Type:</h2>
         <!-- <p>{{ dailyTimesheet.timesheetType }}</p> -->
-        <mat-form-field appearance="outline">
+        <mat-form-field style="width: 100%;" appearance="outline">
           <!-- <mat-label>timesheetType</mat-label> -->
           <input
             matInput
@@ -81,12 +86,12 @@
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</h2>
         <p>{{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
       </div> -->
-    </div>
+    
     
     <div style="margin-bottom: 1rem;">
       <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Task:</h2>
       <!-- <p>{{ dailyTimesheet.description }}</p> -->
-      <mat-form-field appearance="outline">
+      <mat-form-field style="width: 100%;" appearance="outline">
         <!-- <mat-label>Task</mat-label> -->
         <textarea matInput placeholder="Task" [(ngModel)]="dailyTimesheet.description" [readonly]="!editMode" [value]="dailyTimesheet.description"></textarea>
       </mat-form-field>
@@ -96,7 +101,7 @@
       <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Redhat Owners:</h2>
       <!-- <div *ngFor="let redHatOwner of redHatOwners"> -->
         <!-- <p>{{ dailyTimesheet.redHatOwners }}</p> -->
-        <mat-form-field appearance="outline">
+        <mat-form-field style="width: 100%;" appearance="outline">
           <!-- <mat-label>redHatOwners</mat-label> -->
           <input
             matInput
@@ -111,7 +116,7 @@
         <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
         <!-- <div *ngFor="let clientOwner of clientOwners"> -->
           <!-- <p>{{ dailyTimesheet.clientOwners }}</p> -->
-          <mat-form-field appearance="outline">
+          <mat-form-field style="width: 100%;" appearance="outline">
             <!-- <mat-label>clientOwners</mat-label> -->
             <input
               matInput

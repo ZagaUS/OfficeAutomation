@@ -73,7 +73,7 @@ export class ModaldailyweekComponent {
   }
 
   onClickDailySave() {
-    if (this.contactForm.valid) {
+    // if (this.contactForm.valid) {
       this.clientOwner?.split(',').map((item) => {
         console.log('client ' + item);
         this.clientOwners.push(item);
@@ -105,7 +105,7 @@ export class ModaldailyweekComponent {
 
       const closeMessage = 'Modal closed';
       this.modalRef.close(closeMessage);
-    }
+    // }
   }
 
   onClickDaily() {
@@ -114,7 +114,7 @@ export class ModaldailyweekComponent {
   }
 
   onClickExternalSave() {
-    if (this.contactForm.valid) {
+    // if (this.contactForm.valid) {
       const startDate = formatDate(
         this.contactForm.value.startDate,
         this.dateFormat,
@@ -147,7 +147,7 @@ export class ModaldailyweekComponent {
 
       const closeMessage = 'Modal closed';
       this.modalRef.close(closeMessage);
-    }
+    // }
   }
   onClickExternal() {
     this.showDaily = false;
