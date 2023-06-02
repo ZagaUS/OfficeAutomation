@@ -68,7 +68,7 @@ export class ApiServicesService {
   }
 
   updateProjectDetails(data: any) {
-    return this.http.put(
+    return this.http.put<any>(
       this.projectMgtUrl + '/projectDetails/updateProjectDetails',
       data
     );
