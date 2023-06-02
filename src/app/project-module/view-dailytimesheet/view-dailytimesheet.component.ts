@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
 
 export interface RedHatOwners {
-  name: [string, string, string];
+  name: string[];
 }
 export interface ClientOwners {
-  name: [string, string, string];
+  name: string[];
 }
 interface MyData {
   [key: string]: any;

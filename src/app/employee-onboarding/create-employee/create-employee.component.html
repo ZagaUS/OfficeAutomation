@@ -230,7 +230,27 @@
         <input matInput type="text" formControlName="compentencyLevel">
       </mat-form-field>
 
-     <button mat-raised-button  class="form-button" type="submit ">Submit</button>
+      <!-- DayOff -->
+      <mat-card-title class="card-header">DayOff</mat-card-title>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Allocated Leave</mat-label>
+        <input matInput formControlName="allocatedLeave" type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Used</mat-label>
+        <input matInput formControlName="used" type="text">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Balance</mat-label>
+        <input matInput formControlName="balance" type="text">
+      </mat-form-field>
+
+      <div style="margin-left: 50px;">
+        <button mat-raised-button  class="form-button" type="submit ">Submit</button>
+      </div>
 
     </form>
     </div>
