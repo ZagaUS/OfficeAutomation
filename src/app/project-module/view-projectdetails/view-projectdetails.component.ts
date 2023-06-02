@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { Location } from '@angular/common';
 
 interface MyData {
   [key: string]: any;
@@ -20,7 +22,9 @@ export class ViewProjectdetailsComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private api: ApiServicesService
+    private api: ApiServicesService,
+    private snackBar: MatSnackBar,
+    private location: Location,
   ) {}
 
   editable = false;
@@ -74,6 +78,19 @@ export class ViewProjectdetailsComponent {
     });
   }
 
+  openSnackbar(message: string, duration: number) {
+    const config: MatSnackBarConfig = {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom', // Change the vertical position to 'bottom'
+      panelClass: ['center-snackbar'],
+    };
+    this.snackBar.open(message, 'Close', {
+      duration: duration,
+    });
+  }
+  
+
   edit() {
     console.log('editable');
     this.editable = !this.editable;
@@ -93,7 +110,9 @@ export class ViewProjectdetailsComponent {
     console.log('updated data', updatedData);
     this.api.updateProjectDetails(updatedData).subscribe((data: any) => {
       console.log('data updated', data);
-      alert('updated data successfully');
+      // alert('updated data successfully');
+      this.openSnackbar('Updated successfully', 1500);
+      this.location.back();
     });
   }
 }

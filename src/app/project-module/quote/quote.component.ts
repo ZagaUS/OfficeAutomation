@@ -23,7 +23,8 @@ export class QuoteComponent {
   projectId?: any = localStorage.getItem("projectId");
   pdfStatus?:any = localStorage.getItem("pdfStatus");
   modalRef: MdbModalRef<ModelSendComponent> | null = null;
-  displayedColumns: string[] = [
+  // showValidDateColumn: boolean = false;
+  quoteDisplayedColumns: string[] = [
     'projectName',
     'quoteNumber',
     'validDate',
@@ -31,6 +32,13 @@ export class QuoteComponent {
     'totalAmount',
     'action',
   ];
+  quotePdfDisplayedColumns: string[] = [
+    'projectName',
+    'quoteNumber',
+    'action',
+  ];
+  columnShown?: any = this.quotePdfDisplayedColumns;
+ 
 
   constructor(private http: HttpClient, private router: Router, private apiService: ApiServicesService, private modalService: MdbModalService){
 
@@ -52,11 +60,14 @@ export class QuoteComponent {
      if (selectedValue === 'Quote PDFs') {
       // this.dataSource.filter = ''; // clear filter
       this.pdfStatus = true;
+      this.columnShown = this.quotePdfDisplayedColumns;
+         
       this.apiService
         .getQuotePdf (this.projectId)
         .subscribe((data) => {
           console.log('External data' + data);
           this.dataSource = new MatTableDataSource(data);
+         
 
         });
         
@@ -66,14 +77,17 @@ export class QuoteComponent {
            
       // this.dataSource.filter = ''; // clear filter
       this.pdfStatus = false;
+      this.columnShown = this.quoteDisplayedColumns;
       this.apiService
         .getAllQuotes(this.projectId)
         .subscribe((data) => {
           console.log('External data' + data);
           this.dataSource = new MatTableDataSource(data);
         });
+       
 
         }}
+
   
 
 

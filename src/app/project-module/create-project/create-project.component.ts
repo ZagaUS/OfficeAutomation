@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+
 import {
   FormBuilder,
   FormControl,
@@ -26,7 +28,7 @@ export class CreateProjectComponent {
   selectedTimezones: string[] = [];
   jsonData: CurrencyData[] = [];
 
-  constructor(private fb: FormBuilder, private api: ApiServicesService) {
+  constructor(private fb: FormBuilder, private api: ApiServicesService, private location: Location) {
     this.createForm();
   }
 
@@ -62,6 +64,8 @@ export class CreateProjectComponent {
       validDate: [''],
       totalManDays: [''],
       duration: [''],
+      poStatus: ['false'],
+      quoteFlag: ['false'],
       date: [''],
       selectedCurrency: new FormControl(),
       selectedTimezone: new FormControl(),
@@ -86,6 +90,7 @@ export class CreateProjectComponent {
       console.log('data updated', data);
       alert('Updated successfully');
       // do something with the response, if needed
+      this.location.back();
     });
   }
 

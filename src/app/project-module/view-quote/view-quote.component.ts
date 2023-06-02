@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
-
+import { Location } from '@angular/common';
+import { MatSnackBar, MatSnackBarConfig  } from '@angular/material/snack-bar';
+// import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 interface MyData {
   [key: string]: any;
@@ -21,7 +23,10 @@ export class ViewQuoteComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private api: ApiServicesService
+    private api: ApiServicesService,
+    private location: Location,
+    private snackBar: MatSnackBar,
+    
   ) {}
 
   editable = false;
@@ -35,6 +40,18 @@ export class ViewQuoteComponent {
     this.api.getQuoteView(this.quoteId).subscribe((data) => {
       console.log('List of Quotes' + JSON.stringify(data));
       this.data = data;
+    });
+  }
+
+  openSnackbar(message: string, duration: number) {
+    const config: MatSnackBarConfig = {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom', // Change the vertical position to 'bottom'
+      panelClass: ['center-snackbar'],
+    };
+    this.snackBar.open(message, 'Close', {
+      duration: duration,
     });
   }
 
@@ -55,9 +72,11 @@ export class ViewQuoteComponent {
     });
     console.log(formData);
     console.log('updated data', updatedData);
-    this.api.updateProjectDetails(updatedData).subscribe((data: any) => {
+    this.api.updateQuote(updatedData).subscribe((data: any) => {
       console.log('data updated', data);
-      alert('updated data successfully');
+      this.openSnackbar('Updated successfully', 1500);
+      this.location.back();
+      
     });
   }
     onGenerateClick(){

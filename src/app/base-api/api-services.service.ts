@@ -378,4 +378,12 @@ export class ApiServicesService {
     );
   }
 
+    updateQuote(data:any){
+    return this.http.put<any>(
+      this.projectMgtUrl + '/Quotes/modifyQuotes',
+      data
+    );
+  }
+
+
 }
