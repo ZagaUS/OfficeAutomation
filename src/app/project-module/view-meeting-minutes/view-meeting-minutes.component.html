@@ -172,7 +172,7 @@
             [readonly]="!editMode"
             [value]="attendee.name"
           /> -->
-          <input matInput placeholder="Attendee Details" [value]="attendee.name + ' (' + attendee.organization.toUpperCase() + ')'">
+          <input matInput placeholder="meetingDetails" [readonly]="!editMode" [value]="attendee.name + ' (' + attendee.organization.toUpperCase() + ')'">
         </mat-form-field>
       </div>
     </div>

@@ -2,7 +2,7 @@
     <h1 style="font-size: 2.0rem;font-weight: bold; margin-bottom: 2rem; margin-left: 150px;color: #074a6e;">
       Daily Timesheet - {{dailyTimesheet.date}}
     </h1>
-    <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 250px;color: #074a6e;">
+    <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 200px;color: #074a6e;">
       {{ dailyTimesheet.projectName | uppercase }} - {{dailyTimesheet.employeeName }}
   </h1>
     
@@ -101,16 +101,18 @@
       <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Redhat Owners:</h2>
       <!-- <div *ngFor="let redHatOwner of redHatOwners"> -->
         <!-- <p>{{ dailyTimesheet.redHatOwners }}</p> -->
-        <mat-form-field style="width: 100%;" appearance="outline">
-          <!-- <mat-label>redHatOwners</mat-label> -->
-          <input
-            matInput
-            placeholder="redHatOwners"
-            [(ngModel)]="dailyTimesheet.redHatOwners"
-            [readonly]=true
-            [value]="dailyTimesheet.redHatOwners"
-          />
-        </mat-form-field>
+        <div *ngFor="let owner of dailyTimesheet.redHatOwners; let i = index">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <!-- <mat-label>redHatOwners</mat-label> -->
+            <input
+              matInput
+              placeholder="redHatOwners"
+              [(ngModel)]="dailyTimesheet.redHatOwners[i]"
+              [readonly]="!editMode"
+              [value]="dailyTimesheet.redHatOwners"
+            />
+          </mat-form-field>
+        </div>
       <!-- </div> -->
       <div style="margin-bottom: 1rem;">
         <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
@@ -136,70 +138,10 @@
         </button> -->
         <!-- </div> -->
     
-    </div>
-    <button
-      style="margin-left: 150px"
-      mat-raised-button
-      color="primary"
-      (click)="editDaily()"
-    >
-      Edit
-    </button>
+      </div>
+      <button style="margin-left: 150px" mat-raised-button color="primary" (click)="editDaily()">Edit</button>
 
-    <button
-    style="margin-left: 150px"
-    mat-raised-button
-    color="primary"
-    (click)="saveDaily()"
-  >
-    Save
-  </button>
-    <div>
-      <!-- <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
-      <ul style="list-style: none;">
-        <div *ngFor="let item of meetingDetails.agenda" style="list-style: none;">
-          <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-            <div>
-              <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Topic:</p>
-              <p>{{ item.topic }}</p>
-            </div>
-            <div>
-              <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Presented by:</p>
-              <p>{{ item.presentedBy }}</p>
-            </div>
-            <div>
-              <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Time Taken:</p>
-              <p>{{ item.timeTaken }}</p>
-            </div>
-            <div>
-          <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description:</p>
-          <p class="word-wrap">{{ item.description }}</p>
-        </div>
-  
-        </div>
-        </div>
-      </ul> -->
-  
-      <!-- <h2 class="agenda-heading" style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
-      <table class="agenda-table">
-        <thead>
-          <tr>
-            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Topic</th>
-            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Presented by</th>
-            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Time Taken</th>
-            <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of meetingDetails.agenda">
-            <td class="word-wrap">{{ item.topic }}</td>
-            <td class="word-wrap">{{ item.presentedBy }}</td>
-            <td class="word-wrap">{{ item.timeTaken }}</td>
-            <td class="word-wrap">{{ item.description }}</td>
-          </tr>
-        </tbody>
-      </table> -->
-      
+      <button style="margin-left: 150px" mat-raised-button color="primary" (click)="saveDaily()">Save</button>
+    
     </div>
-  </div>
   
