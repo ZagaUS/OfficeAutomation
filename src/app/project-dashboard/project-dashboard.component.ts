@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { ApiServicesService } from '../base-api/api-services.service';
 import { ProjectAssignmentComponent } from '../project-assignment/project-assignment.component';
 import { MdbModalService } from 'mdb-angular-ui-kit/modal';
-
+import { Location } from '@angular/common';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 export interface PeriodicElement {
   projectId: string;
   projectName: String;
@@ -52,7 +53,7 @@ export class ProjectDashboardComponent {
   correct?: any = true;
   wrong?:any = false;
   dataSource?: any;
-  categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
+  categories: string[] = ['Active', 'UnAssigned', 'All'];
   displayedColumns: string[] = [
     'projectId',
     'projectName',
@@ -65,7 +66,7 @@ export class ProjectDashboardComponent {
 
   // dataSource = new MatTableDataSource(ELEMENT_DATA);
 
-  constructor(private router: Router, private api: ApiServicesService,private modalService: MdbModalService) {}
+  constructor(private snackBar: MatSnackBar,private router: Router, private api: ApiServicesService,private modalService: MdbModalService, private location: Location) {}
 
   ngOnInit(): void {
     console.log("Im'in");
@@ -74,6 +75,10 @@ export class ProjectDashboardComponent {
     this.api.getListOfProjects().subscribe((data) => {
       console.log('List of projects ' + JSON.stringify(data));
       this.dataSource = new MatTableDataSource(data);
+      setTimeout(() => {
+        // this.location.go(this.location.path());
+        window.location.reload();
+      }, 500000);
       // this.ELEMENT_DATA = data;
     });
   }
@@ -99,6 +104,17 @@ export class ProjectDashboardComponent {
       this.unassignedCheck = false;
     }
   }
+  openSnackbar(message: string, duration: number) {
+    const config: MatSnackBarConfig = {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom', // Change the vertical position to 'bottom'
+      panelClass: ['center-snackbar'],
+    };
+    this.snackBar.open(message, 'Close', {
+      duration: duration,
+    });
+  }
 
   viewProject(projectId?: any, projectName?: any, employeeName?: any, quoteStatus?:any, poStatus?:any, pdfStatus?:any) {
     console.log('viewProject', projectId + " qout " + quoteStatus + poStatus);
@@ -121,8 +137,10 @@ export class ProjectDashboardComponent {
     this.api.deleteProjectById(projectId).subscribe((data) => {
     console.log('List of Project ' +JSON.stringify(data));
   })
-    alert('List of project deleted successfully');
+    // alert('Project deleted successfully');
     console.log('test');
+    this.openSnackbar('Deleted successfully', 1500);
+    this.location.back();
   }
   onAdd()
   {}
