@@ -46,7 +46,7 @@ export class EmployeeDashboardComponent {
     console.log("Im'in");
     console.log("Im'in");
     this.api.getEmployeeDetail().subscribe((data) => {
-      console.log('List of projects ' + JSON.stringify(data));
+      console.log('List of Employees ' + JSON.stringify(data));
       const updatedData = data.map((element: PeriodicElement) => {
         console.log('projectAssigned value:', element.projectAssignmentStatus);
         return {
