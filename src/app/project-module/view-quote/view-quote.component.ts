@@ -33,7 +33,33 @@ export class ViewQuoteComponent {
   readonly = true;
   formData: { [key: string]: any } = {};
 
-  data: MyData[] = [];
+  // data: MyData[] = [];
+   data: any;
+
+   desiredformat?: any[] = ["projectName",
+"employeeName",
+"employeeRole",
+"quoteId",
+"validDate",
+"unitPrice",
+"totalManDays",
+"startDate",
+"endDate",
+"duration",
+"po",
+"pa",
+"sfdc",
+"totalPrice",
+"gstPercent",
+"gstAmount",
+"totalAmount",
+"to",
+"quoteStatus",
+"clientCurrency",
+"date",
+"pdfStatus",
+"projectId" ]
+
 
   ngOnInit(): void {
     // this.projectId = "41";
@@ -66,16 +92,16 @@ export class ViewQuoteComponent {
     this.formData = { ...this.formData, [key]: value };
   }
   submitForm(formData: any) {
-    const updatedData: { [key: string]: any } = {};
-    Object.entries(this.data).forEach(([key, value]) => {
-      updatedData[key] = formData.hasOwnProperty(key) ? formData[key] : value;
-    });
-    console.log(formData);
-    console.log('updated data', updatedData);
-    this.api.updateQuote(updatedData).subscribe((data: any) => {
+    // const updatedData: { [key: string]: any } = {};
+    // Object.entries(this.data).forEach(([key, value]) => {
+    //   updatedData[key] = formData.hasOwnProperty(key) ? formData[key] : value;
+    // });
+    // console.log(formData);
+    console.log('updated data', this.data);
+    this.api.updateQuote(this.data).subscribe((data: any) => {
       console.log('data updated', data);
       this.openSnackbar('Updated successfully', 1500);
-      this.location.back();
+      // this.location.back();
       
     });
   }
@@ -102,9 +128,12 @@ export class ViewQuoteComponent {
       //   // 'end date: ' + endDate + ' ' +
       //    JSON.stringify(generateQuote)
       // );
-      this.api.generateQuote(this.quoteId, this.formData).subscribe((data) => {
+      this.api.generateQuote(this.quoteId).subscribe((data) => {
         console.log('Data: ' + JSON.stringify(data));
+        this.openSnackbar('Quote Generated  successfully', 1500);
         window.location.reload();
+        this.location.back();
+        
       });
   }
 

@@ -68,12 +68,65 @@ export class ViewProjectdetailsComponent {
   //   },
   // ];
 
-  data: MyData[] = [];
+  data: any;
+
+  desiredformat?: any[] = ["projectName" ,   
+    "projectId" ,    
+    "employeeName" ,  
+    "clientName" , 
+    "projectManager",
+    "employeeRole",  
+    "employeeEmail", 
+    "clientCountry", 
+    "clientTimezone",
+    "clientAddress",
+    "clientCurrency",
+    "duration",     
+    "startDate",   
+    "endDate",     
+    "quoteId",     
+    "validDate",    
+    "totalManDays",
+    "unitPrice",    
+    "po",        
+    "sfdc",         
+    "pa",            
+    "projectType" ]
+    values: any;
 
   ngOnInit(): void {
     // this.projectId = "41";
     this.api.getProjectDetails(this.projectId).subscribe((data) => {
       console.log('List of projects ' + JSON.stringify(data));
+      // const viewProjectData = {
+      //   projectName:    data.projectName,
+      //   projectId:      data.projectId,
+      //   employeeName:    data.employeeName,
+      //   clientName:       data.clientName,
+      //   projectManager:   data.projectManager,
+      //   employeeRole:     data.employeeRole,
+      //   employeeEmail:    data.employeeEmail,
+      //   clientCountry:    data.clientCountry,
+      //   clientTimezone:     data.clientTimeZone,
+      //   clientAddress:    data.clientAddress,
+      //   clientCurrency:   data.clientCurrency,
+      //   duration:         data.duration,
+      //   startDate:        data.startDate,
+      //   endDate:          data.endDate,
+      //   quoteId:          data.quoteId,
+      //   validDate:        data.validDate,
+      //   totalManDays:      data.totalManDays,
+      //   unitPrice:          data.unitPrice,
+      //   po:               data.po,
+      //   sfdc:             data.sfdc,
+      //   pa:               data.pa,
+      //   projectType:      data.projectType
+      // }
+      // this.desiredformat?.forEach(key => {
+      //   if(key in data){
+      //     this.data.push()
+      //   }
+      // })
       this.data = data;
     });
   }

@@ -2,8 +2,8 @@
 <mat-card class="project-card">
   <mat-card-title class="card-header">Project Details</mat-card-title>
   <div class="form-container">
-    <ng-container *ngFor="let item of data | keyvalue">
-      <mat-form-field
+    <ng-container>
+      <!-- <mat-form-field
         class="form-field"
         appearance="outline"
         [class.readonly]="readonly"
@@ -19,15 +19,345 @@
           (blur)="updateFormData(item.key, item.value.toString())"
           class="form-input"
         />
-      </mat-form-field>
+      </mat-form-field> -->
+      
+      <!-- <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 50px;"> -->
+        <!-- <div> -->
+          <!-- <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">projectName</h2> -->
+          <!-- <mat-form-field style="width: 200%;" appearance="outline"> -->
+           
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>projectName</mat-label>
+              <input
+              matInput
+              placeholder="Project Name"
+              [(ngModel)]="data.projectName"
+              [readonly]="!editable"
+              [value]="data.projectName"
+            />
+            </mat-form-field>
+          <!-- </mat-form-field> -->
+        <!-- </div> -->
+        <!-- <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 50px;"> -->
+          <!-- <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">projectId</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>projectId</mat-label>
+            <input
+              matInput
+              placeholder="projectId"
+              [(ngModel)]="data.projectId"
+              [readonly]="!editable"
+              [value]="data.projectId"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >employeeName</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>employeeName</mat-label>
+            <input
+              matInput
+              placeholder="employeeName"
+              [(ngModel)]="data.employeeName"
+              [readonly]="!editable"
+              [value]="data.employeeName"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+
+        <!-- <div>
+          <h2>clientName</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>clientName</mat-label>
+            <input
+              matInput
+              placeholder="clientName"
+              [(ngModel)]="data.clientName"
+              [readonly]="!editable"
+              [value]="data.clientName"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >projectManager</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>projectManager</mat-label>
+            <input
+              matInput
+              placeholder="projectManager"
+              [(ngModel)]="data.projectManager"
+              [readonly]="!editable"
+              [value]="data.projectManager"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+
+        <!-- <div> -->
+          <!-- <h2>employeeRole</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>employeeRole</mat-label>
+            <input
+              matInput
+              placeholder="employeeRole"
+              [(ngModel)]="data.employeeRole"
+              [readonly]="!editable"
+              [value]="data.employeeRole"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >employeeEmail</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>employeeEmail</mat-label>
+            <input
+              matInput
+              placeholder="employeeEmail "
+              [(ngModel)]="data.employeeEmail"
+              [readonly]="!editable"
+              [value]="data.employeeEmail"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div>
+          <h2>clientCountry</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>clientCountry</mat-label>
+            <input
+              matInput
+              placeholder="clientCountry"
+              [(ngModel)]="data.clientCountry"
+              [readonly]="!editable"
+              [value]="data.clientCountry"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >clientTimezone</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>clientTimezone</mat-label>
+            <input
+              matInput
+              placeholder="clientTimezone"
+              [(ngModel)]="data.clientTimezone"
+              [readonly]="!editable"
+              [value]="data.clientTimezone"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div>
+          <h2>clientAddress</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>clientAddress</mat-label>
+            <input
+              matInput
+              placeholder="clientAddress"
+              [(ngModel)]="data.clientAddress"
+              [readonly]="!editable"
+              [value]="data.clientAddress"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >clientCurrency</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>clientCurrency</mat-label>
+            <input
+              matInput
+              placeholder="clientCurrency"
+              [(ngModel)]="data.clientCurrency"
+              [readonly]="!editable"
+              [value]="data.clientCurrency"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+
+        <!-- <div>
+          <h2>duration</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>duration</mat-label>
+            <input
+              matInput
+              placeholder="duration"
+              [(ngModel)]="data.duration"
+              [readonly]="!editable"
+              [value]="data.duration"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >startDate</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>startDate</mat-label>
+            <input
+              matInput
+              placeholder="startDate"
+              [(ngModel)]="data.startDate"
+              [readonly]="!editable"
+              [value]="data.startDate"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div> -->
+          <!-- <h2>endDate</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>endDate</mat-label>
+            <input
+              matInput
+              placeholder="endDate"
+              [(ngModel)]="data.endDate"
+              [readonly]="!editable"
+              [value]="data.endDate"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >quoteId</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>quoteId</mat-label> 
+            <input
+              matInput
+              placeholder="quoteId"
+              [(ngModel)]="data.quoteId"
+              [readonly]="!editable"
+              [value]="data.quoteId"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div>
+          <h2>validDate</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>validDate</mat-label> 
+            <input
+              matInput
+              placeholder="validDate"
+              [(ngModel)]="data.validDate"
+              [readonly]="!editable"
+              [value]="data.validDate"
+            />
+          </mat-form-field>
+        <!-- </div>
+      </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >totalManDays</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>totalManDays</mat-label> 
+            <input
+              matInput
+              placeholder="totalManDays"
+              [(ngModel)]="data.totalManDays"
+              [readonly]="!editable"
+              [value]="data.totalManDays"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div>
+          <h2>unitPrice</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>unitPrice</mat-label> 
+            <input
+              matInput
+              placeholder="unitPrice"
+              [(ngModel)]="data.unitPrice"
+              [readonly]="!editable"
+              [value]="data.unitPrice"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >po</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>po</mat-label> 
+            <input
+              matInput
+              placeholder="po"
+              [(ngModel)]="data.po"
+              [readonly]="!editable"
+              [value]="data.po"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div>
+          <h2>sfdc</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>sfdc</mat-label> 
+            <input
+              matInput
+              placeholder="sfdc"
+              [(ngModel)]="data.sfdc"
+              [readonly]="!editable"
+              [value]="data.sfdc"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+
+      <!-- <div>
+        <div>
+          <h2 >pa</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>pa</mat-label> 
+            <input
+              matInput
+              placeholder="pa"
+              [(ngModel)]="data.pa"
+              [readonly]="!editable"
+              [value]="data.pa"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+        <!-- <div>
+          <h2>projectType</h2> -->
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>projectType</mat-label> 
+            <input
+              matInput
+              placeholder="projectType"
+              [(ngModel)]="data.projectType"
+              [readonly]="!editable"
+              [value]="data.projectType"
+            />
+          </mat-form-field>
+        <!-- </div> -->
+      <!-- </div> -->
+     
+
+      <button 
+        mat-raised-button
+        class="form-button"
+        style="margin-left: 450px; color:white;"
+        (click)="editable ? submitForm(formData) : edit()"
+      >
+        {{ editable ? "SUBMIT" : "EDIT" }}
+      </button>
+
     </ng-container>
-    <button
-      mat-raised-button
-      class="form-button"
-      (click)="editable ? submitForm(formData) : edit()"
-    >
-      {{ editable ? "SUBMIT" : "EDIT" }}
-    </button>
   </div>
-  <mat-card-actions style="text-align: center"> </mat-card-actions>
-</mat-card>
+  
+  <!-- <mat-card-actions style="text-align: center"> </mat-card-actions> -->
+

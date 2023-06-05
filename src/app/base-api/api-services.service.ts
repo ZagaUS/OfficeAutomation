@@ -68,7 +68,7 @@ export class ApiServicesService {
   }
 
   updateProjectDetails(data: any) {
-    return this.http.put(
+    return this.http.put<any>(
       this.projectMgtUrl + '/projectDetails/updateProjectDetails',
       data
     );
@@ -231,10 +231,10 @@ export class ApiServicesService {
     );
   }
 
-  generateQuote(quoteId:any, quote: any) {
+  generateQuote(quoteId:any) {
     return this.http.post<any>(
       this.projectMgtUrl +
-        `/Quotes/generateQuote/${quoteId}`, quote
+        `/Quotes/generateQuote/${quoteId}`,null
     );
   }
 

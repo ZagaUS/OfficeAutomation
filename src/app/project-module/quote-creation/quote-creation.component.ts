@@ -21,6 +21,7 @@ export class QuoteCreationComponent {
   clientCurrency?: any = localStorage.getItem('clientCurrency');
   // date?: any = localStorage.getItem('date');
   unitPrice?: any = localStorage.getItem('unitPrice');
+  date?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en');
   startDate?: any = localStorage.getItem('startDate');
 endDate?: any = localStorage.getItem('endDate');
 duration?: any = localStorage.getItem('duration');  
@@ -47,6 +48,7 @@ createForm() {
     po: [''],
     sfdc: [''],
     validDate: ['', Validators.required],
+    date: ['', Validators.required],
     startDate:[this.startDate, Validators.required],
     endDate:[this.endDate, Validators.required],
     totalManDays: ['', Validators.required],

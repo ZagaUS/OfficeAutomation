@@ -39,9 +39,11 @@ export class QuoteComponent {
   ];
   columnShown?: any = this.quotePdfDisplayedColumns;
  
+  formData: { [key: string]: any } = {};
+  data: any;
 
   constructor(private http: HttpClient, private router: Router, private apiService: ApiServicesService, private modalService: MdbModalService){
-
+    
   }
 
   ngOnInit(): void {
@@ -184,5 +186,49 @@ view(quoteId?: any){
    this.router.navigate(['/viewQuote'])
 }
 
+
+onGenerateClick(){
+  console.log('generate click' , this.quoteId);
+  // const startDate = formatDate(
+  //   this.quoteForm.value.startDate,
+  //   this.dateFormat,
+  //   'en-US'
+  // );
+  // const endDate = formatDate(
+  //   this.quoteForm.value.endDate,
+  //   this.dateFormat,
+  //   'en-US'
+  // );
+  // const generateQuote = {
+  //   projectId: localStorage.getItem('projectId'),
+  //   projectName: localStorage.getItem('projectName'),
+  //   // startDate: startDate,
+  //   // endDate: endDate,
+  // };
+  // console.log(
+  //   // 'Start date: ' + startDate,
+  //   // 'end date: ' + endDate + ' ' +
+  //    JSON.stringify(generateQuote)
+  // );
+  // this.apiService.generateQuote(this.quoteId, this.formData).subscribe((data) => {
+  //   console.log('Data: ' + JSON.stringify(data));
+  //   window.location.reload();
+  // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
+}

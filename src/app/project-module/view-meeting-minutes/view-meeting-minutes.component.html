@@ -162,19 +162,36 @@
 
     <div style="margin-bottom: 1rem;">
       <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
-      <div *ngFor="let attendee of meetingDetails.attendeesPresent">
-        <!-- <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p> -->
-        <mat-form-field appearance="outline">
-          <!-- <input
-            matInput
-            placeholder="name"
-            [(ngModel)]="attendee.name"
-            [readonly]="!editMode"
-            [value]="attendee.name"
-          /> -->
-          <input matInput placeholder="meetingDetails" [readonly]="!editMode" [value]="attendee.name + ' (' + attendee.organization.toUpperCase() + ')'">
-        </mat-form-field>
-      </div>
+      <table class="agenda-table">
+        <tr>
+          <th style="font-weight: bold;font-size: 1.3rem;margin-bottom: 7rem;color: #074a6e;">Name</th>
+          <th style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Organization</th>
+        </tr>
+        <tr *ngFor="let attendee of meetingDetails.attendeesPresent">
+          <!-- <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p> -->
+          <!-- <mat-form-field appearance="outline"> -->
+            <!-- <input
+              matInput
+              placeholder="name"
+              [(ngModel)]="attendee.name"
+              [readonly]="!editMode"
+              [value]="attendee.name"
+            /> -->
+            <td>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="meetingDetails" [(ngModel)]="attendee.name" [readonly]="!editMode" [value]="attendee.name">
+              </mat-form-field>
+            </td>
+
+            <td>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="meetingDetails" [(ngModel)]="attendee.organization" [readonly]="!editMode" [value]="attendee.organization">
+              </mat-form-field>
+            </td>
+            
+          <!-- </mat-form-field> -->
+        </tr>
+      </table>
     </div>
 
   <button style="margin-left: 300px" class="btns" mat-raised-button color="primary" (click)="editMeetingMinutes()">Edit</button>

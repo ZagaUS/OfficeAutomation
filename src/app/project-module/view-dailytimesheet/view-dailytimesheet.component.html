@@ -101,7 +101,7 @@
       <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Redhat Owners:</h2>
       <!-- <div *ngFor="let redHatOwner of redHatOwners"> -->
         <!-- <p>{{ dailyTimesheet.redHatOwners }}</p> -->
-        <div *ngFor="let owner of dailyTimesheet.redHatOwners; let i = index">
+        <div *ngFor="let owner of dailyTimesheet.clientOwners let i = index">
           <mat-form-field style="width: 100%;" appearance="outline">
             <!-- <mat-label>redHatOwners</mat-label> -->
             <input
@@ -118,17 +118,18 @@
         <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
         <!-- <div *ngFor="let clientOwner of clientOwners"> -->
           <!-- <p>{{ dailyTimesheet.clientOwners }}</p> -->
-          <mat-form-field style="width: 100%;" appearance="outline">
-            <!-- <mat-label>clientOwners</mat-label> -->
-            <input
-              matInput
-              placeholder="clientOwners"
-              [(ngModel)]="dailyTimesheet.clientOwners"
-              [readonly]=true
-              [value]="dailyTimesheet.clientOwners"
-            />
-          </mat-form-field>
-
+          <div *ngFor="let owner of dailyTimesheet.redHatOwners let i = index">
+            <mat-form-field style="width: 100%;" appearance="outline">
+              <!-- <mat-label>clientOwners</mat-label> -->
+              <input
+                matInput
+                placeholder="clientOwners"
+                [(ngModel)]="dailyTimesheet.clientOwners[i]"
+                [readonly]="!editMode"
+                [value]="dailyTimesheet.clientOwners"
+              />
+            </mat-form-field>
+          </div>
           <!-- <button
           mat-raised-button
           class="form-button"
