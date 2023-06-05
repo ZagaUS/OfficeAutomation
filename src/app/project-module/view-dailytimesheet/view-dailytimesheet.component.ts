@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
-
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Location } from '@angular/common';
 export interface RedHatOwners {
   name: string[];
 }
@@ -39,7 +40,7 @@ export class ViewDailytimesheetComponent {
 dailyTimesheetId?: any = localStorage.getItem('dailyTimesheetId');
 
 
-constructor(private router:Router,private api:ApiServicesService){
+constructor(private router:Router,private api:ApiServicesService,private snackBar: MatSnackBar,private location: Location){
 
 }
 editable = false;
@@ -123,14 +124,30 @@ onclickdailyTimesheet(){
 editDaily() {
   this.editMode = !this.editMode;
   console.log('editable');
+  // this.openSnackbar('Updated successfully', 1500);
+  
 }
 saveDaily(){ 
   console.log("Edited data " +   JSON.stringify(this.dailyTimesheet) );
   this.api.updateDailyTimesheet(this.dailyTimesheet).subscribe((data: any) => {
     console.log('data updated', data);
-    alert('updated data successfully');
+    // alert('updated data successfully');
+    this.openSnackbar('successfully saved', 1500);
+    window.location.reload();
+    this.location.back();
   });
 }
 
+openSnackbar(message: string, duration: number) {
+  const config: MatSnackBarConfig = {
+    duration: 3000,
+    horizontalPosition: 'center',
+    verticalPosition: 'bottom', // Change the vertical position to 'bottom'
+    panelClass: ['center-snackbar'],
+  };
+  this.snackBar.open(message, 'Close', {
+    duration: duration,
+  });
+}
 
 }

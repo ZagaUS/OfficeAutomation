@@ -4,6 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 import { InvoiceModuleRoutingModule } from './invoice-module-routing.module';
 import { InvoiceModuleComponent } from './invoice-module.component';
@@ -12,9 +13,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { CreditNoteComponent } from './credit-note/credit-note.component';
+import { InvoiceDashboardComponent } from './invoice-dashboard/invoice-dashboard.component';
 
 @NgModule({
-  declarations: [InvoiceModuleComponent],
+  declarations: [InvoiceModuleComponent, CreditNoteComponent, InvoiceDashboardComponent],
   imports: [
     CommonModule,
     InvoiceModuleRoutingModule,
@@ -27,7 +30,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatListModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule
   ],
 })
 export class InvoiceModuleModule {}
