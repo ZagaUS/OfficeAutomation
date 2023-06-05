@@ -36,7 +36,7 @@ export class EmployeeDashboardComponent {
     'employeeId',
     'employeeName',
     'employeeRole',
-    'projectAssigned',
+    // 'projectAssigned',
     'action',
   ];
 

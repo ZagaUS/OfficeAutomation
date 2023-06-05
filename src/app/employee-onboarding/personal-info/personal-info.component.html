@@ -108,7 +108,9 @@
       class ="button"
         mat-raised-button
         color="primary"
+        style="color:white"
         type="submit"
+        (click)="onSubmit()"
         [disabled]="isReadOnly"
       >
         Submit

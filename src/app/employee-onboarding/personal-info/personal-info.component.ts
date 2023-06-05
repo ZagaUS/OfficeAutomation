@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-personal-info',
@@ -17,6 +18,7 @@ export class PersonalInfoComponent {
   
   constructor(
     private api: EmployeeApiService,
+    private location : Location,
     private fb: FormBuilder) { 
       this.myForm = this.fb.group({
         employeeId:[''],
@@ -89,5 +91,6 @@ viewPDF() {
     });
 
     alert('updated successfully');
+    window.location.reload();
   }
   }

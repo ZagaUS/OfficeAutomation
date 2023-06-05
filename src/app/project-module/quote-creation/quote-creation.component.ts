@@ -14,7 +14,7 @@ export class QuoteCreationComponent {
 
   dateFormat = 'yyyy-MM-dd';
   quoteForm!: FormGroup;
-  gstNumber?: any = [0,5,12,18,28];
+  // gstNumber?: any = [0,5,12,18,28];
   projectName?: any = localStorage.getItem('projectName');
   projectId?:any = localStorage.getItem('projectId');
   to?: any = localStorage.getItem('clientAddress');
@@ -50,8 +50,8 @@ createForm() {
     startDate:[this.startDate, Validators.required],
     endDate:[this.endDate, Validators.required],
     totalManDays: ['', Validators.required],
-    gstAmount: ['', Validators.required],
-    gstPercent: ['', Validators.required],
+    whtAmount: ['', Validators.required],
+    // gstPercent: ['', Validators.required],
     duration: [this.duration, Validators.required],
     employeeRole: [''],
     employeeName: [''],

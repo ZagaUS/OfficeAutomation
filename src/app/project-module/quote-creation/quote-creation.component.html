@@ -87,20 +87,20 @@
         <input matInput   type="text"  formControlName="totalPrice"  >
        </mat-form-field>
 
-       <mat-form-field appearance="outline" class="form-field">
+       <!-- <mat-form-field appearance="outline" class="form-field">
         <mat-label>GST Percent</mat-label>
         <mat-select formControlName="gstPercent" name="GST">
           <mat-option *ngFor="let gst of gstNumber" [value]="gst">
             {{gst}}
           </mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
 
         
 
        <mat-form-field appearance="outline" class="form-field">
-        <mat-label>GST Amount</mat-label>
-        <input matInput   type="text"  formControlName="gstAmount" required="true" >
+        <mat-label>WHT Amount</mat-label>
+        <input matInput   type="text"  formControlName="whtAmount" required="true" >
        </mat-form-field>
        <!-- <mat-form-field appearance="outline" class="form-field">
         <mat-label>GST</mat-label>
