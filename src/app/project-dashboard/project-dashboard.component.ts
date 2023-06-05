@@ -78,7 +78,7 @@ export class ProjectDashboardComponent {
       setTimeout(() => {
         // this.location.go(this.location.path());
         window.location.reload();
-      }, 500000);
+      }, 10000);
       // this.ELEMENT_DATA = data;
     });
   }
@@ -139,8 +139,10 @@ export class ProjectDashboardComponent {
   })
     // alert('Project deleted successfully');
     console.log('test');
-    this.openSnackbar('Deleted successfully', 1500);
-    this.location.back();
+    this.openSnackbar('Deleted successfully', 3000);
+    window.location.reload();
+    
+
   }
   onAdd()
   {}

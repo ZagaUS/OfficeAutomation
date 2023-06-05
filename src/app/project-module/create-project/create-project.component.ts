@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import {
   FormBuilder,
@@ -8,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 interface CurrencyData {
   country: string;
@@ -28,7 +30,7 @@ export class CreateProjectComponent {
   selectedTimezones: string[] = [];
   jsonData: CurrencyData[] = [];
 
-  constructor(private fb: FormBuilder, private api: ApiServicesService, private location: Location) {
+  constructor(private snackBar: MatSnackBar,private fb: FormBuilder, private api: ApiServicesService, private location: Location) {
     this.createForm();
   }
 
@@ -88,9 +90,11 @@ export class CreateProjectComponent {
     const projectDetails = this.myForm.value;
     this.api.createProjectDetails(projectDetails).subscribe((data: any) => {
       console.log('data updated', data);
-      alert('Updated successfully');
+      // alert('Updated successfully');
       // do something with the response, if needed
+      
       this.location.back();
+      this.openSnackbar('Project added successfully ', 1000);
     });
   }
 
@@ -102,5 +106,16 @@ export class CreateProjectComponent {
       this.myForm.get('clientCurrency')?.setValue(selectedData.currency);
       this.selectedTimezones = selectedData.timezones;
     }
+  }
+  openSnackbar(message: string, duration: number) {
+    const config: MatSnackBarConfig = {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom', // Change the vertical position to 'bottom'
+      panelClass: ['center-snackbar'],
+    };
+    this.snackBar.open(message, 'Close', {
+      duration: duration,
+    });
   }
 }
