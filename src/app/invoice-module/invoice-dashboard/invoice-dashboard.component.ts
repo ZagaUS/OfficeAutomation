@@ -66,6 +66,8 @@ export class InvoiceDashboardComponent {
   pdfbaseapi: any;
   invoiceId?:any = localStorage.getItem('invoiceId');
   documentId?:any = localStorage.getItem('documentId');
+  projectId?:any = localStorage.getItem('projectId');
+
 
   constructor(
     private router: Router,
@@ -73,9 +75,9 @@ export class InvoiceDashboardComponent {
     private modalService: MdbModalService
   ) {}
 
-  ngOnInit(): void {
-     localStorage.setItem('invoiceId',this.invoiceId);
-    this.invoiceApi.getAllInvoices().subscribe((data) => {
+  ngOnInit(projectId: any): void {
+     localStorage.setItem('invoiceId',this.projectId);
+    this.invoiceApi.getAllInvoice(this.projectId).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
       console.log('Invoice data: ' + JSON.stringify(data));
     });

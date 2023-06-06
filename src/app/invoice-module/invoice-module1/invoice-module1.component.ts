@@ -38,10 +38,10 @@ export class InvoiceModule1Component {
    
   }
 
-  viewInvoice(projectId?: any, projectName?: any) {
-    console.log('project Name', projectName);
+  viewInvoice(projectId?: any) {
+    // console.log('project Name', projectName);
     localStorage.setItem('projectId', projectId);
-    localStorage.setItem('projectName', projectName);
+    // localStorage.setItem('projectName', projectName);
     this.router.navigate(['/invoicedashboard/dashboard']);
   
    

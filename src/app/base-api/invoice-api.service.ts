@@ -49,5 +49,17 @@ export class InvoiceApiService {
        { headers, responseType: 'blob' }
     );
   }
+  
+  getAllInvoice(projectId?: any) {
+    return this.http.get<any>(
+      this.invoiceUrl + `/getProjectInvoices/${projectId}`
+    );
+  }
+
+  getAllCreditNote(projectId?: any) {
+    return this.http.get<any>(
+      this.invoiceUrl + `/getCreditNotesByProjectId/${projectId}`
+    );
+  }
 
 }
