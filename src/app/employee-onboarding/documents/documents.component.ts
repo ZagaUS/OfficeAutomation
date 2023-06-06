@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
+import { ModalResumeuploadComponent } from '../modal-resumeupload/modal-resumeupload.component';
 
 @Component({
   selector: 'app-documents',
@@ -13,8 +15,9 @@ export class DocumentsComponent {
   file: any;
   pdfbaseapi: any;
   employeeId: any;
+  modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
 
-  constructor(private fb: FormBuilder, private api: EmployeeApiService) {
+  constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService) {
 
   }
 
@@ -49,6 +52,15 @@ export class DocumentsComponent {
         };
         reader.readAsDataURL(this.file);
 
+  }
+  openPO() {
+    this.modalRef = this.modalService.open(ModalResumeuploadComponent, {
+      modalClass: 'modal-lg',
+    });
+    this.modalRef.onClose.subscribe((message: any) => {
+      console.log(message);
+      // window.location.reload();
+    });
   }
   
 }

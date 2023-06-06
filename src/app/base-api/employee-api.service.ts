@@ -28,9 +28,9 @@ export class EmployeeApiService {
     );
   }
 
-  updateDayOff(employeeId: string,formValues:any){
+  updateDayOff(formValues:any){
     return this.http.put<any>(
-      this.employeeURL + 'updateDayOff/' +employeeId,
+      this.employeeURL + 'updateDayOff/' ,
       formValues
     );
   }
@@ -132,6 +132,28 @@ export class EmployeeApiService {
       return this.http.get(
         this.employeeURL + `pdf/${employeeId}`,
         { headers, responseType: 'blob' }
+      );
+    }
+
+    upload(
+      document:any,
+      employeeId:any,
+      name: any,
+
+      
+    ) {
+      console.log(
+        'upload Resume' +
+          ' ' +
+         name 
+      );
+      return this.http.post(
+        this.employeeURL +
+          `/upload`,
+        document,
+        {
+          headers: { 'Content-Type': 'application/octet-stream' },
+        }
       );
     }
     
