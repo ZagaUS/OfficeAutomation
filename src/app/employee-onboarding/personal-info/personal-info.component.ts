@@ -92,5 +92,6 @@ viewPDF() {
 
     alert('updated successfully');
     window.location.reload();
+    this.location.back();
   }
   }
