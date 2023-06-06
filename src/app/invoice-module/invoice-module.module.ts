@@ -17,7 +17,9 @@ import { CreditNoteComponent } from './credit-note/credit-note.component';
 import { InvoiceDashboardComponent } from './invoice-dashboard/invoice-dashboard.component';
 
 @NgModule({
-  declarations: [InvoiceModuleComponent, CreditNoteComponent, InvoiceDashboardComponent],
+  declarations: [InvoiceModuleComponent, 
+    CreditNoteComponent, 
+    InvoiceDashboardComponent,],
   imports: [
     CommonModule,
     InvoiceModuleRoutingModule,

@@ -111,21 +111,21 @@ export class EmployeeApiService {
 
     upload(
       document:any,
-      employeeName: any,
+      employeeId:any,
+      name: any,
+
       
     ) {
       console.log(
         'upload Resume' +
           ' ' +
-         employeeName 
+         name 
       );
       return this.http.post(
         this.employeeURL +
-          `/po/uploadPO?employeeName=${employeeName}`,
-        document.uploadfile,
-        {
-          headers: { 'Content-Type': 'application/octet-stream' },
-        }
+          `upload`,
+        document.uploadfile, 
+       
       );
     }
     

@@ -23,6 +23,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { DocumentsComponent } from './documents/documents.component';
+import { ModalResumeuploadComponent } from './modal-resumeupload/modal-resumeupload.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { DocumentsComponent } from './documents/documents.component';
     DayoffComponent,
     CreateEmployeeComponent,
     DocumentsComponent,
+    ModalResumeuploadComponent,
   ],
   imports: [
     CommonModule,
