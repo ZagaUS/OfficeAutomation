@@ -48,6 +48,7 @@ export class InvoiceModule1Component {
   }
 
   viewCreditNote(projectId: any) {
+    localStorage.setItem('projectId', projectId);
     this.api.getProjectDetails(projectId).subscribe((data) => {
       console.log('Employee Details ' + JSON.stringify(data));
       this.router.navigate(['dashboard']);
