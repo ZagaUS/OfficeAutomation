@@ -77,9 +77,9 @@ onClickExternalSave() {
   this.api.upload(
       this.contactForm.value,
       this.employeeId,
-      this.name).subscribe((data) => {
+      this.name).subscribe((data:any) => {
       console.log('External Timesheet of projects ' + JSON.stringify(data));
-     
+      // window.location.reload();
     });
 
   console.log(this.contactForm.value);

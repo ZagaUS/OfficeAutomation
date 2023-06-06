@@ -123,9 +123,11 @@ export class EmployeeApiService {
       );
       return this.http.post(
         this.employeeURL +
-          `upload`,
-        document.uploadfile, 
-       
+          `/upload`,
+        document,
+        {
+          headers: { 'Content-Type': 'application/octet-stream' },
+        }
       );
     }
     
