@@ -203,7 +203,7 @@ export class CreateEmployeeComponent {
   }  
   
   onSubmit() {
-    const createEmployeeDetails = this.myForm.value;
+    // const createEmployeeDetails = this.myForm.value;
     const employeeInfo = {
       "employeeName": this.myForm.value.employeeName,
       "employeeRole": this.myForm.value.employeeRole,
@@ -256,9 +256,10 @@ export class CreateEmployeeComponent {
       skills: skills,
       dayOff: dayOff
     }
+    console.log("Dayoff data",dayOff);
 
     console.log("updatedData", createEmployee);
-
+    
     this.api.createEmployee(createEmployee).subscribe((data: any) => {
       console.log('data updated', data);
       
