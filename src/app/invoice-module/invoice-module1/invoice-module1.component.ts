@@ -2,18 +2,16 @@ import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { InvoiceApiService } from 'src/app/base-api/invoice-api.service';
-import { ApiServicesService } from '../base-api/api-services.service';
+// import { ApiServicesService } from '../base-api/api-services.service';
 import { MatTableDataSource } from '@angular/material/table';
-
-
+import { ApiServicesService } from 'src/app/base-api/api-services.service';
 
 @Component({
-  selector: 'app-invoice-module',
-  templateUrl: './invoice-module.component.html',
-  styleUrls: ['./invoice-module.component.scss'],
+  selector: 'app-invoice-module1',
+  templateUrl: './invoice-module1.component.html',
+  styleUrls: ['./invoice-module1.component.scss']
 })
-
-export class InvoiceModuleComponent {
+export class InvoiceModule1Component {
   dataSource?: any;
   displayedColumns: string[] = [
     'projectId',
