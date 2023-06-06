@@ -1,0 +1,87 @@
+<mat-card class="credit-note-card">
+  <mat-card-title class="card-header">credit note Details</mat-card-title>
+  <div class="form-container">
+    <ng-container>
+
+        <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>to</mat-label>
+            <input
+            matInput
+            placeholder="to"
+            [(ngModel)]="data.to"
+            [readonly]="!editable"
+            [value]="data.to"
+          />
+          </mat-form-field>
+
+
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>po</mat-label>
+            <input
+            matInput
+            placeholder="po"
+            [(ngModel)]="data.po"
+            [readonly]="!editable"
+            [value]="data.po"
+          />
+          </mat-form-field>
+
+          <mat-form-field style="width: 200%;" appearance="outline" >
+            <mat-label>sfdc</mat-label> 
+            <input
+              matInput
+              placeholder="sfdc"
+              [(ngModel)]="data.sfdc"
+              [readonly]="!editable"
+              [value]="data.sfdc"
+            />
+          </mat-form-field>
+
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>pa</mat-label> 
+            <input
+              matInput
+              placeholder="pa"
+              [(ngModel)]="data.pa"
+              [readonly]="!editable"
+              [value]="data.pa"
+            />
+          </mat-form-field>
+
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>paidAmount</mat-label> 
+            <input
+              matInput
+              placeholder="paid Amount"
+              [(ngModel)]="data.paidAmount"
+              [readonly]="!editable"
+              [value]="data.paidAmount"
+            />
+          </mat-form-field>
+
+
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>actualsgd</mat-label> 
+            <input
+              matInput
+              placeholder="Actual SGD"
+              [(ngModel)]="data.actualsgd"
+              [readonly]="!editable"
+              [value]="data.actualsgd"
+            />
+          </mat-form-field>
+
+          <mat-form-field style="width: 200%;" appearance="outline">
+            <mat-label>creditAmount</mat-label> 
+            <input
+              matInput
+              placeholder="creditAmount"
+              [(ngModel)]="data.creditAmount"
+              [readonly]="!editable"
+              [value]="data.creditAmount"
+            />
+          </mat-form-field>
+
+
+    </ng-container>
+</div>
