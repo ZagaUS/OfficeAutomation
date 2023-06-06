@@ -38,16 +38,17 @@ export class InvoiceModule1Component {
    
   }
 
-  viewInvoice(projectId?: any, projectName?: any) {
-    console.log('project Name', projectName);
+  viewInvoice(projectId?: any) {
+    // console.log('project Name', projectName);
     localStorage.setItem('projectId', projectId);
-    localStorage.setItem('projectName', projectName);
+    // localStorage.setItem('projectName', projectName);
     this.router.navigate(['/invoicedashboard/dashboard']);
   
    
   }
 
   viewCreditNote(projectId: any) {
+    localStorage.setItem('projectId', projectId);
     this.api.getProjectDetails(projectId).subscribe((data) => {
       console.log('Employee Details ' + JSON.stringify(data));
       this.router.navigate(['dashboard']);
