@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component,OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatRadioGroup } from '@angular/material/radio';
 import { MatTableDataSource } from '@angular/material/table';
@@ -14,22 +14,6 @@ export interface PeriodicElement {
   field: String;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    companyName: 'zaga',
-    experience: '1',
-    startDate: '22/1/2023',
-    endDate: '22/6/2023',
-    field: 'developer'
-  },
-  {
-    companyName: 'ZAGAGA',
-    experience: '2',
-    startDate: '22/2/2022',
-    endDate: '2/2/2020',
-    field: 'developer'
-  },
-];
 @Component({
   selector: 'app-job-history',
   templateUrl: './job-history.component.html',
@@ -41,29 +25,49 @@ export class JobHistoryComponent {
   employeeId?: any = localStorage.getItem('employeeId');
 
   @ViewChild(MatRadioGroup) radioGroup?: MatRadioGroup;
-  // dataSource?: any;
-     
-  ELEMENT_DATA?: any[];
-  dataSource?: any;
-  // categories: string[] = ['Active', 'UnAssigned', 'Completed', 'All'];
+
+  formGroups: FormGroup[] = [];
+
+  ELEMENT_DATA?: PeriodicElement[] = [];
+
+  dataSource?: MatTableDataSource<PeriodicElement>;
   displayedColumns: string[] = [
     'companyName',
     'experience',
     'startDate',
     'endDate',
     'field',
-    'action',
   ];
 
-  constructor(private router: Router, private api: EmployeeApiService) {}
+  constructor(private router: Router, private api: EmployeeApiService, private formBuilder: FormBuilder) {}
+
+  createFormGroup(element: any): FormGroup {
+    return this.formBuilder.group({
+      companyName: [element.companyName],
+      experience: [element.experience],
+      startDate: [element.startDate],
+      endDate: [element.endDate],
+      field: [element.field],
+    });
+  }
 
   ngOnInit(): void {
     console.log("Im'in");
     console.log("Im'in");
 
+    this.myForm = this.formBuilder.group({
+      companyName: [''],
+      experience: [''],
+      startDate: [''],
+      endDate: [''],
+      field: [''],
+    });
+
     this.api.getListOfJobHistory(this.employeeId).subscribe((data) => {
-      console.log('List of projects ' + JSON.stringify(data));
-      const updatedjobHistoryDetails = data.jobHistoryDetails.map((element: PeriodicElement) => {
+      console.log('API Response:', data);
+      console.log('List of JobHistory ' + JSON.stringify(data));
+
+      const updatedjobHistoryDetails: Array<object> = data.jobHistoryDetails.map((element: any) => {
         return {
           companyName: element.companyName ?? 'N/A',
           experience: element.experience ?? 'N/A',
@@ -72,32 +76,51 @@ export class JobHistoryComponent {
           field: element.field ?? 'N/A'
         };
       });
+
       console.log(updatedjobHistoryDetails);
-      this.dataSource = new MatTableDataSource(updatedjobHistoryDetails);
+      this.ELEMENT_DATA = updatedjobHistoryDetails as PeriodicElement[];
+      this.dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
+
+      if (updatedjobHistoryDetails.length > 0) {
+        const firstJobHistory = updatedjobHistoryDetails[0];
+        this.myForm.setValue(firstJobHistory);
+      }
+
+      this.formGroups = updatedjobHistoryDetails.map((any) => {
+        return this.createFormGroup(any);
+      });
+    });    
+  }
+
+  onEdit() {
+    this.isReadOnly = false;
+  }
+
+  onSubmit() {
+    this.isReadOnly = false;
+
+    const jobHistoryDetails = this.formGroups.map((formGroup) => {
+      return formGroup.value;
     });
-    
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    console.log('filterValue', filterValue);
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
-  applyFilterForCategory() {
-    const selectedValue = this.radioGroup?.value;
-    if (selectedValue === 'All') {
-      this.dataSource.filter = ''; // clear filter
-    } else {
-      console.log('applyFilterForCategory' + this.radioGroup?.value);
-      this.dataSource.filter = selectedValue;
-    }
-  }
-
   
-  test() {
-    alert('test');
-    console.log('test');
-  }
-}
+    const updatedJobHistory = {
+      employeeId: this.employeeId,
+      employeeName: 'string',
+      jobHistoryDetails: jobHistoryDetails,
+    };
 
+    console.log('updatedJobHistory', updatedJobHistory);
+      this.api.updateJobHistoryDetails(updatedJobHistory).subscribe(
+        (data: any) => {
+          console.log('Updated JobHistory ' + JSON.stringify(data));
+          alert('Updated successfully');
+          window.location.reload();
+        },
+        (error) => {
+          console.error('Error updating JobHistory', error);
+          alert('Failed to update job history');
+        }
+      );
+  }
+
+}

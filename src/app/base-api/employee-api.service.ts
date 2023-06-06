@@ -94,11 +94,37 @@ export class EmployeeApiService {
       );
     }
 
+    updateJobHistoryDetails(jobHistoryValues:any){
+      return this.http.put<any>(
+        this.employeeURL + 'updateJobHistory',
+        jobHistoryValues
+      );
+    }
+
+    updateEducationDetails(educationValues:any){
+      return this.http.put<any>(
+        this.employeeURL + 'updateEducationDetails',
+        educationValues
+      );
+    }
+
     deleteEmployee(employeeId: string){
       return this.http.delete<any>(
         // this.employeeURL + 'deleteEmployee' + employeeId
         this.employeeURL + `deleteEmployee?employeeId=${employeeId}`
       );
+    }
+
+    deleteEducationDetails(employeeId: string){
+      return this.http.delete<any>(
+        this.employeeURL + `deleteEducationDetailsById?employeeId=${employeeId}`
+      );
+    }
+
+    deleteJobHistory(employeeId: string){
+      return this.http.delete<any>(
+        this.employeeURL + `deleteJobHistory?employeeId=${employeeId}`
+      );  
     }
 
     downloadPDF(employeeId: string): Observable<Blob> {

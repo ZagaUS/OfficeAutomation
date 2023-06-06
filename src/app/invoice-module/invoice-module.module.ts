@@ -13,11 +13,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { CreditNoteComponent } from './credit-note/credit-note.component';
-import { InvoiceDashboardComponent } from './invoice-dashboard/invoice-dashboard.component';
+// import { CreditNoteComponent } from './credit-note/credit-note.component';
+// import { InvoiceDashboardComponent } from './invoice-dashboard/invoice-dashboard.component';
 
 @NgModule({
-  declarations: [InvoiceModuleComponent, CreditNoteComponent, InvoiceDashboardComponent],
+  declarations: [InvoiceModuleComponent],
   imports: [
     CommonModule,
     InvoiceModuleRoutingModule,
