@@ -46,7 +46,6 @@ export class CreditnoteDashboardComponent {
     private modalService: MdbModalService
   ) {}
   ngOnInit(): void {
-    console.log();
     localStorage.setItem('projectId',this.projectId);
     // localStorage.setItem('projectName',this.projectName);
    this.invoiceApi.getAllCreditNote(this.projectId).subscribe((data) => {
