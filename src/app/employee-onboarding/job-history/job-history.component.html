@@ -7,33 +7,31 @@
 
             <mat-form-field class="form-field" appearance="outline">
               <mat-label class="label">COMPANY_NAME</mat-label>
-              <input matInput placeholder="CompanyName" formControlName="companyName" [readonly]="isReadOnly" class="form-field" />
+              <input matInput placeholder="CompanyName {{ i + 1 }}" formControlName="companyName" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
               <mat-label class="label">EXPERIENCE</mat-label>
-              <input matInput placeholder="Experience" formControlName="experience" [readonly]="isReadOnly" class="form-field" />
+              <input matInput placeholder="Experience {{ i + 1 }}" formControlName="experience" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
               <mat-label class="label">START_DATE</mat-label>
-              <input matInput placeholder="StartDate" formControlName="startDate" [readonly]="isReadOnly" class="form-field" />
+              <input matInput placeholder="StartDate {{ i + 1 }}" formControlName="startDate" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
               <mat-label class="label">END_DATE</mat-label>
-              <input matInput placeholder="EndDate" formControlName="endDate" [readonly]="isReadOnly" class="form-field" />
+              <input matInput placeholder="EndDate {{ i + 1 }}" formControlName="endDate" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
               <mat-label class="label">FIELD</mat-label>
-              <input matInput placeholder="Field" formControlName="field" [readonly]="isReadOnly" class="form-field" />
+              <input matInput placeholder="Field {{ i + 1 }}" formControlName="field" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
           </div>
         
         </div>
-
-        <button mat-raised-button color="primary" (click)="addNewJobHistory()">Add New Job History</button>
         
       </form>
 

@@ -92,20 +92,20 @@ export class JobHistoryComponent {
     });    
   }
 
-  addNewJobHistory() {
-    const newJobHistory: PeriodicElement = {
-      companyName: this.myForm.get('companyName')!.value,
-      experience: this.myForm.get('experience')!.value,
-      startDate: this.myForm.get('startDate')!.value,
-      endDate: this.myForm.get('endDate')!.value,
-      field: this.myForm.get('field')!.value
-    };
+  // addNewJobHistory() {
+  //   const newJobHistory: PeriodicElement = {
+  //     companyName: this.myForm.get('companyName')!.value,
+  //     experience: this.myForm.get('experience')!.value,
+  //     startDate: this.myForm.get('startDate')!.value,
+  //     endDate: this.myForm.get('endDate')!.value,
+  //     field: this.myForm.get('field')!.value
+  //   };
 
-    const newFormGroup = this.createFormGroup(newJobHistory);
-    this.formGroups.push(newFormGroup);
-    this.dataSource = new MatTableDataSource<PeriodicElement>(this.formGroups.map((formGroup) => formGroup.value));
+  //   const newFormGroup = this.createFormGroup(newJobHistory);
+  //   this.formGroups.push(newFormGroup);
+  //   this.dataSource = new MatTableDataSource<PeriodicElement>(this.formGroups.map((formGroup) => formGroup.value));
 
-  }
+  // }
 
   onEdit() {
     this.isReadOnly = false;
