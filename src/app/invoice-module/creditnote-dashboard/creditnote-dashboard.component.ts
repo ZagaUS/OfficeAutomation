@@ -75,16 +75,16 @@ export class CreditnoteDashboardComponent {
     // });
   }
 
-  viewInvoice(creditNoteId:any) {
+  viewCreditNote(creditNoteId: any) {
     creditNoteId= localStorage.setItem(creditNoteId,'creditNoteId');
     console.log('View PDF', creditNoteId);
 
     // console.log('payload: ' + JSON.stringify(this.document));
     // const documentId = invoiceId + '_' + date;
     // const documentId = 'DIGI_2023-04-27_30';
-    console.log(creditNoteId + ' DocumentId');
-    this.invoiceApi.getPdf(creditNoteId).subscribe((data: any) => {
-      console.log('weekly pdf view clixked ' + data);
+    console.log(creditNoteId + 'creditNoteId');
+    this.invoiceApi.getPdfCreditNote(creditNoteId).subscribe((data: any) => {
+      console.log('view credit note pdf ' + data);
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = reader.result as string;
@@ -110,13 +110,13 @@ export class CreditnoteDashboardComponent {
     });
   }
 
-  deleteInvoice(invoiceId:any) {
-    console.log('deleteInvoice', invoiceId);
+  deleteCreditNotes(creditNoteId:any) {
+    console.log('deleteInvoice', creditNoteId);
     // this.invoiceId = localStorage.getItem('invoiceId');
-    this.invoiceApi.deleteInvoice(invoiceId).subscribe((data)=>{
-      console.log('List of Invoices'+JSON.stringify(data));
+    this.invoiceApi.deleteCreditNotes(creditNoteId).subscribe((data)=>{
+      console.log('List of credit note'+JSON.stringify(data));
     })
-    alert('Invoice deleted successfully');
+    alert('credit note deleted successfully');
     
   }
   onSend(){
@@ -128,8 +128,8 @@ export class CreditnoteDashboardComponent {
       window.location.reload();
     });
   }
-  onDownload(documentId: string) {
-    this.invoiceApi.downloadInvoice(documentId).subscribe(response => {
+  onDownload(creditNoteId: string) {
+    this.invoiceApi.downloadCreditNote(creditNoteId).subscribe(response => {
       this.saveFile(response);
     });
 
