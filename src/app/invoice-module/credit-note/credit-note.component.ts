@@ -42,10 +42,11 @@ export class CreditNoteComponent {
       po: [''],
       sfdc: [''],
       currencyType: ['', Validators.required],
-      // date: ['', Validators.required],
+      date: ['', Validators.required],
       paidAmount:['', Validators.required],
       actualsgd:['', Validators.required],
       creditAmount: ['', Validators.required],
+      actualAmount: ['', Validators.required],
     });
   }
 
@@ -53,7 +54,7 @@ export class CreditNoteComponent {
     
     const quote = this.creditnoteForm.value;
     console.log(quote);
-    this.api. createCreditNote(quote).subscribe((data: any) => {
+    this.api.createCreditNote(quote).subscribe((data: any) => {
       console.log('data updated', data);
       alert('Updated successfully');
       // do something with the response, if needed
