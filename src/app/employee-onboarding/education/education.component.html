@@ -5,27 +5,27 @@
     <div *ngFor="let formGroup of formGroups; let i = index" >
       <div [formGroup]="formGroup">
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label class="label">CollegeName</mat-label>
+          <mat-label class="label">COLLEGE_NAME</mat-label>
           <input matInput placeholder="CollegeName" formControlName="collegeName" class="form-field" [readonly]="isReadOnly" />
         </mat-form-field>
 
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label class="label">Degree</mat-label>
+          <mat-label class="label">DEGREE</mat-label>
           <input matInput placeholder="Degree" formControlName="degree" class="form-field" [readonly]="isReadOnly" />
         </mat-form-field>
 
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label class="label">Specialization</mat-label>
+          <mat-label class="label">SPECIALIZATION</mat-label>
           <input matInput placeholder="Specialization" formControlName="specialization" class="form-field" [readonly]="isReadOnly" />
         </mat-form-field>
 
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label class="label">Year</mat-label>
+          <mat-label class="label">YEAR_OF_PASSED_OUT</mat-label>
           <input matInput placeholder="Year" formControlName="year" class="form-field" [readonly]="isReadOnly" />
         </mat-form-field>
 
         <mat-form-field class="form-field" appearance="outline">
-          <mat-label class="label">Graduated</mat-label>
+          <mat-label class="label">GRADUATED</mat-label>
           <input matInput placeholder="Graduated" formControlName="graduate" class="form-field" [readonly]="isReadOnly" />
         </mat-form-field>
       </div>

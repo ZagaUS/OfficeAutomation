@@ -69,5 +69,13 @@ export class InvoiceApiService {
     );
   }
 
+  getCreditNotePdf(creditNoteId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'text/plain');
+    return this.http.get(this.invoiceUrl + `/creditNote/${creditNoteId}/pdf`, {
+      headers,
+      responseType: 'blob',
+    });
+  }
+
 
 }

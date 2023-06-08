@@ -6,63 +6,40 @@
           <div [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="form">
 
             <mat-form-field class="form-field" appearance="outline">
-              <mat-label class="label">Company Name</mat-label>
+              <mat-label class="label">COMPANY_NAME</mat-label>
               <input matInput placeholder="CompanyName" formControlName="companyName" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
-              <mat-label class="label">Experience</mat-label>
+              <mat-label class="label">EXPERIENCE</mat-label>
               <input matInput placeholder="Experience" formControlName="experience" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
-              <mat-label class="label">Start Date</mat-label>
+              <mat-label class="label">START_DATE</mat-label>
               <input matInput placeholder="StartDate" formControlName="startDate" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
-              <mat-label class="label">End Date</mat-label>
+              <mat-label class="label">END_DATE</mat-label>
               <input matInput placeholder="EndDate" formControlName="endDate" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
 
             <mat-form-field class="form-field" appearance="outline">
-              <mat-label class="label">Field</mat-label>
+              <mat-label class="label">FIELD</mat-label>
               <input matInput placeholder="Field" formControlName="field" [readonly]="isReadOnly" class="form-field" />
             </mat-form-field>
           </div>
         
         </div>
+
+        <button mat-raised-button color="primary" (click)="addNewJobHistory()">Add New Job History</button>
         
       </form>
 
       <div style="display: flex;flex-direction: row;">
-        <button
-        class ="button"
-          mat-raised-button
-          color="primary"
-          style="color:white"
-          type="submit"
-          (click)="onSubmit()"
-          [disabled]="isReadOnly"
-        >
-          Submit
-        </button>
-        <button
-        style="margin-left: 10px;"
-        class ="button"
-          mat-raised-button
-          color="accent"
-          type="button"
-          (click)="onEdit()"
-          *ngIf="isReadOnly"
-        >
-          Edit
-        </button>
+        <button class ="button" mat-raised-button color="primary" style="color:white" type="submit" (click)="onSubmit()" [disabled]="isReadOnly">Submit</button>
+        <button style="margin-left: 10px;" class ="button" mat-raised-button color="accent" type="button" (click)="onEdit()" *ngIf="isReadOnly">Edit</button>
       </div>
 
-      <!-- <div style="display: flex;flex-direction: row;">
-        <button class ="button" mat-raised-button color="primary" style="color:white" type="submit" (click)="deleteJobhistory(employeeId)">Delete</button>
-      </div>   -->
-      
-  
 </div>

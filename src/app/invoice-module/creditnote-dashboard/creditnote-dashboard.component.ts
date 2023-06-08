@@ -83,7 +83,7 @@ export class CreditnoteDashboardComponent {
     // const documentId = invoiceId + '_' + date;
     // const documentId = 'DIGI_2023-04-27_30';
     console.log(creditNoteId + ' DocumentId');
-    this.invoiceApi.getPdf(creditNoteId).subscribe((data: any) => {
+    this.invoiceApi.getCreditNotePdf(creditNoteId).subscribe((data: any) => {
       console.log('weekly pdf view clixked ' + data);
       const reader = new FileReader();
       reader.onload = () => {

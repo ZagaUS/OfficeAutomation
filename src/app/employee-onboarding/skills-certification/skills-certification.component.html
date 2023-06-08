@@ -41,115 +41,43 @@
         [readonly]="isReadOnly"
       />
     </mat-form-field>
-    <div class="skills-container">
-      <label class="skills-label">SKILLS NAME</label>
-      <div class="skills-list">
-        <div *ngFor="let skill of skillsNameArr" class="skill">
-          <span class="skill-name">{{ skill }}</span>
+
+    <div>
+      <label class="skill-label">SKILLS NAME</label>
+      <div formArrayName="skillsName" class="skills-container">
+        <div *ngFor="let skillCtrl of skillsNameArr.controls; let i = index;" class="skill-item">
+          <input matInput [formControlName]="i" placeholder="Skill {{ i + 1 }}" class="skill-input" />
+        </div>
+      </div>
+
+      <button mat-raised-button style="margin-bottom: 30px; margin-left: 20px;color:#074a6e" type="button" (click)="addSkill()">Add Skill</button>
+
+      <div>
+      <label style="margin-top: 20px;" class="skill-label">TOOLS NAME</label>
+      <div formArrayName="toolsName" class="skills-container">
+        <div *ngFor="let toolCtrl of toolsNameArr.controls; let i = index;" class="skill-item">
+          <input matInput [formControlName]="i" placeholder="Tool {{ i + 1 }}" class="skill-input" />
         </div>
       </div>
     </div>
 
-      <label style="margin-top: 10px;"class="skills-label">TOOLS NAME</label>
-      <div class="skills-list">
-        <div *ngFor="let tool of toolsNameArr" class="skill">
-          <span class="skill-name">{{ tool }}</span>
-        </div>
-      </div>
-       
-    <!-- <div class="skills-container">
-      <label class="skills-label">SKILLS NAME</label>
-      <div class="skills-list">
-        <div *ngFor="let skill of skillsNameArr" class="skill">
-          <span class="skill-name">{{ skill }}</span>
-          <button *ngIf="!isReadOnly"
-            class="remove-skill-button"
-            [disabled]="isReadOnly"
-            (click)="removeSkillsName(skill) "
-          >
-            Remove <i class="fa fa-times"></i>
-          </button>
-        </div>
-        <ng-container *ngIf="!isReadOnly">
-          <div class="add-skill-container">
-            <button class="add-skill-button" (click)="addingNewSkill = true">
-              Add <i class="fa fa-plus"></i>
-            </button>
-          </div>
-          <div *ngIf="addingNewSkill" class="add-skill-container">
-            <mat-form-field appearance="outline" class="add-skill-field">
-              <mat-label>ADD SKILL NAME</mat-label>
-              <input matInput #newSkillName />
-            </mat-form-field>
-            <button
-              class="add-skill-button"
-              [disabled]="!newSkillName.value"
-              (click)="addSkillsName(newSkillName.value); addingNewSkill = false; newSkillName.value = ''"
-            >
-              Save <i class="fa fa-check"></i>
-            </button>
-            <button
-              class="add-skill-button"
-              (click)="addingNewSkill = false"
-            >
-              Cancel <i class="fa fa-times"></i>
-            </button>
-          </div>
-        </ng-container>
-      </div>
-    </div>
+      <button mat-raised-button style="margin-bottom: 20px; margin-left: 20px;color:#074a6e" type="button" (click)="addTool()">Add Tool</button>
 
-      <label style="margin-top: 10px;"class="skills-label">TOOLS NAME</label>
-      <div class="skills-list">
-        <div *ngFor="let tool of toolsNameArr" class="skill">
-          <span class="skill-name">{{ tool }}</span>
-          <button *ngIf="!isReadOnly"
-            class="remove-skill-button"
-            [disabled]="isReadOnly"
-            (click)="removeToolsName(tool) "
-          >
-            Remove <i class="fa fa-times"></i>
-          </button>
-        </div>
-        <ng-container *ngIf="!isReadOnly">
-          <div class="add-skill-container">
-            <button class="add-skill-button" (click)="addingNewTool = true">
-              Add <i class="fa fa-plus"></i>
-            </button>
-          </div>
-          <div *ngIf="addingNewTool" class="add-skill-container">
-            <mat-form-field appearance="outline" class="add-skill-field">
-              <mat-label>ADD TOOLS NAME</mat-label>
-              <input matInput #newToolName />
-            </mat-form-field>
-            <button
-              class="add-skill-button"
-              [disabled]="!newToolName.value"
-              (click)="addToolsName(newToolName.value); addingNewTool = false; newToolName.value = ''"
-            >
-              Save <i class="fa fa-check"></i>
-            </button>
-            <button
-              class="add-skill-button"
-              (click)="addingNewTool = false"
-            >
-              Cancel <i class="fa fa-times"></i>
-            </button>
-          </div>
-        </ng-container> -->
+    </div>
  
         <div style="display: flex;flex-direction: row;">
           <button style="margin-top:50px"
             class="button"
             mat-raised-button
             color="primary"
+            style="color:white"
             type="submit"
             [disabled]="isReadOnly"
             (click)="onSubmit()"
           >
             Submit
           </button>
-          <button style = "margin-left: 20px;margin-top: 50px;"
+          <button style = "margin-left: 10px;"
             class="button"
             mat-raised-button
             color="accent"
@@ -160,4 +88,4 @@
             Edit
           </button>
         </div>
-      <!-- </div> -->
+

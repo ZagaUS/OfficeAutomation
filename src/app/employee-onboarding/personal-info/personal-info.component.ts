@@ -38,7 +38,7 @@ export class PersonalInfoComponent {
 }
 ngOnInit() {
   this.api.getPersonalInfobyId(this.employeeId).subscribe((data) => {
-    console.log('List of dayOFF ' + JSON.stringify(data));
+    console.log('List of Personal Info ' + JSON.stringify(data));
     this.myForm.setValue(data);
   });
 
