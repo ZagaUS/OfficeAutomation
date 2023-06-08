@@ -21,7 +21,7 @@ export class InvoiceModule1Component {
     'action',
   ];
 
-
+projectName?:any = localStorage.getItem('projectName');
 
   constructor(private router: Router, private api: InvoiceApiService, private apiService: ApiServicesService) {
 
@@ -41,7 +41,7 @@ export class InvoiceModule1Component {
   viewInvoice(projectId?: any) {
     // console.log('project Name', projectName);
     localStorage.setItem('projectId', projectId);
-    // localStorage.setItem('projectName', projectName);
+   
     this.router.navigate(['/invoicedashboard/dashboard']);
   
    
@@ -49,12 +49,14 @@ export class InvoiceModule1Component {
 
   viewCreditNote(projectId: any) {
     localStorage.setItem('projectId', projectId);
-    this.api.getProjectDetails(projectId).subscribe((data) => {
-      console.log('Employee Details ' + JSON.stringify(data));
-      this.router.navigate(['dashboard']);
-  });
+    console.log('project Name', this.projectName);
+    localStorage.setItem('projectName', this.projectName);
+    // this.api.getProjectDetails(projectId).subscribe((data) => {
+    //   console.log('Employee Details ' + JSON.stringify(data));
+      this.router.navigate(['/invoicedashboard/creditnoteDashboard']);
+  }
 
-}
+
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;
   console.log('filterValue', filterValue);

@@ -15,9 +15,8 @@ export class DocumentsComponent {
   file: any;
   pdfbaseapi: any;
   employeeId: any;
-  modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
-
-  constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService) {
+  
+  constructor(private fb: FormBuilder, private api: EmployeeApiService) {
 
   }
 
@@ -53,14 +52,6 @@ export class DocumentsComponent {
         reader.readAsDataURL(this.file);
 
   }
-  openPO() {
-    this.modalRef = this.modalService.open(ModalResumeuploadComponent, {
-      modalClass: 'modal-lg',
-    });
-    this.modalRef.onClose.subscribe((message: any) => {
-      console.log(message);
-      // window.location.reload();
-    });
-  }
+
   
 }

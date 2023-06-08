@@ -4,6 +4,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipsModule } from '@angular/material/chips';
+import { ModalResumeuploadComponent } from '../modal-resumeupload/modal-resumeupload.component';
+import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 @Component({
   selector: 'app-create-employee',
@@ -14,8 +16,9 @@ import { MatChipsModule } from '@angular/material/chips';
 export class CreateEmployeeComponent {
   myForm!: FormGroup;
   // separatorKeysCodes: number[] = [ENTER, COMMA];
+  modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
 
-  constructor(private fb: FormBuilder, private api: EmployeeApiService) {
+  constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService) {
     this.createForm();
   }
 
@@ -265,6 +268,17 @@ export class CreateEmployeeComponent {
       
         // alert(data.message);
       alert('Updated successfully');
+    });
+    
+  }
+
+  openPO() {
+    this.modalRef = this.modalService.open(ModalResumeuploadComponent, {
+      modalClass: 'modal-lg',
+    });
+    this.modalRef.onClose.subscribe((message: any) => {
+      console.log(message);
+      // window.location.reload();
     });
   }
 

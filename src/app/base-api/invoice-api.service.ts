@@ -62,4 +62,12 @@ export class InvoiceApiService {
     );
   }
 
+  createCreditNote(CreditNoteData: any) {
+    return this.http.post<any>(
+      this.invoiceUrl + '/createCreditNote/pdf',
+      CreditNoteData
+    );
+  }
+
+
 }

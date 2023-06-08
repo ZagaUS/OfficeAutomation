@@ -1,87 +1,67 @@
 <mat-card class="credit-note-card">
-  <mat-card-title class="card-header">credit note Details</mat-card-title>
+  <mat-card-title class="card-header">Credit note Details</mat-card-title>
   <div class="form-container">
-    <ng-container>
+    <form [formGroup]="creditnoteForm" >  
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Project Name</mat-label>
+        <input matInput   type="text"   formControlName="projectName" required="true" >
+        </mat-form-field>  
 
-        <mat-form-field style="width: 200%;" appearance="outline" >
-            <mat-label>to</mat-label>
-            <input
-            matInput
-            placeholder="to"
-            [(ngModel)]="data.to"
-            [readonly]="!editable"
-            [value]="data.to"
-          />
-          </mat-form-field>
+        
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Client Address</mat-label>
+      <input matInput   type="text"   formControlName="clientAddress" required="true" >
+      </mat-form-field>  
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Invoice Id</mat-label>
+        <input matInput   type="text"   formControlName="invoiceId" required="true" >
+        </mat-form-field> 
 
-
-          <mat-form-field style="width: 200%;" appearance="outline" >
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Ref</mat-label>
+        <input matInput   type="text"   formControlName="ref" required="true" >
+        </mat-form-field>  
+        <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Reference Invoice</mat-label>
+          <input matInput   type="text"   formControlName="referenceInvoice" required="true" >
+          </mat-form-field> 
+        
+          <mat-form-field appearance="outline" class="form-field">
             <mat-label>po</mat-label>
-            <input
-            matInput
-            placeholder="po"
-            [(ngModel)]="data.po"
-            [readonly]="!editable"
-            [value]="data.po"
-          />
-          </mat-form-field>
+            <input matInput   type="text"   formControlName="po" required="true" >
+            </mat-form-field> 
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>sfdc</mat-label>
+              <input matInput   type="text"   formControlName="sfdc" required="true" >
+              </mat-form-field> 
+              <mat-form-field appearance="outline" class="form-field">
+                <mat-label>pa</mat-label>
+                <input matInput   type="text"   formControlName="pa" required="true" >
+                </mat-form-field>  
+                <mat-form-field appearance="outline" class="form-field">
+                <mat-label>currencyType</mat-label>
+                <input matInput   type="text"   formControlName="currencyType" required="true" >
+                </mat-form-field>
+                  <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>paidAmount</mat-label>
+                    <input matInput   type="number"   formControlName="paidAmount" required="true" >
+                    </mat-form-field> 
+                    <mat-form-field appearance="outline" class="form-field">
+                      <mat-label>actualsgd</mat-label>
+                      <input matInput   type="number"   formControlName="actualsgd" required="true" >
+                      </mat-form-field> 
+                      <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>actualAmount</mat-label>
+                        <input matInput   type="number"   formControlName="actualAmount" required="true" >
+                        </mat-form-field>
+                      <mat-form-field appearance="outline" class="form-field">
+                        <mat-label>creditAmount</mat-label>
+                        <input matInput   type="number"   formControlName="creditAmount" required="true" >
+                        </mat-form-field> 
+          <button mat-raised-button  class="form-button" type="submit "  (click)="onCreate()">Create</button>
 
-          <mat-form-field style="width: 200%;" appearance="outline" >
-            <mat-label>sfdc</mat-label> 
-            <input
-              matInput
-              placeholder="sfdc"
-              [(ngModel)]="data.sfdc"
-              [readonly]="!editable"
-              [value]="data.sfdc"
-            />
-          </mat-form-field>
-
-          <mat-form-field style="width: 200%;" appearance="outline">
-            <mat-label>pa</mat-label> 
-            <input
-              matInput
-              placeholder="pa"
-              [(ngModel)]="data.pa"
-              [readonly]="!editable"
-              [value]="data.pa"
-            />
-          </mat-form-field>
-
-          <mat-form-field style="width: 200%;" appearance="outline">
-            <mat-label>paidAmount</mat-label> 
-            <input
-              matInput
-              placeholder="paid Amount"
-              [(ngModel)]="data.paidAmount"
-              [readonly]="!editable"
-              [value]="data.paidAmount"
-            />
-          </mat-form-field>
-
-
-          <mat-form-field style="width: 200%;" appearance="outline">
-            <mat-label>actualsgd</mat-label> 
-            <input
-              matInput
-              placeholder="Actual SGD"
-              [(ngModel)]="data.actualsgd"
-              [readonly]="!editable"
-              [value]="data.actualsgd"
-            />
-          </mat-form-field>
-
-          <mat-form-field style="width: 200%;" appearance="outline">
-            <mat-label>creditAmount</mat-label> 
-            <input
-              matInput
-              placeholder="creditAmount"
-              [(ngModel)]="data.creditAmount"
-              [readonly]="!editable"
-              [value]="data.creditAmount"
-            />
-          </mat-form-field>
-
-
-    </ng-container>
+        </form>
 </div>
+</mat-card>
+
+ 

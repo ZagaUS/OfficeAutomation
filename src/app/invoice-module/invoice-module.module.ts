@@ -16,9 +16,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreditNoteComponent } from './credit-note/credit-note.component';
 import { InvoiceDashboardComponent } from './invoice-dashboard/invoice-dashboard.component';
 import { InvoiceModule1Component } from './invoice-module1/invoice-module1.component';
+import { CreditnoteDashboardComponent } from './creditnote-dashboard/creditnote-dashboard.component';
 
 @NgModule({
-  declarations: [InvoiceModuleComponent, CreditNoteComponent, InvoiceDashboardComponent, InvoiceModule1Component],
+  declarations: [InvoiceModuleComponent, CreditNoteComponent, InvoiceDashboardComponent, InvoiceModule1Component, CreditnoteDashboardComponent],
   imports: [
     CommonModule,
     InvoiceModuleRoutingModule,

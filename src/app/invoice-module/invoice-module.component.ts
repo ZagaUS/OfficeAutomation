@@ -52,7 +52,7 @@ export class InvoiceModuleComponent {
   viewCreditNote(projectId: any) {
     this.api.getProjectDetails(projectId).subscribe((data) => {
       console.log('Employee Details ' + JSON.stringify(data));
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['/invoicedashboard/creditnoteDashboard']);
   });
 
 }
