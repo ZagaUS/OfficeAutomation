@@ -6,6 +6,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipsModule } from '@angular/material/chips';
 import { ModalResumeuploadComponent } from '../modal-resumeupload/modal-resumeupload.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-create-employee',
@@ -17,7 +18,7 @@ export class CreateEmployeeComponent {
   myForm!: FormGroup;
   modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
 
-  constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService) {
+  constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService, private location:Location) {
     this.createForm();
   }
 
@@ -231,6 +232,7 @@ export class CreateEmployeeComponent {
       console.log('data updated', data);
 
       alert('Updated successfully');
+      this.location.back();
     });
     
   }

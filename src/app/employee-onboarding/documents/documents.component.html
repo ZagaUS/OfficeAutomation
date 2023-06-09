@@ -1,5 +1,5 @@
 <div class="card">
-    <h2 class="card-header">DOCUMENT COLLECTION</h2>
+    <h2 class="card-header">Employee Resume</h2>
 
     <!-- <table style="margin-top: 20px;margin-right: 20px; margin-bottom: 500px;" >
 
@@ -28,10 +28,20 @@
             <h5>{{fileName}}</h5>
 
             <div class="actionContainer">
-                <a (click)="viewPdf()" class="icon">
+                <!-- <a (click)="viewPdf()" class="icon">
                     <mat-icon style="font-size: x-large" fontIcon="visibility"></mat-icon>
-                </a>
-            </div>
+                </a> -->
+            
+            <button
+            mat-raised-button
+            class="btns"
+            style="margin-left: 650px;margin-bottom: 200px;margin-top: 100px;"
+            color="primary"
+            data-toggle="modal"
+            (click)="viewPdf()"
+          >View Resume
+          </button>
+        </div>
         </ng-container>
 
      

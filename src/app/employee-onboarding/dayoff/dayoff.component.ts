@@ -45,7 +45,7 @@ export class DayoffComponent {
     this.api.updateDayOff(formValues).subscribe((data:any) => {
       console.log("data updated",data);
       alert('updated successfully');
-      this.location.back();
+      window.location.reload();
     });
   }
 }

@@ -33,7 +33,7 @@ export class ModalResumeuploadComponent {
   // dateFormat = 'yyyy-MM-dd';
   fileName: any = '';
 
-  name?: any = localStorage.getItem('employeeName');
+  name?: any ;
   employeeId?: any = localStorage.getItem('employeeId');
 
   onFileSelected(event: any) {
