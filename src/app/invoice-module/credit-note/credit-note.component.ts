@@ -45,7 +45,7 @@ export class CreditNoteComponent {
       pa: [this.pa],
       po: [this.po],
       sfdc: [this.sfdc],
-      currencyType: ['', Validators.required],
+      currencyType: [this.clientCurrency, Validators.required],
       date: ['', Validators.required],
       paidAmount:['', Validators.required],
       actualsgd:['', Validators.required],
@@ -55,7 +55,10 @@ export class CreditNoteComponent {
   }
 
   onCreate() {
-  
+    if (this.creditnoteForm.invalid) {
+      alert('Please fill in all required fields.');
+      return;
+    }
     
     const quote = this.creditnoteForm.value;
     console.log(quote);
@@ -63,7 +66,6 @@ export class CreditNoteComponent {
       console.log('data updated', data);
       alert('Updated successfully');
       this.location.back();
-      // do something with the response, if needed
     });
   }
   }

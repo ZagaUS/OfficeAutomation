@@ -52,13 +52,14 @@ projectName?:any = localStorage.getItem('projectName');
    
   }
 
-  viewCreditNote(projectId: any, po:any,sfdc:any, pa:any, totalManDays:any, projectName:any, clientAddress:any) {
+  viewCreditNote(projectId: any, po:any,sfdc:any, pa:any, totalManDays:any, projectName:any, clientAddress:any, clientCurrency:any) {
     localStorage.setItem('projectId', projectId);
     localStorage.setItem('po', po);
     localStorage.setItem('sfdc',sfdc);
     localStorage.setItem('pa',pa);
     localStorage.setItem('totalManDays',totalManDays);
     localStorage.setItem('clientAddress',clientAddress);
+    localStorage.setItem('clientCurrency',clientCurrency);
     console.log('project Name', this.projectName);
     localStorage.setItem('projectName', projectName);
     // this.api.getProjectDetails(projectId).subscribe((data) => {

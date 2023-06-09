@@ -4,62 +4,62 @@
     <form [formGroup]="creditnoteForm" >  
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Project Name</mat-label>
-        <input matInput   type="text"   formControlName="projectName" required="true" >
+        <input matInput   type="text"   formControlName="projectName"  >
         </mat-form-field>  
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Date</mat-label>
-          <input matInput   type="date"   formControlName="date" required="true" >
+          <input matInput   type="date"   formControlName="date"  >
           </mat-form-field> 
         
     <mat-form-field appearance="outline" class="form-field">
       <mat-label>Client Address</mat-label>
-      <input matInput   type="text"   formControlName="clientAddress" required="true" >
+      <input matInput   type="text"   formControlName="clientAddress"  >
       </mat-form-field>  
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Invoice Id</mat-label>
-        <input matInput   type="text"   formControlName="invoiceId" required="true" >
+        <input matInput   type="text"   formControlName="invoiceId"  >
         </mat-form-field> 
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Ref</mat-label>
-        <input matInput   type="text"   formControlName="ref" required="true" >
+        <input matInput   type="text"   formControlName="ref"  >
         </mat-form-field>  
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Reference Invoice</mat-label>
-          <input matInput   type="text"   formControlName="referenceInvoice" required="true" >
+          <input matInput   type="text"   formControlName="referenceInvoice"  >
           </mat-form-field> 
         
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>po</mat-label>
-            <input matInput   type="text"   formControlName="po" required="true" >
+            <input matInput   type="text"   formControlName="po"  >
             </mat-form-field> 
             <mat-form-field appearance="outline" class="form-field">
               <mat-label>sfdc</mat-label>
-              <input matInput   type="text"   formControlName="sfdc" required="true" >
+              <input matInput   type="text"   formControlName="sfdc"  >
               </mat-form-field> 
               <mat-form-field appearance="outline" class="form-field">
                 <mat-label>pa</mat-label>
-                <input matInput   type="text"   formControlName="pa" required="true" >
+                <input matInput   type="text"   formControlName="pa"  >
                 </mat-form-field>  
                 <mat-form-field appearance="outline" class="form-field">
                 <mat-label>currencyType</mat-label>
-                <input matInput   type="text"   formControlName="currencyType" required="true" >
+                <input matInput   type="text"   formControlName="currencyType"  >
                 </mat-form-field>
                   <mat-form-field appearance="outline" class="form-field">
                     <mat-label>paidAmount</mat-label>
-                    <input matInput   type="number"   formControlName="paidAmount" required="true" >
+                    <input matInput   type="number"   formControlName="paidAmount"  >
                     </mat-form-field> 
                     <mat-form-field appearance="outline" class="form-field">
                       <mat-label>actualsgd</mat-label>
-                      <input matInput   type="number"   formControlName="actualsgd" required="true" >
+                      <input matInput   type="number"   formControlName="actualsgd"  >
                       </mat-form-field> 
                       <mat-form-field appearance="outline" class="form-field">
                         <mat-label>actualAmount</mat-label>
-                        <input matInput   type="number"   formControlName="actualAmount" required="true" >
+                        <input matInput   type="number"   formControlName="actualAmount"  >
                         </mat-form-field>
                       <mat-form-field appearance="outline" class="form-field">
                         <mat-label>creditAmount</mat-label>
-                        <input matInput   type="number"   formControlName="creditAmount" required="true" >
+                        <input matInput   type="number"   formControlName="creditAmount"  />
                         </mat-form-field> 
           <button mat-raised-button  class="form-button" type="submit "  (click)="onCreate()">Create</button>
 

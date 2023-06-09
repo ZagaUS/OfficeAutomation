@@ -15,7 +15,6 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 
 export class CreateEmployeeComponent {
   myForm!: FormGroup;
-  // separatorKeysCodes: number[] = [ENTER, COMMA];
   modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
 
   constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService) {
@@ -25,53 +24,33 @@ export class CreateEmployeeComponent {
   createForm() {
     this.myForm = this.fb.group({
       // employeeId: [''],
-      employeeName: [''],
-      employeeRole: [''],
-      jobTitle: [''],
-      dateOfJoining: [''],
-      employeeEmail: [''],
+      employeeName: ['', Validators.required],
+      employeeRole: ['', Validators.required],
+      jobTitle: ['', Validators.required],
+      dateOfJoining: ['', Validators.required],
+      employeeEmail: ['', Validators.required],
       password: [''],
-      department: [''],
+      department: ['', Validators.required],
       reportingManager: [''],
-      employeeStatus: [''],
-      overallExperience: [''],
+      employeeStatus: ['Active', Validators.required],
+      overallExperience: ['', Validators.required],
       projectAssignmentStatus: [''],
 
-      gender: [''],
-      nationality: [''],
-      maritalStatus: [''],
+      gender: ['', Validators.required],
+      nationality: ['', Validators.required],
+      maritalStatus: ['', Validators.required],
       language: this.fb.array([]),
       
-      dateOfBirth: [''],
-      bloodGroup: [''],
-      personalEmail: [''],
-      personalPhone: [''],
-      emergencyPhone: [''],
-      address: [''], 
-
-      // educationDetails: this.fb.array([
-      //   this.fb.group({
-      //     collegeName: [''],
-      //     degree: [''],
-      //     specialization: [''],
-      //     year: [''],
-      //     graduate: ['']
-      //   })
-      // ]),
+      dateOfBirth: ['', Validators.required],
+      bloodGroup: ['', Validators.required],
+      personalEmail: ['', Validators.required],
+      personalPhone: ['', Validators.required],
+      emergencyPhone: ['', Validators.required],
+      address: ['', Validators.required], 
 
       educationDetails: this.fb.array([
         this.createEducationDetails()
       ]),
-
-      // jobHistoryDetails: this.fb.array([
-      //   this.fb.group({
-      //     companyName: [''],
-      //     startDate: [''],
-      //     endDate: [''],
-      //     field: [''],
-      //     experience: ['']
-      //   })
-      // ]),
 
       jobHistoryDetails: this.fb.array([
         this.createJobHistory()
@@ -129,24 +108,6 @@ export class CreateEmployeeComponent {
   removeEducationDetails(index: number): void {
     this.educationDetails.removeAt(index);
   }
-
-
-  // get jobHistory(): FormArray {
-  //   return this.myForm.get('jobHistoryDetails') as FormArray;
-  // }
-
-  // newJobHistory(): FormControl {
-  //   return this.fb.control('');
-  // }
-
-  // addJobHistory(): void {
-  //   this.jobHistory.push(this.newJobHistory());
-  //   console.log('added jobHistory', this.jobHistory);
-  // }
-
-  // removeJobHistory(index: number): void {
-  //   this.jobHistory.removeAt(index);
-  // }
 
   get jobHistoryDetails(): FormArray {
     return this.myForm.get('jobHistoryDetails') as FormArray;
@@ -206,7 +167,6 @@ export class CreateEmployeeComponent {
   }  
   
   onSubmit() {
-    // const createEmployeeDetails = this.myForm.value;
     const employeeInfo = {
       "employeeName": this.myForm.value.employeeName,
       "employeeRole": this.myForm.value.employeeRole,
@@ -253,7 +213,6 @@ export class CreateEmployeeComponent {
     const createEmployee = {
       employeeInfo: employeeInfo,
       personalInfo: personalInfo,
-      // educationDetails: this.educationData,
       educationDetails: this.myForm.value.educationDetails,
       jobHistoryDetails: this.myForm.value.jobHistoryDetails,
       skills: skills,
@@ -262,11 +221,15 @@ export class CreateEmployeeComponent {
     console.log("Dayoff data",dayOff);
 
     console.log("updatedData", createEmployee);
+
+    if (this.myForm.invalid) {
+      alert('Please fill in all required fields.');
+      return;
+    }
     
     this.api.createEmployee(createEmployee).subscribe((data: any) => {
       console.log('data updated', data);
-      
-        // alert(data.message);
+
       alert('Updated successfully');
     });
     
@@ -278,7 +241,7 @@ export class CreateEmployeeComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
-      // window.location.reload();
+      window.location.reload();
     });
   }
 
