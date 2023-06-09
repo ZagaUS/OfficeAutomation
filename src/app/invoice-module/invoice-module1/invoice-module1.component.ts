@@ -42,23 +42,24 @@ projectName?:any = localStorage.getItem('projectName');
    
   }
 
-  viewInvoice(projectId?: any) {
+  viewInvoice(projectId?: any, projectName?: any){
     // console.log('project Name', projectName);
     localStorage.setItem('projectId', projectId);
+    localStorage.setItem('projectName', projectName);
    
     this.router.navigate(['/invoicedashboard/dashboard']);
   
    
   }
 
-  viewCreditNote(projectId: any, po:any,sfdc:any, pa:any, totalManDays:any) {
+  viewCreditNote(projectId: any, po:any,sfdc:any, pa:any, totalManDays:any, projectName:any) {
     localStorage.setItem('projectId', projectId);
     localStorage.setItem('po', po);
     localStorage.setItem('sfdc',sfdc);
     localStorage.setItem('pa',pa);
     localStorage.setItem('totalManDays',totalManDays);
     console.log('project Name', this.projectName);
-    localStorage.setItem('projectName', this.projectName);
+    localStorage.setItem('projectName', projectName);
     // this.api.getProjectDetails(projectId).subscribe((data) => {
     //   console.log('Employee Details ' + JSON.stringify(data));
       this.router.navigate(['/invoicedashboard/creditnoteDashboard']);

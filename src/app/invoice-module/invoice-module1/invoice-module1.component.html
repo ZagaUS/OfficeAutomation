@@ -51,12 +51,12 @@
           <div class="actionContainer">
   
             <button mat-raised-button class="btn" color="primary" data-toggle="modal"
-              (click)="viewInvoice(element.projectId)">Invoice
+              (click)="viewInvoice(element.projectId, element.projectName)">Invoice
             </button>
   
   
             <button style="margin-right: 50px;" mat-raised-button class="btn" color="primary" data-toggle="modal"
-              (click)="viewCreditNote(element.projectId, element.po,element.sfdc, element.pa,  element.totalManDays)">Credit Note
+              (click)="viewCreditNote(element.projectId, element.po,element.sfdc, element.pa,  element.totalManDays, element.projectName)">Credit Note
             </button>
   
           </div>
