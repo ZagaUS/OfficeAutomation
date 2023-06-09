@@ -33,9 +33,9 @@ export class EmployeeApiService {
     );
   }
 
-  updateSkillDetails(employeeId: string, skillValues: any) {
+  updateSkillDetails(skillValues: any) {
     return this.http.put<any>(
-      this.employeeURL + 'updateSkills/' + employeeId,
+      this.employeeURL + 'updateSkills',
       skillValues
     );
   }
