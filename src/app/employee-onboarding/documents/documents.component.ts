@@ -14,22 +14,28 @@ export class DocumentsComponent {
   fileName: any;
   file: any;
   pdfbaseapi: any;
-  employeeId: any;
+  employeeId: any = "128"
   
   constructor(private fb: FormBuilder, private api: EmployeeApiService) {
 
   }
 
   ngOnInit(): void {
-    this.employeeId = localStorage.getItem('employeeId');
-    this.api.downloadPDF(this.employeeId).subscribe((res: any) => {
-      console.log(res);
-      this.file = res;
-    })
-  }
+    // this.employeeId = localStorage.getItem('employeeId');
+    // this.api.downloadPDF(this.employeeId).subscribe((res: any) => {
+    //   console.log(res);
+    //   this.file = res;
+    }
+  
 
   viewPdf(){
-    const reader = new FileReader();
+    
+     
+      this.api.downloadPDF(this.employeeId).subscribe((res: any) => {
+        console.log(res);
+        this.file = res;
+
+        const reader = new FileReader();
         reader.onload = () => {
           const dataUrl = reader.result as string;
           const base64Data = dataUrl.split(',')[1];
@@ -44,12 +50,14 @@ export class DocumentsComponent {
           }
           // Create a Blob object from the Uint8Array
           const blob = new Blob([byteArray], { type: 'application/pdf' });
-
+  
           //Create a url
           const fileUrl = URL.createObjectURL(blob);
           window.open(fileUrl, '_blank');
         };
-        reader.readAsDataURL(this.file);
+        reader.readAsDataURL(res);
+      });
+      
 
   }
 

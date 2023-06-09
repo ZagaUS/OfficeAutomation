@@ -123,7 +123,7 @@ export class EmployeeApiService {
     const headers = new HttpHeaders().set('Accept', 'text/plain');
     return this.http.get(this.employeeURL + `pdf/${employeeId}`, {
       headers,
-      responseType: 'blob',
+      responseType: 'blob'
     });
   }
 
