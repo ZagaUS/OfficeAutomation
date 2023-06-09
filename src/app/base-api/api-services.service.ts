@@ -26,6 +26,12 @@ export class ApiServicesService {
     );
   }
 
+  getListOfProjectsForInvoice() {
+    return this.http.get<any>(
+      this.projectMgtUrl + '/projectDetails/viewProjectDetailsForInvoice'
+    );
+  }
+
   getListOfPO(projectId: string) {
     return this.http.get<any>(
       this.projectMgtUrl + '/po/getPOByProjectId/'+ projectId

@@ -69,26 +69,26 @@ export class InvoiceApiService {
     );
   }
 
-  deleteCreditNotes(creditNoteId: any){
-    console.log('delete This credit note', creditNoteId);
+  deleteCreditNotes(documentId: any){
+    console.log('delete This credit note', documentId);
     return this.http.delete<any>(
       this.invoiceUrl+
-      `/deleteCreditNote/${creditNoteId}`
+      `/deleteCreditNote/${documentId}`
       );
   }
 
-  downloadCreditNote(creditNoteId: any): Observable<Blob> {
+  downloadCreditNote(documentId: any): Observable<Blob> {
     const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
     return this.http.get(
       this.invoiceUrl +
-      `/download/${creditNoteId}`,
+      `/creditNotePdf/download/${documentId}`,
        { headers, responseType: 'blob' }
     );
   }
 
-  getPdfCreditNote(creditNoteId: any): Observable<Blob> {
+  getPdfCreditNote(documentId: any): Observable<Blob> {
     const headers = new HttpHeaders().set('Accept', 'text/plain');
-    return this.http.get(this.invoiceUrl + `/invoice/${creditNoteId}/pdf`, {
+    return this.http.get(this.invoiceUrl + `/creditNote/${documentId}/pdf`, {
       headers,
       responseType: 'blob',
     });

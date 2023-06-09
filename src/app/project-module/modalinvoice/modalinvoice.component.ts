@@ -24,18 +24,18 @@ export class ModalinvoiceComponent {
   endDate?: any = new Date();
   invoiceGenerated = false;
   indata: any;
-  clientAddress?: string;
-  payOrder?: string;
-  sfdc?: string;
-  pa?: string;
-  totalManDays?: any;
+  clientAddress?: any = localStorage.getItem('clientAddress');
+  payOrder?: any = localStorage.getItem('po');
+  sfdc?:  any = localStorage.getItem('sfdc');
+  pa?:  any = localStorage.getItem('pa');
+  totalManDays?:  any = localStorage.getItem('totalManDays');
   manHours?: any;
   invoiceAmount?: any;
   totalInvoiceAmount?: any;
   rate: any;
   consultant: any;
   projectId: any;
-  projectName?: string;
+  projectName?: any = localStorage.getItem('projectName');
   duration?: string;
   description?: string;
   documentId: any;
@@ -51,12 +51,14 @@ export class ModalinvoiceComponent {
     this.contactForm = this.fb.group({
       startDate: [new Date(), Validators.required],
       endDate: [new Date(), Validators.required],
-      projectName: ['', Validators.required],
+      projectName: [this.projectName, Validators.required],
       // message: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.payOrder);
+  }
 
   close() {
     const closeMessage = 'Modal closed';

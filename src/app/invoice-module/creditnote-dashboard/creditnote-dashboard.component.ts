@@ -35,10 +35,10 @@ export class CreditnoteDashboardComponent {
   modalRefI: MdbModalRef<ModalinvoiceComponent> | null = null;
   pdfbaseapi: any;
   // invoiceId?:any = localStorage.getItem('invoiceId');
-  documentId?:any = localStorage.getItem('documentId');
+  // documentId?:any = localStorage.getItem('documentId');
   projectId?:any = localStorage.getItem('projectId');
   // projectName?:any = localStorage.getItem('projectName');
-  creditNoteId?:any = localStorage.getItem('creditNoteId');
+  // documentId?:any = localStorage.getItem('creditNoteId');
 
   constructor(
     private router: Router,
@@ -74,15 +74,15 @@ export class CreditnoteDashboardComponent {
     // });
   }
 
-  viewCreditNote(creditNoteId: any) {
-    creditNoteId= localStorage.setItem(creditNoteId,'creditNoteId');
-    console.log('View PDF', creditNoteId);
+  viewCreditNote(documentId: any) {
+    // documentId= localStorage.setItem(documentId,'documentId');
+    console.log('View PDF', documentId);
 
     // console.log('payload: ' + JSON.stringify(this.document));
     // const documentId = invoiceId + '_' + date;
     // const documentId = 'DIGI_2023-04-27_30';
-    console.log(creditNoteId + 'creditNoteId');
-    this.invoiceApi.getPdfCreditNote(creditNoteId).subscribe((data: any) => {
+    console.log(documentId + 'creditNoteId');
+    this.invoiceApi.getPdfCreditNote(documentId).subscribe((data: any) => {
       console.log('view credit note pdf ' + data);
       const reader = new FileReader();
       reader.onload = () => {
@@ -109,13 +109,14 @@ export class CreditnoteDashboardComponent {
     });
   }
 
-  deleteCreditNotes(creditNoteId:any) {
-    console.log('deleteInvoice', creditNoteId);
+  deleteCreditNotes(documentId:any) {
+    console.log('deleteInvoice', documentId);
     // this.invoiceId = localStorage.getItem('invoiceId');
-    this.invoiceApi.deleteCreditNotes(creditNoteId).subscribe((data)=>{
+    this.invoiceApi.deleteCreditNotes(documentId).subscribe((data)=>{
       console.log('List of credit note'+JSON.stringify(data));
     })
     alert('credit note deleted successfully');
+    window.location.reload();
     
   }
   onSend(){
@@ -127,8 +128,8 @@ export class CreditnoteDashboardComponent {
       window.location.reload();
     });
   }
-  onDownload(creditNoteId: string) {
-    this.invoiceApi.downloadCreditNote(creditNoteId).subscribe(response => {
+  onDownload(documentId: string) {
+    this.invoiceApi.downloadCreditNote(documentId).subscribe(response => {
       this.saveFile(response);
     });
 

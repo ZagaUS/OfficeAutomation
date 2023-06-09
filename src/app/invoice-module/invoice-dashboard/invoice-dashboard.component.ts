@@ -140,6 +140,7 @@ export class InvoiceDashboardComponent {
       console.log('List of Invoices'+JSON.stringify(data));
     })
     alert('Invoice deleted successfully');
+    window.location.reload();
     
   }
   onSend(){

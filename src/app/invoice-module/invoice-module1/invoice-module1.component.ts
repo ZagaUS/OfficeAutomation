@@ -28,8 +28,8 @@ projectName?:any = localStorage.getItem('projectName');
   }
 
   ngOnInit(): void {
-    this.apiService.getListOfProjects().subscribe((data) => {
-      console.log('List of projects ' + JSON.stringify(data));
+    this.apiService.getListOfProjectsForInvoice().subscribe((data) => {
+      // console.log('List of projects ' + JSON.stringify(data));
       this.dataSource = new MatTableDataSource(data);
   });
   }
