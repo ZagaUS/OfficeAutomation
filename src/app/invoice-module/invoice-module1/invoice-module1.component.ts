@@ -20,7 +20,11 @@ export class InvoiceModule1Component {
     // 'projectAssigned',
     'action',
   ];
+// po?:any = localStorage.getItem('po');
+// sfdc?:any = localStorage.getItem('sfdc');
+// totalManDays?:any=localStorage.setItem('totalManDays',this.totalManDays);
 
+// pa?:any = localStorage.getItem('pa');
 projectName?:any = localStorage.getItem('projectName');
 
   constructor(private router: Router, private api: InvoiceApiService, private apiService: ApiServicesService) {
@@ -47,8 +51,12 @@ projectName?:any = localStorage.getItem('projectName');
    
   }
 
-  viewCreditNote(projectId: any) {
+  viewCreditNote(projectId: any, po:any,sfdc:any, pa:any, totalManDays:any) {
     localStorage.setItem('projectId', projectId);
+    localStorage.setItem('po', po);
+    localStorage.setItem('sfdc',sfdc);
+    localStorage.setItem('pa',pa);
+    localStorage.setItem('totalManDays',totalManDays);
     console.log('project Name', this.projectName);
     localStorage.setItem('projectName', this.projectName);
     // this.api.getProjectDetails(projectId).subscribe((data) => {

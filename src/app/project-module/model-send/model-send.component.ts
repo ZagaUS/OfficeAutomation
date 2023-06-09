@@ -62,8 +62,11 @@ onFileSelected(event: any) {
 onSend(){
         this.api.sendDocument(this.contactForm.value).subscribe((data) => {
       console.log('External Timesheet of projects ' + JSON.stringify(data));
-      window.location.reload();
+      
     });
+    alert('Mail Sent Successfully');
+    const closeMessage = 'Modal closed';
+      this.modalRef.close(closeMessage);
 }
 
 openFileSelection() {
@@ -110,6 +113,7 @@ onClickExternalSave() {
  this.modalRef.close(closeMessage);
 }
 onSubmit() {
+  // window.location.reload();
  // const po = this.contactForm.value;
  // this.api.createProjectDetails(projectDetails).subscribe((data: any) => {
  //   console.log('data updated', data);

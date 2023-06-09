@@ -27,7 +27,7 @@ export class InvoiceApiService {
 
   getPdf(documentId: any): Observable<Blob> {
     const headers = new HttpHeaders().set('Accept', 'text/plain');
-    return this.http.get(this.invoiceUrl + `/invoice/creditNote/${documentId}/pdf`, {
+    return this.http.get(this.invoiceUrl + `/invoice/${documentId}/pdf`, {
       headers,
       responseType: 'blob',
     });

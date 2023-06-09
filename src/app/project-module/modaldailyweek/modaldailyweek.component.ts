@@ -35,7 +35,7 @@ export class ModaldailyweekComponent {
   employeeName?: any = localStorage.getItem('employeeName');
   duration?: string;
   description?: string;
-  date?: string;
+  date?: any= Date;
   supportTicket?: string;
   clientOwner?: string;
   redhatOwner?: string;
@@ -89,7 +89,11 @@ export class ModaldailyweekComponent {
         projectName: this.projectName,
         employeeName: this.employeeName,
         hours: this.duration,
-        date: this.date,
+        date: formatDate(
+          this.date,
+          this.dateFormat,
+          'en-US'
+        ),
         supportTicket: this.supportTicket,
         clientOwners: this.clientOwners,
         redHatOwners: this.redHatOwners,

@@ -121,10 +121,11 @@ export class ModalinvoiceComponent {
     this.invoiceApi.createInvoice(updatedData).subscribe((data) => {
       console.log('invoice response' + JSON.stringify(data));
       this.documentId = data.pdfDocument.documentId;
-      // window.location.reload();
+      window.location.reload();
     });
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
+    // window.location.reload();
   }
 
   editInvoice() {

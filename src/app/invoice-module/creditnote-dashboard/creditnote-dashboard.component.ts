@@ -34,6 +34,7 @@ export class CreditnoteDashboardComponent {
   modalRef: MdbModalRef<ModaltimesheetComponent> | null = null;
   modalRefI: MdbModalRef<ModalinvoiceComponent> | null = null;
   pdfbaseapi: any;
+  
   // invoiceId?:any = localStorage.getItem('invoiceId');
   // documentId?:any = localStorage.getItem('documentId');
   projectId?:any = localStorage.getItem('projectId');
@@ -69,6 +70,10 @@ export class CreditnoteDashboardComponent {
     //   console.log(message);
     // localStorage.setItem('projectName', this.projectName);
     localStorage.setItem('projectId', this.projectId);  
+    // localStorage.getItem('po');
+    // localStorage.getItem('sfdc');
+    // localStorage.getItem('pa');
+    // localStorage.getItem('totalManDays');
     this.router.navigate(['/invoicedashboard/creditNote']);
       // window.location.reload();
     // });

@@ -29,38 +29,40 @@ export class InvoiceModuleComponent {
 
   }
 
-  ngOnInit(): void {
-    this.apiService.getListOfProjects().subscribe((data) => {
-      console.log('List of projects ' + JSON.stringify(data));
-      this.dataSource = new MatTableDataSource(data);
-  });
-  }
+  // ngOnInit(): void {
+  //   this.apiService.getListOfProjectsForInvoice().subscribe((data) => {
+  //     console.log('List of projects ' + JSON.stringify(data));
+  //     this.dataSource = new MatTableDataSource(data);
+  // });
+  // }
  
-  applyFilterForCategory() {
+  // applyFilterForCategory() {
    
-  }
+  // }
 
-  viewInvoice(projectId?: any, projectName?: any) {
-    console.log('project Name', projectName);
-    localStorage.setItem('projectId', projectId);
-    localStorage.setItem('projectName', projectName);
-    this.router.navigate(['/invoicedashboard/dashboard']);
+  // viewInvoice(projectId?: any, projectName?: any) {
+  //   console.log('project Name', projectName);
+  //   localStorage.setItem('projectId', projectId);
+  //   localStorage.setItem('projectName', projectName);
+  //   this.router.navigate(['/invoicedashboard/dashboard']);
   
    
-  }
+  // }
 
-  viewCreditNote(projectId: any) {
-    this.api.getProjectDetails(projectId).subscribe((data) => {
-      console.log('Employee Details ' + JSON.stringify(data));
-      this.router.navigate(['/invoicedashboard/creditnoteDashboard']);
-  });
-
-}
-applyFilter(event: Event) {
-  const filterValue = (event.target as HTMLInputElement).value;
-  console.log('filterValue', filterValue);
-  this.dataSource.filter = filterValue.trim().toLowerCase();
-}
-
+  // viewCreditNote(projectId: any) {
+  //   this.api.getProjectDetails(projectId).subscribe((data) => {
+  //     console.log('Employee Details ' + JSON.stringify(data));
+      
+  //     this.router.navigate(['/invoicedashboard/creditnoteDashboard']);
+  //     localStorage.setItem('projectId', projectId);
+      // localStorage.setItem('projectName', projectName);
+    // });
 
 }
+// applyFilter(event: Event) {
+//   const filterValue = (event.target as HTMLInputElement).value;
+//   console.log('filterValue', filterValue);
+//   this.dataSource.filter = filterValue.trim().toLowerCase();
+// }
+
+

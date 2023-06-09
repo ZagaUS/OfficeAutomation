@@ -1,6 +1,7 @@
 import { Component,Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InvoiceApiService } from 'src/app/base-api/invoice-api.service';
+import { Location} from '@angular/common';
 
 
 
@@ -22,9 +23,12 @@ export class CreditNoteComponent {
   clientCurrency?: any = localStorage.getItem('clientCurrency');
   clientAddress?: any = localStorage.getItem('clientAddress');
   // invoiceId?:any = localStorage.getItem('invoiceId');
+  po?: any = localStorage.getItem('po');
+  sfdc?:  any = localStorage.getItem('sfdc');
+  pa?:  any = localStorage.getItem('pa');
+  totalManDays?:  any = localStorage.getItem('totalManDays');
 
-
-  constructor( private fb: FormBuilder,   private api: InvoiceApiService){
+  constructor( private fb: FormBuilder,   private api: InvoiceApiService, private location : Location){
     this.createForm();
     
   }
@@ -38,9 +42,9 @@ export class CreditNoteComponent {
       clientAddress: [this.clientAddress],
       ref: [''],
       referenceInvoice:[''],
-      pa: [''],
-      po: [''],
-      sfdc: [''],
+      pa: [this.pa],
+      po: [this.po],
+      sfdc: [this.sfdc],
       currencyType: ['', Validators.required],
       date: ['', Validators.required],
       paidAmount:['', Validators.required],
@@ -51,12 +55,14 @@ export class CreditNoteComponent {
   }
 
   onCreate() {
+  
     
     const quote = this.creditnoteForm.value;
     console.log(quote);
     this.api.createCreditNote(quote).subscribe((data: any) => {
       console.log('data updated', data);
       alert('Updated successfully');
+      this.location.back();
       // do something with the response, if needed
     });
   }

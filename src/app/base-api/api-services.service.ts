@@ -28,7 +28,7 @@ export class ApiServicesService {
 
   getListOfProjectsForInvoice() {
     return this.http.get<any>(
-      this.projectMgtUrl + '/projectDetails/viewProjectDetailsForInvoice'
+      this.projectMgtUrl + '/projectDetails//viewProjectDetailsForInvoice'
     );
   }
 

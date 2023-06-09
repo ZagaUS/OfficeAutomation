@@ -76,6 +76,7 @@ export class InvoiceDashboardComponent {
   ) {}
 
   ngOnInit(projectId: any): void {
+  
      localStorage.setItem('invoiceId',this.projectId);
     this.invoiceApi.getAllInvoice(this.projectId).subscribe((data) => {
       this.dataSource = new MatTableDataSource(data);
