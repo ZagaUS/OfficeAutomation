@@ -35,16 +35,16 @@ export class CreditNoteComponent {
 
     createForm() {
     this.creditnoteForm = this.fb.group({
-      creditNoteId:['', Validators.required],
+      creditNoteId:[''],
       invoiceId:['', Validators.required],
       projectId: [this.projectId],
       projectName: [this.projectName],
       clientAddress: [this.clientAddress],
-      ref: [''],
-      referenceInvoice:[''],
-      pa: [this.pa],
-      po: [this.po],
-      sfdc: [this.sfdc],
+      ref: ['',Validators.required],
+      referenceInvoice:['',Validators.required],
+      pa: [this.pa,Validators.required],
+      po: [this.po,Validators.required],
+      sfdc: [this.sfdc,Validators.required],
       currencyType: [this.clientCurrency, Validators.required],
       date: ['', Validators.required],
       paidAmount:['', Validators.required],

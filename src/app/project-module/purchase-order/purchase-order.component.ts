@@ -74,7 +74,7 @@ export class PurchaseOrderComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
-      window.location.reload();
+      // window.location.reload();
     });
   }
 

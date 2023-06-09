@@ -78,7 +78,7 @@ export class ProjectDashboardComponent {
       setTimeout(() => {
         // this.location.go(this.location.path());
         window.location.reload();
-      }, 10000);
+      }, 20000);
       // this.ELEMENT_DATA = data;
     });
   }

@@ -23,6 +23,7 @@ export class ModelSendComponent {
 
 dateFormat = 'yyyy-MM-dd';
 fileName: any = '';
+from: any = '@gmail.com';
 
 
 constructor(
@@ -38,7 +39,7 @@ constructor(
    // hours: ['', Validators.required],
   //  startDate: [new Date(), Validators.required],
   //  endDate: [new Date(), Validators.required],
-  from:['', Validators.required],
+  from:['sha@gmail.com'],
 to:['', Validators.required],
 subject:['', Validators.required],
 description: ['', Validators.required],

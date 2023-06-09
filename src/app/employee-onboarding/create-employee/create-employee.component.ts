@@ -35,7 +35,7 @@ export class CreateEmployeeComponent {
       reportingManager: [''],
       employeeStatus: ['Active', Validators.required],
       overallExperience: ['', Validators.required],
-      projectAssignmentStatus: [''],
+      projectAssignmentStatus: [false],
 
       gender: ['', Validators.required],
       nationality: ['', Validators.required],
@@ -243,7 +243,7 @@ export class CreateEmployeeComponent {
     });
     this.modalRef.onClose.subscribe((message: any) => {
       console.log(message);
-      window.location.reload();
+      // window.location.reload();
     });
   }
 
