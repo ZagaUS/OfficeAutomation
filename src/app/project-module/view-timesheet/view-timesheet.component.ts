@@ -132,7 +132,6 @@ export class ViewTimesheetComponent {
   weeklyDisplayedColumns: string[] = [
     'weeklyTimesheetId',
     'projectName',
-    'timesheetType',
     'startDate',
     'endDate',
     'duration',

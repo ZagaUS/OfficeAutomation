@@ -88,7 +88,8 @@ export class EmployeeDashboardComponent {
       console.log('Employee Details ' + JSON.stringify(data));
 
     })
-    alert('employee deleted');
+    // alert('employee deleted');
+    window.location.reload();
     console.log('test');
   }
 

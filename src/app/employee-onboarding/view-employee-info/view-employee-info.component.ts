@@ -29,7 +29,7 @@ export class ViewEmployeeInfoComponent {
     reportingManager:[''],
     employeeStatus:[''],
     overallExperience:[''],
-    projectAssignmentStatus:[''],
+    projectAssignmentStatus:[false],
   });
 }
 ngOnInit() {
