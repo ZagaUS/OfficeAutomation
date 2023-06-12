@@ -5,7 +5,7 @@
 //     'https://us-east-1.aws.data.mongodb-api.com/app/application-0-wouft/endpoint/sendmail',
 // };
 export const environment = {
-  production: false,
+  production: true,
   projectMgtUrl: 'http://localhost:8081/zaga/projectManagement',
   invoiceUrl: 'http://localhost:8083/Zaga/Invoice',
   employeeUrl: 'http://localhost:8090/zaga/employeeOnboarding/',
