@@ -105,7 +105,7 @@ onClickExternalSave() {
      this.projectId,
      this.projectName).subscribe((data) => {
      console.log('External Timesheet of projects ' + JSON.stringify(data));
-     window.location.reload();
+    //  window.location.reload();
    });
 
  console.log(this.contactForm.value);
