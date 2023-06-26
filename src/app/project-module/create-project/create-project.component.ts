@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { formatDate } from '@angular/common';
 
 import {
   FormBuilder,
@@ -29,6 +30,7 @@ export class CreateProjectComponent {
   selectedCurrency: string = '';
   selectedTimezones: string[] = [];
   jsonData: CurrencyData[] = [];
+  dateFormat = 'yyyy-MM-dd';
 
   constructor(private snackBar: MatSnackBar,private fb: FormBuilder, private api: ApiServicesService, private location: Location) {
     this.createForm();
@@ -54,8 +56,8 @@ export class CreateProjectComponent {
       quoteId: [''],
       quoteStatus: [''],
       serviceDescription: [''],
-      startDate: [''],
-      endDate: [''],
+      startDate: [new Date(), Validators.required],
+      endDate: [new Date(), Validators.required],
       from: [''],
       to: [''],
       totalAmount: [''],
@@ -68,7 +70,7 @@ export class CreateProjectComponent {
       duration: [''],
       poStatus: ['false'],
       quoteFlag: ['false'],
-      date: [''],
+      date: [new Date(), Validators.required],
       selectedCurrency: new FormControl(),
       selectedTimezone: new FormControl(),
     });
@@ -87,7 +89,18 @@ export class CreateProjectComponent {
     });
   }
   onSubmit() {
-    const projectDetails = this.myForm.value;
+    const startDate = formatDate(
+      this.myForm.value.startDate,
+      this.dateFormat,
+      'en-US'
+    );
+    const endDate = formatDate(
+      this.myForm.value.endDate,
+      this.dateFormat,
+      'en-US'
+    );
+    const projectDetails = {...this.myForm.value, startDate: startDate,
+      endDate: endDate}
     this.api.createProjectDetails(projectDetails).subscribe((data: any) => {
       console.log('data updated', data);
       // alert('Updated successfully');
