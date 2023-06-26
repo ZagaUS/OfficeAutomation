@@ -153,12 +153,26 @@
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Start Date</mat-label>
-        <input matInput type="date" formControlName="startDate" />
+        <input matInput  [matDatepicker]="startDatePicker"
+          placeholder="startDate" formControlName="startDate" />
+          <mat-datepicker-toggle
+          matSuffix
+          [for]="startDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #startDatePicker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>End Date</mat-label>
-        <input matInput type="date" formControlName="endDate" />
+        <input matInput  [matDatepicker]="endDatePicker"
+          placeholder="Enddate"
+          formControlName="endDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="endDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #endDatePicker></mat-datepicker>
       </mat-form-field>
 
       <!-- <mat-form-field appearance="outline" class="form-field">
@@ -219,8 +233,16 @@
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Valid Date</mat-label>
-        <input matInput type="date" formControlName="validDate" />
-      </mat-form-field>
+        <input matInput [matDatepicker]="validDatePicker"
+        placeholder="validdate"
+        formControlName="validDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="validDatePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #validDatePicker></mat-datepicker>
+    </mat-form-field>
 
       <button mat-raised-button class="form-button" type="submit ">
         Submit

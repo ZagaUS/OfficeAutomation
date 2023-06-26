@@ -31,6 +31,7 @@ export class CreateProjectComponent {
   selectedTimezones: string[] = [];
   jsonData: CurrencyData[] = [];
   dateFormat = 'yyyy-MM-dd';
+  
 
   constructor(private snackBar: MatSnackBar,private fb: FormBuilder, private api: ApiServicesService, private location: Location) {
     this.createForm();
@@ -65,7 +66,7 @@ export class CreateProjectComponent {
       pa: [''],
       po: [''],
       sfdc: [''],
-      validDate: [''],
+      validDate: [new Date()],
       totalManDays: [''],
       duration: [''],
       poStatus: ['false'],
@@ -99,8 +100,13 @@ export class CreateProjectComponent {
       this.dateFormat,
       'en-US'
     );
+    const validDate = formatDate(
+      this.myForm.value.validDate,
+      this.dateFormat,
+      'en-US'
+    );
     const projectDetails = {...this.myForm.value, startDate: startDate,
-      endDate: endDate}
+      endDate: endDate, validDate: validDate}
     this.api.createProjectDetails(projectDetails).subscribe((data: any) => {
       console.log('data updated', data);
       // alert('Updated successfully');
