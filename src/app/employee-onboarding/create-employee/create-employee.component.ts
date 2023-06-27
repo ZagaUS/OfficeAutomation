@@ -29,7 +29,7 @@ export class CreateEmployeeComponent {
       employeeRole: ['', Validators.required],
       jobTitle: ['', Validators.required],
       dateOfJoining: ['', Validators.required],
-      employeeEmail: ['', Validators.required],
+      employeeEmail: ['', [Validators.required, Validators.email]],
       password: [''],
       department: ['', Validators.required],
       reportingManager: [''],
@@ -44,7 +44,7 @@ export class CreateEmployeeComponent {
       
       dateOfBirth: ['', Validators.required],
       bloodGroup: ['', Validators.required],
-      personalEmail: ['', Validators.required],
+      personalEmail: ['', [Validators.required, Validators.email]],
       personalPhone: ['', Validators.required],
       emergencyPhone: ['', Validators.required],
       address: ['', Validators.required], 
