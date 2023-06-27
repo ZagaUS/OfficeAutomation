@@ -21,15 +21,21 @@ export class QuoteCreationComponent {
   clientCurrency?: any = localStorage.getItem('clientCurrency');
   // date?: any = localStorage.getItem('date');
   unitPrice?: any = localStorage.getItem('unitPrice');
-  date?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en');
-  startDate?: any = localStorage.getItem('startDate');
-endDate?: any = localStorage.getItem('endDate');
+  date?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  startDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+endDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+validDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
 duration?: any = localStorage.getItem('duration');  
 // projectId?: any = localStorage.getItem('projectId');
  
 
 constructor(private fb: FormBuilder, private api: ApiServicesService) {
   this.createForm();
+}
+
+ngOnInit() {
+  this.startDate = localStorage.getItem('startDate');
+this.endDate = localStorage.getItem('endDate');
 }
 
 createForm() {
@@ -47,8 +53,8 @@ createForm() {
     pa: [''],
     po: [''],
     sfdc: [''],
-    validDate: ['', Validators.required],
-    date: ['', Validators.required],
+    validDate: [this.validDate, Validators.required],
+    date: [this.date, Validators.required],
     startDate:[this.startDate, Validators.required],
     endDate:[this.endDate, Validators.required],
     totalManDays: ['', Validators.required],
@@ -62,9 +68,11 @@ createForm() {
 
 onCreate() {
   if (this.quoteForm.valid) {
+
   const quote = this.quoteForm.value;
   this.api.createQuotes(quote).subscribe((data: any) => {
     console.log('data updated', data);
+    console.log(this.startDate);
     alert('Updated successfully');
     // do something with the response, if needed
   });

@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ModalResumeuploadComponent } from '../modal-resumeupload/modal-resumeupload.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import {Location} from '@angular/common';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-create-employee',
@@ -17,7 +18,11 @@ import {Location} from '@angular/common';
 export class CreateEmployeeComponent {
   myForm!: FormGroup;
   modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
-
+  dateFormat = 'yyyy-MM-dd';
+  dateOfBirth?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  dateOfJoining?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  endDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  startDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
   constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService, private location:Location) {
     this.createForm();
   }
@@ -28,8 +33,8 @@ export class CreateEmployeeComponent {
       employeeName: ['', Validators.required],
       employeeRole: ['', Validators.required],
       jobTitle: ['', Validators.required],
-      dateOfJoining: ['', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
+      dateOfJoining: [this.dateOfJoining, Validators.required],
       password: [''],
       department: ['', Validators.required],
       reportingManager: [''],
@@ -42,7 +47,7 @@ export class CreateEmployeeComponent {
       maritalStatus: ['', Validators.required],
       language: this.fb.array([]),
       
-      dateOfBirth: ['', Validators.required],
+      dateOfBirth: [this.dateOfBirth, Validators.required],
       bloodGroup: ['', Validators.required],
       personalEmail: ['', [Validators.required, Validators.email]],
       personalPhone: ['', Validators.required],
@@ -117,8 +122,8 @@ export class CreateEmployeeComponent {
   createJobHistory(): FormGroup {
     return this.fb.group({
       companyName: [''],
-      startDate: [''],
-      endDate: [''],
+      startDate: [this.startDate],
+      endDate: [this.endDate],
       field: [''],
       experience: ['']
     });
@@ -168,6 +173,7 @@ export class CreateEmployeeComponent {
   }  
   
   onSubmit() {
+    
     const employeeInfo = {
       "employeeName": this.myForm.value.employeeName,
       "employeeRole": this.myForm.value.employeeRole,
