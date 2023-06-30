@@ -42,10 +42,11 @@ projectName?:any = localStorage.getItem('projectName');
    
   }
 
-  viewInvoice(projectId?: any, projectName?: any){
+  viewInvoice(projectId?: any, projectName?: any,  clientCurrency?:any){
     // console.log('project Name', projectName);
     localStorage.setItem('projectId', projectId);
     localStorage.setItem('projectName', projectName);
+    localStorage.setItem('clientCurrency', clientCurrency);
    
     this.router.navigate(['/invoicedashboard/dashboard']);
   
