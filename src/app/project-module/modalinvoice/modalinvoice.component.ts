@@ -40,6 +40,7 @@ export class ModalinvoiceComponent {
   description?: string;
   documentId: any;
   date?: any = new Date();
+  clientCurrency?: any = localStorage.getItem('clientCurrency');
 
   constructor(
     private snackBar: MatSnackBar,
@@ -99,6 +100,7 @@ export class ModalinvoiceComponent {
 
     const updatedData = {
       date: date,
+      clientCurrency:this.clientCurrency,
       clientAddress: this.clientAddress,
       projectName: this.projectName,
       consultant: this.consultant,

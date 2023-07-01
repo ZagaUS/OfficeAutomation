@@ -52,7 +52,7 @@ export class CreateEmployeeComponent {
       
       dateOfBirth: [new Date(), Validators.required],
       bloodGroup: ['', Validators.required],
-      personalEmail: ['',[Validators.required, Validators.email]],
+      personalEmail: ['', [Validators.required, Validators.email]],
       personalPhone: ['', Validators.required],
       emergencyPhone: ['', Validators.required],
       address: ['', Validators.required], 
