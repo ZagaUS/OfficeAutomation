@@ -6,10 +6,20 @@
         <mat-label>Project Name</mat-label>
         <input matInput   type="text"   formControlName="projectName"  >
         </mat-form-field>  
+        
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Date</mat-label>
-          <input matInput   type="date"   formControlName="date"  >
-          </mat-form-field> 
+          <input matInput [matDatepicker]="datePicker"
+          placeholder="date"
+          formControlName="date"
+          required="true" 
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="datePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datePicker></mat-datepicker>
+      </mat-form-field>
         
     <mat-form-field appearance="outline" class="form-field">
       <mat-label>Client Address</mat-label>

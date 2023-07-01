@@ -164,6 +164,7 @@ export class ProjectDashboardComponent {
     localStorage.setItem('clientCurrency', clientCurrency);
     localStorage.setItem('startDate', startDate);
     localStorage.setItem('endDate', endDate);
+    // localStorage.setItem('validDate', validDate);
     localStorage.setItem('duration', duration);
     localStorage.setItem('unitPrice', unitPrice);
 

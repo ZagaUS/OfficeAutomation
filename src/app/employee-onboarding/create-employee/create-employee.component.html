@@ -40,6 +40,16 @@
         <mat-form-field appearance="outline" class="form-field">
           <mat-label>Employee EmailId</mat-label>
           <input matInput formControlName="employeeEmail" type="email">
+          <mat-error
+          *ngIf="
+            myForm?.get('employeeEmail')?.invalid &&
+            myForm?.get('employeeEmail')?.touched
+          "
+        >
+          <span *ngIf="myForm?.get('employeeEmail')?.hasError('email')"
+            >Invalid email format</span
+          >
+        </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="form-field">
@@ -109,7 +119,17 @@
 
       <mat-form-field appearance="outline" class="form-field">
         <mat-label>Personal EmailId</mat-label>
-        <input matInput type="text"  formControlName="personalEmail">
+        <input matInput formControlName="personalEmail" type="email">
+        <mat-error
+        *ngIf="
+          myForm?.get('personalEmail')?.invalid &&
+          myForm?.get('personalEmail')?.touched
+        "
+      >
+        <span *ngIf="myForm?.get('personalEmail')?.hasError('email')"
+          >Invalid email format</span
+        >
+      </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="form-field">
@@ -184,23 +204,13 @@
           </mat-form-field>
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>Start Date</mat-label>
-            <input matInput  [matDatepicker]="startDatePicker"
+            <input matInput  type="date"
             placeholder="startDate" formControlName="startDate" />
-            <mat-datepicker-toggle
-            matSuffix
-            [for]="startDatePicker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #startDatePicker></mat-datepicker>
         </mat-form-field>
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>End Date</mat-label>
-            <input matInput  [matDatepicker]="endDatePicker"
+            <input matInput  type="date"
             placeholder="endDate" formControlName="endDate" />
-            <mat-datepicker-toggle
-            matSuffix
-            [for]="endDatePicker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #endDatePicker></mat-datepicker>
         </mat-form-field>
           <mat-form-field appearance="outline" class="form-field">
             <mat-label>Designation</mat-label>

@@ -66,7 +66,7 @@ export class CreateProjectComponent {
       pa: [''],
       po: [''],
       sfdc: [''],
-      validDate: [new Date(), Validators.required],
+      validDate: [new Date()],
       totalManDays: [''],
       duration: [''],
       poStatus: ['false'],
@@ -112,7 +112,7 @@ export class CreateProjectComponent {
     );
 
     const projectDetails = {...this.myForm.value, startDate: startDate,
-      endDate: endDate}
+      endDate: endDate, validDate: validDate, date:date}
     this.api.createProjectDetails(projectDetails).subscribe((data: any) => {
       console.log('data updated', data);
       // alert('Updated successfully');

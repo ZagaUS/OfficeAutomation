@@ -11,6 +11,7 @@ import { InvoiceModuleComponent } from './invoice-module.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CreditNoteComponent } from './credit-note/credit-note.component';
@@ -33,7 +34,8 @@ import { CreditnoteDashboardComponent } from './creditnote-dashboard/creditnote-
     ReactiveFormsModule,
     MatButtonModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatDatepickerModule
   ],
 })
 export class InvoiceModuleModule {}

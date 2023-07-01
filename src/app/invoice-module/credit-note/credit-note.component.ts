@@ -1,8 +1,10 @@
 import { Component,Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InvoiceApiService } from 'src/app/base-api/invoice-api.service';
-import { Location} from '@angular/common';
+import { Location, formatDate} from '@angular/common';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
 
 
 @Component({
@@ -13,7 +15,7 @@ import { Location} from '@angular/common';
 
 export class CreditNoteComponent {
 
- 
+  dateFormat = 'yyyy-MM-dd';
   creditnoteForm!: FormGroup;
 
 
@@ -28,7 +30,7 @@ export class CreditNoteComponent {
   pa?:  any = localStorage.getItem('pa');
   totalManDays?:  any = localStorage.getItem('totalManDays');
 
-  constructor( private fb: FormBuilder,   private api: InvoiceApiService, private location : Location){
+  constructor( private fb: FormBuilder,   private api: InvoiceApiService, private location : Location, ){
     this.createForm();
     
   }
@@ -46,7 +48,7 @@ export class CreditNoteComponent {
       po: [this.po,Validators.required],
       sfdc: [this.sfdc,Validators.required],
       currencyType: [this.clientCurrency, Validators.required],
-      date: ['', Validators.required],
+      date: [new Date(), Validators.required],
       paidAmount:['', Validators.required],
       actualsgd:['', Validators.required],
       creditAmount: ['', Validators.required],
@@ -59,8 +61,11 @@ export class CreditNoteComponent {
       alert('Please fill in all required fields.');
       return;
     }
+    const date = formatDate(this.creditnoteForm.value.date,
+      this.dateFormat,
+      'en-US');
     
-    const quote = this.creditnoteForm.value;
+    const quote = {...this.creditnoteForm.value, date:date};
     console.log(quote);
     this.api.createCreditNote(quote).subscribe((data: any) => {
       console.log('data updated', data);

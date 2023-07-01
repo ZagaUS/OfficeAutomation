@@ -8,6 +8,7 @@ import { ModalResumeuploadComponent } from '../modal-resumeupload/modal-resumeup
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import {Location} from '@angular/common';
 import { formatDate } from '@angular/common';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-create-employee',
@@ -19,22 +20,24 @@ export class CreateEmployeeComponent {
   myForm!: FormGroup;
   modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
   dateFormat = 'yyyy-MM-dd';
-  dateOfBirth?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
-  dateOfJoining?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
-  endDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
-  startDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  // dateOfJoining?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  // dateOfJoiningOnly?:string;
+  // endDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  // startDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
   constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService, private location:Location) {
     this.createForm();
   }
 
+
   createForm() {
+    
     this.myForm = this.fb.group({
       // employeeId: [''],
       employeeName: ['', Validators.required],
       employeeRole: ['', Validators.required],
       jobTitle: ['', Validators.required],
-      dateOfJoining: [this.dateOfJoining, Validators.required],
-      employeeEmail: ['', Validators.required],
+      dateOfJoining: [new Date(), Validators.required],
+      employeeEmail: ['', [Validators.required, Validators.email]],
       password: [''],
       department: ['', Validators.required],
       reportingManager: [''],
@@ -47,9 +50,9 @@ export class CreateEmployeeComponent {
       maritalStatus: ['', Validators.required],
       language: this.fb.array([]),
       
-      dateOfBirth: [this.dateOfBirth, Validators.required],
+      dateOfBirth: [new Date(), Validators.required],
       bloodGroup: ['', Validators.required],
-      personalEmail: ['', Validators.required],
+      personalEmail: ['',[Validators.required, Validators.email]],
       personalPhone: ['', Validators.required],
       emergencyPhone: ['', Validators.required],
       address: ['', Validators.required], 
@@ -122,8 +125,8 @@ export class CreateEmployeeComponent {
   createJobHistory(): FormGroup {
     return this.fb.group({
       companyName: [''],
-      startDate: [this.startDate],
-      endDate: [this.endDate],
+      startDate: [new Date()],
+      endDate: [new Date()],
       field: [''],
       experience: ['']
     });
@@ -173,12 +176,26 @@ export class CreateEmployeeComponent {
   }  
   
   onSubmit() {
+
+
+    const dateOfJoining = formatDate(
+      this.myForm.value.dateOfJoining,
+      this.dateFormat,
+      'en-US'
+    );
+
+    const dateOfBirth = formatDate(
+      this.myForm.value.dateOfBirth,
+      this.dateFormat,
+      "en-US"
+    );
+
     
     const employeeInfo = {
       "employeeName": this.myForm.value.employeeName,
       "employeeRole": this.myForm.value.employeeRole,
       "jobTitle": this.myForm.value.jobTitle,
-      "dateOfJoining": this.myForm.value.dateOfJoining,
+      "dateOfJoining": dateOfJoining,
       "employeeEmail": this.myForm.value.employeeEmail,
       "password": this.myForm.value.password,
       "department": this.myForm.value.department,
@@ -194,7 +211,7 @@ export class CreateEmployeeComponent {
       "nationality": this.myForm.value.nationality,
       "martialStatus": this.myForm.value.maritalStatus,
       "language": this.myForm.value.language,
-      "dateOfBirth": this.myForm.value.dateOfBirth,
+      "dateOfBirth": dateOfBirth,
       "bloodGroup": this.myForm.value.bloodGroup,
       "personalEmail": this.myForm.value.personalEmail,
       "personalPhone": this.myForm.value.personalPhone,

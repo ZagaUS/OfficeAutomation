@@ -23,40 +23,30 @@
 
     <mat-form-field appearance="outline" class="form-field">
         <mat-label>Start Date</mat-label>
-        <input matInput   [matDatepicker]="startDatePicker"
+        <input matInput   type="date"
         placeholder="startDate"
         formControlName="startDate"
-        required="true"
-      />
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="startDatePicker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #startDatePicker></mat-datepicker>
+        required="true">
+      
     </mat-form-field>
     
        <mat-form-field appearance="outline" class="form-field">
         <mat-label>End Date</mat-label>
-        <input matInput   [matDatepicker]="endDatePicker"
+        <input matInput  type="date"
         placeholder="endDate"
         formControlName="endDate"
-        required="true"
-      />
-      <mat-datepicker-toggle
-        matSuffix
-        [for]="endDatePicker"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #endDatePicker></mat-datepicker>
+        required="true">
+    
     </mat-form-field>
       
 
 
        <mat-form-field appearance="outline" class="form-field">
         <mat-label>Date</mat-label>
-        <input matInput  [matDatepicker]="datePicker"
+        <input  matInput  
         placeholder="date"
         formControlName="date"
-        required="true"
+        required="true" [matDatepicker]="datePicker"
       />
       <mat-datepicker-toggle
         matSuffix
@@ -157,10 +147,10 @@
         
             <mat-form-field appearance="outline" class="form-field">
           <mat-label>Valid Date</mat-label>
-          <input matInput   [matDatepicker]="validDatePicker"
+          <input matInput  
           placeholder="validDate"
           formControlName="validDate"
-          required="true"
+          required="true" [matDatepicker]="validDatePicker"
         />
         <mat-datepicker-toggle
           matSuffix

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-quote-creation',
   templateUrl: './quote-creation.component.html',
@@ -22,21 +22,22 @@ export class QuoteCreationComponent {
   // date?: any = localStorage.getItem('date');
   unitPrice?: any = localStorage.getItem('unitPrice');
   date?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
-  startDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
-endDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
-validDate?: any = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
+  startDate?: any = localStorage.getItem('startDate');;
+endDate?: any = localStorage.getItem('endDate');
+// validDate?: any = localStorage.getItem('validDate');
+
 duration?: any = localStorage.getItem('duration');  
 // projectId?: any = localStorage.getItem('projectId');
  
 
-constructor(private fb: FormBuilder, private api: ApiServicesService) {
+constructor(private fb: FormBuilder, private api: ApiServicesService, private location: Location) {
   this.createForm();
 }
 
-ngOnInit() {
-  this.startDate = localStorage.getItem('startDate');
-this.endDate = localStorage.getItem('endDate');
-}
+// ngOnInit() {
+//   this.startDate = localStorage.getItem('startDate');
+// this.endDate = localStorage.getItem('endDate');
+// }
 
 createForm() {
   this.quoteForm = this.fb.group({
@@ -53,8 +54,8 @@ createForm() {
     pa: [''],
     po: [''],
     sfdc: [''],
-    validDate: [this.validDate, Validators.required],
-    date: [this.date, Validators.required],
+    validDate: [new Date(), Validators.required],
+    date: [new Date(), Validators.required],
     startDate:[this.startDate, Validators.required],
     endDate:[this.endDate, Validators.required],
     totalManDays: ['', Validators.required],
@@ -68,12 +69,19 @@ createForm() {
 
 onCreate() {
   if (this.quoteForm.valid) {
+    const validDate = formatDate(this.quoteForm.value.validDate,
+      this.dateFormat,
+      'en-US');
+      const date = formatDate(this.quoteForm.value.date,
+        this.dateFormat,
+        'en-US');
 
-  const quote = this.quoteForm.value;
+  const quote = {...this.quoteForm.value,validDate: validDate, date:date};
   this.api.createQuotes(quote).subscribe((data: any) => {
     console.log('data updated', data);
     console.log(this.startDate);
     alert('Updated successfully');
+    this.location.back();
     // do something with the response, if needed
   });
 }

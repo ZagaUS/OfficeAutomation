@@ -92,6 +92,7 @@ export class MeetingMinuteComponent {
     .subscribe((data) => {
     alert('deleted')
     console.log(data);
+    window.location.reload(); 
   });
     
   }
