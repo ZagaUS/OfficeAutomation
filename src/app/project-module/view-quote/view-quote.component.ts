@@ -45,7 +45,7 @@ export class ViewQuoteComponent {
 "totalManDays",
 "startDate",
 "endDate",
-"duration",
+// "duration",
 "po",
 "pa",
 "sfdc",

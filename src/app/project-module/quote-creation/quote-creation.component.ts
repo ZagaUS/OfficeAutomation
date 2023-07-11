@@ -26,7 +26,7 @@ export class QuoteCreationComponent {
 endDate?: any = localStorage.getItem('endDate');
 // validDate?: any = localStorage.getItem('validDate');
 
-duration?: any = localStorage.getItem('duration');  
+// duration?: any = localStorage.getItem('duration');  
 // projectId?: any = localStorage.getItem('projectId');
  
 
@@ -61,7 +61,7 @@ createForm() {
     totalManDays: ['', Validators.required],
     whtAmount: ['', Validators.required],
     // gstPercent: ['', Validators.required],
-    duration: [this.duration, Validators.required],
+    // duration: [this.duration, Validators.required],
     employeeRole: [''],
     employeeName: [''],
   });

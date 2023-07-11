@@ -68,7 +68,7 @@ export class CreateProjectComponent {
       sfdc: [''],
       validDate: [new Date()],
       totalManDays: [''],
-      duration: [''],
+      // duration: [''],
       poStatus: ['false'],
       quoteFlag: ['false'],
       date: [new Date(), Validators.required],
