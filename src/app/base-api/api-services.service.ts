@@ -153,6 +153,14 @@ export class ApiServicesService {
     );
   }
 
+
+  deleteExternalTimesheetData( documentId:any, docType:any) {
+    return this.http.delete<any>(
+      this.projectMgtUrl + `/projectDetails/document/deleteById`+`?documentId=${documentId}&documentType=${docType}`
+    );
+  }
+
+
   getWeeklyTimesheetDataByWeekId(weeklyTimesheetId: any) {
     return this.http.get<any>(
       this.projectMgtUrl +
@@ -166,6 +174,9 @@ export class ApiServicesService {
       weeklyTimesheetData
     );
   }
+
+
+
 
   deletedailyTimesheetById(dailyTimesheetId: any) {
     return this.http.delete<any>(

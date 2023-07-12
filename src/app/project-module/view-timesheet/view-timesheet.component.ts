@@ -462,7 +462,7 @@ export class ViewTimesheetComponent {
     console.log('testi');
   }
 
-  deleteWeeklyTimesheetById(weeklyTimesheetId: any,dailyTimesheetId:any) {
+  deleteWeeklyTimesheetById(weeklyTimesheetId: any,dailyTimesheetId:any, documentId:any) {
     if (this.selectedValue == 'Weekly') {
     console.log("weeklyTimesheet+++++",weeklyTimesheetId);
     this.apiCall
@@ -470,19 +470,30 @@ export class ViewTimesheetComponent {
       .subscribe((data) => {
         alert('deleted')
         console.log(data);
-        // window.location.reload();
+        window.location.reload();
       });
   }
-  else{
+  else  if (this.selectedValue == 'Daily'){
     this.apiCall
     .deletedailyTimesheetById(dailyTimesheetId)
     .subscribe((data) => {
       alert("deleted")
       console.log(data);
+      window.location.reload();
     });
-  }
 
- 
+
+  }
+  else {
+    this.apiCall
+    .deleteExternalTimesheetData(documentId,this.docType)
+    .subscribe((data) => {
+      alert("deleted")
+      console.log(data);
+      window.location.reload();
+    });
+
+  }
    
 }
  getDailyTimesheetByTimesheetId(projectId?: any, projectName?: any, date?:any, dailyTimesheetId?:any){

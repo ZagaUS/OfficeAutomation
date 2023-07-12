@@ -81,7 +81,7 @@ export class ViewProjectdetailsComponent {
     "clientTimezone",
     "clientAddress",
     "clientCurrency",
-    "duration",     
+    // "duration",     
     "startDate",   
     "endDate",     
     "quoteId",     
