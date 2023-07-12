@@ -25,14 +25,34 @@ table {
    margin-bottom: 20px;
 }
 
+.btn {
+   float: right;
+   align-items: center;
+   margin-left: 10px;
+   flex-shrink: 0;
+   justify-content: center;
+   margin-bottom: 10px;
+   background: linear-gradient(to bottom, #074a6e , #074a6e );
+   color: #f3eeee;
+    
+}
+
 .btns {
    float: right;
    align-items: center;
    margin-left: 10px;
    flex-shrink: 0;
-   justify-content: flex-end;
+   width: 10px;
+   justify-content: center;
+   margin-bottom: 2px;
    background: linear-gradient(to bottom, #074a6e , #074a6e );
    color: #f3eeee;
     
+}
+
+.assignBtn {
+   margin-left: 10px;
+   background: linear-gradient(to bottom, #074a6e , #074a6e );
+   color: #f3eeee;
 }
 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Location } from '@angular/common';
 
 export interface Agenda {
   item: string;
@@ -29,8 +31,9 @@ export class ViewMeetingMinutesComponent {
     meetingObjective?: string;
     attendeesPresent?: Attendees[];
     agenda?: Agenda[];
-
-constructor(private router:Router,private api:ApiServicesService){
+    editMode = false;
+constructor(private router:Router,private api:ApiServicesService,private snackBar: MatSnackBar,
+  private location: Location,){
 
 }
 
@@ -66,6 +69,40 @@ constructor(private router:Router,private api:ApiServicesService){
   console.log('meetingMinutesId',localStorage.getItem('meetingMinutesId'));
   console.log('MeetId',localStorage.getItem('meetingMinutesId'));
   }
+
+  editMeetingMinutes(){
+    this.editMode = !this.editMode;
+    console.log("editable");
+  }
+  saveMeetingMinutes(){
+    console.log("Edited data " +   JSON.stringify(this.meetingDetails) );
+  this.api.updateMeetingMinutes(this.meetingDetails).subscribe((data: any) => {
+    console.log('data updated', data);
+    // alert('updated data successfully');
+    this.openSnackbar('Updated successfully', 1500);
+    this.location.back();
+    
+  });
+  }
   
+  openSnackbar(message: string, duration: number) {
+    const config: MatSnackBarConfig = {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom', // Change the vertical position to 'bottom'
+      panelClass: ['center-snackbar'],
+    };
+    this.snackBar.open(message, 'Close', {
+      duration: duration,
+    });
+  }
+
+
+
+
+
+
+
+
 }
   

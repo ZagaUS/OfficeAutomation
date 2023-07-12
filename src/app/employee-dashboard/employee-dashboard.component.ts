@@ -36,7 +36,7 @@ export class EmployeeDashboardComponent {
     'employeeId',
     'employeeName',
     'employeeRole',
-    'projectAssigned',
+    // 'projectAssigned',
     'action',
   ];
 
@@ -46,7 +46,7 @@ export class EmployeeDashboardComponent {
     console.log("Im'in");
     console.log("Im'in");
     this.api.getEmployeeDetail().subscribe((data) => {
-      console.log('List of projects ' + JSON.stringify(data));
+      console.log('List of Employees ' + JSON.stringify(data));
       const updatedData = data.map((element: PeriodicElement) => {
         console.log('projectAssigned value:', element.projectAssignmentStatus);
         return {
@@ -59,7 +59,6 @@ export class EmployeeDashboardComponent {
       this.dataSource = new MatTableDataSource(updatedData);
     });
   }
-  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -84,9 +83,18 @@ export class EmployeeDashboardComponent {
     this.router.navigate(['/employeeOnboarding']);
   }
 
-  //
-  test() {
-    alert('test');
+  test(employeeId: any) {
+    this.api.deleteEmployee(employeeId).subscribe((data) => {
+      console.log('Employee Details ' + JSON.stringify(data));
+
+    })
+    // alert('employee deleted');
+    window.location.reload();
     console.log('test');
   }
+
+  onAdd() {
+    
+  }
+
 }

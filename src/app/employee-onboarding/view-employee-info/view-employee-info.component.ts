@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-employee-info',
@@ -14,7 +15,7 @@ export class ViewEmployeeInfoComponent {
   employeeId?: any = localStorage.getItem('employeeId');
   
   constructor(private fb: FormBuilder,
-    private api:EmployeeApiService) { 
+    private api:EmployeeApiService, private location: Location) { 
     
   this.myForm = this.fb.group({
     employeeName: [''],
@@ -28,7 +29,7 @@ export class ViewEmployeeInfoComponent {
     reportingManager:[''],
     employeeStatus:[''],
     overallExperience:[''],
-    projectAssignmentStatus:[''],
+    projectAssignmentStatus:[false],
   });
 }
 ngOnInit() {
@@ -47,9 +48,11 @@ onEdit() {
     this.isReadOnly = false;
     const empValue = this.myForm.value;
     console.log("Employee infoo",empValue);
+    console.log("Employee id                  ------", this.employeeId); 
     this.api.updateEmployeeInfo(this.employeeId,empValue).subscribe((data:any) => {
       console.log("data updated+++++++++++++",JSON.stringify(data));
       alert('updated successfully');
+      this.location.back();
     });
 
     }

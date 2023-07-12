@@ -10,6 +10,7 @@ import { ModalinvoiceComponent } from '../modalinvoice/modalinvoice.component';
 import { ModaldailyweekComponent } from '../modaldailyweek/modaldailyweek.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
+import { ModelSendComponent } from '../model-send/model-send.component';
 
 export interface DailyPeriodicElement {
   timesheetId: string;
@@ -118,15 +119,19 @@ export class ViewTimesheetComponent {
   DAILY_ELEMENT_DATA?: any = [];
   WEEKLY_ELEMENT_DATA?: any = [];
   selectedValue?: any;
+  // date ?: 'yyyy-MM-dd';
   daily?: any = true;
   weekly?: any = false;
   external?: any = false;
+  // startDate?: any=localStorage.getItem('startDate');
+  // endDate?: any=localStorage.getItem('endDate');
+  // dailyTimesheet?: any ;
   timesheetType?: any = 'WEEKLY';
-  categories: string[] = ['Daily', 'Weekly', 'Approved', 'External'];
+  documentId?: any = localStorage.getItem('documentId');
+  categories: string[] = ['Daily', 'Weekly', 'External'];
   weeklyDisplayedColumns: string[] = [
     'weeklyTimesheetId',
     'projectName',
-    'timesheetType',
     'startDate',
     'endDate',
     'duration',
@@ -157,6 +162,8 @@ export class ViewTimesheetComponent {
   dataSource?: any;
   pdfSrc?: SafeResourceUrl;
   pdfbaseapi?: any;
+  projectName?: any= localStorage.getItem('projectName');
+  dailyTimesheetId?:any = localStorage.getItem('dailyTimesheetId');
 
   constructor(
     private router: Router,
@@ -220,6 +227,8 @@ export class ViewTimesheetComponent {
     // });
   }
   projectId?: any = localStorage.getItem('projectId');
+  weeklyTimesheetId?: any = localStorage.getItem('weeklyTimesheetId');
+  // date?: any = localStorage.getItem('date');
 
   ngOnInit(): void {
     console.log("Im'in");
@@ -229,6 +238,7 @@ export class ViewTimesheetComponent {
       .subscribe((data: any) => {
         console.log('daily ' + JSON.stringify(data));
         this.DAILY_ELEMENT_DATA = data;
+        this.selectedValue = "Daily"
         this.totalHours = this.DAILY_ELEMENT_DATA.map(
           (el: { hours: any }) => el.hours
         ).reduce((a: any, b: any) => a + b, 0);
@@ -246,6 +256,20 @@ export class ViewTimesheetComponent {
     //     ).reduce((a: any, b: any) => a + b, 0);
     //     this.dataSource = new MatTableDataSource(this.WEEKLY_ELEMENT_DATA);
     //   });
+  }
+  downloadPDF(weeklyTimesheetId?:any) {
+    this.apiCall.downloadWeeklyTimesheet(weeklyTimesheetId).subscribe(response => {
+      this.saveFile(response);
+    });
+  }
+
+  saveFile(blob: Blob) {
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = (this.weeklyTimesheetId +".pdf"); // Replace with your desired file name
+    link.click();
+    // window.location.reload();
+    // window.URL.revokeObjectURL(link.href);
   }
 
   viewPDF(
@@ -415,6 +439,14 @@ export class ViewTimesheetComponent {
     //   this.dataSource.data[0].projectId,
     // ]);
   }
+   onSend(){
+    this.modalRef = this.modalService.open(ModelSendComponent, {
+      modalClass: 'modal-lg',
+    });
+    this.modalRef.onClose.subscribe((message: any) => {
+      console.log(message);
+      window.location.reload();
+    });}
 
   test() {
     alert('testing');
@@ -430,14 +462,53 @@ export class ViewTimesheetComponent {
     console.log('testi');
   }
 
-  deleteTimesheet(weeklyTimesheetId: any) {
-    // if (timesheetType == 'Weekly') {
-    console.log(weeklyTimesheetId);
+  deleteWeeklyTimesheetById(weeklyTimesheetId: any,dailyTimesheetId:any, documentId:any) {
+    if (this.selectedValue == 'Weekly') {
+    console.log("weeklyTimesheet+++++",weeklyTimesheetId);
     this.apiCall
-      .deleteWeeklyTimesheet(weeklyTimesheetId, this.timesheetType)
+      .deleteWeeklyTimesheet(weeklyTimesheetId)
       .subscribe((data) => {
+        alert('deleted')
         console.log(data);
-        // window.location.reload();
+        window.location.reload();
       });
   }
+  else  if (this.selectedValue == 'Daily'){
+    this.apiCall
+    .deletedailyTimesheetById(dailyTimesheetId)
+    .subscribe((data) => {
+      alert("deleted")
+      console.log(data);
+      window.location.reload();
+    });
+
+
+  }
+  else {
+    this.apiCall
+    .deleteExternalTimesheetData(documentId,this.docType)
+    .subscribe((data) => {
+      alert("deleted")
+      console.log(data);
+      window.location.reload();
+    });
+
+  }
+   
+}
+ getDailyTimesheetByTimesheetId(projectId?: any, projectName?: any, date?:any, dailyTimesheetId?:any){
+ 
+  console.log('viewProject', projectId);
+  localStorage.setItem('projectId', projectId);
+  localStorage.setItem('projectName', projectName);
+  localStorage.setItem('dailyTimesheetId', dailyTimesheetId);
+  localStorage.setItem('date', date);
+  console.log('date', date);
+  console.log('dailyTimesheetId', dailyTimesheetId);
+  // dailyTimesheetId = '_'+date;
+  // localStorage.setItem('dailyTimesheetId', dailyTimesheetId);
+  // console.log('MeetId',localStorage.getItem('dailyTimesheetIds'));
+  // this.router.navigate(['/projectModule']);
+  this.router.navigate(['/viewDailytimesheet']);
+ }
 }

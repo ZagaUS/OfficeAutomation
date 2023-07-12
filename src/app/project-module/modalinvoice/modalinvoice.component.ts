@@ -24,20 +24,23 @@ export class ModalinvoiceComponent {
   endDate?: any = new Date();
   invoiceGenerated = false;
   indata: any;
-  clientAddress?: string;
-  payOrder?: string;
-  sfdc?: string;
-  pa?: string;
-  totalManDays?: any;
+  clientAddress?: any = localStorage.getItem('clientAddress');
+  payOrder?: any = localStorage.getItem('po');
+  sfdc?:  any = localStorage.getItem('sfdc');
+  pa?:  any = localStorage.getItem('pa');
+  totalManDays?:  any = localStorage.getItem('totalManDays');
   manHours?: any;
   invoiceAmount?: any;
   totalInvoiceAmount?: any;
   rate: any;
-
-  projectName?: string;
+  consultant: any;
+  projectId: any;
+  projectName?: any = localStorage.getItem('projectName');
   duration?: string;
   description?: string;
+  documentId: any;
   date?: any = new Date();
+  clientCurrency?: any = localStorage.getItem('clientCurrency');
 
   constructor(
     private snackBar: MatSnackBar,
@@ -49,12 +52,14 @@ export class ModalinvoiceComponent {
     this.contactForm = this.fb.group({
       startDate: [new Date(), Validators.required],
       endDate: [new Date(), Validators.required],
-      projectName: ['', Validators.required],
+      projectName: [this.projectName, Validators.required],
       // message: ['', Validators.required]
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.payOrder);
+  }
 
   close() {
     const closeMessage = 'Modal closed';
@@ -95,9 +100,10 @@ export class ModalinvoiceComponent {
 
     const updatedData = {
       date: date,
+      clientCurrency:this.clientCurrency,
       clientAddress: this.clientAddress,
-      projectName: 'DIGI',
-      consultant: 'Anushiya',
+      projectName: this.projectName,
+      consultant: this.consultant,
       note: 'service done virtually',
       payOrder: this.payOrder,
       sfdc: this.sfdc,
@@ -106,20 +112,22 @@ export class ModalinvoiceComponent {
       manHours: this.manHours,
       invoiceAmount: this.invoiceAmount,
       totalInvoiceAmount: this.totalInvoiceAmount,
-      projectId: '1',
-      startDate: '2022-03-10',
-      endDate: '2022-03-12',
-      duration: '2022-03-10-2022-03-12',
-      rate: 0,
+      projectId: this.projectId,
+      startDate: this.contactForm.get("startDate")?.value,
+      endDate: this.contactForm.get("endDate")?.value,
+      duration: this.duration,
+      rate: this.totalInvoiceAmount,
     };
 
     console.log('++++++++++++++++', updatedData);
     this.invoiceApi.createInvoice(updatedData).subscribe((data) => {
       console.log('invoice response' + JSON.stringify(data));
-      // window.location.reload();
+      this.documentId = data.pdfDocument.documentId;
+      window.location.reload();
     });
     const closeMessage = 'Modal closed';
     this.modalRef.close(closeMessage);
+    // window.location.reload();
   }
 
   editInvoice() {
@@ -144,14 +152,30 @@ export class ModalinvoiceComponent {
     console.log('Start date: ' + startDate, 'end date: ' + endDate);
     console.log(this.contactForm.value);
 
-    this.clientAddress = 'Madison USA';
-    this.payOrder = '12345';
-    this.sfdc = '12345'; //NEEDED DONT REMOVE THIS
-    this.pa = '544785';
-    this.totalManDays = 10;
-    this.manHours = 6;
-    this.invoiceAmount = 20000;
-    this.totalInvoiceAmount = 50000;
+    this.invoiceApi.getProjectDetails(this.contactForm.value).subscribe((res:any) => {
+      console.log(JSON.stringify(res));
+      console.log(res.projectDetails.clientAddress);
+      this.clientAddress = res.projectDetails.clientAddress;
+      this.payOrder = res.projectDetails.po;
+      this.sfdc = res.projectDetails.sfdc; //NEEDED DONT REMOVE THIS
+      this.pa = res.projectDetails.pa;
+      this.totalManDays = res.projectDetails.totalManDays;
+      this.manHours = res.weeklyTimesheet.duration;
+      this.invoiceAmount = 20000;
+      this.totalInvoiceAmount = res.projectDetails.totalAmount;
+      this.projectName = res.projectDetails.projectName;
+      this.consultant = res.projectDetails.employeeName;
+      this.projectId = res.projectDetails.projectId;
+    })
+
+    // this.clientAddress = 'Madison USA';
+    // this.payOrder = '12345';
+    // this.sfdc = '12345'; //NEEDED DONT REMOVE THIS
+    // this.pa = '544785';
+    // this.totalManDays = 10;
+    // this.manHours = 6;
+    // this.invoiceAmount = 20000;
+    // this.totalInvoiceAmount = 50000;
 
     // const closeMessage = 'Modal closed';
     // this.modalRef.close(closeMessage);

@@ -1,0 +1,28 @@
+<div class="mat-dialog-container">
+    <h2>Project Assignment</h2>
+    
+    <div class="showExternalContent">
+      <form >
+        <mat-form-field appearance="fill">
+            <mat-label>UnAssigned Employees</mat-label>
+            <mat-select [(ngModel)]="selectedValue" name="Employee">
+              <mat-option *ngFor="let employee of employeeList" [value]="employee.employeeName">
+                {{employee.employeeName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <h3> Selected Employee: {{selectedValue}} </h3>
+      </form>
+      <button
+        mat-raised-button
+        color="primary"
+         (click)="onSubmit()"
+      >
+        Submit External
+      </button>
+    </div>
+  </div>
+  <!-- </form> -->
+  <!-- <button mat-raised-button (click)="onGenerateClick()">Generate</button> -->
+  <!-- </div> -->
+  

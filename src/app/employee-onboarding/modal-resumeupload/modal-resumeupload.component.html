@@ -1,0 +1,82 @@
+<div class="mat-dialog-container">
+    <h2>Upload Resume</h2>
+    <button class="close-button" color="primary" (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <!-- <div class="showExternalContent"> -->
+  
+      <form [formGroup]="contactForm">
+        <div class="uploadbtn">
+          <mat-form-field class="showExternalContent" appearance="outline">
+            <mat-label>Upload file</mat-label>
+            <input
+              matInput
+              placeholder="File Name"
+              formControlName="fileName"
+              [value]="fileName"
+            />
+          </mat-form-field>
+          <div style="margin-left: 20px">
+            <input
+              type="file"
+              (change)="onFileSelected($event)"
+              hidden
+              #fileInput
+              formControlName="uploadfile"
+            />
+            <button
+              mat-button
+              type="button"
+              style="padding: 30px"
+              (click)="fileInput.click()"
+            >
+              Choose File
+            </button>
+          </div>
+        </div>
+        <mat-form-field class="showExternalContent" appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Employee Name"  [value]="name" />
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline"> -->
+          <!-- <mat-label>StartDate</mat-label>
+          <input
+            matInput
+            [matDatepicker]="startDatePicker"
+            placeholder="startDate"
+            formControlName="startDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="startDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="showExternalContent" appearance="outline">
+          <mat-label>EndDate</mat-label>
+          <input
+            matInput
+            [matDatepicker]="endDatePicker"
+            placeholder="Enddate"
+            formControlName="endDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="endDatePicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field> -->
+        <button
+        mat-raised-button
+        style="margin-left: 30%;"
+        color="primary"
+        (click)="onClickExternalSave()"
+        >Submit External</button>  
+      </form>
+
+      
+      
+        
+    </div>
+  <!-- </div> -->
+  

@@ -18,8 +18,8 @@
 
 .mat-toolbar-row {
    display: flex;
-   justify-content: center;
-   flex-grow: 1;
+  //  justify-content: center;
+  //  flex-grow: 1;
  }
  
  .toolbar-title {
@@ -33,7 +33,34 @@
    color: #050505 !important;
  }
 
-.homeIcon {
-   margin: 10 10 10 50;
+// .homeIcon {
+//    margin: 10 10 10 50;
+// }
+
+.button-container {
+  display: flex;
+  justify-content: flex-start!important;
+  // padding-left: 0%;
+}
+
+.home-button {
+  font-size: 26px;
+  // margin-right: 10px;
+  // margin: 10 10 10 50;
+}
+
+button-container1{
+  display: flex;
+  flex-direction: end;
+}
+
+
+.profile-button {
+  width: 48px;
+  height: 48px; 
+}
+
+.profile-button mat-icon {
+  font-size: 24px; 
 }
 

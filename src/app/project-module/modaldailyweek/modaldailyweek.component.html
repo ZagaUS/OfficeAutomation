@@ -18,18 +18,22 @@
   </div>
   <!-- <form [formGroup]="contactForm"> -->
   <div *ngIf="showDaily || showExternal" class="showDailyContent">
+
     <mat-form-field *ngIf="showDaily" appearance="outline">
       <mat-label>ProjectName</mat-label>
-      <input matInput placeholder="ProjectName" [(ngModel)]="projectName" />
+      <input matInput placeholder="ProjectName" [(ngModel)]="projectName" required="true" />
     </mat-form-field>
+
     <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
+      <mat-label>EmployeeName</mat-label>
+      <input matInput placeholder="EmployeeName" [(ngModel)]="employeeName" required="true" />
+    </mat-form-field>
+  
+    <mat-form-field  style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
       <mat-label>Duration</mat-label>
-      <input matInput placeholder="hours" [(ngModel)]="duration" />
+      <input matInput placeholder="Duration" [(ngModel)]="duration" required="true" />
     </mat-form-field>
-    <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
-      <mat-label>Description</mat-label>
-      <input matInput placeholder="Description" [(ngModel)]="description" />
-    </mat-form-field>
+       
   </div>
 
   <div class="showDailyContent">
@@ -48,15 +52,26 @@
     <mat-form-field style="margin-left: 10px" *ngIf="showDaily" appearance="outline">
       <mat-label>RedHatOwners</mat-label>
       <input matInput placeholder="RedHatOwners" [(ngModel)]="redhatOwner" />
+    </mat-form-field> 
+
+  </div>
+
+  
+  <div class="showDailyContent">
+    <mat-form-field *ngIf="showDaily" appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="Description" [(ngModel)]="description" required="true"></textarea>
+      <!-- <input matInput placeholder="Description" [(ngModel)]="description" /> -->
     </mat-form-field>
   </div>
+
   <mat-form-field *ngIf="showDaily" appearance="outline">
     <mat-label>Date</mat-label>
     <input
       matInput
       [matDatepicker]="endDatePicker"
       placeholder="Date"
-      [(ngModel)]="date"
+      [(ngModel)]="date" required="true"
     />
     <mat-datepicker-toggle
       matSuffix
@@ -64,7 +79,18 @@
     ></mat-datepicker-toggle>
     <mat-datepicker #endDatePicker></mat-datepicker>
   </mat-form-field>
-  <button
+
+  <!-- <button style="font-size: 16px; padding: 10px;"
+    mat-raised-button
+    color="primary"
+    (click)="onClickDailySave()"
+    *ngIf="showDaily"
+  >
+    Create Daily
+  </button> -->
+
+  <div>
+    <button style="font-size: 16px; padding: 10px;"
     mat-raised-button
     color="primary"
     (click)="onClickDailySave()"
@@ -72,6 +98,8 @@
   >
     Create Daily
   </button>
+  </div>
+  
   <div class="showExternalContent">
     <form [formGroup]="contactForm">
       <div class="uploadbtn">

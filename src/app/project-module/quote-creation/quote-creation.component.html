@@ -1,0 +1,172 @@
+<mat-card class="quote-card">
+    <mat-card-title class="card-header">Create Quote</mat-card-title>
+      <div  class="form-container">
+  <form [formGroup]="quoteForm" >  
+
+<!-- Quote Information -->
+    <!-- <mat-form-field appearance="outline" class="form-field">
+    <mat-label>From</mat-label>
+    <input matInput   type="text"   formControlName="from" >
+    </mat-form-field> -->
+    
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Project Name</mat-label>
+        <input matInput   type="text"   formControlName="projectName" required="true" >
+        </mat-form-field>  
+     
+    
+      
+    <mat-form-field appearance="outline" class="form-field">
+    <mat-label>To</mat-label>
+    <input matInput   type="text"   formControlName="to" required="true" >
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Start Date</mat-label>
+        <input matInput   type="date"
+        placeholder="startDate"
+        formControlName="startDate"
+        required="true">
+      
+    </mat-form-field>
+    
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>End Date</mat-label>
+        <input matInput  type="date"
+        placeholder="endDate"
+        formControlName="endDate"
+        required="true">
+    
+    </mat-form-field>
+      
+
+
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Date</mat-label>
+        <input  matInput  
+        placeholder="date"
+        formControlName="date"
+        required="true" [matDatepicker]="datePicker"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="datePicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datePicker></mat-datepicker>
+    </mat-form-field>
+    
+
+    <!-- Payment Information -->
+
+    <mat-form-field appearance="outline" class="form-field">
+        <mat-label>PA</mat-label>
+        <input matInput   type="text"   formControlName="pa"  >
+       </mat-form-field>
+        
+      
+      
+            <mat-form-field appearance="outline" class="form-field">
+        <mat-label>PO</mat-label>
+        <input matInput   type="text"   formControlName="po"  >
+       </mat-form-field>
+      
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>SFDC</mat-label>
+        <input matInput   type="text"   formControlName="sfdc"  >
+       </mat-form-field>
+
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Client Currency</mat-label>
+        <input matInput   type="text"  formControlName="clientCurrency"  >
+       </mat-form-field>
+<!-- 
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Duration</mat-label>
+        <input matInput   type="text"  formControlName="duration"  >
+       </mat-form-field> -->
+        
+       
+       <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Date</mat-label>
+        <input matInput   type="date"   formControlName="date"  >
+       </mat-form-field> -->
+        
+      
+      
+            <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Unit Price</mat-label>
+        <input matInput   type="text"  formControlName="unitPrice"  >
+       </mat-form-field>
+        
+      
+      
+            <mat-form-field appearance="outline" class="form-field">
+        <mat-label>TotalManDays</mat-label>
+        <input matInput   type="text"  formControlName="totalManDays"  >
+       </mat-form-field>
+
+       
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Total Price</mat-label>
+        <input matInput   type="text"  formControlName="totalPrice"  >
+       </mat-form-field>
+
+       <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>GST Percent</mat-label>
+        <mat-select formControlName="gstPercent" name="GST">
+          <mat-option *ngFor="let gst of gstNumber" [value]="gst">
+            {{gst}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> -->
+
+        
+
+       <mat-form-field appearance="outline" class="form-field">
+        <mat-label>WHT Amount</mat-label>
+        <input matInput   type="text"  formControlName="whtAmount" required="true" >
+       </mat-form-field>
+       <!-- <mat-form-field appearance="outline" class="form-field">
+        <mat-label>GST</mat-label>
+        <mat-select formControlName="gst">
+          <mat-option>18</mat-option>
+          <mat-option>2.5</mat-option>
+          <mat-option>28</mat-option>          
+        </mat-select>
+      </mat-form-field> -->
+
+   
+  
+      
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label>TotalAmount</mat-label>
+          <input matInput formControlName="totalAmount" required="true" >
+         </mat-form-field>
+        
+        <!-- Other Information -->
+        
+            <mat-form-field appearance="outline" class="form-field">
+          <mat-label>Valid Date</mat-label>
+          <input matInput  
+          placeholder="validDate"
+          formControlName="validDate"
+          required="true" [matDatepicker]="validDatePicker"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="validDatePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #validDatePicker></mat-datepicker>
+      </mat-form-field>
+       
+      
+      
+         <button mat-raised-button  class="form-button" type="submit "  (click)="onCreate()">Create</button>
+
+         <!-- <button mat-raised-button  class="form-buttons" type="submit " (click)="onGenerateClick()">Generate Quote</button> -->
+          
+        </form>
+        </div>
+        </mat-card>
+        
+        

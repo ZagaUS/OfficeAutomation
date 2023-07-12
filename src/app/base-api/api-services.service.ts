@@ -8,18 +8,39 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiServicesService {
   projectMgtUrl = environment.projectMgtUrl;
+  employeeURL = environment.employeeUrl;
+  emailURL = environment.emailUrl;
 
   constructor(private http: HttpClient) {}
 
-  createProjectDetails(projectDetails:any){
+  createProjectDetails(projectDetails: any) {
     return this.http.post(
-      this.projectMgtUrl + '/projectDetails/createProjectDetails',projectDetails
-    )
+      this.projectMgtUrl + '/projectDetails/createProjectDetails',
+      projectDetails
+    );
   }
 
   getListOfProjects() {
     return this.http.get<any>(
       this.projectMgtUrl + '/projectDetails/viewProjectDetails'
+    );
+  }
+
+  getListOfProjectsForInvoice() {
+    return this.http.get<any>(
+      this.projectMgtUrl + '/projectDetails/viewProjectDetailsForInvoice'
+    );
+  }
+
+  getListOfPO(projectId: string) {
+    return this.http.get<any>(
+      this.projectMgtUrl + '/po/getPOByProjectId/'+ projectId
+    );
+  }
+
+  deleteProjectById(projectId: any) {
+    return this.http.delete<any>(
+      this.projectMgtUrl + '/projectDetails/deleteProjectDetails/' + projectId
     );
   }
 
@@ -30,6 +51,14 @@ export class ApiServicesService {
         projectId
     );
   }
+  getDailyTimesheetByTimesheetId(dailyTimesheetId: string) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        '/dailyTimesheet/viewDailyTimeSheetBydailyTimeSheetID/' +
+        dailyTimesheetId
+    );
+  }
+  
 
   getWeeklyTimesheetByProjectId(projectId: string) {
     return this.http.get<any>(
@@ -45,14 +74,20 @@ export class ApiServicesService {
   }
 
   updateProjectDetails(data: any) {
-    return this.http.put(
+    return this.http.put<any>(
       this.projectMgtUrl + '/projectDetails/updateProjectDetails',
+      data
+    );
+  }
+  updateDailyTimesheet(data: any) {
+    return this.http.put<any>(
+      this.projectMgtUrl + '/dailyTimesheet/modifyDailyTimeSheet',
       data
     );
   }
 
   createDailyTimesheet(dts: any) {
-    return this.http.post(
+    return this.http.post<any>(
       this.projectMgtUrl + '/dailyTimesheet/createDailyTimeSheet',
       dts
     );
@@ -118,6 +153,14 @@ export class ApiServicesService {
     );
   }
 
+
+  deleteExternalTimesheetData( documentId:any, docType:any) {
+    return this.http.delete<any>(
+      this.projectMgtUrl + `/projectDetails/document/deleteById`+`?documentId=${documentId}&documentType=${docType}`
+    );
+  }
+
+
   getWeeklyTimesheetDataByWeekId(weeklyTimesheetId: any) {
     return this.http.get<any>(
       this.projectMgtUrl +
@@ -132,18 +175,21 @@ export class ApiServicesService {
     );
   }
 
-  deleteDailyTimesheet(dailyTimesheetId: any) {
+
+
+
+  deletedailyTimesheetById(dailyTimesheetId: any) {
     return this.http.delete<any>(
       this.projectMgtUrl +
         `/dailyTimesheet/deleteDailyTimeSheet/${dailyTimesheetId}`
     );
   }
 
-  deleteWeeklyTimesheet(weeklyTimesheetId: any, timesheetType: any) {
-    console.log('deleteWeeklyTimesheet', weeklyTimesheetId, timesheetType);
+  deleteWeeklyTimesheet(weeklyTimesheetId: any) {
+    console.log('deleteWeeklyTimesheet', weeklyTimesheetId);
     return this.http.delete<any>(
       this.projectMgtUrl +
-        `/projectDetails/document/deleteById?documentId=${weeklyTimesheetId}&documentType=${timesheetType}`
+        `/weeklyTimesheet/deleteWeeklyTimesheet/${weeklyTimesheetId}`
     );
   }
 
@@ -167,4 +213,194 @@ export class ApiServicesService {
         `/meetingMinutes/getMeetingMinutesByMeetingMinutesId/${meetingMinutesId}`
     );
   }
+
+  viewDailyTimesheet(dailyTimesheetId: any) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        `/viewDailyTimeSheetBydailyTimeSheetID/${dailyTimesheetId}`
+    );
+  }
+
+  deleteMeetingMinutesById(meetingMinutesId: any) {
+    return this.http.delete<any>(
+      this.projectMgtUrl +
+        `/meetingMinutes/deleteMeetingMinutesById/${meetingMinutesId}`
+    );
+  }
+
+  getInactiveEmployeeList() {
+    return this.http.get<any>(
+      this.employeeURL + 'getListOfInactiveEmployeeInfo'
+    );
+  }
+
+  getDropDown() {
+    return this.http.get<any>(
+      this.projectMgtUrl + '/dropdown/countryDropDowns'
+    );
+  }
+
+  assignProjectToEmployee(projectId: any, employeeData: any) {
+    return this.http.post<any>(
+      this.projectMgtUrl +
+        `/projectDetails/projectAssignment/${projectId}?employeeEmail=${employeeData.employeeEmail}&employeeId=${employeeData.employeeId}&employeeName=${employeeData.employeeName}&employeeRole=${employeeData.employeeRole}`,
+      null
+    );
+  }
+
+  generateQuote(quoteId:any) {
+    return this.http.post<any>(
+      this.projectMgtUrl +
+        `/Quotes/generateQuote/${quoteId}`,null
+    );
+  }
+
+  createQuotes(quote: any) {
+    return this.http.post(
+      this.projectMgtUrl + '/Quotes/createQuotes',
+      quote
+    );
+  }
+
+  getAllQuotes(projectId?: any) {
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/getQuotesByProjectId/${projectId}`
+    );
+  }
+
+  getQuotePdf(projectId?: any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/getQuotesPdfByProjectId/${projectId}`
+    );
+  }
+
+  deleteQuoteById(quoteId: any){
+    return this.http.delete<any>(
+      this.projectMgtUrl + `/Quotes/deleteQuote/${quoteId}`
+    );
+  }
+
+   getQuoteView(quoteId: any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/getQuotes/${quoteId}`
+    );
+   }
+
+  viewAllPO(projectId: any) {
+    return this.http.get<any>(
+      this.projectMgtUrl +
+        `/po/viewAllPO/${projectId}` 
+    );
+  }
+
+  uploadPO(
+    po: any,
+    projectId: any,
+    projectName: any,
+  ) {
+    console.log(
+      'uploadPO' +
+        ' ' +
+        projectId +
+        ' ' +
+        projectName +
+        ' ' +
+        po.endDate +
+        ' ' +
+        po.startDate
+    );
+    return this.http.post(
+      this.projectMgtUrl +
+        `/po/uploadPO?endDate=${po.endDate}&startDate=${po.startDate}&projectId=${projectId}&projectName=${projectName}`,
+      po.uploadfile,
+      {
+        headers: { 'Content-Type': 'application/octet-stream' },
+      }
+    );
+  }
+  
+  listQuotebyPdfStatus(pdfStatus:any){
+    return this.http.get<any>(
+      this.projectMgtUrl + `/Quotes/getQuotesByPdfStatus/`, pdfStatus
+    );
+   }
+
+  viewPO(poId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'text/plain');
+    return this.http.get(
+      this.projectMgtUrl +
+        `/po/viewPO/${poId}`,
+        { headers, responseType: 'blob' }
+    );
+  }
+
+    viewQuote(quoteId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'text/plain');
+    return this.http.get(
+      this.projectMgtUrl +
+        `/Quotes/getQuotePdf?quoteId=${quoteId}`,
+        { headers, responseType: 'blob' }
+    );
+  }
+
+  deletePO(poId: any) {
+    console.log('PO', poId);
+    return this.http.delete<any>(
+      this.projectMgtUrl +
+        `/po/deletePOByPoId/${poId}`
+    );
+  }
+
+  deleteQuote(quoteId: any) {
+    console.log('PO', quoteId);
+    return this.http.delete<any>(
+      this.projectMgtUrl +
+        `/Quotes/deleteQuotePdf/${quoteId}`
+    );
+  }
+
+  downloadQuote(quoteId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.get(
+      this.projectMgtUrl +
+      `/Quotes/download/${quoteId}`,
+       { headers, responseType: 'blob' }
+    );
+  }
+
+  downloadWeeklyTimesheet(documentId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.get(
+      this.projectMgtUrl +
+      `/weeklyTimesheet/download/${documentId}`,
+       { headers, responseType: 'blob' }
+    );
+  }
+
+
+  sendDocument(contactForm:any){
+    // const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.post(
+      this.emailURL +
+        `/sendEmailWithAttachment?body=${contactForm.description}&fileName=${contactForm.fileName}&from=${contactForm.from}&subject=${contactForm.subject}&to=${contactForm.to}`, contactForm.uploadfile,
+        {
+          headers: { 'Content-Type': 'application/octet-stream' },
+        }
+    );
+  }
+  updateMeetingMinutes(data:any){
+    return this.http.put<any>(
+      this.projectMgtUrl + '/meetingMinutes/modifyMeetingMinutesById',
+      data
+    );
+  }
+
+    updateQuote(data:any){
+    return this.http.put<any>(
+      this.projectMgtUrl + '/Quotes/modifyQuotes',
+      data
+    );
+  }
+
+
 }

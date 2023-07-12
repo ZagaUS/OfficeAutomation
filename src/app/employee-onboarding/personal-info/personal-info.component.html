@@ -33,7 +33,7 @@
         <mat-label class="label">DATE_OF_BIRTH</mat-label>
         <input
           matInput
-          placeholder="Date of Joining"
+          placeholder="Date of Birth"
           formControlName="dateOfBirth"
           [readonly]="isReadOnly"
         />
@@ -102,13 +102,15 @@
         />
       </mat-form-field>
     </div>
-    </form>
-    <div style="display: flex;flex-direction: row;">
+  </form>
+    <div style="display: flex;flex-direction: row; margin-right: 100px;">
       <button
       class ="button"
         mat-raised-button
         color="primary"
+        style="color:white"
         type="submit"
+        (click)="onSubmit()"
         [disabled]="isReadOnly"
       >
         Submit

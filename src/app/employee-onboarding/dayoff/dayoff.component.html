@@ -55,13 +55,15 @@
     <button
     class="button"
       mat-raised-button
+      style="color:white"
        type="submit"
+       (click)="onSubmit()"
       [disabled]="isReadOnly"
     >
       Submit
     </button>
     <button
-      class="button" style="margin-left: 10px;"
+      class="button" style="margin-left: 50px; color: white;"
       mat-raised-button
       type="button"
       (click)="onEdit()"

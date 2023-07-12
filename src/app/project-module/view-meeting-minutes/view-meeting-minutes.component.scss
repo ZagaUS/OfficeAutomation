@@ -10,6 +10,36 @@ h1 {
     margin-bottom: 10px;
   }
   
+  .agenda-heading {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #074a6e;
+  }
+  
+  .agenda-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .agenda-table th,
+  .agenda-table td {
+    padding: 0.5rem;
+    text-align: left;
+    // border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .agenda-table th {
+    font-weight: bold;
+  }
+  
+  .word-wrap {
+    word-wrap: break-word;
+    max-width: 200px;
+  }
+
   /* Style for the attendee list */
   ul {
     list-style-type: none!important;
@@ -33,4 +63,17 @@ h1 {
     width: 1em;
     margin-left: -1em;
   }
+
+  .btns {
+    // float: right;
+    align-items: center;
+    margin-left: 10px;
+    flex-shrink: 0;
+    width: 100px;
+    justify-content: center;
+    margin-bottom: 2px;
+    background: linear-gradient(to bottom, #074a6e , #074a6e );
+    color: #f3eeee;
+     
+ }
   

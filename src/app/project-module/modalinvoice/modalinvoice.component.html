@@ -109,6 +109,17 @@
           [value]="pa"
         />
       </mat-form-field>
+        <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
+          <mat-label>Currency</mat-label>
+          <input
+            matInput
+            placeholder="ClientCurrency"
+            [(ngModel)]="clientCurrency"
+            [readonly]="!editMode"
+            [value]="clientCurrency"
+          />
+        </mat-form-field>
+      
       <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
         <mat-label>TotalManDays</mat-label>
         <input
@@ -138,7 +149,7 @@
           placeholder="InvoiceAmount"
           [(ngModel)]="invoiceAmount"
           [readonly]="!editMode"
-          [value]="invoiceAmount | currency"
+          [value]="invoiceAmount"
         />
       </mat-form-field>
       <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">
@@ -148,7 +159,7 @@
           placeholder="TotalInvoiceAmount"
           [(ngModel)]="totalInvoiceAmount"
           [readonly]="!editMode"
-          [value]="totalInvoiceAmount | currency"
+          [value]="totalInvoiceAmount"
         />
       </mat-form-field>
       <!-- <mat-form-field style="margin-left: 10px" *ngIf="invoiceGenerated" appearance="outline">

@@ -1,0 +1,260 @@
+<!-- <div style="background-color: aqua; width: 100%;"> -->
+    <mat-card class="quote-card">
+        <mat-card-title class="card-header">Quote Details</mat-card-title>
+        <div class="form-container">
+          <ng-container >
+          <!-- <ng-container *ngFor="let item of data | keyvalue">
+           <mat-form-field
+              class="form-field"
+              appearance="outline"
+              [class.readonly]="readonly"
+            >
+              <mat-label class="form-label">{{ item.key }}</mat-label>
+              <input
+                matInput
+                placeholder=" "
+                [(ngModel)]="item.value"
+                [class.editable]="!editable"
+                [readonly]="readonly"
+                [ngModelOptions]="{ updateOn: 'blur' }"
+                (blur)="updateFormData(item.key, item.value.toString())"
+                class="form-input"
+              />
+            </mat-form-field> -->
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>projectName</mat-label>
+              <input
+              matInput
+              placeholder="Project Name"
+              [(ngModel)]="data.projectName"
+              [readonly]="!editable"
+              [value]="data.projectName"
+            />
+            </mat-form-field>
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>employeeName</mat-label>
+              <input
+              matInput
+              placeholder="Employee Name "
+              [(ngModel)]="data.employeeName"
+              [readonly]="!editable"
+              [value]="data.employeeName"
+            />
+            </mat-form-field>
+
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>employeeRole</mat-label>
+              <input
+              matInput
+              placeholder="Employee Role"
+              [(ngModel)]="data.employeeRole"
+              [readonly]="!editable"
+              [value]="data.employeeRole"
+            />
+            </mat-form-field>
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>quoteId</mat-label>
+              <input
+              matInput
+              placeholder="QuoteId"
+              [(ngModel)]="data.quoteId"
+              [readonly]="!editable"
+              [value]="data.quoteId"
+            />
+            </mat-form-field>
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>date</mat-label>
+              <input
+              matInput
+              placeholder="date"
+              [(ngModel)]="data.date"
+              [readonly]="!editable"
+              [value]="data.date"
+            />
+            </mat-form-field>
+
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>validDate</mat-label>
+              <input
+              matInput
+              placeholder="Valid Date"
+              [(ngModel)]="data.validDate"
+              [readonly]="!editable"
+              [value]="data.validDate"
+            />
+            </mat-form-field>
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>unitPrice</mat-label>
+              <input
+              matInput
+              placeholder="Unit Price"
+              [(ngModel)]="data.unitPrice"
+              [readonly]="!editable"
+              [value]="data.unitPrice"
+            />
+            </mat-form-field>
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>totalManDays</mat-label>
+              <input
+              matInput
+              placeholder="totalManDays"
+              [(ngModel)]="data.totalManDays"
+              [readonly]="!editable"
+              [value]="data.totalManDays"
+            />
+            </mat-form-field>
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>startDate</mat-label>
+              <input
+              matInput
+              placeholder="Start Date"
+              [(ngModel)]="data.startDate"
+              [readonly]="!editable"
+              [value]="data.startDate"
+            />
+            </mat-form-field>
+
+ 
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>endDate</mat-label>
+              <input
+              matInput
+              placeholder="endDate"
+              [(ngModel)]="data.endDate"
+              [readonly]="!editable"
+              [value]="data.endDate"
+            />
+            </mat-form-field>
+
+
+            <!-- <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>duration</mat-label>
+              <input
+              matInput
+              placeholder="Duration"
+              [(ngModel)]="data.duration"
+              [readonly]="!editable"
+              [value]="data.duration"
+            />
+            </mat-form-field> -->
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>po</mat-label>
+              <input
+              matInput
+              placeholder="po"
+              [(ngModel)]="data.po"
+              [readonly]="!editable"
+              [value]="data.po"
+            />
+            </mat-form-field>
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>pa</mat-label>
+              <input
+              matInput
+              placeholder="pa"
+              [(ngModel)]="data.pa"
+              [readonly]="!editable"
+              [value]="data.pa"
+            />
+            </mat-form-field>
+
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>sfdc</mat-label>
+              <input
+              matInput
+              placeholder="sfdc"
+              [(ngModel)]="data.sfdc"
+              [readonly]="!editable"
+              [value]="data.sfdc"
+            />
+            </mat-form-field>
+
+  
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>totalPrice</mat-label>
+              <input
+              matInput
+              placeholder="Total Price"
+              [(ngModel)]="data.totalPrice"
+              [readonly]="!editable"
+              [value]="data.totalPrice"
+            />
+            </mat-form-field>
+
+<!-- 
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>gstPercent</mat-label>
+              <input
+              matInput
+              placeholder="gstPercent"
+              [(ngModel)]="data.gstPercent"
+              [readonly]="!editable"
+              [value]="data.gstPercent"
+            />
+            </mat-form-field> -->
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>whtAmount</mat-label>
+              <input
+              matInput
+              placeholder="whtAmount"
+              [(ngModel)]="data.whtAmount"
+              [readonly]="!editable"
+              [value]="data.whtAmount"
+            />
+            </mat-form-field>
+
+
+
+            <mat-form-field style="width: 200%;" appearance="outline" >
+              <mat-label>totalAmount</mat-label>
+              <input
+              matInput
+              placeholder="Total Amount"
+              [(ngModel)]="data.totalAmount"
+              [readonly]="!editable"
+              [value]="data.totalAmount"
+            />
+            </mat-form-field>
+
+
+            
+          
+          <button
+            mat-raised-button
+            class="form-button"
+            style="margin-left: 200px; color:white;"
+            (click)="editable ? submitForm(formData) : edit()"
+          >
+            {{ editable ? "SUBMIT" : "EDIT" }}
+          </button>
+
+          <button mat-raised-button style="margin-left: 100px; color:white; " class="form-button" (click)="onGenerateClick()">Generate Quote</button>
+          
+        </ng-container>
+        </div>
+        <!-- <mat-card-actions style="text-align: center"> </mat-card-actions> -->
+      <!-- </mat-card> -->
+      

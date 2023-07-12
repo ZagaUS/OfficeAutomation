@@ -34,6 +34,10 @@ export class EmployeeOnboardingComponent {
       name: 'Day-Off Information',
       link: 'dayoff',
     },
+    {
+      name: 'Documents',
+      link: 'documents',
+    }
   ];
 
   ngOnInit(): void {
