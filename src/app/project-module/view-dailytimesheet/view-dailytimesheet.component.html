@@ -1,38 +1,23 @@
 <div style="margin: 20px auto; max-width: 800px; padding: 20px;">
+  <form [formGroup]="dailyTimesheet" (ngSubmit)="onSubmit()">
     <h1 style="font-size: 2.0rem;font-weight: bold; margin-bottom: 2rem; margin-left: 150px;color: #074a6e;">
-      Daily Timesheet - {{dailyTimesheet.date}}
+      Daily Timesheet - {{dailyTimesheet.get('date')?.value}}
     </h1>
     <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 200px;color: #074a6e;">
-      {{ dailyTimesheet.projectName | uppercase }} - {{dailyTimesheet.employeeName }}
-  </h1>
+      {{ dailyTimesheet.get('projectName')?.value | uppercase }} - {{dailyTimesheet.get('employeeName')?.value }}
+    </h1>
     
     <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 50px;">
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Duration:</h2>
-        <!-- <p>{{ dailyTimesheet.hours}}</p> -->
         <mat-form-field style="width: 200%;" appearance="outline">
-          <!-- <mat-label>Duration</mat-label> -->
-          <input
-            matInput
-            placeholder="Duration"
-            [(ngModel)]="dailyTimesheet.hours"
-            [readonly]="!editMode"
-            [value]="dailyTimesheet.hours"
-          />
+          <input matInput placeholder="Duration" formControlName="hours" [readonly]="!editMode" />
         </mat-form-field>
       </div>
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Daily Timesheet ID:</h2>
-        <!-- <p>{{dailyTimesheet.dailyTimesheetId }}</p> -->
         <mat-form-field style="width: 200%;" appearance="outline" >
-          <!-- <mat-label>dailyTimesheetId</mat-label> -->
-          <input
-            matInput
-            placeholder="dailyTimesheetId"
-            [(ngModel)]="dailyTimesheet.dailyTimesheetId"
-            [readonly]=true
-            [value]="dailyTimesheet.dailyTimesheetId"
-          />
+          <input matInput placeholder="dailyTimesheetId" formControlName="dailyTimesheetId" [readonly]="true" />
         </mat-form-field>
       </div>
     </div>
@@ -40,109 +25,63 @@
     <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 20px;">
       <div>
         <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Support Ticket:</h2>
-        <!-- <p>{{ dailyTimesheet.supportTicket }}</p> -->
         <mat-form-field style="width: 200%;" appearance="outline" >
-          <!-- <mat-label>supportTicket</mat-label> -->
-          <input
-            matInput
-            placeholder="supportTicket"
-            [(ngModel)]="dailyTimesheet.supportTicket"
-            [readonly]="!editMode"
-            [value]="dailyTimesheet.supportTicket"
-          />
+          <input matInput placeholder="supportTicket" formControlName="supportTicket" [readonly]="!editMode" />
         </mat-form-field>
       </div>
       <div>
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
-        <!-- <p>{{dailyTimesheet.date }}</p> -->
         <mat-form-field style="width: 200%;" appearance="outline">
-          <!-- <mat-label>date</mat-label> -->
-          <input
-            matInput
-            placeholder="date"
-            [(ngModel)]="dailyTimesheet.date"
-            [readonly]="!editMode"
-            [value]="dailyTimesheet.date"
-          />
+          <input matInput placeholder="date" formControlName="date" [readonly]="!editMode" />
         </mat-form-field>
       </div>
     </div>
 
       <div>
         <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Timesheet Type:</h2>
-        <!-- <p>{{ dailyTimesheet.timesheetType }}</p> -->
         <mat-form-field style="width: 100%;" appearance="outline">
-          <!-- <mat-label>timesheetType</mat-label> -->
-          <input
-            matInput
-            placeholder="timesheetType"
-            [(ngModel)]="dailyTimesheet.timesheetType"
-            [readonly]="!editMode"
-            [value]="dailyTimesheet.timesheetType"
-          />
+          <input matInput placeholder="timesheetType" formControlName="timesheetType" [readonly]="!editMode" />
         </mat-form-field>
       </div>
-      <!-- <div>
-        <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</h2>
-        <p>{{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
-      </div> -->
-    
     
     <div style="margin-bottom: 1rem;">
       <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Task:</h2>
-      <!-- <p>{{ dailyTimesheet.description }}</p> -->
       <mat-form-field style="width: 100%;" appearance="outline">
-        <!-- <mat-label>Task</mat-label> -->
-        <textarea matInput placeholder="Task" [(ngModel)]="dailyTimesheet.description" [readonly]="!editMode" [value]="dailyTimesheet.description"></textarea>
+        <textarea matInput placeholder="Task" formControlName="description" [readonly]="!editMode"></textarea>
       </mat-form-field>
     </div>
-    
+
     <div style="margin-bottom: 1rem;">
       <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Redhat Owners:</h2>
-      <!-- <div *ngFor="let redHatOwner of redHatOwners"> -->
-        <!-- <p>{{ dailyTimesheet.redHatOwners }}</p> -->
-        <div *ngFor="let owner of dailyTimesheet.clientOwners let i = index">
+
+      <div formArrayName="redHatOwners" class="skills-container">
+        <div *ngFor="let redHatOwnerCtrl of redHatOwnersArr.controls; let i = index;">
           <mat-form-field style="width: 100%;" appearance="outline">
-            <!-- <mat-label>redHatOwners</mat-label> -->
-            <input
-              matInput
-              placeholder="redHatOwners"
-              [(ngModel)]="dailyTimesheet.redHatOwners[i]"
-              [readonly]="!editMode"
-              [value]="dailyTimesheet.redHatOwners"
-            />
+            <input matInput [formControlName]="i" placeholder="Redhat Owner {{ i + 1 }}" />
           </mat-form-field>
         </div>
-      <!-- </div> -->
-      <div style="margin-bottom: 1rem;">
-        <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
-        <!-- <div *ngFor="let clientOwner of clientOwners"> -->
-          <!-- <p>{{ dailyTimesheet.clientOwners }}</p> -->
-          <div *ngFor="let owner of dailyTimesheet.redHatOwners let i = index">
-            <mat-form-field style="width: 100%;" appearance="outline">
-              <!-- <mat-label>clientOwners</mat-label> -->
-              <input
-                matInput
-                placeholder="clientOwners"
-                [(ngModel)]="dailyTimesheet.clientOwners[i]"
-                [readonly]="!editMode"
-                [value]="dailyTimesheet.clientOwners"
-              />
-            </mat-form-field>
-          </div>
-          <!-- <button
-          mat-raised-button
-          class="form-button"
-          (click)="editable ? submitForm(dailyTimesheet) : edit()"
-        >
-          {{ editable ? "SUBMIT" : "EDIT" }}
-        </button> -->
-        <!-- </div> -->
-    
       </div>
+
+      <button mat-raised-button type="button" (click)="addRedhatOwner()" class="btn btn-primary">Add</button>
+
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
+
+      <div formArrayName="clientOwners" class="skills-container">
+        <div *ngFor="let clientOwnerCtrl of clientOwnersArr.controls; let i = index;">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <input matInput [formControlName]="i" placeholder="Client Owner {{ i + 1 }}" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <button mat-raised-button type="button" (click)="addClientOwner()" class="btn btn-primary">Add</button>
+    </div>
+
       <button class="form-button" style="margin-left: 150px" mat-raised-button color="primary" (click)="editDaily()">Edit</button>
 
       <button class="form-button" style="margin-left: 150px" mat-raised-button color="primary" (click)="saveDaily()">Save</button>
-    
-    </div>
-  
+  </form>
+</div>

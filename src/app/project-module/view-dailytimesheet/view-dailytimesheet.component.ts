@@ -1,18 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { ApiServicesService } from 'src/app/base-api/api-services.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Location } from '@angular/common';
-export interface RedHatOwners {
-  name: string[];
-}
-export interface ClientOwners {
-  name: string[];
-}
-interface MyData {
-  [key: string]: any;
-}
 
+// export interface Owner {
+//   name: string;
+// }
 
 @Component({
   selector: 'app-view-dailytimesheet',
@@ -20,129 +15,115 @@ interface MyData {
   styleUrls: ['./view-dailytimesheet.component.scss']
 })
 export class ViewDailytimesheetComponent {
+  // dailyTimesheet: any = {
+  //   redHatOwners: [{ name: '' }],
+  //   clientOwners: [{ name: '' }]
+  // };
+  dailyTimesheet: FormGroup;
   editMode = false;
   saveMode = true;
-  dailyTimesheet?:any;
-  employeeName?: string ;
-  projectName?: string;
-  projectId?: string;
-  date?: any;
-  timesheetType?:any;
-  supportTicket?:any;
-  hours?: number;
-  DailyTimeSheetedit?: any;
-  // startTime?: string;
-  // endTime?: string;
-  description?: any ;
- redHatOwners?: RedHatOwners[] ;
- clientOwners?: ClientOwners[] ;
-//  timesheetType: any = localStorage.getItem('timesheetType');
-dailyTimesheetId?: any = localStorage.getItem('dailyTimesheetId');
+  dailyTimesheetId?: any = localStorage.getItem('dailyTimesheetId');
 
+  constructor(private router: Router, private api: ApiServicesService, private snackBar: MatSnackBar, private location: Location, private formBuilder: FormBuilder) {
+    this.dailyTimesheet = this.formBuilder.group({
+      projectId: '',
+      // dailyTimesheetId: '',
+      projectName: '',
+      employeeName: '',
+      hours: 0,
+      date: '',
+      supportTicket: '',
+      clientOwners: this.formBuilder.array([]),
+      redHatOwners: this.formBuilder.array([]),
+      description: '',
+      timesheetType: '',
 
-constructor(private router:Router,private api:ApiServicesService,private snackBar: MatSnackBar,private location: Location){
+    });
+   }
 
-}
-editable = false;
-readonly = true;
-formData: { [key: string]: any } = {};
-data: MyData[] = [];
-ngOnInit() {
-  // const newLocal = any = localStorage.getItem('timesheetType');
-  this.dailyTimesheet = {
-    employeeName: 'Anushiya',
-    projectName: 'DIGI-TEL',
-    projectId: '12345',
-    dailyTimesheetId: '',
-    date: '',
-    hours: 1,
-    timesheetType: 'Daily',
-    description: 'Discuss project status',
-    redHatOwners: [
-      [ 'ari', ' ', ' ']
-      
-    ],
-    clientOwners: [
- [     '',
-      '',
-      '']
-    ],
+  // ngOnInit() {
+  //   this.api.getDailyTimesheetByTimesheetId(this.dailyTimesheetId).subscribe((data) => {
+  //     this.dailyTimesheet = data;
+  //   });
+  // }
+
+  ngOnInit() {
+    // Populate the redHatOwners and clientOwners form arrays with initial values
+    this.api.getDailyTimesheetByTimesheetId(this.dailyTimesheetId).subscribe((data: any) => {
+      // this.dailyTimesheet = data;
+      this.dailyTimesheet.patchValue(data);
+      this.dailyTimesheet.setControl('redHatOwners', this.mapRedHatOwners(data.redHatOwners));
+      this.dailyTimesheet.setControl('clientOwners', this.mapClientOwners(data.clientOwners));
+
+    });
+    this.dailyTimesheet.addControl('dailyTimesheetId', this.formBuilder.control(''));
+
   }
 
-  //  if (this.selectedValue === 'Daily') {
-  //       this.daily = true;
-  //       this.weekly = false;
-  //       this.external = false;
-  //       this.columnShown = this.dailyDisplayedColumns;
+  get redHatOwnersArr() {
+    return this.dailyTimesheet.get('redHatOwners') as FormArray;
+  }
 
-  // dailyTimesheetId = localStorage.setItem('dailyTimesheetId');
-  this.api.getDailyTimesheetByTimesheetId(this.dailyTimesheetId).subscribe((data) => {
-    console.log(data.employeeName);
-    console.log(data.date);
-    this.dailyTimesheet = data;
-  });
-  console.log('meetingMinutesId',localStorage.getItem('date'));
-console.log('meetingMinutesId',localStorage.getItem('dailyTimesheetId'));
-console.log('MeetId',localStorage.getItem('dailytimesheetId'));
+  get clientOwnersArr() {
+    return this.dailyTimesheet.get('clientOwners') as FormArray;
+  }
 
-}
-edit() {
-  console.log('editable');
-  this.editable = !this.editable;
-  this.readonly = !this.readonly;
-  this.editable = true;
-}
-// editDaily(){
-//   this.api.updateDailyTimesheet(this.dailyTimesheet).subscribe()
-// }
+  addRedhatOwner() {
+    this.redHatOwnersArr.push(this.formBuilder.control(''));
+  }
 
-updateFormData(key: string, value: any) {
-  this.formData = { ...this.formData, [key]: value };
-}
-submitForm(formData: any) {
-  const updatedData: { [key: string]: any } = {};
-  Object.entries(this.data).forEach(([key, value]) => {
-    updatedData[key] = formData.hasOwnProperty(key) ? formData[key] : value;
-  });
-  console.log(formData);
-  console.log('updated data', updatedData);
-  this.api.updateDailyTimesheet(updatedData).subscribe((data: any) => {
-    console.log('data updated', data);
-    alert('updated data successfully');
-  });
-}
-editDailytimeSheet(){
-  this.editMode = true;
-  console.log('editable');
-}
+  addClientOwner() {
+    this.clientOwnersArr.push(this.formBuilder.control(''));
+  }
 
-onclickdailyTimesheet(){
-  this.DailyTimeSheetedit=true;
-  console.log("now edit all fields in daily timesheet")
-}
-
-editDaily() {
-  this.editMode = !this.editMode;
-  console.log('editable');
-  // this.openSnackbar('Updated successfully', 1500);
+  mapOwners(owners: string[] | null): FormArray {
+    const formArray = this.formBuilder.array([]);
+    if (owners) {
+      owners.forEach((owner) => {
+        formArray.push(this.formBuilder.control(owner));
+      });
+    }
+    return formArray;
+  }
   
-}
-saveDaily(){ 
-  console.log("Edited data " +   JSON.stringify(this.dailyTimesheet) );
-  this.api.updateDailyTimesheet(this.dailyTimesheet).subscribe((data: any) => {
-    console.log('data updated', data);
-    // alert('updated data successfully');
-    this.openSnackbar('successfully saved', 1500);
-    window.location.reload();
-    this.location.back();
-  });
+  mapRedHatOwners(redHatOwners: string[] | null): FormArray {
+    return this.mapOwners(redHatOwners);
+  }
+  
+  mapClientOwners(clientOwners: string[] | null): FormArray {
+    return this.mapOwners(clientOwners);
+  }
+
+  editDaily() {
+    this.editMode = true;
+  }
+
+  saveDaily() {
+    const formData = this.dailyTimesheet.value;
+    this.api.updateDailyTimesheet(formData).subscribe(
+      (data: any) => {
+        console.log('Data updated', data);
+        this.openSnackbar('Successfully saved', 1500);
+        // Perform any additional actions after saving the data
+      },
+      (error: any) => {
+        console.error('Error occurred while saving', error);
+        this.openSnackbar('Failed to save', 1500);
+        // Perform any error handling or display error messages
+      }
+    );
+  }
+
+onSubmit() {
+  const formValues = this.dailyTimesheet.value;
+  console.log(formValues);
 }
 
 openSnackbar(message: string, duration: number) {
   const config: MatSnackBarConfig = {
     duration: 3000,
     horizontalPosition: 'center',
-    verticalPosition: 'bottom', // Change the vertical position to 'bottom'
+    verticalPosition: 'bottom',
     panelClass: ['center-snackbar'],
   };
   this.snackBar.open(message, 'Close', {
