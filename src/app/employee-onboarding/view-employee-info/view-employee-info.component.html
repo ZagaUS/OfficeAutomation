@@ -113,7 +113,7 @@
           [readonly]="isReadOnly"
         />
       </mat-form-field>   
-      <mat-form-field class="form-field" appearance="outline">
+      <!-- <mat-form-field class="form-field" appearance="outline">
         <mat-label class="label">PROJECT ASSIGNMENT</mat-label>
         <input
           matInput
@@ -121,20 +121,24 @@
           formControlName="projectAssignmentStatus"
           [readonly]="isReadOnly"
         />
-      </mat-form-field>
+      </mat-form-field> -->
     </div>
    </form>
-   <div style="display: flex;flex-direction: row;">
+   <div style="display: flex;flex-direction: row; margin-right: 100px;">
    <button class ="button"
    mat-raised-button
-   color="primary"
+   data-toggle="modal"
+   color= "white"
+   style="color:white"
    type="submit"
+   (click)="onSubmit()"
    [disabled]="isReadOnly"
  >
    Submit
  </button>
- <button style="margin-left: 10px;" class ="button"
+ <button style="margin-left: 50px;" class ="button"
  mat-raised-button
+ data-toggle="modal"
  color="primary"
  type="button"
  (click)="onEdit()"

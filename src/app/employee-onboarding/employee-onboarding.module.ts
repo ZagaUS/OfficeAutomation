@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewEmployeeInfoComponent } from './view-employee-info/view-employee-info.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,6 +20,10 @@ import { EducationComponent } from './education/education.component';
 import { SkillsCertificationComponent } from './skills-certification/skills-certification.component';
 import { DayoffComponent } from './dayoff/dayoff.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CreateEmployeeComponent } from './create-employee/create-employee.component';
+import {MatChipsModule} from '@angular/material/chips';
+import { DocumentsComponent } from './documents/documents.component';
+import { ModalResumeuploadComponent } from './modal-resumeupload/modal-resumeupload.component';
 
 
 @NgModule({
@@ -30,6 +35,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     EducationComponent,
     SkillsCertificationComponent,
     DayoffComponent,
+    CreateEmployeeComponent,
+    DocumentsComponent,
+    ModalResumeuploadComponent,
   ],
   imports: [
     CommonModule,
@@ -43,8 +51,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatListModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatCardModule,
     MatToolbarModule,
     MatDatepickerModule,
+    MatChipsModule
   ],
 })
 export class EmployeeOnboardingModule {}

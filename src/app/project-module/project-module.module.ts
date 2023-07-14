@@ -31,6 +31,14 @@ import { MeetingMinuteComponent } from './meeting-minute/meeting-minute.componen
 import { AddMeetingMinuteComponent } from './add-meeting-minute/add-meeting-minute.component';
 import { ViewMeetingMinutesComponent } from './view-meeting-minutes/view-meeting-minutes.component';
 import { CreateProjectComponent } from './create-project/create-project.component';
+import { MatSelectModule } from '@angular/material/select';
+import { QuoteCreationComponent } from './quote-creation/quote-creation.component';
+import { QuoteComponent } from './quote/quote.component';
+import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
+import { ModelPouploadComponent } from './model-poupload/model-poupload.component';
+import { ViewQuoteComponent } from './view-quote/view-quote.component';
+import { ModelSendComponent } from './model-send/model-send.component';
+import { ViewDailytimesheetComponent } from './view-dailytimesheet/view-dailytimesheet.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +53,13 @@ import { CreateProjectComponent } from './create-project/create-project.componen
     AddMeetingMinuteComponent,
     ViewMeetingMinutesComponent,
     CreateProjectComponent,
+    QuoteCreationComponent,
+    QuoteComponent,
+    PurchaseOrderComponent,
+    ModelPouploadComponent,
+    ViewQuoteComponent,
+    ModelSendComponent,
+    ViewDailytimesheetComponent,
   ],
   imports: [
     CommonModule,
@@ -66,6 +81,7 @@ import { CreateProjectComponent } from './create-project/create-project.componen
     MatDialogModule,
     MatDatepickerModule,
     MatSliderModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [ProjectModuleComponent],

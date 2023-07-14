@@ -25,7 +25,7 @@ export class AddMeetingMinuteComponent {
     private api: ApiServicesService,
     private router: Router,) {
     this.meetingForm = this.fb.group({
-      employeeName: [''],
+      employeeName: [localStorage.getItem('employeeName')],
       projectName: [this.projectName],
       projectId: [this.projectId],
       meetingMinutesId: [''],
@@ -44,7 +44,7 @@ export class AddMeetingMinuteComponent {
     this.attendeesPresentItems = this.meetingForm.get('attendeesPresent') as FormArray;
   }
 
-  get agendaItems() {
+  get agendaItems(): FormArray {
     return this.meetingForm.get('agenda') as FormArray;
   }
 
@@ -59,6 +59,7 @@ export class AddMeetingMinuteComponent {
 
   addAgendaItem(): void {
     this.agendaItems.push(this.createAgendaItem());
+    console.log('added agenda', this.agendaItems);
   }
 
   removeAgendaItem(index: number): void {
@@ -69,15 +70,16 @@ export class AddMeetingMinuteComponent {
     return this.meetingForm.get('attendeesPresent') as FormArray;
   }
 
-  addAttendee(): void {
-    this.attendees.push(this.createAttendee());
-  }
-
   createAttendee(): FormGroup {
     return this.fb.group({
       name: [''],
       organization: ['']
     });
+  }
+
+  addAttendee(): void {
+    this.attendees.push(this.createAttendee());
+    console.log('added attendee', this.attendees);
   }
 
   removeAttendee(index: number): void {

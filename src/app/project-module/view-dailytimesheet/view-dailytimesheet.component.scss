@@ -1,0 +1,122 @@
+ 
+ .btns {
+    // float: none;
+    align-items: center;
+    margin-right: 10px;
+    flex-shrink: 0;
+    // justify-content: flex-end;
+    margin-left: 350px;
+    margin-top: 100px;
+    margin-bottom: 1px;
+    background: linear-gradient(to bottom, #074a6e , #074a6e );
+    color: #f3eeee;
+     
+ }
+ /* Style for the heading */
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the meeting details */
+  p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: row;
+    // flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  
+  .form-field {
+    width: 45%;
+    margin-bottom: 20px;
+    margin-left: 1%;
+  }
+  
+  .agenda-heading {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #074a6e;
+  }
+  
+  .agenda-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .agenda-table th,
+  .agenda-table td {
+    padding: 0.5rem;
+    text-align: left;
+    // border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .agenda-table th {
+    font-weight: bold;
+  }
+  
+  .word-wrap {
+    word-wrap: break-word;
+    max-width: 200px;
+  }
+
+  /* Style for the attendee list */
+  ul {
+    list-style-type: none!important;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  li {
+    font-size: 16px;
+    margin-bottom: 5px;
+    list-style-type: none!important;
+    
+    
+  }
+  
+  li:before {
+    content: "\2022";
+    color: #007bff;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+  }
+  
+  
+
+
+  .form-button {
+    width: 100px; 
+    margin-top: 20px;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 600px;
+    background: linear-gradient(to bottom, #0a73dd 0%, #074a6e 100%);
+    color: #fff;
+    // background-color: #007bff;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .form-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); 
+  }
+  
+
+
+
+

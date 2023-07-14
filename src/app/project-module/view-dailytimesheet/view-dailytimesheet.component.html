@@ -1,0 +1,87 @@
+<div style="margin: 20px auto; max-width: 800px; padding: 20px;">
+  <form [formGroup]="dailyTimesheet" (ngSubmit)="onSubmit()">
+    <h1 style="font-size: 2.0rem;font-weight: bold; margin-bottom: 2rem; margin-left: 150px;color: #074a6e;">
+      Daily Timesheet - {{dailyTimesheet.get('date')?.value}}
+    </h1>
+    <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 200px;color: #074a6e;">
+      {{ dailyTimesheet.get('projectName')?.value | uppercase }} - {{dailyTimesheet.get('employeeName')?.value }}
+    </h1>
+    
+    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 50px;">
+      <div>
+        <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Duration:</h2>
+        <mat-form-field style="width: 200%;" appearance="outline">
+          <input matInput placeholder="Duration" formControlName="hours" [readonly]="!editMode" />
+        </mat-form-field>
+      </div>
+      <div>
+        <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Daily Timesheet ID:</h2>
+        <mat-form-field style="width: 200%;" appearance="outline" >
+          <input matInput placeholder="dailyTimesheetId" formControlName="dailyTimesheetId" [readonly]="true" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 20px;">
+      <div>
+        <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Support Ticket:</h2>
+        <mat-form-field style="width: 200%;" appearance="outline" >
+          <input matInput placeholder="supportTicket" formControlName="supportTicket" [readonly]="!editMode" />
+        </mat-form-field>
+      </div>
+      <div>
+        <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
+        <mat-form-field style="width: 200%;" appearance="outline">
+          <input matInput placeholder="date" formControlName="date" [readonly]="!editMode" />
+        </mat-form-field>
+      </div>
+    </div>
+
+      <div>
+        <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Timesheet Type:</h2>
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <input matInput placeholder="timesheetType" formControlName="timesheetType" [readonly]="!editMode" />
+        </mat-form-field>
+      </div>
+    
+    <div style="margin-bottom: 1rem;">
+      <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Task:</h2>
+      <mat-form-field style="width: 100%;" appearance="outline">
+        <textarea matInput placeholder="Task" formControlName="description" [readonly]="!editMode"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Redhat Owners:</h2>
+
+      <div formArrayName="redHatOwners" class="skills-container">
+        <div *ngFor="let redHatOwnerCtrl of redHatOwnersArr.controls; let i = index;">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <input matInput [formControlName]="i" placeholder="Redhat Owner {{ i + 1 }}" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <button mat-raised-button type="button" (click)="addRedhatOwner()" class="btn btn-primary">Add</button>
+
+    </div>
+
+    <div style="margin-bottom: 1rem;">
+      <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Client Owners:</h2>
+
+      <div formArrayName="clientOwners" class="skills-container">
+        <div *ngFor="let clientOwnerCtrl of clientOwnersArr.controls; let i = index;">
+          <mat-form-field style="width: 100%;" appearance="outline">
+            <input matInput [formControlName]="i" placeholder="Client Owner {{ i + 1 }}" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <button mat-raised-button type="button" (click)="addClientOwner()" class="btn btn-primary">Add</button>
+    </div>
+
+      <button class="form-button" style="margin-left: 150px" mat-raised-button color="primary" (click)="editDaily()">Edit</button>
+
+      <button class="form-button" style="margin-left: 150px" mat-raised-button color="primary" (click)="saveDaily()">Save</button>
+  </form>
+</div>

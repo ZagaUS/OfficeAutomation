@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-dayoff',
@@ -14,7 +15,8 @@ export class DayoffComponent {
 
   constructor(
     private fb: FormBuilder,
-    private api: EmployeeApiService
+    private api: EmployeeApiService,
+    private location: Location
   ) {
     this.myForm = this.fb.group({
       employeeId: [''],
@@ -40,9 +42,10 @@ export class DayoffComponent {
     this.isReadOnly = false;
     const formValues = this.myForm.value;
     console.log(formValues);
-    this.api.updateDayOff(this.employeeId,formValues).subscribe((data:any) => {
+    this.api.updateDayOff(formValues).subscribe((data:any) => {
       console.log("data updated",data);
       alert('updated successfully');
+      window.location.reload();
     });
   }
 }

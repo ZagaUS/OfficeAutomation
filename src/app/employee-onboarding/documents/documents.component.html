@@ -1,0 +1,26 @@
+<div class="card">
+    <h2 class="card-header">Employee Resume</h2>
+
+    <table style="margin-top: 20px;margin-right: 20px; margin-bottom: 500px;" >
+
+        <ng-container>
+            <h4>Resume Details</h4>
+            <h5>{{fileName}}</h5>
+
+            <div class="actionContainer">
+                <!-- <a (click)="viewPdf()" class="icon">
+                    <mat-icon style="font-size: x-large" fontIcon="visibility"></mat-icon>
+                </a> -->
+                <div class="btn-center">
+                    <button mat-raised-button class="btns" color="primary" data-toggle="modal" (click)="viewPdf()">View Resume</button>
+
+                    <button mat-raised-button class="btns" color="primary" data-toggle="modal" (click)="openPO()">Upload Resume</button>
+
+                    <!-- style="margin-left: 600px;margin-bottom: 200px;margin-top: 100px;" -->
+                </div>
+            </div>
+        </ng-container>
+
+    </table>
+
+</div>

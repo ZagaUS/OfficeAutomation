@@ -1,4 +1,8 @@
-import { NgModule } from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA,
+  NgModule,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,9 +30,12 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { ProjectAssignmentComponent } from './project-assignment/project-assignment.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +44,7 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
     ProjectDashboardComponent,
     LandingPageComponent,
     EmployeeDashboardComponent,
+    ProjectAssignmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,8 +70,11 @@ import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashbo
     MatDatepickerModule,
     MatNativeDateModule,
     MatSliderModule,
+    MatChipsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })
 export class AppModule {}

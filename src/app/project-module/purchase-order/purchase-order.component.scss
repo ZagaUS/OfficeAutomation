@@ -1,0 +1,46 @@
+table {
+    width: 100%;
+  }
+  
+ .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+ }
+ 
+ .tableContainer {
+    margin: 20px;
+ }
+ 
+ .actionContainer {
+    display: flex;
+    flex-direction: row;
+ }
+ 
+ .icon:hover {
+    cursor: pointer;
+    color: red;
+ }
+ 
+ .categoryContainer {
+    margin-bottom: 20px;
+ }
+ 
+ .btns {
+    float: right;
+    align-items: center;
+    margin-left: 10px;
+    flex-shrink: 0;
+    justify-content: flex-end;
+    margin-bottom: 1px;
+    background: linear-gradient(to bottom, #074a6e , #074a6e );
+    color: #f3eeee;
+     
+ }
+ 
+ .assignBtn {
+    margin-left: 10px;
+    background: linear-gradient(to bottom, #074a6e , #074a6e );
+    color: #f3eeee;
+ }
+ 
+ 

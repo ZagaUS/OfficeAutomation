@@ -5,12 +5,30 @@ import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { CreateProjectComponent } from './project-module/create-project/create-project.component';
+import { CreateEmployeeComponent } from './employee-onboarding/create-employee/create-employee.component';
+import { QuoteCreationComponent } from './project-module/quote-creation/quote-creation.component';
+import { QuoteComponent } from './project-module/quote/quote.component';
+import { PurchaseOrderComponent } from './project-module/purchase-order/purchase-order.component';
+import { ViewQuoteComponent } from './project-module/view-quote/view-quote.component';
+import { ModelPouploadComponent } from './project-module/model-poupload/model-poupload.component';
+import { ModelSendComponent } from './project-module/model-send/model-send.component';
+import { ViewDailytimesheetComponent } from './project-module/view-dailytimesheet/view-dailytimesheet.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: '', redirectTo: '/landing', pathMatch: 'full'},
   { path: 'landing', component: LandingPageComponent },
   { path: 'projectdashboard', component: ProjectDashboardComponent },
   { path: 'createProject', component: CreateProjectComponent},
+  { path: 'createEmployee', component: CreateEmployeeComponent},
+  { path: 'quoteCreation', component: QuoteCreationComponent},
+  { path: 'quote' , component: QuoteComponent},
+  { path: 'modelPoupload', component: ModelPouploadComponent},
+  { path: 'purchaseOrder', component: PurchaseOrderComponent},
+  { path: 'viewQuote', component: ViewQuoteComponent},
+  { path: 'modelSend', component: ModelSendComponent},
+  { path: 'viewDailytimesheet' , component: ViewDailytimesheetComponent },
   {
     path: 'projectModule',
     loadChildren: () =>

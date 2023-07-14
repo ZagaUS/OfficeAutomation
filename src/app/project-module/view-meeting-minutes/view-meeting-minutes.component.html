@@ -4,35 +4,82 @@
   </h1>
   <h1 style=" font-weight:bold;font-size: 1.8rem;margin-left: 250px;color: #074a6e;">
     {{ meetingDetails.projectName | uppercase }} - {{ meetingDetails.employeeName }}
-</h1>
+  </h1>
   
   <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem; margin-top: 60px;">
     <div>
-      <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Meeting ID:</p>
-      <p>{{ meetingDetails.meetingMinutesId }}</p>
+      <h2 style="font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Meeting ID:</h2>
+      <!-- <p>{{ meetingDetails.meetingMinutesId }}</p> -->
+      <mat-form-field style="width: 200%;" appearance="outline">
+        <input
+          matInput
+          placeholder="Meeting ID"
+          [(ngModel)]="meetingDetails.meetingMinutesId"
+          [readonly]="!editMode"
+          [value]="meetingDetails.meetingMinutesId"
+        />
+      </mat-form-field>
     </div>
     <div>
-      <p style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</p>
-      <p>{{ meetingDetails.date }}</p>
-    </div>
-    <div>
-      <p style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Time:</p>
-      <p>{{ meetingDetails.startTime }} - {{ meetingDetails.endTime }}</p>
+      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Date:</h2>
+      <!-- <p>{{ meetingDetails.date }}</p> -->
+      <mat-form-field style="width: 200%;" appearance="outline">
+        <input
+          matInput
+          placeholder="date"
+          [(ngModel)]="meetingDetails.date"
+          [readonly]="!editMode"
+          [value]="meetingDetails.date"
+        />
+      </mat-form-field>
     </div>
   </div>
-  <div style="margin-bottom: 1rem;">
-    <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Meeting Objective:</h2>
-    <p>{{ meetingDetails.meetingObjective }}</p>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;font-size: 1.3rem;">
+    <div>
+      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">Start Time:</h2>
+      <!-- <p>{{ meetingDetails.startTime }}</p> -->
+      <mat-form-field style="width: 200%;" appearance="outline">
+        <input
+          matInput
+          placeholder="start Time"
+          [(ngModel)]="meetingDetails.startTime"
+          [readonly]="!editMode"
+          [value]="meetingDetails.startTime"
+          />
+      </mat-form-field>
+    </div>
+    <div>
+      <h2 style=" font-weight: bold;font-size: 1.3rem;margin-bottom: 0.5rem;color: #074a6e;">End Time:</h2>
+      <!-- <p>{{ meetingDetails.endTime }}</p> -->
+      <mat-form-field style="width: 200%;" appearance="outline">
+        <input
+          matInput
+          placeholder="end Time"
+          [(ngModel)]="meetingDetails.endTime"
+          [readonly]="!editMode"
+          [value]="meetingDetails.endTime"
+          />
+      </mat-form-field>
+    </div>
   </div>
   
   <div style="margin-bottom: 1rem;">
-    <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
-    <div *ngFor="let attendee of meetingDetails.attendeesPresent">
-      {{ attendee.name }} ({{ attendee.organization.toUpperCase() }})
-    </div>
+    <h2 style=" font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Meeting Objective:</h2>
+    <!-- <p>{{ meetingDetails.meetingObjective }}</p> -->
+    <mat-form-field style="width: 100%;" appearance="outline">
+      <input
+        matInput
+        placeholder="Meeting Objective"
+        [(ngModel)]="meetingDetails.meetingObjective"
+        [readonly]="!editMode"
+        [value]="meetingDetails.meetingObjective"
+      />
+    </mat-form-field>
   </div>
+
   <div>
-    <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
+    <!-- <h2 style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
     <ul style="list-style: none;">
       <div *ngFor="let item of meetingDetails.agenda" style="list-style: none;">
         <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
@@ -50,11 +97,105 @@
           </div>
           <div>
         <p style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description:</p>
-        <p>{{ item.description }}</p>
+        <p class="word-wrap">{{ item.description }}</p>
       </div>
 
       </div>
       </div>
-    </ul>
+    </ul> -->
+
+    <h2 class="agenda-heading" style="font-size: 1.3rem; font-weight: bold; margin-bottom: 0.5rem;color: #074a6e;">Agenda:</h2>
+    <table class="agenda-table">
+      <thead>
+        <tr>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Topic</th>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Presented by</th>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Time Taken</th>
+          <th class="word-wrap" style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of meetingDetails.agenda">
+          <td class="word-wrap" style="padding-right: 15rem;">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="topic"
+                [(ngModel)]="item.topic"
+                [readonly]="!editMode"
+                [value]="meetingDetails.meetingMinutesId"
+              />
+            </mat-form-field>
+          </td>
+          <td class="word-wrap" style="padding-right: 15rem;">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="presentedBy"
+                [(ngModel)]="item.presentedBy"
+                [readonly]="!editMode"
+                [value]="item.presentedBy"
+              />
+            </mat-form-field>
+          </td>
+          <td class="word-wrap" style="padding-right: 15rem;">
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="timeTaken"
+                [(ngModel)]="item.timeTaken"
+                [readonly]="!editMode"
+                [value]="item.timeTaken"
+              />
+            </mat-form-field>
+          </td>
+          <td class="word-wrap">
+            <mat-form-field appearance="outline">
+              <textarea matInput placeholder="Description" [(ngModel)]="item.description" [readonly]="!editMode" [value]="item.description"></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
   </div>
+
+    <div style="margin-bottom: 1rem;">
+      <h2 style="font-weight: bold;font-size: 1.3rem; margin-bottom: 0.5rem;color: #074a6e;">Attendees:</h2>
+      <table class="agenda-table">
+        <tr>
+          <th style="font-weight: bold;font-size: 1.3rem;margin-bottom: 7rem;color: #074a6e;">Name</th>
+          <th style="font-weight: bold;font-size: 1.3rem;margin-bottom: 1rem;color: #074a6e;">Organization</th>
+        </tr>
+        <tr *ngFor="let attendee of meetingDetails.attendeesPresent">
+          <!-- <p>{{ attendee.name }} ({{ attendee.organization.toUpperCase() }})</p> -->
+          <!-- <mat-form-field appearance="outline"> -->
+            <!-- <input
+              matInput
+              placeholder="name"
+              [(ngModel)]="attendee.name"
+              [readonly]="!editMode"
+              [value]="attendee.name"
+            /> -->
+            <td>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="meetingDetails" [(ngModel)]="attendee.name" [readonly]="!editMode" [value]="attendee.name">
+              </mat-form-field>
+            </td>
+
+            <td>
+              <mat-form-field appearance="outline">
+                <input matInput placeholder="meetingDetails" [(ngModel)]="attendee.organization" [readonly]="!editMode" [value]="attendee.organization">
+              </mat-form-field>
+            </td>
+            
+          <!-- </mat-form-field> -->
+        </tr>
+      </table>
+    </div>
+
+  <button style="margin-left: 300px" class="btns" mat-raised-button color="primary" (click)="editMeetingMinutes()">Edit</button>
+
+  <button style="margin-left: 150px" class="btns" mat-raised-button color="primary" (click)="saveMeetingMinutes()">Save</button>
+
 </div>

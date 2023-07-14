@@ -14,6 +14,10 @@ export class InvoiceApiService {
     return this.http.get<any>(this.invoiceUrl + '/getAllInvoices');
   }
 
+  getProjectDetails(projectGetData: any){
+    return this.http.get<any>(this.invoiceUrl + `/getProjectDetailsInvoice/${projectGetData.projectName},${projectGetData.startDate},${projectGetData.endDate}`);
+  }
+
   createInvoice(invoiceData: any) {
     return this.http.post<any>(
       this.invoiceUrl + '/createInvoicee/pdf',
@@ -28,4 +32,70 @@ export class InvoiceApiService {
       responseType: 'blob',
     });
   }
+
+  deleteInvoice(invoiceId: any){
+    console.log('delete This invoice', invoiceId);
+    return this.http.delete<any>(
+      this.invoiceUrl+
+      `/deleteInvoice/${invoiceId}`
+      );
+  }
+   
+  downloadInvoice(documentId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.get(
+      this.invoiceUrl +
+      `/download/${documentId}`,
+       { headers, responseType: 'blob' }
+    );
+  }
+  
+  getAllInvoice(projectId?: any) {
+    return this.http.get<any>(
+      this.invoiceUrl + `/getProjectInvoices/${projectId}`
+    );
+  }
+
+  getAllCreditNote(projectId?: any) {
+    return this.http.get<any>(
+      this.invoiceUrl + `/getCreditNotesByProjectId/${projectId}`
+    );
+  }
+
+  createCreditNote(CreditNoteData: any) {
+    return this.http.post<any>(
+      this.invoiceUrl + '/createCreditNote/pdf',
+      CreditNoteData
+    );
+  }
+
+  deleteCreditNotes(documentId: any){
+    console.log('delete This credit note', documentId);
+    return this.http.delete<any>(
+      this.invoiceUrl+
+      `/deleteCreditNote/${documentId}`
+      );
+  }
+
+  downloadCreditNote(documentId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'application/octet-stream');
+    return this.http.get(
+      this.invoiceUrl +
+      `/creditNotePdf/download/${documentId}`,
+       { headers, responseType: 'blob' }
+    );
+  }
+
+  getPdfCreditNote(documentId: any): Observable<Blob> {
+    const headers = new HttpHeaders().set('Accept', 'text/plain');
+    return this.http.get(this.invoiceUrl + `/creditNote/${documentId}/pdf`, {
+      headers,
+      responseType: 'blob',
+    });
+  }
+
+
+
+
+  
 }
