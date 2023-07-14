@@ -260,14 +260,14 @@ export class CreateEmployeeComponent {
     
   }
 
-  openPO() {
-    this.modalRef = this.modalService.open(ModalResumeuploadComponent, {
-      modalClass: 'modal-lg',
-    });
-    this.modalRef.onClose.subscribe((message: any) => {
-      console.log(message);
-      // window.location.reload();
-    });
-  }
+  // openPO() {
+  //   this.modalRef = this.modalService.open(ModalResumeuploadComponent, {
+  //     modalClass: 'modal-lg',
+  //   });
+  //   this.modalRef.onClose.subscribe((message: any) => {
+  //     console.log(message);
+  //     // window.location.reload();
+  //   });
+  // }
 
 }

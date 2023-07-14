@@ -4,6 +4,7 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { EmployeeApiService } from 'src/app/base-api/employee-api.service';
 import { ModalResumeuploadComponent } from '../modal-resumeupload/modal-resumeupload.component';
 
+
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
@@ -11,12 +12,12 @@ import { ModalResumeuploadComponent } from '../modal-resumeupload/modal-resumeup
 })
 
 export class DocumentsComponent {
+  modalRef: MdbModalRef<ModalResumeuploadComponent> | null = null;
   fileName: any;
   file: any;
   pdfbaseapi: any;
-  employeeId: any = "128"
-  
-  constructor(private fb: FormBuilder, private api: EmployeeApiService) {
+  employeeId: any = localStorage.getItem('employeeId');
+  constructor(private fb: FormBuilder, private api: EmployeeApiService, private modalService: MdbModalService) {
 
   }
 
@@ -28,13 +29,11 @@ export class DocumentsComponent {
     }
   
 
-  viewPdf(){
-    
-     
+  viewPdf(){    
       this.api.downloadPDF(this.employeeId).subscribe((res: any) => {
         console.log(res);
         this.file = res;
-
+       
         const reader = new FileReader();
         reader.onload = () => {
           const dataUrl = reader.result as string;
@@ -60,6 +59,15 @@ export class DocumentsComponent {
       
 
   }
+  openPO(employeeId?: any) {
+    this.modalRef = this.modalService.open(ModalResumeuploadComponent, {
+      modalClass: 'modal-lg',
 
+    });
+    this.modalRef.onClose.subscribe((message: any) => {
+      console.log(message);
+      // window.location.reload();
+    });
+  }
   
 }
